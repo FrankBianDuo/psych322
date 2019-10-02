@@ -3,6 +3,14 @@ import 'mutationobserver-shim'
 import Vue from 'vue'
 import './plugins/bootstrap-vue'
 import App from './App.vue'
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import VueKonva from 'vue-konva'
+
+Vue.use(VueKonva)
+Vue.use(BootstrapVue)
+
 
 Vue.config.productionTip = false
 
