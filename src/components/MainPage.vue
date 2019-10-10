@@ -6,12 +6,22 @@
       Description of the experiment<br>
       Other information
     </p>
-    <b-button v-b-modal.modal-center>Get Started</b-button>
+    <div class="bv-example-row bv-example-row-flex-cols">
+      <b-row class="my-4 justify-content-center">
+        <b-button v-b-modal.modal-center>Block #1</b-button>
+      </b-row>
+      <b-row class="my-4 justify-content-center">
+        <b-button v-b-modal.modal-center>Block #2</b-button>
+      </b-row>
+      <b-row class="my-4 justify-content-center">
+        <b-button v-b-modal.modal-center>Block #3</b-button>
+      </b-row>
+    </div>
 
     <b-modal 
       id="modal-center" 
       size="xl"
-      centered title="Scenario #1"
+      centered title="Block #1"
       v-model="show"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
@@ -20,19 +30,36 @@
       :body-text-variant="bodyTextVariant"
       :footer-bg-variant="footerBgVariant"
       :footer-text-variant="footerTextVariant"
+      :no-close-on-backdrop="true"
+      :no-close-on-esc="true"
+      :hide-header-close="true"
     >
       <b-container class="bv-example-row">
-        <b-row>
-          <b-col  class="mx-2 box" :style=this.scenarioColor ></b-col>
+        <!-- <b-row>
+          <b-col  class="mx-2 box" :style="this.scenarioColor" ></b-col>
           <b-col cols="6" class="bg-danger mx-2" style="height: 280px;" ></b-col>
           <b-col cols="2" class="mx-2" style="height: 280px;">
             <b-button v-on:click="nextUp" class="py-4 my-4" variant="outline-primary">Option #1</b-button>
             <b-button v-on:click="nextUp" class="py-4 my-4" variant="outline-primary">Option #2</b-button>
           </b-col>
+        </b-row> -->
+        <b-row class="justify-content-center align-items-center my-1">
+          <div style="position: absolute;">
+            <h1>1</h1>
+          </div>
+          <img :src="require('../retrollystimuli/Current Choice Square.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
+          <img :src="require('../retrollystimuli/Ex Avatar 001.png')" style="position: absolute; max-width:15%; max-height:15%; left: 30%; top: 25%;"/>
+          <img :src="require('../retrollystimuli/Arrows 1.png')" style="position: absolute;max-width:30%; max-height:30%; top: 18%;" />
+          <img :src="require('../retrollystimuli/You Full 1.png')" style="position: absolute;max-width:15%; max-height:15%; right: 30%; top: 25%;"/>
+        </b-row>
+        <b-row class="justify-content-center align-items-center mt-5 bt-5">
+          <img :src="require('../retrollystimuli/Current Choice Square.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
+          <img :src="require('../retrollystimuli/Ex Avatar 001.png')" style="position: absolute; max-width:15%; max-height:15%; left: 30%; bottom: 9%;"/>
+          <img :src="require('../retrollystimuli/Arrows 1.png')" style="position: absolute;max-width:30%; max-height:30%; bottom: 1%;" />
+          <img :src="require('../retrollystimuli/You Full 1.png')" style="position: absolute;max-width:15%; max-height:15%; right: 30%; bottom: 9%;"/>
         </b-row>
       </b-container>
     </b-modal>
-    <gameCase />
   </div>
 </template>
 
@@ -40,7 +67,7 @@
 import gameCase from './gameCase.vue'
 
 export default {
-  name: 'HelloWorld',
+  name: 'MainPage',
   components: {
     gameCase,
   },
