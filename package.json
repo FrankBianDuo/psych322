@@ -13,7 +13,8 @@
     "core-js": "^2.6.5",
     "konva": "^4.0.12",
     "vue": "^2.6.10",
-    "vue-konva": "^2.0.11"
+    "vue-konva": "^2.0.11",
+    "vue2-circle-progress": "^1.2.3"
   },
   "devDependencies": {
     "@babel/polyfill": "^7.4.4",

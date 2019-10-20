@@ -1,0 +1,6 @@
+Progress bar
+current click event 
+mechanism for randomization
+warning on exiting??
+Block 3 
+fine tuning for different arrows
