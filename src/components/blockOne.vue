@@ -26,7 +26,7 @@
               {{this.combinations[this.current_avatar].pr_p.a_first}}
             </h1>
           </div>
-          <div style="position: absolute;  top: 19%; right: 45%;">
+          <div style="position: absolute;  top: 19%; right: 43%;">
             <h1 style="position: absolute; color: #4B00FF;">
               {{this.combinations[this.current_avatar].pr_p.p_first}}
             </h1>
@@ -36,15 +36,15 @@
               {{this.combinations[this.current_avatar].pr_p.a_second}}
             </h1>
           </div>
-          <div style="position: absolute; top: 39%; right: 45%;">
+          <div style="position: absolute; top: 39%; right: 43%;">
             <h1 style="position: absolute; color: #4B00FF;">
               {{this.combinations[this.current_avatar].pr_p.p_second}}
             </h1>
           </div>
-          <img :src="require('../retrollystimuli/Prior Choice Square.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
-          <img @click="priorAvatar" :src="require(`../retrollystimuli/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; top: 25%;"/>
+          <img :src="require('../retrollystimuli/Prior Choice Square.2.1.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
+          <img @click="priorAvatar" :src="require(`../retrollystimuli/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; top: 25%; cursor: pointer;"/>
           <img :src="require(`../retrollystimuli/Arrows ${this.arrow_num}.png`)" style="position: absolute;max-width:30%; max-height:30%; top: 18%; left: 39%;" />
-          <img @click="helper" :src="require('../retrollystimuli/You Full 1.png')" style="position: absolute;max-width:15%; max-height:15%; right: 30%; top: 25%;"/>
+          <img @click="helper" :src="require('../retrollystimuli/You Full 1.png')" style="position: absolute;max-width:15%; max-height:15%; right: 30%; top: 25%; cursor: pointer;"/>
         </b-row>
 
         <!-- Current Choice Block -->
@@ -54,7 +54,7 @@
               {{this.combinations[this.current_avatar].a_p.a_first}}
             </h1>
           </div>
-          <div style="position: absolute;  top: 70%; right: 45%;">
+          <div style="position: absolute;  top: 70%; right: 43%;">
             <h1 style="position: absolute; color: #4B00FF;">
               {{this.combinations[this.current_avatar].a_p.p_first}}
             </h1>
@@ -64,16 +64,16 @@
               {{this.combinations[this.current_avatar].a_p.a_second}}
             </h1>
           </div>
-          <div style="position: absolute; top: 90%; right: 45%;">
+          <div style="position: absolute; top: 90%; right: 43%;">
             <h1 style="position: absolute; color: #4B00FF;">
               {{this.combinations[this.current_avatar].a_p.p_second}}
             </h1>
           </div>
-          <img :src="require('../retrollystimuli/Current Choice Square.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
-          <img @click="otherChoice" :src="require(`../retrollystimuli/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; bottom: 9%;"/>
-          <img :src="require('../retrollystimuli/Arrows 1.png')" style="position: absolute;max-width:30%; max-height:30%; bottom: 1%; left: 39%;" />
-          <img @click="selfChoice" :src="require('../retrollystimuli/You Blank 1.png')" style="position: absolute;max-width:15%; max-height:15%; right: 30%; bottom: 9%;"/>
-          <div :style="this.combinations[this.current_avatar].pl_p == '2' ? 'position: absolute; top: 80%; right: 33.5%; font-size: 30px;' : 'position: absolute; top: 77%; right: 33%; font-size: 25px;' ">
+          <img :src="require('../retrollystimuli/Current Choice Square.2.1.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
+          <img @click="otherChoice" :src="require(`../retrollystimuli/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; bottom: 9%; cursor: pointer;"/>
+          <img :src="require('../retrollystimuli/Arrows 1.png')" style="position: absolute;max-width:30%; max-height:30%; bottom: 2%; left: 39%;" />
+          <img @click="selfChoice" :src="require('../retrollystimuli/You Blank 1.png')" style="position: absolute;max-width:15%; max-height:15%; right: 30%; bottom: 9%; cursor: pointer;"/>
+          <div @click="selfChoice" :style="this.combinations[this.current_avatar].pl_p == '2' ? 'position: absolute; top: 80%; right: 33.5%; font-size: 30px; cursor: pointer; color: #4B00FF;' : 'position: absolute; top: 77%; right: 33%; font-size: 25px; cursor: pointer; color: #4B00FF;' ">
               {{this.combinations[this.current_avatar].pl_p == "3/2" ? '1' : '2'}}
                 <div v-if="this.combinations[this.current_avatar].pl_p != '2' " class="frac">
                     <span>1</span>
@@ -136,130 +136,130 @@
             prior_payoff: [
                 // 3 3 1 1
                 {
-                p_first: "3",
                 a_first: "3",
-                p_second: "1",
+                p_first: "3",
                 a_second: "1",
+                p_second: "1",
                 },
                 // 3 3 1 2
                 {
-                p_first: "3",
                 a_first: "3",
-                p_second: "1",
-                a_second: "2",
+                p_first: "3",
+                a_second: "1",
+                p_second: "2",
                 },
                 // 3 3 2 1
                 {
-                p_first: "3",
-                a_first: "2",
-                p_second: "2",
-                a_second: "1",
+                a_first: "3",
+                p_first: "2",
+                a_second: "2",
+                p_second: "1",
                 },
                 // 3 3 2 2
                 {
-                p_first: "3",
                 a_first: "3",
-                p_second: "2",
+                p_first: "3",
                 a_second: "2",
+                p_second: "2",
                 },
                 // 1 3 3 1
                 {
-                p_first: "1",
-                a_first: "3",
-                p_second: "3",
-                a_second: "1",
+                a_first: "1",
+                p_first: "3",
+                a_second: "3",
+                p_second: "1",
                 },
                 // 1 3 3 2
                 {
-                p_first: "1",
-                a_first: "3",
-                p_second: "3",
-                a_second: "2",
+                a_first: "1",
+                p_first: "3",
+                a_second: "3",
+                p_second: "2",
                 },
                 // 2 3 3 1
                 {
-                p_first: "2",
-                a_first: "3",
-                p_second: "3",
-                a_second: "1",
+                a_first: "2",
+                p_first: "3",
+                a_second: "3",
+                p_second: "1",
                 },
                 // 2 3 3 2
                 {
-                p_first: "2",
-                a_first: "3",
-                p_second: "3",
-                a_second: "2",
+                a_first: "2",
+                p_first: "3",
+                a_second: "3",
+                p_second: "2",
                 },
                 // 8 
                 // 3 2 1 1
                 {
-                p_first: "3",
-                a_first: "2",
-                p_second: "1",
+                a_first: "3",
+                p_first: "2",
                 a_second: "1",
+                p_second: "1",
                 },
                 // 2 3 1 1
                 {
-                p_first: "2",
-                a_first: "3",
-                p_second: "1",
+                a_first: "2",
+                p_first: "3",
                 a_second: "1",
+                p_second: "1",
                 },
                 // 3 2 2 1
                 {
-                p_first: "3",
-                a_first: "2",
-                p_second: "2",
-                a_second: "1",
+                a_first: "3",
+                p_first: "2",
+                a_second: "2",
+                p_second: "1",
                 },
                 // 2 3 1 2
                 {
-                p_first: "2",
-                a_first: "3",
-                p_second: "1",
-                a_second: "2",
+                a_first: "2",
+                p_first: "3",
+                a_second: "1",
+                p_second: "2",
                 },
                 // 2 2 1 1
                 {
-                p_first: "2",
                 a_first: "2",
-                p_second: "1",
+                p_first: "2",
                 a_second: "1",
+                p_second: "1",
                 },
                 // 1 2 3 1
                 {
-                p_first: "1",
-                a_first: "2",
-                p_second: "3",
-                a_second: "1",
+                a_first: "1",
+                p_first: "2",
+                a_second: "3",
+                p_second: "1",
                 },
                 // 1 3 2 1
                 {
-                p_first: "1",
-                a_first: "3",
-                p_second: "2",
-                a_second: "1",
+                a_first: "1",
+                p_first: "3",
+                a_second: "2",
+                p_second: "1",
                 },
                 // 1 3 2 2
                 {
-                p_first: "1",
-                a_first: "3",
-                p_second: "2",
+                a_first: "1",
+                p_first: "3",
                 a_second: "2",
+                p_second: "2",
                 },
                 // 2 2 3 1
                 {
-                p_first: "2",
                 a_first: "2",
-                p_second: "3",
-                a_second: "1",
+                p_first: "2",
+                a_second: "3",
+                p_second: "1",
                 },
                 // 1 2 2 1
                 {
-                p_first: "1",
-                a_first: "2",
-                p_second: "2",
-                a_second: "1",
+                a_first: "1",
+                p_first: "2",
+                a_second: "2",
+                p_second: "1",
                 },
                 // 16
                 ],
@@ -278,13 +278,6 @@
             },
         },
         methods: {
-            nextUp () {
-                this.index += 1
-                if (this.index >= this.colors.length) {
-                    this.index = 0
-                }
-                this.scenarioColor = `height: 280px; backgroundColor: ${this.colors[this.index]};`
-            },
             helper() {
                 alert('click the avatar!')
             },
@@ -406,7 +399,7 @@ a {
     padding: 0.1em;
 }
 .frac span.bottom {
-    border-top: thin solid black;
+    border-top: thin solid #4B00FF;
 }
 .frac span.symbol {
     display: none;

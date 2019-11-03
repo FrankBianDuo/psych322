@@ -15,7 +15,7 @@
       </b-row>
       <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_2" v-b-modal.modal-center-2>Block #2</b-button>
-        <download-csv v-if="this.finished_2" class="btn btn-default" :data="this.blockTwoResults">
+        <download-csv v-if="this.finished_2" class="btn btn-default" :data="this.blockTwoResults" :name="this.blockTwoFileName()">
             <b-button> Download data for Block #2 </b-button>
         </download-csv>
       </b-row>
@@ -58,21 +58,12 @@
           required
         ></b-form-input>
       </b-form-group>
-
       <b-form-group id="input-group-2" label="Gender:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="form.gender"
-          required
-        ></b-form-input>
+        <b-form-select v-model="form.gender" :options="gender_options"></b-form-select>
       </b-form-group>
 
       <b-form-group id="input-group-2" label="RA Present:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="form.ra"
-          required
-        ></b-form-input>
+        <b-form-select v-model="form.ra" :options="ra_options"></b-form-select>
       </b-form-group>
 
       <b-form-group id="input-group-2" label="Age:" label-for="input-2">
@@ -121,18 +112,21 @@
     </b-modal>
 
     <BlockOne @blockOneDone="blockOneFinished" :participant_name="this.form.name"/>
+    <BlockTwo @blockTwoDone="blockTwoFinished" :participant_name="this.form.name"/>
     <BlockThree @blockThreeDone="blockThreeFinished" :participant_name="this.form.name"/>
   </div>
 </template>
 
 <script>
 import BlockOne from './blockOne.vue'
+import BlockTwo from './blockTwo.vue'
 import BlockThree from './blockThree.vue'
 
 export default {
   name: 'MainPage',
   components: {
     BlockOne,
+    BlockTwo,
     BlockThree,
   },
   props: {
@@ -145,7 +139,7 @@ export default {
       finished_3: false,
       show: false,
       b_show_1: true,
-      b_show_2: false,
+      b_show_2: true,
       b_show_3: false,
       variants: ['primary', 'secondary', 'success', 'warning', 'danger', 'info', 'light', 'dark'],
       headerBgVariant: 'dark',
@@ -172,6 +166,16 @@ export default {
       blockOneResults: null,
       blockTwoResults: null,
       blockThreeResults: null,
+      gender_options: [
+        { value: 'Female', text: 'Female' },
+        { value: 'Male', text: 'Male' },
+        { value: 'Other', text: 'Other' },
+      ],
+      ra_options: [
+        { value: 'RA1', text: 'RA1' },
+        { value: 'RA2', text: 'RA2' },
+        { value: 'RA3', text: 'RA3' },
+      ],
     }
   },
   beforeMount() {
@@ -204,7 +208,6 @@ export default {
       this.b_show_1 = false
       this.b_show_2 = true
       this.blockOneResults = this.processOneResults(results)
-      console.log(results)
       this.finished_1 = true
     },
     blockThreeFinished(results) {
@@ -243,8 +246,27 @@ export default {
       }
       return output
     },
-    processTwoResults() {
-
+    processTwoResults(raw) {
+      var output = []
+      for (var i = 0; i < raw.length; i++) {
+        var current = {
+          'participant_name': this.form.name,
+          'Pay Off Structure': raw[i].game_condition,
+          'Avatar Present': raw[i].avatar,
+          'Template Selected': raw[i].choice,
+          'Date': this.form.date,
+          'Gender': this.form.gender,
+          'RA Present': this.form.ra,
+          'Block Order': '123',
+          'Age': this.form.age,
+          'Younger Brother(s)': this.form.youngerBro,
+          'Younger Sister(s)': this.form.youngerSis,
+          'Older Brother(s)': this.form.olderBro,
+          'Older Sister(s)': this.form.olderSis,
+        }
+        output.push(current)
+      }
+      return output
     },
     processThreeResults(raw) {
       var i;
@@ -280,13 +302,17 @@ export default {
     blockOneFileName() {
       return `${this.form.name}_block_1.csv`
     },
+    blockTwoFileName() {
+      return `${this.form.name}_block_2.csv`
+    },
     blockThreeFileName() {
       return `${this.form.name}_block_3.csv`
     },
-    blockTwoFinished() {
+    blockTwoFinished(results) {
       this.b_show_2 = false
       this.b_show_3 = true
       this.finished_2 = true
+      this.blockTwoResults = this.processTwoResults(results)
     },
     
   }
