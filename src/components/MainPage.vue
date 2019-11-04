@@ -152,7 +152,7 @@ export default {
       scenarioColor: `height: 280px; backgroundColor: red;`,
       index: 0,
       form: {
-          name: 'Frank',
+          name: '',
           date: '',
           gender: '',
           ra: '',
