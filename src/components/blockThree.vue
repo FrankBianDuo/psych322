@@ -136,7 +136,7 @@
             current_avatar: 0,
             current_progress: 0,
             // How many games to run
-            max_avatar: 3,
+            max_avatar: 864,
             avatar_choices: ["3", "2"],
             player_payoff: ["3/2", "2", "5/2"],
             avatar_payoff: [
