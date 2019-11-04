@@ -20,7 +20,7 @@
         </download-csv>
       </b-row>
       <b-row class="my-4 justify-content-center">
-        <b-button :disabled="this.b_show_3" v-b-modal.modal-center-3>Block #3</b-button>
+        <b-button :disabled="!this.b_show_3" v-b-modal.modal-center-3>Block #3</b-button>
         <download-csv v-if="this.finished_3" class="btn btn-default" :data="this.blockThreeResults" :name="this.blockThreeFileName()">
             <b-button> Download data for Block #3 </b-button>
         </download-csv>
@@ -140,7 +140,7 @@ export default {
       show: false,
       b_show_1: true,
       b_show_2: true,
-      b_show_3: false,
+      b_show_3: true,
       variants: ['primary', 'secondary', 'success', 'warning', 'danger', 'info', 'light', 'dark'],
       headerBgVariant: 'dark',
       headerTextVariant: 'light',
@@ -186,9 +186,9 @@ export default {
     // form ---------------------------------------------------
     onSubmit(evt) {
       evt.preventDefault()
-      if(this.b_show_1 == false && this.b_show_2 == false && this.b_show_2 == false) {
-        this.b_show_1 = true
-      }
+      // if(this.b_show_1 == false && this.b_show_2 == false && this.b_show_2 == false) {
+      //   this.b_show_1 = true
+      // }
       alert(JSON.stringify(this.form))
     },
     onReset(evt) {
@@ -205,13 +205,13 @@ export default {
       })
     },
     blockOneFinished(results) {
-      this.b_show_1 = false
-      this.b_show_2 = true
+      // this.b_show_1 = false
+      // this.b_show_2 = true
       this.blockOneResults = this.processOneResults(results)
       this.finished_1 = true
     },
     blockThreeFinished(results) {
-      this.b_show_3 = false
+      // this.b_show_3 = false
       this.finished_3 = true
       this.blockThreeResults = this.processThreeResults(results)
     },
@@ -309,8 +309,8 @@ export default {
       return `${this.form.name}_block_3.csv`
     },
     blockTwoFinished(results) {
-      this.b_show_2 = false
-      this.b_show_3 = true
+      // this.b_show_2 = false
+      // this.b_show_3 = true
       this.finished_2 = true
       this.blockTwoResults = this.processTwoResults(results)
     },

@@ -104,7 +104,7 @@
             scenarioColor: `height: 280px; backgroundColor: red;`,
             current_progress: 0,
             // How many games to run ----- 144
-            max_avatar: 3,
+            max_avatar: 141,
             avatar_payoff: [
                 {
                 p_first: "3",
