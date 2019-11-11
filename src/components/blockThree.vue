@@ -171,7 +171,7 @@
                 // 3 3 2 1
                 {
                 a_first: "3",
-                p_first: "2",
+                p_first: "3",
                 a_second: "2",
                 p_second: "1",
                 },
@@ -356,6 +356,8 @@
             },
             buildCombinations() {
             var i, k, j, o, t
+            var first_segment = []
+            var second_segment = []
             for (i = 0; i < this.avatar_choices.length; i++) {
                 for (k = 0; k < this.player_payoff.length; k++) {
                 for (j = 0; j < this.avatar_payoff.length; j++) {
@@ -402,12 +404,23 @@
                                 new_comb.t_pr_p.p_first = new_comb.pr_p.p_second;
                                 new_comb.t_pr_p.p_second = new_comb.pr_p.p_first;
                             }
-                            this.combinations.push(new_comb);
+                            if (o < 8) {
+                              first_segment.push(new_comb);
+                            } else {
+                              second_segment.push(new_comb);
+                            }
                         }
                     }
                 }
                 }
             }
+            console.log(first_segment)
+            console.log(second_segment)
+            first_segment = this.shuffle(first_segment)
+            second_segment = this.shuffle(second_segment)
+            first_segment.push(...second_segment)
+            this.combinations = first_segment
+            console.log(this.combinations)
             this.combinations = this.shuffle(this.combinations)
 
             },
