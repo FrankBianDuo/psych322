@@ -414,13 +414,10 @@
                 }
                 }
             }
-            console.log(first_segment)
-            console.log(second_segment)
             first_segment = this.shuffle(first_segment)
             second_segment = this.shuffle(second_segment)
             first_segment.push(...second_segment)
             this.combinations = first_segment
-            console.log(this.combinations)
             this.combinations = this.shuffle(this.combinations)
 
             },
