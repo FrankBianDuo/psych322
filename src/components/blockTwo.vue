@@ -11,7 +11,7 @@
       :body-text-variant="bodyTextVariant"
       :footer-bg-variant="footerBgVariant"
       :footer-text-variant="footerTextVariant"
-      :no-close-on-backdrop="true"
+      :no-close-on-backdrop="false"
       :no-close-on-esc="true"
       :hide-header-close="true"
     >
@@ -364,10 +364,10 @@
                 let parent = this
                 setTimeout(function() { 
                     parent.current_progress += 1
+                    parent.$emit('blockTwoDone', parent.combinations)
                     if(parent.current_progress == parent.max_avatar) {
                         parent.show = false;
                         alert('Block #3 finished')
-                        parent.$emit('blockTwoDone', parent.combinations)
                         parent.b_show_3 = false;
                     }
                     parent.show_current = 1

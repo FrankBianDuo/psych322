@@ -11,7 +11,7 @@
       :body-text-variant="bodyTextVariant"
       :footer-bg-variant="footerBgVariant"
       :footer-text-variant="footerTextVariant"
-      :no-close-on-backdrop="true"
+      :no-close-on-backdrop="false"
       :no-close-on-esc="true"
       :hide-header-close="true"
     >
@@ -326,10 +326,10 @@
                 this.combinations[this.current_avatar].trust = input;
                 setTimeout(function() { 
                     parent.current_avatar += 1;
+                    parent.$emit('blockThreeDone', parent.combinations)
                     if(parent.current_avatar == parent.max_avatar) {
                         parent.show = false;
                         alert('Block #3 finished')
-                        parent.$emit('blockThreeDone', parent.combinations)
                         parent.b_show_1 = false;
                     }
                     parent.show_prior = 1; 
