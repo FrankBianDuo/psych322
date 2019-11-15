@@ -8,6 +8,9 @@
     </p>
     <div class="bv-example-row bv-example-row-flex-cols">
       <b-row class="my-4 justify-content-center">
+        <b-button :disabled="!this.b_show_0" v-b-modal.modal-center-0>Tutorial</b-button>
+      </b-row>
+      <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_1" v-b-modal.modal-center>Block #1</b-button>
         <download-csv v-if="this.finished_1" class="btn btn-default" :data="this.blockOneResults" :name="this.blockOneFileName()">
             <b-button> Download data for Block #1 </b-button>
@@ -110,7 +113,7 @@
       <b-button class="ml-2" type="reset" variant="danger">Reset</b-button>
     </b-form>
     </b-modal>
-
+    <Tutorial/>
     <BlockOne @blockOneDone="blockOneFinished" :participant_name="this.form.name"/>
     <BlockTwo @blockTwoDone="blockTwoFinished" :participant_name="this.form.name"/>
     <BlockThree @blockThreeDone="blockThreeFinished" :participant_name="this.form.name"/>
@@ -121,6 +124,7 @@
 import BlockOne from './blockOne.vue'
 import BlockTwo from './blockTwo.vue'
 import BlockThree from './blockThree.vue'
+import Tutorial from './tutorial.vue'
 
 export default {
   name: 'MainPage',
@@ -128,6 +132,7 @@ export default {
     BlockOne,
     BlockTwo,
     BlockThree,
+    Tutorial,
   },
   props: {
     msg: String
@@ -138,6 +143,7 @@ export default {
       finished_2: false,
       finished_3: false,
       show: false,
+      b_show_0: true,
       b_show_1: true,
       b_show_2: true,
       b_show_3: true,
@@ -222,6 +228,7 @@ export default {
         var current = {
           'participant_name': this.form.name,
           'Belief Condition': '1',
+          'Game Condition' : raw[i].game_condition,
           'Label': raw[i].a_c == '2' ? 
           `Truth = ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} ) <- ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} )` 
           : 
@@ -244,6 +251,7 @@ export default {
         }
         output.push(current)
       }
+      output.sort( this.blockOneSort )
       return output
     },
     processTwoResults(raw) {
@@ -274,6 +282,7 @@ export default {
       for (i = 0; i < raw.length; i++) {
         var current = {
           'participant_name': this.form.name,
+          'Game Condition' : raw[i].game_condition,
           'Belief Condition': raw[i].belief,
           'Label': raw[i].a_c == '2' ? 
           `Truth = ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} ) <- ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} ), Belief = ( ${raw[i].t_pr_p.p_first} , ${raw[i].t_pr_p.a_first} ) <- ( ${raw[i].t_pr_p.p_second} , ${raw[i].t_pr_p.a_second} )` 
@@ -297,6 +306,7 @@ export default {
         }
         output.push(current)
       }
+      output.sort( this.blockThreeSort )
       return output
     },
     blockOneFileName() {
@@ -314,7 +324,48 @@ export default {
       this.finished_2 = true
       this.blockTwoResults = this.processTwoResults(results)
     },
-    
+    // Functions that sort the results from BlockOne and BlockThree
+    blockOneSort(a, b) {
+      if (a['Game Condition'] < b['Game Condition']) {
+        return -1;
+      } else if (a['Game Condition'] > b['Game Condition']) {
+        return 1;
+      } else {
+        // Same game condition, sort by trust condition
+        if (a['Trust Condition'] < b['Trust Condition']) {
+          return -1;
+        } else if (a['Trust Condition'] > b['Trust Condition']) {
+          return 1;
+        }
+      }
+
+      // Should never reach here
+      console.log("Warning: something went wrong with blockOneSort")
+      return 0;
+    },
+    blockThreeSort(a, b) {
+      if (a['Game Condition'] < b['Game Condition']) {
+        return -1;
+      } else if (a['Game Condition'] > b['Game Condition']) {
+        return 1;
+      } else {
+        if (a['Belief Condition'] < b['Belief Condition']) {
+          return -1;
+        } else if (a['Belief Condition'] > b['Belief Condition']) {
+          return 1;
+        } else {
+          // Same game condition and belief condition, sort by trust condition
+          if (a['Trust Condition'] < b['Trust Condition']) {
+            return -1;
+          } else if (a['Trust Condition'] > b['Trust Condition']) {
+            return 1;
+          }
+        }
+      }
+      // Should never reach here
+      console.log("Warning: something went wrong with blockThreeSort")
+      return 0;
+    },
   }
 }
 </script>
