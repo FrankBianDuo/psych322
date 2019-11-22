@@ -42,7 +42,7 @@
             </h1>
           </div>
           <img :src="require('../assets/Prior Choice Square.2.1.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
-          <img @click="priorAvatar" :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; top: 25%; cursor: pointer;"/>
+          <img v-on:keyup.space="priorAvatar" :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; top: 25%; cursor: pointer;"/>
           <img :src="require(`../assets/Arrows ${this.arrow_num}.png`)" style="position: absolute;max-width:30%; max-height:30%; top: 18%; left: 39%;" />
           <img @click="helper" :src="require('../assets/You Full 1.png')" style="position: absolute;max-width:15%; max-height:15%; right: 28%; top: 25%; cursor: pointer;"/>
         </b-row>
@@ -73,7 +73,7 @@
           <img @click="otherChoice" :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; bottom: 9%; cursor: pointer;"/>
           <img :src="require('../assets/Arrows 1.png')" style="position: absolute;max-width:30%; max-height:30%; bottom: 2%; left: 39%;" />
           <img @click="selfChoice" :src="require('../assets/You Blank 1.png')" style="position: absolute;max-width:15%; max-height:15%; right: 28%; bottom: 9%; cursor: pointer;"/>
-          <div @click="selfChoice" :style="this.combinations[this.current_avatar].pl_p == '2' ? 'position: absolute; top: 80%; right: 31.5%; font-size: 30px; cursor: pointer; color: #4B00FF;' : 'position: absolute; top: 77%; right: 31%; font-size: 25px; cursor: pointer; color: #4B00FF;' ">
+          <div @click="selfChoice" :style="this.combinations[this.current_avatar].pl_p == '2' ? 'position: absolute; top: 79%; right: 31.5%; font-size: 40px; cursor: pointer; color: #4B00FF;' : 'position: absolute; top: 77%; right: 31%; font-size: 25px; cursor: pointer; color: #4B00FF;' ">
               {{this.combinations[this.current_avatar].pl_p == "3/2" ? '1' : '2'}}
                 <div v-if="this.combinations[this.current_avatar].pl_p != '2' " class="frac">
                     <span>1</span>
@@ -303,7 +303,21 @@
             }
         },
         beforeMount() {
-            this.buildCombinations();
+          this.buildCombinations();
+        },
+        created: function () {
+          let parent = this
+          window.addEventListener('keyup', function(event) {
+            if (parent.show) {
+              if (event.keyCode == 32) {
+                parent.priorAvatar();
+              } else if (event.keyCode == 37) {
+                parent.otherChoice();
+              } else if (event.keyCode == 39) {
+                parent.selfChoice();
+              }
+            } 
+          });
         },
         computed: {
             prior_choice_style() {
