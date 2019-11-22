@@ -30,10 +30,18 @@
 </template>
 
 <script>
+import page_one from './tutorialPages/page_1.vue'
+import page_two from './tutorialPages/page_2.vue'
+import page_three from './tutorialPages/page_3.vue'
+import page_four from './tutorialPages/page_4.vue'
 
     export default {
         name: 'Tutorial',
         components: {
+            page_one,
+            page_two,
+            page_three,
+            page_four,
         },
         data() {
             return {

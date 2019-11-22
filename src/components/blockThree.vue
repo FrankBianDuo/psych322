@@ -41,10 +41,10 @@
               {{this.combinations[this.current_avatar].pr_p.p_second}}
             </h1>
           </div>
-          <img :src="require('../retrollystimuli/Prior Choice Square.2.1.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
-          <img :src="require(`../retrollystimuli/Arrow Bub 0${this.arrow_num}.png`)" style="position: absolute;max-width:30%; max-height:32%; top: 15.9%; left: 35%;" />
-          <img @click="priorAvatar" :src="require(`../retrollystimuli/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:8%; max-height:8%; left: 40.5%; top: 33%; cursor: pointer;"/>
-          <img @click="helper" :src="require('../retrollystimuli/You Full 1.png')" style="position: absolute;max-width:10%; max-height:10%; right: 31%; top: 32%;"/>
+          <img :src="require('../assets/Prior Choice Square.2.1.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
+          <img :src="require(`../assets/Arrow Bub 0${this.arrow_num}.png`)" style="position: absolute;max-width:30%; max-height:32%; top: 15.9%; left: 35%;" />
+          <img @click="priorAvatar" :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:8%; max-height:8%; left: 40.5%; top: 33%; cursor: pointer;"/>
+          <img @click="helper" :src="require('../assets/You Full 1.png')" style="position: absolute;max-width:10%; max-height:10%; right: 31%; top: 32%;"/>
           <div style="position: absolute; top: 18%; left: 39.8%; cursor: pointer;">
             <h4 style="position: absolute;">
               {{this.combinations[this.current_avatar].t_pr_p.a_first}}
@@ -89,11 +89,11 @@
               {{this.combinations[this.current_avatar].a_p.p_second}}
             </h1>
           </div>
-          <img :src="require('../retrollystimuli/Current Choice Square.2.1.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
-          <img @click="otherChoice" :src="require(`../retrollystimuli/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; bottom: 9%; cursor: pointer;"/>
-          <img :src="require('../retrollystimuli/Arrows 1.png')" style="position: absolute;max-width:30%; max-height:30%; bottom: 2%; left: 39%;" />
-          <img @click="selfChoice" :src="require('../retrollystimuli/You Blank 1.png')" style="position: absolute;max-width:15%; max-height:15%; right: 30%; bottom: 9%; cursor: pointer;"/>
-          <div @click="selfChoice" :style="this.combinations[this.current_avatar].pl_p == '2' ? 'position: absolute; top: 80%; right: 33.5%; font-size: 30px; cursor: pointer; color: #4B00FF;' : 'position: absolute; top: 77%; right: 33%; font-size: 25px; cursor: pointer; color: #4B00FF;' ">
+          <img :src="require('../assets/Current Choice Square.2.1.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
+          <img @click="otherChoice" :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; bottom: 9%; cursor: pointer;"/>
+          <img :src="require('../assets/Arrows 1.png')" style="position: absolute;max-width:30%; max-height:30%; bottom: 2%; left: 39%;" />
+          <img @click="selfChoice" :src="require('../assets/You Blank 1.png')" style="position: absolute;max-width:15%; max-height:15%; right: 28%; bottom: 9%; cursor: pointer;"/>
+          <div @click="selfChoice" :style="this.combinations[this.current_avatar].pl_p == '2' ? 'position: absolute; top: 80%; right: 31.5%; font-size: 30px; cursor: pointer; color: #4B00FF;' : 'position: absolute; top: 77%; right: 31%; font-size: 25px; cursor: pointer; color: #4B00FF;' ">
               {{this.combinations[this.current_avatar].pl_p == "3/2" ? '1' : '2'}}
                 <div v-if="this.combinations[this.current_avatar].pl_p != '2' " class="frac">
                     <span>1</span>

@@ -23,13 +23,13 @@
           <b-col class="justify-content-center align-items-center my-1">
               <b-row class="my-1">
                   <img @click="upperLeft"
-                    :src="require(`../retrollystimuli/block2materials/Template Upper Left ${this.whichPair(this.combinations[current_progress].target)}.png`)" 
+                    :src="require(`../assets/block2materials/Template Upper Left ${this.whichPair(this.combinations[current_progress].target)}.png`)" 
                     style="position: relative; width: 100%; height: 100%; cursor: pointer;"
                     />
               </b-row>
               <b-row>
                   <img @click="lowerLeft"
-                    :src="require(`../retrollystimuli/block2materials/Template Bottom Left ${this.whichPair(this.combinations[current_progress].target)}.png`)" 
+                    :src="require(`../assets/block2materials/Template Bottom Left ${this.whichPair(this.combinations[current_progress].target)}.png`)" 
                     style="position: relative; width: 100%; height: 100%; top: 10px; cursor: pointer;"
                     />
               </b-row>
@@ -37,7 +37,7 @@
           <b-col class="justify-content-center align-items-center my-1">
               <b-row class="justify-content-center align-items-center" :style=this.fade_style>
                   <img 
-                    :src="require(`../retrollystimuli/block2materials/Animal Target 0${this.combinations[current_progress].target}.png`)" 
+                    :src="require(`../assets/block2materials/Animal Target 0${this.combinations[current_progress].target}.png`)" 
                     style="position: relative; width: 80%; height: 80%; top: 10px;"
                    />
                    <div style="position: absolute; top: 31%; left: 48%;">
@@ -65,13 +65,13 @@
           <b-col class="justify-content-center align-items-center my-1">
             <b-row class="my-1" :style=this.fade_style>
                   <img @click="upperRight"
-                    :src="require(`../retrollystimuli/block2materials/Template Upper Right ${this.whichPair(this.combinations[current_progress].target)}.png`)" 
+                    :src="require(`../assets/block2materials/Template Upper Right ${this.whichPair(this.combinations[current_progress].target)}.png`)" 
                     style="position: relative; width: 100%; height: 100%; cursor: pointer;"
                     />
               </b-row>
               <b-row>
                   <img @click="lowerRight"
-                    :src="require(`../retrollystimuli/block2materials/Template Bottom Right ${this.whichPair(this.combinations[current_progress].target)}.png`)" 
+                    :src="require(`../assets/block2materials/Template Bottom Right ${this.whichPair(this.combinations[current_progress].target)}.png`)" 
                     style="position: relative; width: 100%; height: 100%; top: 10px; cursor: pointer;"
                     />
               </b-row>
