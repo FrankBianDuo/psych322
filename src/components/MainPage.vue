@@ -178,9 +178,11 @@ export default {
         { value: 'Other', text: 'Other' },
       ],
       ra_options: [
-        { value: 'RA1', text: 'RA1' },
-        { value: 'RA2', text: 'RA2' },
-        { value: 'RA3', text: 'RA3' },
+        { value: 'Rashi Watwani', text: 'Rashi Watwani' },
+        { value: 'Justin Baadarani', text: 'Justin Baadarani' },
+        { value: 'Derek Chan', text: 'Derek Chan' },
+        { value: 'Monwarul Islam', text: 'Monwarul Islam' },
+        { value: 'Al-Taimee Hassan', text: 'Al-Taimee Hassan' },
       ],
     }
   },
@@ -235,6 +237,7 @@ export default {
           `Truth = ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} ) <- ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} )`,
           'Trust Condition': raw[i].trust_condition,
           'Trust/Distrust': raw[i].trust,
+          'Reaction Time': raw[i].reaction_time,
           // to be FIXED
           'Avatar': 'N/A',
           'Date': this.form.date,
@@ -290,6 +293,7 @@ export default {
           `Truth = ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} ) <- ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} ), Belief = ( ${raw[i].t_pr_p.p_second} , ${raw[i].t_pr_p.a_second} ) <- ( ${raw[i].t_pr_p.p_first} , ${raw[i].t_pr_p.a_first} )`,
           'Trust Condition': raw[i].trust_condition,
           'Trust/Distrust': raw[i].trust,
+          'Reaction Time': raw[i].reaction_time,
           // to be FIXED
           'Avatar': 'N/A',
           'Date': this.form.date,

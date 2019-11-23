@@ -49,7 +49,7 @@
 
         <!-- Current Choice Block -->
         <b-row class="justify-content-center align-items-center mt-5 bt-5" :style=this.current_choice_style>
-          <div style="position: absolute; top: 70%; left: 49%;">
+          <div style="position: absolute; top: 70%; left: 48%;">
             <h1 style="position: absolute;">
               {{this.combinations[this.current_avatar].a_p.a_first}}
             </h1>
@@ -59,7 +59,7 @@
               {{this.combinations[this.current_avatar].a_p.p_first}}
             </h1>
           </div>
-          <div style="position: absolute; top: 90%; left: 49%;">
+          <div style="position: absolute; top: 90%; left: 48%;">
             <h1 style="position: absolute;">
               {{this.combinations[this.current_avatar].a_p.a_second}}
             </h1>
@@ -73,7 +73,7 @@
           <img @click="otherChoice" :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; bottom: 9%; cursor: pointer;"/>
           <img :src="require('../assets/Arrows 1.png')" style="position: absolute;max-width:30%; max-height:30%; bottom: 2%; left: 39%;" />
           <img @click="selfChoice" :src="require('../assets/You Blank 1.png')" style="position: absolute;max-width:15%; max-height:15%; right: 28%; bottom: 9%; cursor: pointer;"/>
-          <div @click="selfChoice" :style="this.combinations[this.current_avatar].pl_p == '2' ? 'position: absolute; top: 79%; right: 31.5%; font-size: 40px; cursor: pointer; color: #4B00FF;' : 'position: absolute; top: 77%; right: 31%; font-size: 25px; cursor: pointer; color: #4B00FF;' ">
+          <!-- <div @click="selfChoice" :style="this.combinations[this.current_avatar].pl_p == '2' ? 'position: absolute; top: 79%; right: 31.5%; font-size: 40px; cursor: pointer; color: #4B00FF;' : 'position: absolute; top: 77%; right: 31%; font-size: 25px; cursor: pointer; color: #4B00FF;' ">
               {{this.combinations[this.current_avatar].pl_p == "3/2" ? '1' : '2'}}
                 <div v-if="this.combinations[this.current_avatar].pl_p != '2' " class="frac">
                     <span>1</span>
@@ -81,6 +81,16 @@
                     <span class="bottom">2</span>
                     
                 </div>
+          </div> -->
+          <div v-if="this.combinations[this.current_avatar].pl_p == '2' " style="position: absolute; top: 80%; right: 33.5%;">
+            <h1 style="position: absolute; color: #4B00FF;">
+              {{this.combinations[this.current_avatar].pl_p}}
+            </h1>
+          </div>
+          <div v-else style="position: absolute; top: 80%; right: 34.8%;">
+            <h1 style="position: absolute; color: #4B00FF;">
+              {{this.combinations[this.current_avatar].pl_p}}
+            </h1>
           </div>
         </b-row>
       </b-container>
@@ -117,20 +127,21 @@
             current_progress: 0,
             // How many games to run
             max_avatar: 216,
+            trial_started: 0,
             avatar_choices: ["3", "2"],
-            player_payoff: ["3/2", "2", "5/2"],
+            player_payoff: ["1.5", "2", "2.5"],
             avatar_payoff: [
                 {
                 p_first: "3",
-                a_first: "2",
+                a_first: "1.5",
                 p_second: "1",
-                a_second: "3",
+                a_second: "2.5",
                 },
                 {
                 p_first: "3",
-                a_first: "3",
+                a_first: "2.5",
                 p_second: "1",
-                a_second: "2",
+                a_second: "1.5",
                 },
                 ],
             prior_payoff: [
@@ -311,6 +322,9 @@
             if (parent.show) {
               if (event.keyCode == 32) {
                 parent.priorAvatar();
+                var d = new Date();
+                var n = d.getTime();
+                parent.trial_started = n;
               } else if (event.keyCode == 37) {
                 parent.otherChoice();
               } else if (event.keyCode == 39) {
@@ -342,6 +356,11 @@
                 this.ChoiceHelper(0);
             },
             ChoiceHelper(input){
+                var d = new Date();
+                var n = d.getTime();
+                this.combinations[this.current_avatar].reaction_time = n - this.trial_started;
+                this.trial_started = 0;
+                this.combinations[this.current_avatar].reaction_time *= 0.001
                 this.show_current = 0;
                 this.show_prior = 0;
                 let parent = this;
@@ -391,6 +410,7 @@
                         a_p: this.avatar_payoff[j],
                         pr_p: this.prior_payoff[o],   
                         trust: null,
+                        reaction_time: null,
                         trust_condition: null,
                         game_condition: this.avatar_choices[i] == "2" ? this.prior_payoff[o].top : this.prior_payoff[o].down,
                     }
