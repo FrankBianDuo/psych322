@@ -71,23 +71,14 @@
           </div>
           <img :src="require('../assets/Current Choice Square.2.1.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
           <img @click="otherChoice" :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; bottom: 9%; cursor: pointer;"/>
-          <img :src="require('../assets/Arrows 1.png')" style="position: absolute;max-width:30%; max-height:30%; bottom: 2%; left: 39%;" />
+          <img :src="require(`../assets/${current_arrow}`)" style="position: absolute;max-width:30%; max-height:30%; bottom: 2%; left: 39%;" />
           <img @click="selfChoice" :src="require('../assets/You Blank 1.png')" style="position: absolute;max-width:15%; max-height:15%; right: 28%; bottom: 9%; cursor: pointer;"/>
-          <!-- <div @click="selfChoice" :style="this.combinations[this.current_avatar].pl_p == '2' ? 'position: absolute; top: 79%; right: 31.5%; font-size: 40px; cursor: pointer; color: #4B00FF;' : 'position: absolute; top: 77%; right: 31%; font-size: 25px; cursor: pointer; color: #4B00FF;' ">
-              {{this.combinations[this.current_avatar].pl_p == "3/2" ? '1' : '2'}}
-                <div v-if="this.combinations[this.current_avatar].pl_p != '2' " class="frac">
-                    <span>1</span>
-                    <span class="symbol">/</span>
-                    <span class="bottom">2</span>
-                    
-                </div>
-          </div> -->
-          <div v-if="this.combinations[this.current_avatar].pl_p == '2' " style="position: absolute; top: 80%; right: 33.5%;">
+          <div v-if="this.show_cur_num && this.combinations[this.current_avatar].pl_p == '2' " style="position: absolute; top: 80%; right: 33.5%;">
             <h1 style="position: absolute; color: #4B00FF;">
               {{this.combinations[this.current_avatar].pl_p}}
             </h1>
           </div>
-          <div v-else style="position: absolute; top: 80%; right: 34.8%;">
+          <div v-else-if="this.show_cur_num" style="position: absolute; top: 80%; right: 34.8%;">
             <h1 style="position: absolute; color: #4B00FF;">
               {{this.combinations[this.current_avatar].pl_p}}
             </h1>
@@ -125,6 +116,9 @@
             avatar_list: this.shuffle(Array(1080).fill().map((x,i)=>i)),
             current_avatar: 0,
             current_progress: 0,
+            current_arrow: 'Arrows 1.png',
+            show_cur_num: false,
+            prediction: null,
             // How many games to run
             max_avatar: 216,
             trial_started: 0,
@@ -325,10 +319,16 @@
                 var d = new Date();
                 var n = d.getTime();
                 parent.trial_started = n;
-              } else if (event.keyCode == 37) {
+              } else if (event.keyCode == 37 && parent.prediction != null) {
                 parent.otherChoice();
-              } else if (event.keyCode == 39) {
+              } else if (event.keyCode == 39 && parent.prediction != null) {
                 parent.selfChoice();
+              } else if (event.keyCode == 65 && parent.prediction == null) {
+                // Prediction A
+                parent.predictUp();
+              } else if (event.keyCode == 90 && parent.prediction == null) {
+                // Prediction Z
+                parent.predictDown();
               }
             } 
           });
@@ -349,6 +349,16 @@
                 this.show_current = 1;
                 this.arrow_num = this.combinations[this.current_avatar].a_c;
             },
+            predictUp() {
+              this.current_arrow = 'Arrows Group Green Top.png'
+              this.prediction = 0
+              this.show_cur_num = true
+            },
+            predictDown() {
+              this.current_arrow = 'Arrows Group Green Bottom.png'
+              this.prediction = 1
+              this.show_cur_num = true
+            },
             otherChoice() {
                 this.ChoiceHelper(1);
             },
@@ -367,6 +377,9 @@
                 this.current_progress += 1;
                 this.combinations[this.current_avatar].trust = input;
                 setTimeout(function() { 
+                    parent.current_arrow = 'Arrows 1.png'
+                    parent.prediction = null
+                    parent.show_cur_num = false
                     parent.current_avatar += 1;
                     parent.$emit('blockOneDone', parent.combinations)
                     if(parent.current_avatar == parent.max_avatar) {
