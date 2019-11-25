@@ -403,6 +403,7 @@
                 let parent = this;
                 this.current_progress += 1;
                 this.combinations[this.current_avatar].trust = input;
+                this.combinations[this.current_avatar].trial_order = this.current_progress
                 setTimeout(function() { 
                     parent.current_arrow = 'Arrows 1.png'
                     parent.prediction = null
@@ -453,6 +454,7 @@
                                 belief: t,  
                                 reaction_time: null,
                                 trust_condition: null,
+                                trial_order: null,
                                 game_condition: this.avatar_choices[i] == "2" ? this.prior_payoff[o].top : this.prior_payoff[o].down,
                                 trust: null,
                                 t_pr_p: Object.assign({}, this.prior_payoff[o]),

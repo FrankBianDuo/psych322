@@ -3,12 +3,15 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
-      Description of the experiment<br>
-      Other information
+      (1) Please fill out the survey. <br>
+      (2) view the PowerPoint Instructions, and then progress to Block 1.  <br>
+      (3) You do not need to select Block 2 or Block 3. <br>
+      (4) Please do not click the refresh button.
     </p>
     <div class="bv-example-row bv-example-row-flex-cols">
       <b-row class="my-4 justify-content-center">
-        <b-button :disabled="!this.b_show_0" v-b-modal.modal-center-0>Tutorial</b-button>
+        <!-- <b-button :disabled="!this.b_show_0" v-b-modal.modal-center-0>Tutorial</b-button> -->
+        <a v-on:click="this.showInstructions">Instructions</a>
       </b-row>
       <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_1" v-b-modal.modal-center>Block #1</b-button>
@@ -32,7 +35,7 @@
         <b-button v-b-modal.modal-prevent-closing>Experiment Survey</b-button>
       </b-row>
       <b-row class="my-4 justify-content-center">
-        Participant Name: {{this.form.name}}
+        Participant ID: {{this.form.name}}
       </b-row>
       <b-row class="my-4 justify-content-center">
       </b-row>
@@ -46,7 +49,7 @@
     >
       <b-form @submit="onSubmit" @reset="onReset">
 
-      <b-form-group id="input-group-2" label="Name:" label-for="input-2">
+      <b-form-group id="input-group-2" label="Participant ID:" label-for="input-2">
         <b-form-input
           id="input-2"
           v-model="form.name"
@@ -199,6 +202,9 @@ export default {
       // }
       alert(JSON.stringify(this.form))
     },
+    showInstructions(){
+      window.open('src/assets/Instructions.pdf', '_blank')
+    },
     onReset(evt) {
       evt.preventDefault()
       // Reset our form values
@@ -237,7 +243,10 @@ export default {
           `Truth = ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} ) <- ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} )`,
           'Trust Condition': raw[i].trust_condition,
           'Trust/Distrust': raw[i].trust,
-          'Reaction Time': raw[i].reaction_time,
+          'Reaction Time (Trust)': raw[i].reaction_time_trust,
+          'Reaction Time (Prediction)': raw[i].reaction_time_prediction,
+          'Prediction': raw[i].prediction,
+          'Trial Order': raw[i].trial_order,
           // to be FIXED
           'Avatar': 'N/A',
           'Date': this.form.date,
@@ -250,7 +259,6 @@ export default {
           'Younger Sister(s)': this.form.youngerSis,
           'Older Brother(s)': this.form.olderBro,
           'Older Sister(s)': this.form.olderSis,
-          trust: null,
         }
         output.push(current)
       }
@@ -294,6 +302,7 @@ export default {
           'Trust Condition': raw[i].trust_condition,
           'Trust/Distrust': raw[i].trust,
           'Reaction Time': raw[i].reaction_time,
+          'Trial Order': raw[i].trial_order,
           // to be FIXED
           'Avatar': 'N/A',
           'Date': this.form.date,
@@ -306,7 +315,6 @@ export default {
           'Younger Sister(s)': this.form.youngerSis,
           'Older Brother(s)': this.form.olderBro,
           'Older Sister(s)': this.form.olderSis,
-          trust: null,
         }
         output.push(current)
       }

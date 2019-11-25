@@ -21,64 +21,64 @@
         </b-row>
         <b-row class="justify-content-center align-items-center my-1"
         :style=this.prior_choice_style>
-          <div style="position: absolute; top: 19%; left: 49%;">
+          <div style="position: absolute; top: 16%; left: 49%;">
             <h1 style="position: absolute;">
               {{this.combinations[this.current_avatar].pr_p.a_first}}
             </h1>
           </div>
-          <div style="position: absolute;  top: 19%; right: 43%;">
+          <div style="position: absolute;  top: 16%; right: 43%;">
             <h1 style="position: absolute; color: #4B00FF;">
               {{this.combinations[this.current_avatar].pr_p.p_first}}
             </h1>
           </div>
-          <div style="position: absolute; top: 39%; left: 49%;">
+          <div style="position: absolute; top: 36%; left: 49%;">
             <h1 style="position: absolute;">
               {{this.combinations[this.current_avatar].pr_p.a_second}}
             </h1>
           </div>
-          <div style="position: absolute; top: 39%; right: 43%;">
+          <div style="position: absolute; top: 36%; right: 43%;">
             <h1 style="position: absolute; color: #4B00FF;">
               {{this.combinations[this.current_avatar].pr_p.p_second}}
             </h1>
           </div>
-          <img :src="require('../assets/Prior Choice Square.2.1.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
-          <img v-on:keyup.space="priorAvatar" :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; top: 25%; cursor: pointer;"/>
-          <img :src="require(`../assets/Arrows ${this.arrow_num}.png`)" style="position: absolute;max-width:30%; max-height:30%; top: 18%; left: 39%;" />
-          <img @click="helper" :src="require('../assets/You Full 1.png')" style="position: absolute;max-width:15%; max-height:15%; right: 28%; top: 25%; cursor: pointer;"/>
+          <img :src="require('../assets/Blank Square.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
+          <img v-on:keyup.space="priorAvatar" :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; top: 22%;"/>
+          <img :src="require(`../assets/Arrows ${this.arrow_num}.png`)" style="position: absolute;max-width:30%; max-height:30%; top: 15%; left: 39%;" />
+          <img :src="require('../assets/You Full 1.png')" style="position: absolute;max-width:15%; max-height:15%; right: 28%; top: 22%;"/>
         </b-row>
 
         <!-- Current Choice Block -->
         <b-row class="justify-content-center align-items-center mt-5 bt-5" :style=this.current_choice_style>
-          <div style="position: absolute; top: 70%; left: 48%;">
+          <div style="position: absolute; top: 65%; left: 48.5%;">
             <h1 style="position: absolute;">
               {{this.combinations[this.current_avatar].a_p.a_first}}
             </h1>
           </div>
-          <div style="position: absolute;  top: 70%; right: 43%;">
+          <div style="position: absolute;  top: 65%; right: 43%;">
             <h1 style="position: absolute; color: #4B00FF;">
               {{this.combinations[this.current_avatar].a_p.p_first}}
             </h1>
           </div>
-          <div style="position: absolute; top: 90%; left: 48%;">
+          <div style="position: absolute; top: 85%; left: 48.5%;">
             <h1 style="position: absolute;">
               {{this.combinations[this.current_avatar].a_p.a_second}}
             </h1>
           </div>
-          <div style="position: absolute; top: 90%; right: 43%;">
+          <div style="position: absolute; top: 85%; right: 43%;">
             <h1 style="position: absolute; color: #4B00FF;">
               {{this.combinations[this.current_avatar].a_p.p_second}}
             </h1>
           </div>
-          <img :src="require('../assets/Current Choice Square.2.1.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
-          <img @click="otherChoice" :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; bottom: 9%; cursor: pointer;"/>
-          <img :src="require(`../assets/${current_arrow}`)" style="position: absolute;max-width:30%; max-height:30%; bottom: 2%; left: 39%;" />
-          <img @click="selfChoice" :src="require('../assets/You Blank 1.png')" style="position: absolute;max-width:15%; max-height:15%; right: 28%; bottom: 9%; cursor: pointer;"/>
-          <div v-if="this.show_cur_num && this.combinations[this.current_avatar].pl_p == '2' " style="position: absolute; top: 80%; right: 33.5%;">
+          <img :src="require('../assets/Blank Square.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
+          <img :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; bottom: 13%;"/>
+          <img :src="require(`../assets/${current_arrow}`)" style="position: absolute;max-width:30%; max-height:30%; bottom: 6%; left: 39%;" />
+          <img :src="require(`../assets/You Blank ${this.you_avatar_type}.png`)" style="position: absolute;max-width:15%; max-height:15%; right: 28%; bottom: 13%;"/>
+          <div v-if="this.show_cur_num && this.combinations[this.current_avatar].pl_p == '2' " style="position: absolute; top: 76%; right: 33.5%;">
             <h1 style="position: absolute; color: #4B00FF;">
               {{this.combinations[this.current_avatar].pl_p}}
             </h1>
           </div>
-          <div v-else-if="this.show_cur_num" style="position: absolute; top: 80%; right: 34.8%;">
+          <div v-else-if="this.show_cur_num" style="position: absolute; top: 76%; right: 34.8%;">
             <h1 style="position: absolute; color: #4B00FF;">
               {{this.combinations[this.current_avatar].pl_p}}
             </h1>
@@ -99,6 +99,9 @@
             return {
             show: false,
             b_show_1: true,
+            free_space: true,
+            fading: false,
+            you_avatar_type: '1',
             variants: ['primary', 'secondary', 'success', 'warning', 'danger', 'info', 'light', 'dark'],
             headerBgVariant: 'dark',
             headerTextVariant: 'light',
@@ -314,19 +317,20 @@
           let parent = this
           window.addEventListener('keyup', function(event) {
             if (parent.show) {
-              if (event.keyCode == 32) {
+              if (event.keyCode == 32 && parent.free_space) {
+                parent.free_space = false
                 parent.priorAvatar();
                 var d = new Date();
                 var n = d.getTime();
                 parent.trial_started = n;
-              } else if (event.keyCode == 37 && parent.prediction != null) {
+              } else if (event.keyCode == 74 && parent.prediction != null && !parent.free_space && !parent.fading) {
                 parent.otherChoice();
-              } else if (event.keyCode == 39 && parent.prediction != null) {
+              } else if (event.keyCode == 75 && parent.prediction != null && !parent.free_space && !parent.fading) {
                 parent.selfChoice();
-              } else if (event.keyCode == 65 && parent.prediction == null) {
+              } else if (event.keyCode == 65 && parent.prediction == null && !parent.free_space && !parent.fading) {
                 // Prediction A
                 parent.predictUp();
-              } else if (event.keyCode == 90 && parent.prediction == null) {
+              } else if (event.keyCode == 90 && parent.prediction == null && !parent.free_space && !parent.fading) {
                 // Prediction Z
                 parent.predictDown();
               }
@@ -351,45 +355,67 @@
             },
             predictUp() {
               this.current_arrow = 'Arrows Group Green Top.png'
-              this.prediction = 0
-              this.show_cur_num = true
+              this.prediction = 3
+              this.predictionHelper()
             },
             predictDown() {
               this.current_arrow = 'Arrows Group Green Bottom.png'
               this.prediction = 1
+              this.predictionHelper()
+            },
+            predictionHelper() {
               this.show_cur_num = true
+              var d = new Date();
+              var n = d.getTime();
+              this.combinations[this.current_avatar].reaction_time_prediction = n - this.trial_started;
+              this.combinations[this.current_avatar].reaction_time_prediction *= 0.001
             },
             otherChoice() {
-                this.ChoiceHelper(1);
+              this.you_avatar_type = "Blue"
+              let parent = this
+              setTimeout(function() {
+                parent.ChoiceHelper(1);
+              }, 200);
             },
             selfChoice() {
-                this.ChoiceHelper(0);
+              this.you_avatar_type = "Red"
+              let parent = this
+              setTimeout(function() {
+                parent.ChoiceHelper(0);
+              }, 200);
             },
             ChoiceHelper(input){
-                var d = new Date();
-                var n = d.getTime();
-                this.combinations[this.current_avatar].reaction_time = n - this.trial_started;
-                this.trial_started = 0;
-                this.combinations[this.current_avatar].reaction_time *= 0.001
-                this.show_current = 0;
-                this.show_prior = 0;
-                let parent = this;
-                this.current_progress += 1;
-                this.combinations[this.current_avatar].trust = input;
-                setTimeout(function() { 
-                    parent.current_arrow = 'Arrows 1.png'
-                    parent.prediction = null
-                    parent.show_cur_num = false
-                    parent.current_avatar += 1;
-                    parent.$emit('blockOneDone', parent.combinations)
-                    if(parent.current_avatar == parent.max_avatar) {
-                        parent.show = false;
-                        alert('Block #1 finished')
-                        parent.b_show_1 = false;
-                    }
-                    parent.show_prior = 1; 
-                    parent.arrow_num = '1';
-                }, 1000);
+              this.fading = true
+              this.free_space = false
+              var d = new Date();
+              var n = d.getTime();
+              this.combinations[this.current_avatar].reaction_time_trust = n - this.trial_started;
+              this.trial_started = 0;
+              this.combinations[this.current_avatar].reaction_time_trust *= 0.001
+              this.show_current = 0;
+              this.show_prior = 0;
+              let parent = this;
+              this.current_progress += 1;
+              this.combinations[this.current_avatar].trust = input;
+              this.combinations[this.current_avatar].trial_order = this.current_progress
+              this.combinations[this.current_avatar].prediction = this.prediction
+              setTimeout(function() { 
+                parent.fading = false
+                parent.you_avatar_type = "1"
+                parent.free_space = true
+                parent.current_arrow = 'Arrows 1.png'
+                parent.prediction = null
+                parent.show_cur_num = false
+                parent.current_avatar += 1;
+                parent.$emit('blockOneDone', parent.combinations)
+                if(parent.current_avatar == parent.max_avatar) {
+                    parent.show = false;
+                    alert('Block #1 finished')
+                    parent.b_show_1 = false;
+                }
+                parent.show_prior = 1; 
+                parent.arrow_num = '1';
+              }, 1000);
             },
             shuffle(array) {
             var currentIndex = array.length, temporaryValue, randomIndex;
@@ -423,21 +449,24 @@
                         a_p: this.avatar_payoff[j],
                         pr_p: this.prior_payoff[o],   
                         trust: null,
-                        reaction_time: null,
+                        reaction_time_trust: null,
+                        reaction_time_prediction: null,
                         trust_condition: null,
+                        trial_order: null,
+                        prediction: null,
                         game_condition: this.avatar_choices[i] == "2" ? this.prior_payoff[o].top : this.prior_payoff[o].down,
                     }
-                    if (this.player_payoff[k] == '3/2' && this.avatar_payoff[j].a_first == '3') {
+                    if (this.player_payoff[k] == '1.5' && this.avatar_payoff[j].a_first == '2.5') {
                       new_comb.trust_condition = 1
-                    } else if (this.player_payoff[k] == '2' && this.avatar_payoff[j].a_first == '3') {
+                    } else if (this.player_payoff[k] == '2' && this.avatar_payoff[j].a_first == '2.5') {
                       new_comb.trust_condition = 2
-                    } else if (this.player_payoff[k] == '5/2' && this.avatar_payoff[j].a_first == '3') {
+                    } else if (this.player_payoff[k] == '2.5' && this.avatar_payoff[j].a_first == '2.5') {
                       new_comb.trust_condition = 3
-                    } else if (this.player_payoff[k] == '3/2' && this.avatar_payoff[j].a_first == '2') {
+                    } else if (this.player_payoff[k] == '1.5' && this.avatar_payoff[j].a_first == '1.5') {
                       new_comb.trust_condition = 4
-                    } else if (this.player_payoff[k] == '2' && this.avatar_payoff[j].a_first == '2') {
+                    } else if (this.player_payoff[k] == '2' && this.avatar_payoff[j].a_first == '1.5') {
                       new_comb.trust_condition = 5
-                    } else if (this.player_payoff[k] == '5/2' && this.avatar_payoff[j].a_first == '2') {
+                    } else if (this.player_payoff[k] == '2.5' && this.avatar_payoff[j].a_first == '1.5') {
                       new_comb.trust_condition = 6
                     }
                     if (o < 8) {
