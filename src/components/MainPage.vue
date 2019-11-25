@@ -11,7 +11,7 @@
     <div class="bv-example-row bv-example-row-flex-cols">
       <b-row class="my-4 justify-content-center">
         <!-- <b-button :disabled="!this.b_show_0" v-b-modal.modal-center-0>Tutorial</b-button> -->
-        <a v-on:click="this.showInstructions">Instructions</a>
+        <b-button><a v-on:click="this.showInstructions">Instructions</a></b-button>
       </b-row>
       <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_1" v-b-modal.modal-center>Block #1</b-button>
@@ -203,7 +203,7 @@ export default {
       alert(JSON.stringify(this.form))
     },
     showInstructions(){
-      window.open('src/assets/Instructions.pdf', '_blank')
+      window.open('https://github.com/FrankBianDuo/psych322/blob/master/src/assets/Instructions.pdf', '_blank')
     },
     onReset(evt) {
       evt.preventDefault()

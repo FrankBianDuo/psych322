@@ -371,20 +371,21 @@
               this.combinations[this.current_avatar].reaction_time_prediction *= 0.001
             },
             otherChoice() {
-              this.you_avatar_type = "Blue"
+              this.fading = true
               let parent = this
               setTimeout(function() {
                 parent.ChoiceHelper(1);
               }, 200);
             },
             selfChoice() {
-              this.you_avatar_type = "Red"
+              this.fading = true
               let parent = this
               setTimeout(function() {
                 parent.ChoiceHelper(0);
               }, 200);
             },
             ChoiceHelper(input){
+              this.you_avatar_type = (input == 1) ? "Blue" : "Red"
               this.fading = true
               this.free_space = false
               var d = new Date();
