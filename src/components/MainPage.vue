@@ -248,7 +248,7 @@ export default {
           'Prediction': raw[i].prediction,
           'Trial Order': raw[i].trial_order,
           // to be FIXED
-          'Avatar': 'N/A',
+          'Avatar': raw[i].avatar_id,
           'Date': this.form.date,
           'Gender': this.form.gender,
           'RA Present': this.form.ra,

@@ -373,19 +373,20 @@
             otherChoice() {
               this.fading = true
               let parent = this
+              this.you_avatar_type = "Blue"
               setTimeout(function() {
                 parent.ChoiceHelper(1);
-              }, 200);
+              }, 500);
             },
             selfChoice() {
               this.fading = true
               let parent = this
+              this.you_avatar_type = "Red"
               setTimeout(function() {
                 parent.ChoiceHelper(0);
-              }, 200);
+              }, 500);
             },
             ChoiceHelper(input){
-              this.you_avatar_type = (input == 1) ? "Blue" : "Red"
               this.fading = true
               this.free_space = false
               var d = new Date();
@@ -400,6 +401,7 @@
               this.combinations[this.current_avatar].trust = input;
               this.combinations[this.current_avatar].trial_order = this.current_progress
               this.combinations[this.current_avatar].prediction = this.prediction
+              this.combinations[this.current_avatar].avatar_id = this.avatar_list[this.current_avatar]
               setTimeout(function() { 
                 parent.fading = false
                 parent.you_avatar_type = "1"
@@ -455,6 +457,7 @@
                         trust_condition: null,
                         trial_order: null,
                         prediction: null,
+                        avatar_id: null,
                         game_condition: this.avatar_choices[i] == "2" ? this.prior_payoff[o].top : this.prior_payoff[o].down,
                     }
                     if (this.player_payoff[k] == '1.5' && this.avatar_payoff[j].a_first == '2.5') {
