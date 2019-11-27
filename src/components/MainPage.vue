@@ -3,8 +3,8 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
-      (1) Please fill out the survey. <br>
-      (2) view the PowerPoint Instructions, and then progress to Block 1.  <br>
+      (1) view the PowerPoint Instructions, and then progress to Block 1.  <br>
+      (2) Please fill out the survey. <br>
       (3) You do not need to select Block 2 or Block 3. <br>
       (4) Please do not click the refresh button.
     </p>
@@ -47,7 +47,7 @@
       ref="modal"
       title="Experiment Survey"
     >
-      <b-form @submit="onSubmit" @reset="onReset">
+      <b-form>
 
       <b-form-group id="input-group-2" label="Participant ID:" label-for="input-2">
         <b-form-input
@@ -112,8 +112,7 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-button class="mr-2" type="submit" variant="primary">Submit</b-button>
-      <b-button class="ml-2" type="reset" variant="danger">Reset</b-button>
+      <b-button variant="primary" @click="this.surveyFinish">Submit</b-button>
     </b-form>
     </b-modal>
     <Tutorial/>
@@ -172,6 +171,7 @@ export default {
           youngerSis: '',
         },
       formshow: true,
+      blockOneRawResults: null,
       blockOneResults: null,
       blockTwoResults: null,
       blockThreeResults: null,
@@ -196,11 +196,8 @@ export default {
   methods: {
     // form ---------------------------------------------------
     onSubmit(evt) {
-      evt.preventDefault()
-      // if(this.b_show_1 == false && this.b_show_2 == false && this.b_show_2 == false) {
-      //   this.b_show_1 = true
-      // }
-      alert(JSON.stringify(this.form))
+      console.log('updated!')
+      this.blockOneResults = this.processOneResults(results)
     },
     showInstructions(){
       window.open('https://github.com/FrankBianDuo/psych322/blob/master/src/assets/Instructions.pdf', '_blank')
@@ -218,9 +215,14 @@ export default {
         this.formshow = true
       })
     },
+    surveyFinish() {
+      alert('Survey submitted!')
+      this.blockOneResults = this.processOneResults(this.blockOneRawResults)
+    },
     blockOneFinished(results) {
       // this.b_show_1 = false
       // this.b_show_2 = true
+      this.blockOneRawResults = results;
       this.blockOneResults = this.processOneResults(results)
       this.finished_1 = true
     },
