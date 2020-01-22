@@ -70,8 +70,12 @@
             </h1>
           </div>
           <img :src="require('../assets/Blank Square.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
+          <!-- Avatar -->
+          <img :src="require(`../assets/Feedback Trust.png`)" :style=this.trust_effect_style />
           <img :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; bottom: 13%;"/>
           <img :src="require(`../assets/${current_arrow}`)" style="position: absolute;max-width:30%; max-height:30%; bottom: 6%; left: 39%;" />
+          <!-- You Avatar  -->
+          <img :src="require(`../assets/Feedback Distrust.png`)" :style=this.distrust_effect_style />
           <img :src="require(`../assets/You Blank ${this.you_avatar_type}.png`)" style="position: absolute;max-width:15%; max-height:15%; right: 28%; bottom: 13%;"/>
           <div v-if="this.show_cur_num && this.combinations[this.current_avatar].pl_p == '2' " style="position: absolute; top: 76%; right: 33.5%;">
             <h1 style="position: absolute; color: #4B00FF;">
@@ -114,6 +118,8 @@
             index: 0,
             show_current: 0,
             show_prior: 1,
+            trust_effect_style: "position: absolute; max-width:75%; max-height:75%; left: 16%; bottom: -10%; opacity: 0%",
+            distrust_effect_style: "position: absolute;max-width:75%; max-height:75%; right: 14.5%; bottom: -10%; opacity: 0%",
             arrow_num: '1',
             avatar_num: '1',
             avatar_list: this.shuffle(Array(1080).fill().map((x,i)=>i)),
@@ -373,7 +379,7 @@
             otherChoice() {
               this.fading = true
               let parent = this
-              this.you_avatar_type = "Blue"
+              this.trust_effect_style = "position: absolute; max-width:75%; max-height:75%; left: 16%; bottom: -10%; opacity: 100%";
               setTimeout(function() {
                 parent.ChoiceHelper(1);
               }, 500);
@@ -381,7 +387,7 @@
             selfChoice() {
               this.fading = true
               let parent = this
-              this.you_avatar_type = "Red"
+              this.distrust_effect_style = "position: absolute;max-width:75%; max-height:75%; right: 14.5%; bottom: -10%; opacity: 100%";
               setTimeout(function() {
                 parent.ChoiceHelper(0);
               }, 500);
@@ -404,7 +410,8 @@
               this.combinations[this.current_avatar].avatar_id = this.avatar_list[this.current_avatar]
               setTimeout(function() { 
                 parent.fading = false
-                parent.you_avatar_type = "1"
+                parent.trust_effect_style = "position: absolute; max-width:75%; max-height:75%; left: 16%; bottom: -10%; opacity: 0%"
+                parent.distrust_effect_style = "position: absolute;max-width:75%; max-height:75%; right: 14.5%; bottom: -10%; opacity: 0%"
                 parent.free_space = true
                 parent.current_arrow = 'Arrows 1.png'
                 parent.prediction = null
@@ -421,22 +428,23 @@
               }, 1000);
             },
             shuffle(array) {
-            var currentIndex = array.length, temporaryValue, randomIndex;
+              var currentIndex = array.length, temporaryValue, randomIndex;
 
-            // While there remain elements to shuffle...
-            while (0 !== currentIndex) {
+              // While there remain elements to shuffle...
+              while (0 !== currentIndex) {
 
-                // Pick a remaining element...
-                randomIndex = Math.floor(Math.random() * currentIndex);
-                currentIndex -= 1;
+                  // Pick a remaining element...
+                  randomIndex = Math.floor(Math.random() * currentIndex);
 
-                // And swap it with the current element.
-                temporaryValue = array[currentIndex];
-                array[currentIndex] = array[randomIndex];
-                array[randomIndex] = temporaryValue;
-            }
+                  currentIndex -= 1;
 
-            return array;
+                  // And swap it with the current element.
+                  temporaryValue = array[currentIndex];
+                  array[currentIndex] = array[randomIndex];
+                  array[randomIndex] = temporaryValue;
+              }
+
+              return array;
             },
             buildCombinations() {
             var i, k, j, o
