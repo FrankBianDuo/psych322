@@ -106,6 +106,7 @@
             free_space: true,
             encounter_1_payoff_show: false,
             fading: false,
+            block_listeners: false,
             you_avatar_type: '1',
             variants: ['primary', 'secondary', 'success', 'warning', 'danger', 'info', 'light', 'dark'],
             headerBgVariant: 'dark',
@@ -327,19 +328,22 @@
               // Space
               if (event.keyCode == 32 && parent.free_space) {
                 parent.free_space = false
+                parent.block_listeners = true
                 parent.priorAvatar();
                 var d = new Date();
                 var n = d.getTime();
                 parent.trial_started = n;
-              } else if (event.keyCode == 74 && parent.prediction != null && !parent.free_space && !parent.fading) {
+              } else if (event.keyCode == 74 && parent.prediction != null && !parent.free_space && !parent.fading && !parent.block_listeners) {
                 parent.otherChoice();
-              } else if (event.keyCode == 75 && parent.prediction != null && !parent.free_space && !parent.fading) {
+              } else if (event.keyCode == 75 && parent.prediction != null && !parent.free_space && !parent.fading && !parent.block_listeners) {
                 parent.selfChoice();
-              } else if (event.keyCode == 65 && parent.prediction == null && !parent.free_space && !parent.fading) {
+              } else if (event.keyCode == 65 && parent.prediction == null && !parent.free_space && !parent.fading && !parent.block_listeners) {
                 // Prediction A
+                parent.block_listeners = true
                 parent.predictUp();
-              } else if (event.keyCode == 90 && parent.prediction == null && !parent.free_space && !parent.fading) {
+              } else if (event.keyCode == 90 && parent.prediction == null && !parent.free_space && !parent.fading && !parent.block_listeners) {
                 // Prediction Z
+                parent.block_listeners = true
                 parent.predictDown();
               }
             } 
@@ -366,6 +370,9 @@
               setTimeout(function() {
                 parent.show_current = 1;
               }, 1500);
+              setTimeout(function() {
+                parent.block_listeners = false;
+              }, 1750);
             },
             predictUp() {
               this.current_arrow = 'Arrows Group Green Top.png'
@@ -387,8 +394,10 @@
               this.show_cur_num = true
               var d = new Date();
               var n = d.getTime();
-              this.combinations[this.current_avatar].reaction_time_prediction = n - this.trial_started;
+              this.combinations[this.current_avatar].reaction_time_prediction = n - this.trial_started - 250;
               this.combinations[this.current_avatar].reaction_time_prediction *= 0.001
+              this.trial_started = n
+              this.block_listeners = false;
             },
             otherChoice() {
               this.fading = true
@@ -411,9 +420,8 @@
               this.free_space = false
               var d = new Date();
               var n = d.getTime();
-              this.combinations[this.current_avatar].reaction_time_trust = n - this.trial_started;
+              this.combinations[this.current_avatar].reaction_time_trust = (n - this.trial_started) * 0.001;
               this.trial_started = 0;
-              this.combinations[this.current_avatar].reaction_time_trust *= 0.001
               this.show_current = 0;
               this.show_prior = 0;
               let parent = this;
@@ -424,6 +432,7 @@
               this.combinations[this.current_avatar].avatar_id = this.avatar_list[this.current_avatar]
               setTimeout(function() { 
                 parent.fading = false
+                parent.encounter_1_payoff_show = false
                 parent.trust_effect_style = "position: absolute; max-width:75%; max-height:75%; left: 16%; bottom: -10%; opacity: 0%"
                 parent.distrust_effect_style = "position: absolute;max-width:75%; max-height:75%; right: 14.5%; bottom: -10%; opacity: 0%"
                 parent.free_space = true
