@@ -22,22 +22,22 @@
         <b-row class="justify-content-center align-items-center my-1"
         :style=this.prior_choice_style>
           <div style="position: absolute; top: 16%; left: 49%;">
-            <h1 style="position: absolute;">
+            <h1 v-if="this.encounter_1_payoff_show" style="position: absolute;">
               {{this.combinations[this.current_avatar].pr_p.a_first}}
             </h1>
           </div>
           <div style="position: absolute;  top: 16%; right: 43%;">
-            <h1 style="position: absolute; color: #4B00FF;">
+            <h1 v-if="this.encounter_1_payoff_show" style="position: absolute; color: #4B00FF;">
               {{this.combinations[this.current_avatar].pr_p.p_first}}
             </h1>
           </div>
           <div style="position: absolute; top: 36%; left: 49%;">
-            <h1 style="position: absolute;">
+            <h1 v-if="this.encounter_1_payoff_show" style="position: absolute;">
               {{this.combinations[this.current_avatar].pr_p.a_second}}
             </h1>
           </div>
           <div style="position: absolute; top: 36%; right: 43%;">
-            <h1 style="position: absolute; color: #4B00FF;">
+            <h1 v-if="this.encounter_1_payoff_show" style="position: absolute; color: #4B00FF;">
               {{this.combinations[this.current_avatar].pr_p.p_second}}
             </h1>
           </div>
@@ -104,6 +104,7 @@
             show: false,
             b_show_1: true,
             free_space: true,
+            encounter_1_payoff_show: false,
             fading: false,
             you_avatar_type: '1',
             variants: ['primary', 'secondary', 'success', 'warning', 'danger', 'info', 'light', 'dark'],
@@ -323,6 +324,7 @@
           let parent = this
           window.addEventListener('keyup', function(event) {
             if (parent.show) {
+              // Space
               if (event.keyCode == 32 && parent.free_space) {
                 parent.free_space = false
                 parent.priorAvatar();
@@ -356,18 +358,30 @@
                 alert('click the avatar!')
             },
             priorAvatar() {
-                this.show_current = 1;
-                this.arrow_num = this.combinations[this.current_avatar].a_c;
+              this.encounter_1_payoff_show = true;
+              let parent = this;
+              setTimeout(function() {
+                parent.arrow_num = parent.combinations[parent.current_avatar].a_c;
+              }, 1000);
+              setTimeout(function() {
+                parent.show_current = 1;
+              }, 1500);
             },
             predictUp() {
               this.current_arrow = 'Arrows Group Green Top.png'
               this.prediction = 3
-              this.predictionHelper()
+              let parent = this
+              setTimeout(function() {
+                parent.predictionHelper()
+              }, 250);
             },
             predictDown() {
               this.current_arrow = 'Arrows Group Green Bottom.png'
               this.prediction = 1
-              this.predictionHelper()
+              let parent = this
+              setTimeout(function() {
+                parent.predictionHelper()
+              }, 250);
             },
             predictionHelper() {
               this.show_cur_num = true
@@ -425,7 +439,7 @@
                 }
                 parent.show_prior = 1; 
                 parent.arrow_num = '1';
-              }, 1000);
+              }, 750);
             },
             shuffle(array) {
               var currentIndex = array.length, temporaryValue, randomIndex;
