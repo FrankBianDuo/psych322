@@ -43,7 +43,9 @@
           </div>
           <img :src="require('../assets/Blank Square.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
           <img v-on:keyup.space="priorAvatar" :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; top: 22%;"/>
-          <img :src="require(`../assets/Arrows ${this.arrow_num}.png`)" style="position: absolute;max-width:30%; max-height:30%; top: 15%; left: 39%;" />
+          <img :src="require(`../assets/Arrows 1.png`)" :style="this.arrow_style_one" />
+          <img :src="require(`../assets/Arrows 2.png`)" :style="this.arrow_style_two" />
+          <img :src="require(`../assets/Arrows 3.png`)" :style="this.arrow_style_three" />
           <img :src="require('../assets/You Full 1.png')" style="position: absolute;max-width:15%; max-height:15%; right: 28%; top: 22%;"/>
         </b-row>
 
@@ -122,6 +124,9 @@
             show_prior: 1,
             trust_effect_style: "position: absolute; max-width:75%; max-height:75%; left: 16%; bottom: -10%; opacity: 0%",
             distrust_effect_style: "position: absolute;max-width:75%; max-height:75%; right: 14.5%; bottom: -10%; opacity: 0%",
+            arrow_style_one: "position: absolute;max-width:30%; max-height:30%; top: 15%; left: 39%; opacity: 100%; transition: opacity 0.5s;",
+            arrow_style_two: "position: absolute;max-width:30%; max-height:30%; top: 15%; left: 39%; opacity: 0%; transition: opacity 0.5s;",
+            arrow_style_three: "position: absolute;max-width:30%; max-height:30%; top: 15%; left: 39%; opacity: 0%; transition: opacity 0.5s;",
             arrow_num: '1',
             avatar_num: '1',
             avatar_list: this.shuffle(Array(1080).fill().map((x,i)=>i)),
@@ -366,13 +371,19 @@
               let parent = this;
               setTimeout(function() {
                 parent.arrow_num = parent.combinations[parent.current_avatar].a_c;
+                parent.arrow_style_one = "position: absolute;max-width:30%; max-height:30%; top: 15%; left: 39%; opacity: 0%; transition: opacity 0.5s;";
+                if (parent.arrow_num == '2') {
+                  parent.arrow_style_two = "position: absolute;max-width:30%; max-height:30%; top: 15%; left: 39%; opacity: 100%; transition: opacity 0.5s;";
+                } else {
+                  parent.arrow_style_three = "position: absolute;max-width:30%; max-height:30%; top: 15%; left: 39%;opacity: 100%; transition: opacity 0.5s;";
+                }
               }, 1000);
               setTimeout(function() {
                 parent.show_current = 1;
-              }, 1500);
+              }, 2000);
               setTimeout(function() {
                 parent.block_listeners = false;
-              }, 1750);
+              }, 2250);
             },
             predictUp() {
               this.current_arrow = 'Arrows Group Green Top.png'
@@ -447,7 +458,9 @@
                     parent.b_show_1 = false;
                 }
                 parent.show_prior = 1; 
-                parent.arrow_num = '1';
+                parent.arrow_style_two = "position: absolute;max-width:30%; max-height:30%; top: 15%; left: 39%; opacity: 0%; transition: opacity 0.15s;";
+                parent.arrow_style_three = "position: absolute;max-width:30%; max-height:30%; top: 15%; left: 39%; opacity: 0%; transition: opacity 0.15s;";
+                parent.arrow_style_one = "position: absolute;max-width:30%; max-height:30%; top: 15%; left: 39%; opacity: 100%; transition: opacity 0.15s;";
               }, 750);
             },
             shuffle(array) {

@@ -52,7 +52,7 @@
       <b-form-group id="input-group-2" label="Participant ID:" label-for="input-2">
         <b-form-input
           id="input-2"
-          v-model="form.name"
+          v-model="form.id"
           required
         ></b-form-input>
       </b-form-group>
@@ -160,7 +160,7 @@ export default {
       scenarioColor: `height: 280px; backgroundColor: red;`,
       index: 0,
       form: {
-          name: '',
+          id: '',
           date: '',
           gender: '',
           ra: '',
@@ -236,8 +236,8 @@ export default {
       var output = [];
       for (i = 0; i < raw.length; i++) {
         var current = {
-          'participant_name': this.form.name,
-          'Belief Condition': '1',
+          'Participant_ID': this.form.id,
+          'Belief_cond': '1',
           'Game Condition' : raw[i].game_condition,
           'Label': raw[i].a_c == '2' ? 
           `Truth = ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} ) <- ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} )` 
