@@ -231,6 +231,7 @@ export default {
       this.finished_3 = true
       this.blockThreeResults = this.processThreeResults(results)
     },
+    //(1) Participant_ID, (2) Belief_cond, (3) Encnt1_cond, (4) Encnt2_cond, (5) Trial_ID, (6) Label, (7) Vert_Posit, (8) Trial_order, (9) Avatar, (10) Prediction, (11) Pred_RT, (12) Trust_dist, (13) Trust_RT, (14) Block_order, (15) RA_pres, (16) Date, (17) Age, (18) Gender, (19) Old_bro, (20) Old_sis, (21) Yng_bro, (22) Yng_sis.
     processOneResults(raw) {
       var i;
       var output = [];
@@ -238,29 +239,29 @@ export default {
         var current = {
           'Participant_ID': this.form.id,
           'Belief_cond': '1',
-          'Game Condition' : raw[i].game_condition,
+          'Encnt1_cond' : raw[i].game_condition,
+          'Encnt2_cond': raw[i].trust_condition,
+          'Trial_ID': String( (6 * (Number(raw[i].game_condition) - 1) ) + Number(raw[i].trust_condition) ),
           'Label': raw[i].a_c == '2' ? 
           `Truth = ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} ) <- ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} )` 
           : 
           `Truth = ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} ) <- ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} )`,
-          'Trust Condition': raw[i].trust_condition,
-          'Trust/Distrust': raw[i].trust,
-          'Reaction Time (Trust)': raw[i].reaction_time_trust,
-          'Reaction Time (Prediction)': raw[i].reaction_time_prediction,
-          'Prediction': raw[i].prediction,
-          'Trial Order': raw[i].trial_order,
-          // to be FIXED
+          'Vert_Posit': 'N/A',
+          'Trial_order': raw[i].trial_order,
           'Avatar': raw[i].avatar_id,
+          'Prediction': raw[i].prediction,
+          'Pred_RT': raw[i].reaction_time_prediction,
+          'Trust_dist': raw[i].trust,
+          'Trust_RT': raw[i].reaction_time_trust,
+          'Block_order': '123',
+          'RA_pres': this.form.ra,
           'Date': this.form.date,
-          'Gender': this.form.gender,
-          'RA Present': this.form.ra,
-          // to be FIXED
-          'Block Order': '123',
           'Age': this.form.age,
-          'Younger Brother(s)': this.form.youngerBro,
-          'Younger Sister(s)': this.form.youngerSis,
-          'Older Brother(s)': this.form.olderBro,
-          'Older Sister(s)': this.form.olderSis,
+          'Gender': this.form.gender,
+          'Old_bro': this.form.olderBro,
+          'Old_sis': this.form.olderSis,
+          'Yng_bro': this.form.youngerBro,
+          'Yng_sis': this.form.youngerSis,
         }
         output.push(current)
       }
@@ -324,13 +325,13 @@ export default {
       return output
     },
     blockOneFileName() {
-      return `${this.form.name}_block_1.csv`
+      return `${this.form.id}_block_1.csv`
     },
     blockTwoFileName() {
-      return `${this.form.name}_block_2.csv`
+      return `${this.form.id}_block_2.csv`
     },
     blockThreeFileName() {
-      return `${this.form.name}_block_3.csv`
+      return `${this.form.id}_block_3.csv`
     },
     blockTwoFinished(results) {
       // this.b_show_2 = false

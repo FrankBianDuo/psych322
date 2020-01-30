@@ -21,7 +21,7 @@
         </b-row>
         <b-row class="justify-content-center align-items-center my-1"
         :style=this.prior_choice_style>
-          <div style="position: absolute; top: 16%; left: 49%;">
+          <div style="position: absolute; top: 16%; left: 49.7%;">
             <h1 v-if="this.encounter_1_payoff_show" style="position: absolute;">
               {{this.combinations[this.current_avatar].pr_p.a_first}}
             </h1>
@@ -31,7 +31,7 @@
               {{this.combinations[this.current_avatar].pr_p.p_first}}
             </h1>
           </div>
-          <div style="position: absolute; top: 36%; left: 49%;">
+          <div style="position: absolute; top: 36%; left: 49.7%;">
             <h1 v-if="this.encounter_1_payoff_show" style="position: absolute;">
               {{this.combinations[this.current_avatar].pr_p.a_second}}
             </h1>
