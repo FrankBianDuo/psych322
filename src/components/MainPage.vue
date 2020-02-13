@@ -195,10 +195,6 @@ export default {
   },
   methods: {
     // form ---------------------------------------------------
-    onSubmit(evt) {
-      console.log('updated!')
-      this.blockOneResults = this.processOneResults(results)
-    },
     showInstructions(){
       window.open('https://github.com/FrankBianDuo/psych322/blob/master/src/assets/Instructions.pdf', '_blank')
     },
@@ -241,7 +237,7 @@ export default {
           'Belief_cond': '1',
           'Encnt1_cond' : raw[i].game_condition,
           'Encnt2_cond': raw[i].trust_condition,
-          'Trial_ID': String( (6 * (Number(raw[i].game_condition) - 1) ) + Number(raw[i].trust_condition) ),
+          'Trial_Number': raw[i].trial_id,
           'Label': raw[i].a_c == '2' ? 
           `Truth = ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} ) <- ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} )` 
           : 
@@ -341,22 +337,11 @@ export default {
     },
     // Functions that sort the results from BlockOne and BlockThree
     blockOneSort(a, b) {
-      if (a['Game Condition'] < b['Game Condition']) {
+      if (Number(a['Trial_Number']) < Number(b['Trial_Number'])) {
         return -1;
-      } else if (a['Game Condition'] > b['Game Condition']) {
-        return 1;
       } else {
-        // Same game condition, sort by trust condition
-        if (a['Trust Condition'] < b['Trust Condition']) {
-          return -1;
-        } else if (a['Trust Condition'] > b['Trust Condition']) {
-          return 1;
-        }
+        return 1;
       }
-
-      // Should never reach here
-      console.log("Warning: something went wrong with blockOneSort")
-      return 0;
     },
     blockThreeSort(a, b) {
       if (a['Game Condition'] < b['Game Condition']) {
@@ -378,7 +363,6 @@ export default {
         }
       }
       // Should never reach here
-      console.log("Warning: something went wrong with blockThreeSort")
       return 0;
     },
   }

@@ -6,5 +6,6 @@ module.exports = {
         "useBuiltIns": "entry"
       }
     ]
-  ]
+  ],
+  "plugins": ["transform-es2015-modules-commonjs"]
 }

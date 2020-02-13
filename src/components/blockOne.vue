@@ -329,9 +329,12 @@
         created: function () {
           let parent = this
           window.addEventListener('keyup', function(event) {
+            // eslint-disable-next-line no-console
             if (parent.show) {
               // Space
               if (event.keyCode == 32 && parent.free_space) {
+                // eslint-disable-next-line no-console
+                console.log('Space Listener Event Fired')
                 parent.free_space = false
                 parent.block_listeners = true
                 parent.priorAvatar();
@@ -386,16 +389,20 @@
               }, 2250);
             },
             predictUp() {
+              // eslint-disable-next-line no-console
+              console.log('Predicted Up')
               this.current_arrow = 'Arrows Group Green Top.png'
-              this.prediction = 3
+              this.prediction = 1
               let parent = this
               setTimeout(function() {
                 parent.predictionHelper()
               }, 250);
             },
             predictDown() {
+              // eslint-disable-next-line no-console
+              console.log('Predicted Down')
               this.current_arrow = 'Arrows Group Green Bottom.png'
-              this.prediction = 1
+              this.prediction = 0
               let parent = this
               setTimeout(function() {
                 parent.predictionHelper()
@@ -411,6 +418,8 @@
               this.block_listeners = false;
             },
             otherChoice() {
+              // eslint-disable-next-line no-console
+              console.log('Other Choice')
               this.fading = true
               let parent = this
               this.trust_effect_style = "position: absolute; max-width:75%; max-height:75%; left: 16%; bottom: -10%; opacity: 100%";
@@ -419,6 +428,8 @@
               }, 500);
             },
             selfChoice() {
+              // eslint-disable-next-line no-console
+              console.log('Self Choice')
               this.fading = true
               let parent = this
               this.distrust_effect_style = "position: absolute;max-width:75%; max-height:75%; right: 14.5%; bottom: -10%; opacity: 100%";
@@ -483,10 +494,9 @@
               return array;
             },
             buildCombinations() {
-            var i, k, j, o
-            var first_segment = []
-            var second_segment = []
-            for (i = 0; i < this.avatar_choices.length; i++) {
+              var i, k, j, o
+              var first_segment = []
+              for (i = 0; i < this.avatar_choices.length; i++) {
                 for (k = 0; k < this.player_payoff.length; k++) {
                 for (j = 0; j < this.avatar_payoff.length; j++) {
                     for (o = 0; o < this.prior_payoff.length; o++) {
@@ -500,6 +510,7 @@
                         reaction_time_prediction: null,
                         trust_condition: null,
                         trial_order: null,
+                        trial_id: null,
                         prediction: null,
                         avatar_id: null,
                         game_condition: this.avatar_choices[i] == "2" ? this.prior_payoff[o].top : this.prior_payoff[o].down,
@@ -517,18 +528,13 @@
                     } else if (this.player_payoff[k] == '2.5' && this.avatar_payoff[j].a_first == '1.5') {
                       new_comb.trust_condition = 6
                     }
-                    if (o < 8) {
-                      first_segment.push(new_comb);
-                    } else {
-                      second_segment.push(new_comb);
-                    }
+                    new_comb.trial_id = String( (6 * (Number(new_comb.game_condition) - 1) ) + Number(new_comb.trust_condition) )
+                    first_segment.push(new_comb);
                     }
                 }
                 }
             }
             first_segment = this.shuffle(first_segment)
-            second_segment = this.shuffle(second_segment)
-            first_segment.push(...second_segment)
             this.combinations = first_segment
             },
         }
