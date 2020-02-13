@@ -3,7 +3,7 @@ import blockOne from "@/components/blockOne.vue"
 import MainPage from "@/components/MainPage.vue"
 import chalk from "chalk"
 
-const TRIALS_NUM = 10
+const TRIALS_NUM = 216
 
 function timeout(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));

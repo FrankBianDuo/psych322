@@ -390,7 +390,7 @@
             },
             predictUp() {
               // eslint-disable-next-line no-console
-              console.log('Predicted Up')
+              console.log('Predict Up')
               this.current_arrow = 'Arrows Group Green Top.png'
               this.prediction = 1
               let parent = this
@@ -400,7 +400,7 @@
             },
             predictDown() {
               // eslint-disable-next-line no-console
-              console.log('Predicted Down')
+              console.log('Predict Down')
               this.current_arrow = 'Arrows Group Green Bottom.png'
               this.prediction = 0
               let parent = this
@@ -419,7 +419,7 @@
             },
             otherChoice() {
               // eslint-disable-next-line no-console
-              console.log('Other Choice')
+              console.log('Trust')
               this.fading = true
               let parent = this
               this.trust_effect_style = "position: absolute; max-width:75%; max-height:75%; left: 16%; bottom: -10%; opacity: 100%";
@@ -429,7 +429,7 @@
             },
             selfChoice() {
               // eslint-disable-next-line no-console
-              console.log('Self Choice')
+              console.log('Distrust')
               this.fading = true
               let parent = this
               this.distrust_effect_style = "position: absolute;max-width:75%; max-height:75%; right: 14.5%; bottom: -10%; opacity: 100%";
