@@ -23,22 +23,22 @@
         :style=this.prior_choice_style>
           <div style="position: absolute; top: 16%; left: 50%;">
             <h1 v-if="this.encounter_1_payoff_show" style="position: absolute;">
-              {{this.combinations[this.current_avatar].pr_p.a_first}}
+              {{this.combinations[this.current_avatar].enctr_1_reverse == 0 ? this.combinations[this.current_avatar].pr_p.a_first : this.combinations[this.current_avatar].pr_p.a_second }}
             </h1>
           </div>
           <div style="position: absolute;  top: 16%; right: 43%;">
             <h1 v-if="this.encounter_1_payoff_show" style="position: absolute; color: #4B00FF;">
-              {{this.combinations[this.current_avatar].pr_p.p_first}}
+              {{this.combinations[this.current_avatar].enctr_1_reverse == 0 ? this.combinations[this.current_avatar].pr_p.p_first : this.combinations[this.current_avatar].pr_p.p_second}}
             </h1>
           </div>
           <div style="position: absolute; top: 36%; left: 49.7%;">
             <h1 v-if="this.encounter_1_payoff_show" style="position: absolute;">
-              {{this.combinations[this.current_avatar].pr_p.a_second}}
+              {{this.combinations[this.current_avatar].enctr_1_reverse == 0 ? this.combinations[this.current_avatar].pr_p.a_second : this.combinations[this.current_avatar].pr_p.a_first}}
             </h1>
           </div>
           <div style="position: absolute; top: 36%; right: 43%;">
             <h1 v-if="this.encounter_1_payoff_show" style="position: absolute; color: #4B00FF;">
-              {{this.combinations[this.current_avatar].pr_p.p_second}}
+              {{this.combinations[this.current_avatar].enctr_1_reverse == 0 ? this.combinations[this.current_avatar].pr_p.p_second : this.combinations[this.current_avatar].pr_p.p_first}}
             </h1>
           </div>
           <img :src="require('../assets/Blank Square.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
@@ -53,22 +53,22 @@
         <b-row class="justify-content-center align-items-center mt-5 bt-5" :style=this.current_choice_style>
           <div style="position: absolute; top: 65%; left: 48.5%;">
             <h1 style="position: absolute;">
-              {{this.combinations[this.current_avatar].a_p.a_first}}
+              {{this.combinations[this.current_avatar].enctr_2_reverse == 0 ? this.combinations[this.current_avatar].a_p.a_first : this.combinations[this.current_avatar].a_p.a_second}}
             </h1>
           </div>
           <div style="position: absolute;  top: 65%; right: 43%;">
             <h1 style="position: absolute; color: #4B00FF;">
-              {{this.combinations[this.current_avatar].a_p.p_first}}
+              {{this.combinations[this.current_avatar].enctr_2_reverse == 0 ? this.combinations[this.current_avatar].a_p.p_first : this.combinations[this.current_avatar].a_p.p_second}}
             </h1>
           </div>
           <div style="position: absolute; top: 85%; left: 48.5%;">
             <h1 style="position: absolute;">
-              {{this.combinations[this.current_avatar].a_p.a_second}}
+              {{this.combinations[this.current_avatar].enctr_2_reverse == 0 ? this.combinations[this.current_avatar].a_p.a_second : this.combinations[this.current_avatar].a_p.a_first}}
             </h1>
           </div>
           <div style="position: absolute; top: 85%; right: 43%;">
             <h1 style="position: absolute; color: #4B00FF;">
-              {{this.combinations[this.current_avatar].a_p.p_second}}
+              {{this.combinations[this.current_avatar].enctr_2_reverse == 0 ? this.combinations[this.current_avatar].a_p.p_second : this.combinations[this.current_avatar].a_p.p_first}}
             </h1>
           </div>
           <img :src="require('../assets/Blank Square.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
@@ -140,7 +140,7 @@
             trial_started: 0,
             avatar_choices: ["3", "2"],
             player_payoff: ["1.5", "2", "2.5"],
-            avatar_payoff: [
+            enctr_2_payoff: [
                 {
                 p_first: "3",
                 a_first: "1.5",
@@ -154,7 +154,7 @@
                 a_second: "1.5",
                 },
                 ],
-            prior_payoff: [
+            enctr_1_payoff: [
                 // 3 3 1 1
                 {
                 a_first: "3",
@@ -366,6 +366,15 @@
             },
         },
         methods: {
+            // Helper function to identify the payoff type { M/P H/S }
+            trial_identifier(trial) {
+              if ( ((Number(trial.a_first) - Number(trial.a_second)) * 
+                  (Number(trial.p_first) - Number(trial.p_second)) ) > 0) {
+                return 'MP'
+              } else {
+                return 'HS'
+              }
+            },
             helper() {
                 alert('click the avatar!')
             },
@@ -375,7 +384,7 @@
               setTimeout(function() {
                 parent.arrow_num = parent.combinations[parent.current_avatar].a_c;
                 parent.arrow_style_one = "position: absolute;max-width:30%; max-height:30%; top: 15%; left: 39%; opacity: 0%; transition: opacity 0.5s;";
-                if (parent.arrow_num == '2') {
+                if ( (parent.arrow_num == '2' && parent.enctr_1_reverse == 0 ) || (parent.arrow_num == '3' && parent.enctr_1_reverse == 1) ) {
                   parent.arrow_style_two = "position: absolute;max-width:30%; max-height:30%; top: 15%; left: 39%; opacity: 100%; transition: opacity 0.5s;";
                 } else {
                   parent.arrow_style_three = "position: absolute;max-width:30%; max-height:30%; top: 15%; left: 39%;opacity: 100%; transition: opacity 0.5s;";
@@ -498,13 +507,18 @@
               var first_segment = []
               for (i = 0; i < this.avatar_choices.length; i++) {
                 for (k = 0; k < this.player_payoff.length; k++) {
-                for (j = 0; j < this.avatar_payoff.length; j++) {
-                    for (o = 0; o < this.prior_payoff.length; o++) {
+                for (j = 0; j < this.enctr_2_payoff.length; j++) {
+                    for (o = 0; o < this.enctr_1_payoff.length; o++) {
                     var new_comb = {
                         a_c: this.avatar_choices[i],
                         pl_p: this.player_payoff[k],
-                        a_p: this.avatar_payoff[j],
-                        pr_p: this.prior_payoff[o],   
+                        a_p: this.enctr_2_payoff[j],
+                        pr_p: this.enctr_1_payoff[o],   
+                        enctr_1_type: this.trial_identifier(this.enctr_1_payoff[o]),
+                        enctr_2_type: this.trial_identifier(this.enctr_2_payoff[j]),
+                        enctr_1_reverse: Math.floor(Math.random() * 2),
+                        enctr_2_reverse: Math.floor(Math.random() * 2),
+                        vert_pos: null,
                         trust: null,
                         reaction_time_trust: null,
                         reaction_time_prediction: null,
@@ -513,22 +527,32 @@
                         trial_id: null,
                         prediction: null,
                         avatar_id: null,
-                        game_condition: this.avatar_choices[i] == "2" ? this.prior_payoff[o].top : this.prior_payoff[o].down,
+                        game_condition: this.avatar_choices[i] == "2" ? this.enctr_1_payoff[o].top : this.enctr_1_payoff[o].down,
                     }
-                    if (this.player_payoff[k] == '1.5' && this.avatar_payoff[j].a_first == '2.5') {
+                    if (this.player_payoff[k] == '1.5' && this.enctr_2_payoff[j].a_first == '2.5') {
                       new_comb.trust_condition = 1
-                    } else if (this.player_payoff[k] == '2' && this.avatar_payoff[j].a_first == '2.5') {
+                    } else if (this.player_payoff[k] == '2' && this.enctr_2_payoff[j].a_first == '2.5') {
                       new_comb.trust_condition = 2
-                    } else if (this.player_payoff[k] == '2.5' && this.avatar_payoff[j].a_first == '2.5') {
+                    } else if (this.player_payoff[k] == '2.5' && this.enctr_2_payoff[j].a_first == '2.5') {
                       new_comb.trust_condition = 3
-                    } else if (this.player_payoff[k] == '1.5' && this.avatar_payoff[j].a_first == '1.5') {
+                    } else if (this.player_payoff[k] == '1.5' && this.enctr_2_payoff[j].a_first == '1.5') {
                       new_comb.trust_condition = 4
-                    } else if (this.player_payoff[k] == '2' && this.avatar_payoff[j].a_first == '1.5') {
+                    } else if (this.player_payoff[k] == '2' && this.enctr_2_payoff[j].a_first == '1.5') {
                       new_comb.trust_condition = 5
-                    } else if (this.player_payoff[k] == '2.5' && this.avatar_payoff[j].a_first == '1.5') {
+                    } else if (this.player_payoff[k] == '2.5' && this.enctr_2_payoff[j].a_first == '1.5') {
                       new_comb.trust_condition = 6
                     }
                     new_comb.trial_id = String( (6 * (Number(new_comb.game_condition) - 1) ) + Number(new_comb.trust_condition) )
+                    if (new_comb.enctr_1_reverse == 1) {
+                      let temp = new_comb.enctr_1_type[1] + new_comb.enctr_1_type[0]
+                      new_comb.enctr_1_type = temp
+
+                    }
+                    if (new_comb.enctr_2_reverse == 1) {
+                      let temp = new_comb.enctr_2_type[1] + new_comb.enctr_2_type[0]
+                      new_comb.enctr_2_type = temp
+                    }
+                    new_comb.vert_pos = new_comb.enctr_1_type + new_comb.enctr_2_type
                     first_segment.push(new_comb);
                     }
                 }

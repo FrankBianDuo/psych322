@@ -243,7 +243,7 @@ export default {
           `Truth = ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} ) <- ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} )` 
           : 
           `Truth = ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} ) <- ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} )`,
-          'Vert_Posit': 'N/A',
+          'Vert_Posit': raw[i].vert_pos,
           'Trial_order': raw[i].trial_order,
           'Avatar': raw[i].avatar_id,
           'Prediction': raw[i].prediction,
