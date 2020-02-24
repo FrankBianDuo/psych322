@@ -4,7 +4,7 @@
     <h1>{{ msg }}</h1>
     <p>
       (1) View the PowerPoint Instructions <br>
-      (2)  progress to Block 1. <br>
+      (2) Progress to Block 1. <br>
       (3) Please fill out the survey. <br>
       (4) You do not need to select Block 2 or Block 3. <br>
       (5) Please do not click the refresh button.
