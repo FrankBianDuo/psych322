@@ -26,7 +26,7 @@
             style="max-width:50%; max-height:50%;"
             v-if="this.encounter_1_payoff_show" :src="require(`../assets/redots/Dot${this.dots_identifier(
               this.combinations[this.current_avatar].enctr_1_reverse == 0 ? this.combinations[this.current_avatar].pr_p.a_first : this.combinations[this.current_avatar].pr_p.a_second
-              )}.png`)" />
+              )}b.png`)" />
           </div>
           <div style="position: absolute;  top: 19%; right: 31.7%; z-index: 100;">
             <img
@@ -41,7 +41,7 @@
             style="max-width:50%; max-height:50%;" 
             v-if="this.encounter_1_payoff_show" :src="require(`../assets/redots/Dot${this.dots_identifier(
               this.combinations[this.current_avatar].enctr_1_reverse == 0 ? this.combinations[this.current_avatar].pr_p.a_second : this.combinations[this.current_avatar].pr_p.a_first
-              )}.png`
+              )}b.png`
               )" />
           </div>
           <div style="position: absolute; top: 36%; right: 31.7%; z-index: 100;">
@@ -67,7 +67,7 @@
             style="max-width:50%; max-height:50%;"
             v-if="this.encounter_1_payoff_show" :src="require(`../assets/redots/Dot${this.dots_identifier(
               this.combinations[this.current_avatar].enctr_2_reverse == 0 ? this.combinations[this.current_avatar].a_p.a_first : this.combinations[this.current_avatar].a_p.a_second
-              )}.png`)" />
+              )}b.png`)" />
           </div>
           <div style="position: absolute;  top: 67.8%; right: 31.7%; z-index: 100;">
             <img 
@@ -81,7 +81,7 @@
             style="max-width:50%; max-height:50%;"
             v-if="this.encounter_1_payoff_show" :src="require(`../assets/redots/Dot${this.dots_identifier(
               this.combinations[this.current_avatar].enctr_2_reverse == 0 ? this.combinations[this.current_avatar].a_p.a_second : this.combinations[this.current_avatar].a_p.a_first
-              )}.png`)" />
+              )}b.png`)" />
           </div>
           <div style="position: absolute; top: 84.3%; right: 31.7%; z-index: 100;">
              <img 
@@ -109,11 +109,15 @@
           </div>
         </b-row>
       </b-container>
+      <b-modal ref="my-modal" hide-footer title="5 Minute Rest Break">
+        <h3 align="center"> 0{{this.rb_min}}:{{this.rb_seczero}}{{this.rb_sec}} </h3>
+        <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Back to Block #1</b-button>
+      </b-modal>
     </b-modal>
 </template>
 
 <script>
-
+    import trialOneTrialData from './trialData.js'
     export default {
         name: 'BlockOne',
         props: ['participant_name'],
@@ -121,6 +125,10 @@
         },
         data() {
             return {
+            rb_shown: false,
+            rb_min: 4,
+            rb_sec: 59,
+            rb_seczero: "",
             show: false,
             b_show_1: true,
             free_space: true,
@@ -172,172 +180,7 @@
                 a_second: "1.5",
                 },
                 ],
-            enctr_1_payoff: [
-                // 3 3 1 1
-                {
-                a_first: "3",
-                p_first: "3",
-                a_second: "1",
-                p_second: "1",
-                top: 22,
-                down: 4,
-                },
-                // 3 3 1 2
-                {
-                a_first: "3",
-                p_first: "3",
-                a_second: "1",
-                p_second: "2",
-                top: 26,
-                down: 8,
-                },
-                // 3 3 2 1
-                {
-                a_first: "3",
-                p_first: "3",
-                a_second: "2",
-                p_second: "1",
-                top: 32,
-                down: 14,
-                },
-                // 3 3 2 2
-                {
-                a_first: "3",
-                p_first: "3",
-                a_second: "2",
-                p_second: "2",
-                top: 34,
-                down: 16,
-                },
-                // 1 3 3 1
-                {
-                a_first: "1",
-                p_first: "3",
-                a_second: "3",
-                p_second: "1",
-                top: 11,
-                down: 29,
-                },
-                // 1 3 3 2
-                {
-                a_first: "1",
-                p_first: "3",
-                a_second: "3",
-                p_second: "2",
-                top: 12,
-                down: 30,
-                },
-                // 2 3 3 1
-                {
-                a_first: "2",
-                p_first: "3",
-                a_second: "3",
-                p_second: "1",
-                top: 17,
-                down: 35,
-                },
-                // 2 3 3 2
-                {
-                a_first: "2",
-                p_first: "3",
-                a_second: "3",
-                p_second: "2",
-                top: 18,
-                down: 36,
-                },
-                // 8 
-                // 3 2 1 1
-                {
-                a_first: "3",
-                p_first: "2",
-                a_second: "1",
-                p_second: "1",
-                top: 21,
-                down: 3,
-                },
-                // 2 3 1 1
-                {
-                a_first: "2",
-                p_first: "3",
-                a_second: "1",
-                p_second: "1",
-                top: 20,
-                down: 2,
-                },
-                // 3 2 2 1
-                {
-                a_first: "3",
-                p_first: "2",
-                a_second: "2",
-                p_second: "1",
-                top: 31,
-                down: 13,
-                },
-                // 2 3 1 2
-                {
-                a_first: "2",
-                p_first: "3",
-                a_second: "1",
-                p_second: "2",
-                top: 24,
-                down: 6,
-                },
-                // 2 2 1 1
-                {
-                a_first: "2",
-                p_first: "2",
-                a_second: "1",
-                p_second: "1",
-                top: 19,
-                down: 1,
-                },
-                // 1 2 3 1
-                {
-                a_first: "1",
-                p_first: "2",
-                a_second: "3",
-                p_second: "1",
-                top: 7,
-                down: 25,
-                },
-                // 1 3 2 1
-                {
-                a_first: "1",
-                p_first: "3",
-                a_second: "2",
-                p_second: "1",
-                top: 9,
-                down: 27,
-                },
-                // 1 3 2 2
-                {
-                a_first: "1",
-                p_first: "3",
-                a_second: "2",
-                p_second: "2",
-                top: 10,
-                down: 28,
-                },
-                // 2 2 3 1
-                {
-                a_first: "2",
-                p_first: "2",
-                a_second: "3",
-                p_second: "1",
-                top: 15,
-                down: 33,
-                },
-                // 1 2 2 1
-                {
-                a_first: "1",
-                p_first: "2",
-                a_second: "2",
-                p_second: "1",
-                top: 5,
-                down: 23,
-                },
-                // 18
-                ],
+            enctr_1_payoff: trialOneTrialData, 
             combinations: [],
             }
         },
@@ -384,6 +227,20 @@
             },
         },
         methods: {
+          showModal() {
+            if (this.rb_sec < 10) {
+              this.rb_seczero = "0";
+            }
+            this.rb_shown = true;
+            this.$refs['my-modal'].show()
+          },
+          hideModal() {
+            this.rb_shown = false;
+            this.rb_min = 4;
+            this.rb_sec = 59;
+            this.rb_seczero = "";
+            this.$refs['my-modal'].hide()
+          },
             // Helper function to turn values into dots
             dots_identifier(value) {
               if (value == '1') {
@@ -482,6 +339,36 @@
                 parent.ChoiceHelper(0);
               }, 500);
             },
+            countDown() {
+              let parent = this;
+              if (this.rb_shown == false) {
+                parent.rb_sec = 59;
+                    parent.rb_min = 4;
+                    parent.rb_seczero = "";
+                return;
+              }
+                setTimeout(function() {
+                  parent.rb_sec -= 1;
+                  if (parent.rb_sec < 10) {
+                    parent.rb_seczero = "0"
+                  } else {
+                    parent.rb_seczero = ""
+                  }
+                  if (parent.rb_min == 0 && parent.rb_sec == 0) {
+                    parent.hideModal();
+                    parent.rb_sec = 59;
+                    parent.rb_min = 4;
+                    parent.rb_seczero = "";
+                  }
+                  if (parent.rb_sec == 0) {
+                    parent.rb_sec = 59;
+                    parent.rb_min -= 1;
+                    return;
+                  }
+                  parent.countDown();
+                }, 1000);
+              
+            },
             ChoiceHelper(input){
               this.fading = true
               this.free_space = false
@@ -512,6 +399,13 @@
                     parent.show = false;
                     alert('Block #1 finished')
                     parent.b_show_1 = false;
+                }
+                if (parent.current_avatar == 54 || 
+                    parent.current_avatar == 108 || 
+                    parent.current_avatar == 162) {
+                      parent.showModal();
+                      parent.countDown();
+                      // 1000 = 1s
                 }
                 parent.show_prior = 1; 
                 parent.arrow_style_two = "position: absolute;max-width:35%; max-height:35%; top: 12%; left: 36.5%; opacity: 0%; transition: opacity 0.15s;";

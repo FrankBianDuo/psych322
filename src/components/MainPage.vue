@@ -11,8 +11,7 @@
     </p>
     <div class="bv-example-row bv-example-row-flex-cols">
       <b-row class="my-4 justify-content-center">
-        <!-- <b-button :disabled="!this.b_show_0" v-b-modal.modal-center-0>Tutorial</b-button> -->
-        <b-button><a v-on:click="this.showInstructions">Instructions</a></b-button>
+        <b-button><a v-b-modal.modal-center-instruction>Instructions</a></b-button>
       </b-row>
       <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_1" v-b-modal.modal-center>Block #1</b-button>

@@ -1,6 +1,6 @@
 <template>
     <b-modal 
-      id="modal-center-0" 
+      id="modal-center-instruction" 
       size="xl"
       centered title="Tutorial"
       v-model="show"
@@ -30,41 +30,15 @@
 </template>
 
 <script>
-import page_one from './tutorialPages/page_1.vue'
-import page_two from './tutorialPages/page_2.vue'
-import page_three from './tutorialPages/page_3.vue'
-import page_four from './tutorialPages/page_4.vue'
 
     export default {
         name: 'Tutorial',
         components: {
-            page_one,
-            page_two,
-            page_three,
-            page_four,
         },
         data() {
-            return {
-            show: false,
-            show_current: 1,
-            b_show_2: true,
-            variants: ['primary', 'secondary', 'success', 'warning', 'danger', 'info', 'light', 'dark'],
-            headerBgVariant: 'dark',
-            headerTextVariant: 'light',
-            bodyBgVariant: 'light',
-            bodyTextVariant: 'dark',
-            footerBgVariant: 'warning',
-            footerTextVariant: 'dark',
-            colors:['red', 'yellow', 'brown', 'orange', 'black'],
-            scenarioColor: `height: 280px; backgroundColor: red;`,
-            }
-        },
-        beforeMount() {
+            return {}
         },
         computed: {
-            fade_style() {
-            return `opacity: ${this.show_current}; transition: opacity 0.5s;`
-            },
         },
         methods: {
             
@@ -74,22 +48,4 @@ import page_four from './tutorialPages/page_4.vue'
 
 
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-
-.b-col {
-  transition: background-color .3s;
-}
 </style>
