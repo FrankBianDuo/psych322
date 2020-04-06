@@ -19,6 +19,7 @@
     "vue": "^2.6.10",
     "vue-json-csv": "^1.2.9",
     "vue-konva": "^2.0.11",
+    "vue-papa-parse": "^1.3.0",
     "vue2-circle-progress": "^1.2.3"
   },
   "devDependencies": {

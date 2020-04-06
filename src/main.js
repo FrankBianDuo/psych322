@@ -8,9 +8,12 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueKonva from 'vue-konva'
 import JsonCSV from 'vue-json-csv'
+import VuePapaParse from 'vue-papa-parse'
+
 
 Vue.use(VueKonva)
 Vue.use(BootstrapVue)
+Vue.use(VuePapaParse)
 Vue.component('downloadCsv', JsonCSV)
 
 

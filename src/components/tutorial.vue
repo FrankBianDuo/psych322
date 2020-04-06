@@ -22,7 +22,7 @@
                     <b-button variant="outline-primary" size="lg">Back</b-button>
                 </b-col>
                 <b-col cols="2">
-                    <b-button variant="outline-primary" size="lg">Continue</b-button>
+                    <b-button variant="outline-primary" size="lg">Next</b-button>
                 </b-col>
           </b-row>
       </b-container>

@@ -126,8 +126,8 @@
         data() {
             return {
             rb_shown: false,
-            rb_min: 4,
-            rb_sec: 59,
+            rb_min: 0,
+            rb_sec: 15,
             rb_seczero: "",
             show: false,
             b_show_1: true,
@@ -236,8 +236,8 @@
           },
           hideModal() {
             this.rb_shown = false;
-            this.rb_min = 4;
-            this.rb_sec = 59;
+            this.rb_min = 0;
+            this.rb_sec = 15;
             this.rb_seczero = "";
             this.$refs['my-modal'].hide()
           },
@@ -294,7 +294,12 @@
               // eslint-disable-next-line no-console
               console.log('Predict Up')
               this.current_arrow = 'Dot Holder Highlight Green Up.png'
-              this.prediction = 1
+              if (this.combinations[this.current_avatar].enctr_2_reverse == 1) {
+                this.prediction = 0
+              } else {
+                this.prediction = 1
+              }
+              this.combinations[this.current_avatar].keypress = 'A'
               let parent = this
               setTimeout(function() {
                 parent.predictionHelper()
@@ -304,7 +309,12 @@
               // eslint-disable-next-line no-console
               console.log('Predict Down')
               this.current_arrow = 'Dot Holder Highlight Green Dn.png'
-              this.prediction = 0
+              if (this.combinations[this.current_avatar].enctr_2_reverse == 1) {
+                this.prediction = 1
+              } else {
+                this.prediction = 0
+              }
+              this.combinations[this.current_avatar].keypress = 'Z'
               let parent = this
               setTimeout(function() {
                 parent.predictionHelper()
@@ -325,6 +335,7 @@
               this.fading = true
               let parent = this
               this.trust_effect_style = "position: absolute; max-width:75%; max-height:75%; left: 16%; bottom: -10%; opacity: 100%";
+              this.combinations[this.current_avatar].keypress +=  'J'
               setTimeout(function() {
                 parent.ChoiceHelper(1);
               }, 500);
@@ -335,6 +346,7 @@
               this.fading = true
               let parent = this
               this.holder_stype = "Purp";
+              this.combinations[this.current_avatar].keypress +=  'K'
               setTimeout(function() {
                 parent.ChoiceHelper(0);
               }, 500);
@@ -342,8 +354,8 @@
             countDown() {
               let parent = this;
               if (this.rb_shown == false) {
-                parent.rb_sec = 59;
-                    parent.rb_min = 4;
+                parent.rb_sec = 15;
+                    parent.rb_min = 0;
                     parent.rb_seczero = "";
                 return;
               }
@@ -356,8 +368,8 @@
                   }
                   if (parent.rb_min == 0 && parent.rb_sec == 0) {
                     parent.hideModal();
-                    parent.rb_sec = 59;
-                    parent.rb_min = 4;
+                    parent.rb_sec = 15;
+                    parent.rb_min = 0;
                     parent.rb_seczero = "";
                   }
                   if (parent.rb_sec == 0) {
@@ -400,8 +412,10 @@
                     alert('Block #1 finished')
                     parent.b_show_1 = false;
                 }
-                if (parent.current_avatar == 54 || 
-                    parent.current_avatar == 108 || 
+                if (parent.current_avatar == 12 || 
+                    parent.current_avatar == 24 || 
+                    parent.current_avatar == 36 || 
+                    parent.current_avatar == 48 || 
                     parent.current_avatar == 162) {
                       parent.showModal();
                       parent.countDown();
@@ -450,6 +464,7 @@
                         enctr_2_reverse: Math.floor(Math.random() * 2),
                         vert_pos: null,
                         trust: null,
+                        keypress: '',
                         reaction_time_trust: null,
                         reaction_time_prediction: null,
                         trust_condition: null,

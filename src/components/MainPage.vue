@@ -127,6 +127,7 @@ import BlockOne from './blockOne.vue'
 import BlockTwo from './blockTwo.vue'
 import BlockThree from './blockThree.vue'
 import Tutorial from './tutorial.vue'
+import json from './dataSample.json'
 
 export default {
   name: 'MainPage',
@@ -141,6 +142,7 @@ export default {
   },
   data() {
     return {
+      dataJson: json,
       finished_1: false,
       finished_2: false,
       finished_3: false,
@@ -234,22 +236,24 @@ export default {
       for (i = 0; i < raw.length; i++) {
         var current = {
           'Participant_ID': this.form.id,
-          'Belief_cond': '1',
+          'Trial_Number': raw[i].trial_id,
           'Encnt1_cond' : raw[i].game_condition,
           'Encnt2_cond': raw[i].trust_condition,
-          'Trial_Number': raw[i].trial_id,
-          'Label': raw[i].a_c == '2' ? 
-          `Truth = ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} ) <- ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} )` 
-          : 
-          `Truth = ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} ) <- ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} )`,
-          'Vert_Posit': raw[i].vert_pos,
+          // 'Label': raw[i].a_c == '2' ? 
+          // `Truth = ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} ) <- ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} )` 
+          // : 
+          // `Truth = ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} ) <- ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} )`,
+          'Label': raw[i].a_c == '2' ? this.labelGen(raw[i].pr_p.p_first, raw[i].pr_p.a_first, raw[i].pr_p.p_second, raw[i].pr_p.a_second) : this.labelGen(raw[i].pr_p.p_second, raw[i].pr_p.a_second, raw[i].pr_p.p_first, raw[i].pr_p.a_first) + this.ectr2Gen(raw[i].a_p.a_first, raw[i].pl_p),
+          'Vert_Posit_L': raw[i].vert_pos,
+          'Vert_Posit_N': this.vertPositMatch(raw[i].vert_pos),
+          'Key_Press': raw[i].keypress,
           'Trial_order': raw[i].trial_order,
           'Avatar': raw[i].avatar_id,
+          'Block_order': '123',
           'Prediction': raw[i].prediction,
           'Pred_RT': raw[i].reaction_time_prediction,
-          'Trust_dist': raw[i].trust,
-          'Trust_RT': raw[i].reaction_time_trust,
-          'Block_order': '123',
+          'Control_Choice': raw[i].trust,
+          'Control_RT': raw[i].reaction_time_trust,
           'RA_pres': this.form.ra,
           'Date': this.form.date,
           'Age': this.form.age,
@@ -258,12 +262,44 @@ export default {
           'Old_sis': this.form.olderSis,
           'Yng_bro': this.form.youngerBro,
           'Yng_sis': this.form.youngerSis,
+          'E1&2_Act_Type': this.dataJson[Number(raw[i].trial_id) - 1]['E1&2_Act_Type'],
+          'E1&2_Act_Deg': this.dataJson[Number(raw[i].trial_id) - 1]['E1&2_Act_Deg'],
+          'Equality': this.dataJson[Number(raw[i].trial_id) - 1]['Equality'],
+          'Sure_Thing': this.dataJson[Number(raw[i].trial_id) - 1]['Sure_Thing'],
+          'Compatib': this.dataJson[Number(raw[i].trial_id) - 1]['Compatib'],
+          'Triplets': this.dataJson[Number(raw[i].trial_id) - 1]['Triplets'],
+          'Equal_by_Act': this.dataJson[Number(raw[i].trial_id) - 1]['Equal_by_Act'],
+          // 'Inst_Rat': this.instRat(raw[i].prediction, raw[i].trust),
+          // 'Rat_Sure': this.ratSure(),
+          // 'Rat_Act': this.ratAct(),
+          // 'Rat_Deg': this.ratDeg(),
+          // 'Red_Flag': this.redFlag(raw),
+          'Inst_Rat': '',
+          'Rat_Sure': '',
+          'Rat_Act': '',
+          'Rat_Deg': '',
+          'Red_Flag': '',
         }
         output.push(current)
       }
       output.sort( this.blockOneSort )
       return output
     },
+    // instRat(p, t) {
+    //   return ''
+    //   // if (p == 1 && t == 1) {
+
+    //   // }
+    //   // if (p == 0 && t == 0) {
+        
+    //   // }
+    //   // if (p == 1 && t == 0) {
+        
+    //   // }
+    //   // if (p == 0 && t == 1) {
+        
+    //   // }
+    // },
     processTwoResults(raw) {
       var output = []
       for (var i = 0; i < raw.length; i++) {
@@ -285,6 +321,62 @@ export default {
         output.push(current)
       }
       return output
+    },
+    // To be removed
+    tuneNum(input) {
+      if (input == '1') {
+        return '1'
+      }
+      if (input == '2') {
+        return '3'
+      }
+      if (input == '3') {
+        return '5'
+      }
+    },
+    // First -> what happens; second -> what could've happened
+    labelGen(p_first, a_first, p_second, a_second) {
+      p_first = this.tuneNum(p_first);
+      p_second = this.tuneNum(p_second);
+      a_first = this.tuneNum(a_first);
+      a_second = this.tuneNum(a_second);
+      var p_receive = Number(p_first) - Number(p_second);
+      var a_receive = Number(a_first) - Number(a_second);
+      var header = this.typeIden(p_receive, a_receive)
+      if (p_receive > 0) {
+        p_receive = '+' + p_receive
+      }
+      if (a_receive > 0) {
+        a_receive = '+' + a_receive
+      }
+      var result = header + '(' + p_receive + ',' + a_receive +
+       ') = (' + p_first + ',' + a_first + ') > (' + p_second + ',' + a_second + ')'
+      return result
+    },
+    ectr2Gen(a_first, player) {
+      var symbol = ''
+      if (a_first == '1.5') {
+        symbol = 'X'
+      } else {
+        symbol = '||'
+      }
+      if (player == '1.5') {
+        return symbol + '(3, +' + '2' + ')'
+      } else if (player == '2') {
+        return symbol + '(3, +' + '3' + ')'
+      } else { // player == 2.5
+        return symbol + '(3, +' + '4' + ')'
+      }
+    },
+    typeIden(p_rec, a_rec) {
+      if (p_rec < 0 && a_rec < 0) 
+        return 'P'
+      if (p_rec < 0 && a_rec > 0) 
+        return 'H'
+      if (p_rec > 0 && a_rec < 0) 
+        return 'S'
+      if (p_rec > 0 && a_rec > 0) 
+        return 'M'
     },
     processThreeResults(raw) {
       var i;
@@ -342,6 +434,42 @@ export default {
       } else {
         return 1;
       }
+    },
+    vertPositMatch(str) {
+      if (str == 'HSHS') 
+        return 1;
+      if (str == 'HSSH') 
+        return 1;
+      if (str == 'HSMP') 
+        return 1;
+      if (str == 'HSPM') 
+        return 1;
+      if (str == 'SHHS') 
+        return 1;
+      if (str == 'SHSH') 
+        return 1;
+      if (str == 'SHMP') 
+        return 1;
+      if (str == 'SHPM') 
+        return 1;
+      if (str == 'MPHS') 
+        return 1;
+      if (str == 'MPSH') 
+        return 1;
+      if (str == 'MPMP') 
+        return 1;
+      if (str == 'MPPM') 
+        return 1;
+      if (str == 'PMHS') 
+        return 1;
+      if (str == 'PMSH') 
+        return 1;
+      if (str == 'PMMP') 
+        return 1;
+      if (str == 'PMPM') 
+        return 1;
+      // Should not reach here, returning -1 
+      return -1;
     },
     blockThreeSort(a, b) {
       if (a['Game Condition'] < b['Game Condition']) {
