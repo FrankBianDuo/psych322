@@ -2,6 +2,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <!-- Here is the vue Page for the index interface on our program -->
     <p>
       (1) View the PowerPoint Instructions <br>
       (2) Progress to Block 1. <br>
@@ -10,12 +11,15 @@
       (5) Please do not click the refresh button.
     </p>
     <div class="bv-example-row bv-example-row-flex-cols">
+      <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
         <b-button><a v-b-modal.modal-center-instruction>Instructions</a></b-button>
       </b-row>
+      <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_1" v-b-modal.modal-center>Block #1</b-button>
         <download-csv v-if="this.finished_1" class="btn btn-default" :data="this.blockOneResults" :name="this.blockOneFileName()">
+          <!-- These download buttons become visible after some progress has been made -->
             <b-button> Download data for Block #1 </b-button>
         </download-csv>
       </b-row>
@@ -47,6 +51,7 @@
       ref="modal"
       title="Experiment Survey"
     >
+    <!-- Here's the HTML code for the survey form -->
       <b-form>
 
       <b-form-group id="input-group-2" label="Participant ID:" label-for="input-2">
@@ -140,6 +145,7 @@ export default {
   props: {
     msg: String
   },
+  // Survey data and final output file data
   data() {
     return {
       dataJson: json,
@@ -151,6 +157,7 @@ export default {
       b_show_1: true,
       b_show_2: true,
       b_show_3: true,
+      // ----------------------------------------------These are data for styling
       variants: ['primary', 'secondary', 'success', 'warning', 'danger', 'info', 'light', 'dark'],
       headerBgVariant: 'dark',
       headerTextVariant: 'light',
@@ -161,6 +168,8 @@ export default {
       colors:['red', 'yellow', 'brown', 'orange', 'black'],
       scenarioColor: `height: 280px; backgroundColor: red;`,
       index: 0,
+      // ---------------------------------------------
+      // Recorded data from the form
       form: {
           id: '',
           date: '',
@@ -196,18 +205,15 @@ export default {
   computed: {
   },
   methods: {
-    // form ---------------------------------------------------
     showInstructions(){
       window.open('https://github.com/FrankBianDuo/psych322/blob/master/src/assets/Instructions.pdf', '_blank')
     },
     onReset(evt) {
       evt.preventDefault()
-      // Reset our form values
       this.form.email = ''
       this.form.name = ''
       this.form.food = null
       this.form.checked = []
-      // Trick to reset/clear native browser form validation state
       this.formshow = false
       this.$nextTick(() => {
         this.formshow = true
@@ -229,7 +235,7 @@ export default {
       this.finished_3 = true
       this.blockThreeResults = this.processThreeResults(results)
     },
-    //(1) Participant_ID, (2) Belief_cond, (3) Encnt1_cond, (4) Encnt2_cond, (5) Trial_ID, (6) Label, (7) Vert_Posit, (8) Trial_order, (9) Avatar, (10) Prediction, (11) Pred_RT, (12) Trust_dist, (13) Trust_RT, (14) Block_order, (15) RA_pres, (16) Date, (17) Age, (18) Gender, (19) Old_bro, (20) Old_sis, (21) Yng_bro, (22) Yng_sis.
+    // processOneResults serves the functionality that converts raw recorded data to our target format 
     processOneResults(raw) {
       var i;
       var output = [];
@@ -239,11 +245,7 @@ export default {
           'Trial_Number': raw[i].trial_id,
           'Encnt1_cond' : raw[i].game_condition,
           'Encnt2_cond': raw[i].trust_condition,
-          // 'Label': raw[i].a_c == '2' ? 
-          // `Truth = ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} ) <- ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} )` 
-          // : 
-          // `Truth = ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} ) <- ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} )`,
-          'Label': raw[i].a_c == '2' ? this.labelGen(raw[i].pr_p.p_first, raw[i].pr_p.a_first, raw[i].pr_p.p_second, raw[i].pr_p.a_second) : this.labelGen(raw[i].pr_p.p_second, raw[i].pr_p.a_second, raw[i].pr_p.p_first, raw[i].pr_p.a_first) + this.ectr2Gen(raw[i].a_p.a_first, raw[i].pl_p),
+          'Label': raw[i].a_c == '2' ? this.labelGen(raw[i].pr_p.p_first, raw[i].pr_p.a_first, raw[i].pr_p.p_second, raw[i].pr_p.a_second) + this.ectr2Gen(raw[i].a_p.a_first, raw[i].pl_p) : this.labelGen(raw[i].pr_p.p_second, raw[i].pr_p.a_second, raw[i].pr_p.p_first, raw[i].pr_p.a_first) + this.ectr2Gen(raw[i].a_p.a_first, raw[i].pl_p),
           'Vert_Posit_L': raw[i].vert_pos,
           'Vert_Posit_N': this.vertPositMatch(raw[i].vert_pos),
           'Key_Press': raw[i].keypress,
@@ -334,7 +336,7 @@ export default {
         return '5'
       }
     },
-    // First -> what happens; second -> what could've happened
+    // Generates the label column for processOneResults
     labelGen(p_first, a_first, p_second, a_second) {
       p_first = this.tuneNum(p_first);
       p_second = this.tuneNum(p_second);
@@ -353,6 +355,7 @@ export default {
        ') = (' + p_first + ',' + a_first + ') > (' + p_second + ',' + a_second + ')'
       return result
     },
+    // ectr2Gen is a helper function that works with labelGen
     ectr2Gen(a_first, player) {
       var symbol = ''
       if (a_first == '1.5') {
@@ -439,35 +442,35 @@ export default {
       if (str == 'HSHS') 
         return 1;
       if (str == 'HSSH') 
-        return 1;
+        return 2;
       if (str == 'HSMP') 
-        return 1;
+        return 3;
       if (str == 'HSPM') 
-        return 1;
+        return 4;
       if (str == 'SHHS') 
-        return 1;
+        return 5;
       if (str == 'SHSH') 
-        return 1;
+        return 6;
       if (str == 'SHMP') 
-        return 1;
+        return 7;
       if (str == 'SHPM') 
-        return 1;
+        return 8;
       if (str == 'MPHS') 
-        return 1;
+        return 9;
       if (str == 'MPSH') 
-        return 1;
+        return 10;
       if (str == 'MPMP') 
-        return 1;
+        return 11;
       if (str == 'MPPM') 
-        return 1;
+        return 12;
       if (str == 'PMHS') 
-        return 1;
+        return 13;
       if (str == 'PMSH') 
-        return 1;
+        return 14;
       if (str == 'PMMP') 
-        return 1;
+        return 15;
       if (str == 'PMPM') 
-        return 1;
+        return 16;
       // Should not reach here, returning -1 
       return -1;
     },
