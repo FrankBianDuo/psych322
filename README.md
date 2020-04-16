@@ -1,6 +1,7 @@
-# psych322
+# Here is a repository for the code supporting experiments run by the M3 Lab
+## Currently the program is written in JavaScript, HTML and CSS with Vue.JS Framework.
 
-## Project setup
+## Intial Setup for the Project
 ```
 npm install
 ```
@@ -24,6 +25,9 @@ npm run test
 ```
 npm run lint
 ```
+### Deployment Method
+```
+./deploy.sh
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
