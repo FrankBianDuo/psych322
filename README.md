@@ -1,5 +1,5 @@
-# Here is the repository for experiments run by the M3 Lab
-## Currently the program is written in JavaScript, HTML and CSS, with the support of Vue.JS Framework.
+# Here is a repository for the code supporting experiments run by the M3 Lab
+## Currently the program is written in JavaScript, HTML and CSS with Vue.JS Framework.
 
 ## Intial Setup for the Project
 ```
