@@ -104,7 +104,7 @@
         <img :src="require(`../assets/redots/${current_arrow}`)" style="position: absolute;max-width:35%; max-height:35%; bottom: 4.5%; left: 36.5%;" />
         <img :src="require(`../assets/redots/Dot Holder Sure Thing Highlight ${this.holder_stype}.png`)" style="position: absolute;max-width:20%; max-height:20%; bottom: 25%; right: 24.5%;" />
 
-        
+        <!--  Background You Avatar -->
         <img :src="require(`../assets/You Blank 1.png`)" style="position: absolute;max-width:15%; max-height:15%; right: 28%; bottom: 13%;"/>
         <div style="position: absolute; top: 63%; right: 22%; z-index: 100;">
             <img 
@@ -365,6 +365,7 @@ export default {
         parent.ChoiceHelper(0);
       }, 500);
     },
+    // Helper function for rest break count downs
     countDown() {
       let parent = this;
       if (this.rb_shown == false) {
@@ -395,6 +396,7 @@ export default {
         }, 1000);
       
     },
+    // Helper Function that handles the data flow when a participant decides to trust or distrust an avatar
     ChoiceHelper(input){
       this.fading = true
       this.free_space = false
@@ -460,6 +462,7 @@ export default {
 
       return array;
     },
+    // Helper function for vertual positioning balance
     flipPayOff(struct) {
       var temp_1 = struct[0]
       var temp_2 = struct[1]
@@ -470,6 +473,9 @@ export default {
       return struct
 
     },
+    // Core function in this file
+    // buildCombinations constructs an array that contains all information needed to carry out a randomized block #1 
+    // This array also contains data slots that will be filled as the participants progress
     buildCombinations() {
       var i, k, j, o
       var first_segment = []
@@ -498,6 +504,7 @@ export default {
                 avatar_id: null,
                 game_condition: this.avatar_choices[i] == "2" ? this.enctr_1_payoff[o].top : this.enctr_1_payoff[o].down,
             }
+            // Recognize the six different structures in encounter #2
             if (this.player_payoff[k] == '1.5' && this.enctr_2_payoff[j].a_first == '2.5') {
               new_comb.trust_condition = 1
             } else if (this.player_payoff[k] == '2' && this.enctr_2_payoff[j].a_first == '2.5') {
