@@ -13,24 +13,24 @@
     <div class="bv-example-row bv-example-row-flex-cols">
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
-        <b-button><a v-b-modal.modal-center-instruction>Instructions</a></b-button>
+        <b-button v-b-modal.modal-center-instruction1 >Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
-        <b-button :disabled="!this.b_show_1" v-b-modal.modal-center>Block #1</b-button>
+        <b-button :disabled="!this.b_show_1" v-b-modal.modal-center>Experiment 1</b-button>
         <download-csv v-if="this.finished_1" class="btn btn-default" :data="this.blockOneResults" :name="this.blockOneFileName()">
           <!-- These download buttons become visible after some progress has been made -->
             <b-button> Download data for Block #1 </b-button>
         </download-csv>
       </b-row>
       <b-row class="my-4 justify-content-center">
-        <b-button :disabled="!this.b_show_2" v-b-modal.modal-center-2>Block #2</b-button>
+        <b-button :disabled="!this.b_show_2" v-b-modal.modal-center-2>Experiment 2</b-button>
         <download-csv v-if="this.finished_2" class="btn btn-default" :data="this.blockTwoResults" :name="this.blockTwoFileName()">
             <b-button> Download data for Block #2 </b-button>
         </download-csv>
       </b-row>
       <b-row class="my-4 justify-content-center">
-        <b-button :disabled="!this.b_show_3" v-b-modal.modal-center-3>Block #3</b-button>
+        <b-button :disabled="!this.b_show_3" v-b-modal.modal-center-3>Experiment 3</b-button>
         <download-csv v-if="this.finished_3" class="btn btn-default" :data="this.blockThreeResults" :name="this.blockThreeFileName()">
             <b-button> Download data for Block #3 </b-button>
         </download-csv>
@@ -120,7 +120,10 @@
       <b-button variant="primary" @click="this.surveyFinish">Submit</b-button>
     </b-form>
     </b-modal>
-    <Tutorial/>
+    <Tutorial1/>
+    <Tutorial2/>
+    <Tutorial3/>
+    <Tutorial4/>
     <BlockOne @blockOneDone="blockOneFinished" :participant_name="this.form.name"/>
     <BlockTwo @blockTwoDone="blockTwoFinished" :participant_name="this.form.name"/>
     <BlockThree @blockThreeDone="blockThreeFinished" :participant_name="this.form.name"/>
@@ -131,7 +134,10 @@
 import BlockOne from './blockOne.vue'
 import BlockTwo from './blockTwo.vue'
 import BlockThree from './blockThree.vue'
-import Tutorial from './tutorial.vue'
+import Tutorial1 from './tutorialPages/page_1.vue'
+import Tutorial2 from './tutorialPages/page_2.vue'
+import Tutorial3 from './tutorialPages/page_3.vue'
+import Tutorial4 from './tutorialPages/page_4.vue'
 import json from './dataSample.json'
 
 export default {
@@ -140,7 +146,10 @@ export default {
     BlockOne,
     BlockTwo,
     BlockThree,
-    Tutorial,
+    Tutorial1,
+    Tutorial2,
+    Tutorial3,
+    Tutorial4,
   },
   props: {
     msg: String
@@ -201,6 +210,7 @@ export default {
     }
   },
   beforeMount() {
+    
   },
   computed: {
   },

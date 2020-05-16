@@ -3,7 +3,7 @@
   <b-modal 
     id="modal-center" 
     size="xl"
-    centered title="Block #1"
+    centered title="Experiment 1"
     v-model="show"
     :hide-footer="true"
     :header-bg-variant="headerBgVariant"
@@ -139,7 +139,7 @@ export default {
     // ^^^^^
 
     // show is the data that toggles the visibility of block #1's modal
-    show: false,
+    show: true,
     b_show_1: true,
     free_space: true,
     encounter_1_payoff_show: false,
@@ -462,16 +462,16 @@ export default {
 
       return array;
     },
-    // Helper function for vertual positioning balance
-    flipPayOff(struct) {
-      var temp_1 = struct[0]
-      var temp_2 = struct[1]
-      struct[0] = struct[2]
-      struct[1] = struct[3]
-      struct[2] = temp_1
-      struct[3] = temp_2
+    // Helper function for vertical positioning balance
+    flipPayOff(struct) {  
+      var temp_1 = struct["a_first"]  
+      var temp_2 = struct["p_first"] 
+      // eslint-disable-next-line no-console 
+      struct["a_first"] = struct["a_second"]
+      struct["p_first"] = struct["p_second"]
+      struct["a_second"] = temp_1
+      struct["p_second"] = temp_2
       return struct
-
     },
     // Core function in this file
     // buildCombinations constructs an array that contains all information needed to carry out a randomized block #1 

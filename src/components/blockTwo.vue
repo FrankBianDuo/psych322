@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-2" 
       size="xl"
-      centered title="Block #2"
+      centered title="Experiment 2"
       v-model="show"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"

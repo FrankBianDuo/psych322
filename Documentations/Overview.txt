@@ -1,0 +1,4 @@
+This program hosts a series of experiments for M3 lab at University of Michigan, which takes action in the form of a website application. The participants will interact with the program to indicate a series of choice-making, under some pre-defined scenarios that represent social interactions. 
+At the highest level, the program functions by hosting a combination of events that take place based on a given timeline as well as the participants' actions. These events also support the animations (new trials fading in etc.) on the application. A majority of the graphics on the application is pre-set and defined, with the expection of a few that are controlled by the events mentioned above.
+From the code's perspective, this program is written with JavaScript, HTML and CSS, with some minimal shell script that supports the deployment of new updates and local unit testing. For those who just get into web development, here is a link to a tutorial on the basic fundamentals:
+
