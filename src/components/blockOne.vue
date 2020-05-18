@@ -139,7 +139,7 @@ export default {
     // ^^^^^
 
     // show is the data that toggles the visibility of block #1's modal
-    show: true,
+    show: false,
     b_show_1: true,
     free_space: true,
     encounter_1_payoff_show: false,

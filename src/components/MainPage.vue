@@ -13,7 +13,7 @@
     <div class="bv-example-row bv-example-row-flex-cols">
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
-        <b-button v-b-modal.modal-center-instruction1 >Instructions</b-button>
+        <b-button v-b-modal.modal-center-instruction3 >Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
@@ -120,10 +120,14 @@
       <b-button variant="primary" @click="this.surveyFinish">Submit</b-button>
     </b-form>
     </b-modal>
-    <Tutorial1/>
-    <Tutorial2/>
-    <Tutorial3/>
-    <Tutorial4/>
+    <Tutorial1 :windowsize ="this.window_size" />
+    <Tutorial2 :windowsize ="this.window_size" />
+    <Tutorial3 :windowsize ="this.window_size" />
+    <Tutorial4 :windowsize ="this.window_size" />
+    <Tutorial5 :windowsize ="this.window_size" />
+    <Tutorial6 :windowsize ="this.window_size" />
+    <Tutorial7 :windowsize ="this.window_size" />
+    <Tutorial8 :windowsize ="this.window_size" />
     <BlockOne @blockOneDone="blockOneFinished" :participant_name="this.form.name"/>
     <BlockTwo @blockTwoDone="blockTwoFinished" :participant_name="this.form.name"/>
     <BlockThree @blockThreeDone="blockThreeFinished" :participant_name="this.form.name"/>
@@ -138,6 +142,10 @@ import Tutorial1 from './tutorialPages/page_1.vue'
 import Tutorial2 from './tutorialPages/page_2.vue'
 import Tutorial3 from './tutorialPages/page_3.vue'
 import Tutorial4 from './tutorialPages/page_4.vue'
+import Tutorial5 from './tutorialPages/page_5.vue'
+import Tutorial6 from './tutorialPages/page_6.vue'
+import Tutorial7 from './tutorialPages/page_7.vue'
+import Tutorial8 from './tutorialPages/page_8.vue'
 import json from './dataSample.json'
 
 export default {
@@ -150,6 +158,10 @@ export default {
     Tutorial2,
     Tutorial3,
     Tutorial4,
+    Tutorial5,
+    Tutorial6,
+    Tutorial7,
+    Tutorial8,
   },
   props: {
     msg: String
@@ -166,6 +178,7 @@ export default {
       b_show_1: true,
       b_show_2: true,
       b_show_3: true,
+      window_size: "height: 600px;",
       // ----------------------------------------------These are data for styling
       variants: ['primary', 'secondary', 'success', 'warning', 'danger', 'info', 'light', 'dark'],
       headerBgVariant: 'dark',

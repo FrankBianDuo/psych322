@@ -1,8 +1,8 @@
 <template>
     <b-modal 
-      id="modal-center-instruction1" 
+      id="modal-center-instruction7" 
       size="xl"
-      centered title="Tutorial 1"
+      centered title="Tutorial 7"
       v-model="show"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
@@ -29,14 +29,14 @@
                 some questions. </p>
           </b-row>
       </b-container>
-        <b-button variant="outline-primary" size="lg">Back</b-button>
-        <b-button style="float: right;" @click="$bvModal.hide('modal-center-instruction1')" variant="outline-primary" size="lg" v-b-modal.modal-center-instruction2>Next</b-button>
+        <b-button @click="$bvModal.hide('modal-center-instruction7')" v-b-modal.modal-center-instruction6 variant="outline-primary" size="lg">Back</b-button>
+        <b-button style="float: right;" @click="$bvModal.hide('modal-center-instruction7')" variant="outline-primary" size="lg" v-b-modal.modal-center-instruction8>Next</b-button>
     </b-modal>
 </template>
 
 <script>
     export default {
-        name: 'Tutorial1',
+        name: 'Tutorial7',
         props: ['windowsize'],
         components: {
         },
