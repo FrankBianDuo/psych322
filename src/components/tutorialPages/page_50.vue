@@ -38,27 +38,27 @@
 
 <script>
     export default {
-        name: 'Tutorial43',
+        name: 'Tutorial50',
         props: ['windowsize'],
         components: {
         },
         data() {
             return {
-                page_num: "43",
+                page_num: "50",
                 square_left: "-22%",
                 square_right: "22%",
                 square_top: "2%",
                 square_bot: "25%",
-                center_text: "Think You Get",
-                center_img: 'Mutualism Give 3',
+                center_text: "They Actually Get",
+                center_img: 'Selfish Give 3',
                 color_1: 'Blank',
                 color_2: 'Blank',
                 color_3: 'Blank',
                 color_4: 'Blank',
-                num_1: '2',
-                num_2: '3',
-                num_3: '5',
-                num_4: '4',
+                num_1: '1',
+                num_2: '2',
+                num_3: '4',
+                num_4: '3',
                 // 1 2
                 // 3 4 
                 right_ans: 3,
