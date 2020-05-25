@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-instruction3" 
       size="xl"
-      centered title="Tutorial#3"
+      centered title="Instructions page 3"
       v-model="show"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
@@ -39,21 +39,20 @@
                 <img :src="require('../../assets/tutorials/Black 5.png')" v-bind:style="{ maxWidth: this.dot_size, height: 'auto', marginLeft: '21.6%' }" />
               </b-row>
               <div>
-                  <img @click="this.animate" :src="require('../../assets/tutorials/Flashy Avatar 0001.png')" v-bind:style="{ position: 'absolute', maxWidth: this.avatar_size, height: 'auto', marginTop: '-38%', opacity: this.show_avatar, transition: 'margin-left 0.5s', marginLeft: this.shift_right  }" />
-                <img :src="require('../../assets/tutorials/Flashy Avatar 0002.png')" v-bind:style="{ position: 'absolute', maxWidth: this.avatar_size, height: 'auto', marginTop: '-20.5%',  marginLeft: this.shift_left, transition: 'margin-left 0.5s', transform: 'scaleX(-1)'  }" />
-                <img :src="require('../../assets/tutorials/Flashy Avatar 0003.png')" v-bind:style="{ position: 'absolute', maxWidth: this.avatar_size, height: 'auto', marginTop: '-3%',  marginLeft: this.shift_right, transition: 'margin-left 0.5s',}" />
-
-                <img :src="require('../../assets/tutorials/Frown 02.png')" v-bind:style="{ position: 'absolute', maxWidth: this.frown_size, height: 'auto', marginTop: '-35.5%',  marginLeft: this.end_right, transition: 'opacity 0.5s', opacity: this.frown_opacity,}" />
-                <img :src="require('../../assets/tutorials/Frown 02.png')" v-bind:style="{ position: 'absolute', maxWidth: this.frown_size, height: 'auto', marginTop: '-17.5%',  marginLeft: this.end_left, transition: 'opacity 0.5s', opacity: this.frown_opacity}" />
-                <img :src="require('../../assets/tutorials/Frown 11.png')" v-bind:style="{ position: 'absolute', maxWidth: this.frown_size, height: 'auto', marginTop: '-0.2%',  marginLeft: this.end_right, transition: 'opacity 0.5s', opacity: this.frown_opacity}" />
+                  <img @click="this.animate" :src="require('../../assets/tutorials/Flashy Avatar 0001.png')" v-bind:style="{ position: 'absolute', maxWidth: this.avatar_size, height: 'auto', marginTop: '-38%', opacity: this.show_avatar, transition: 'margin-left 0.5s', marginLeft: this.shift_right1, transform: this.trans_1  }" />
+                <img :src="require('../../assets/tutorials/Flashy Avatar 0002.png')" v-bind:style="{ position: 'absolute', maxWidth: this.avatar_size, height: 'auto', marginTop: '-20.5%',  marginLeft: this.shift_left, transition: 'margin-left 0.5s', transform: this.trans_2  }" />
+                <img :src="require('../../assets/tutorials/Flashy Avatar 0003.png')" v-bind:style="{ position: 'absolute', maxWidth: this.avatar_size, height: 'auto', marginTop: '-3%',  marginLeft: this.shift_right2, transform: this.trans_3, transition: 'margin-left 0.5s',}" />
+                <img :src="require('../../assets/tutorials/Frown 05.png')" v-bind:style="{ position: 'absolute', maxWidth: this.frown_size, height: 'auto', marginTop: '-35.5%',  marginLeft: this.end_right, transition: 'opacity 0.5s', opacity: this.frown_opacity_1,}" />
+                <img :src="require('../../assets/tutorials/Frown 05.png')" v-bind:style="{ position: 'absolute', maxWidth: this.frown_size, height: 'auto', marginTop: '-17.5%',  marginLeft: this.end_left, transition: 'opacity 0.5s', opacity: this.frown_opacity_2}" />
+                <img :src="require('../../assets/tutorials/Frown 11.png')" v-bind:style="{ position: 'absolute', maxWidth: this.frown_size, height: 'auto', marginTop: '-0.2%',  marginLeft: this.end_right, transition: 'opacity 0.5s', opacity: this.frown_opacity_3}" />
                 
               </div>
                 
           </div>
       </b-container>
-      <b-button @click="$bvModal.hide('modal-center-instruction3')" v-b-modal.modal-center-instruction2 variant="outline-primary" size="lg" :disabled="this.locked">Back</b-button>
+      <b-button @click="this.resetAnimation" v-b-modal.modal-center-instruction2 variant="outline-primary" size="lg" :disabled="this.locked">Back</b-button>
                 
-            <b-button style="float: right;" @click="$bvModal.hide('modal-center-instruction3')" variant="outline-primary" size="lg" v-b-modal.modal-center-instruction4 :disabled="this.locked">Next</b-button>
+            <b-button style="float: right;" @click="this.resetAnimation" variant="outline-primary" size="lg" v-b-modal.modal-center-instruction4 :disabled="this.locked">Next</b-button>
     </b-modal>
 </template>
 
@@ -70,12 +69,20 @@
                 avatar_size: "5%",
                 show_avatar: "100%",
                 shift_left: "44.3%",
+                shift_right1: "44.3%",
+                shift_right2: "44.3%",
+
                 end_left: "39%",
                 end_right: "53%",
-                shift_right: "44.3%",
                 frown_size: '3%',
-                frown_opacity: '0%',
-                locked: true
+                frown_opacity_1: '0%',
+                frown_opacity_2: '0%',
+                frown_opacity_3: '0%',
+                trans_1: 'scaleX(-1)',
+                trans_2: 'scaleX(-1)',
+                trans_3: 'scaleX(-1)',
+                locked: true,
+                mutex: false
             }
         },
         computed: {
@@ -84,20 +91,68 @@
             this.$root.$on('bv::modal::show', (bvEvent, modalId) => {
             // eslint-disable-next-line no-console
             console.log('Modal is about to be shown', bvEvent, modalId)
-            setTimeout(() => this.animate(), 1500);
-            setTimeout(() => this.animate_frown(), 2200);
+            if (modalId != "modal-center-instruction3") {
+                return;
+            }
+            if (this.mutex == true) {
+                return
+            }
+            this.mutex = true;
+            setTimeout(() => this.animate(), 1500); //2800 IN PRODUCTION
             })
         },
+        beforeDestroy() {
+            
+        },
         methods: {
-            animate(){
-                this.shift_left = "38%"
-                this.shift_right = "52%"
+            resetAnimation() {
+                this.$bvModal.hide('modal-center-instruction3')
+                this.locked = true
+                this.shift_left = "44.3%"
+                this.shift_right1 = "44.3%"
+                this.shift_right2 = "44.3%"
+                this.frown_opacity_1 = '0%'
+                this.frown_opacity_2 = '0%'
+                this.frown_opacity_3 = '0%'
+                this.trans_1 = 'scaleX(-1)'
+                this.trans_2 = 'scaleX(-1)'
+                this.trans_3 = 'scaleX(-1)'
             },
-            animate_frown(){
-                this.frown_opacity = "100%"
-                setTimeout(() => this.locked = false, 300);
-                
-            }
+            animate(){
+                let parent = this
+                this.animate_frown_1();
+                setTimeout(() => { parent.animate_frown_2() }, 2000);
+                setTimeout(() => { parent.animate_frown_3() }, 4000);
+
+            },
+            animate_frown_1(){
+                this.trans_1 = 'scaleX(1)'
+                setTimeout(() => this.trans_1 = 'scaleX(-1)', 200);
+                setTimeout(() => this.trans_1 = 'scaleX(1)', 400);
+                setTimeout(() => this.trans_1 = 'scaleX(-1)', 600);
+                setTimeout(() => this.trans_1 = 'scaleX(1)', 800);
+                setTimeout(() => this.shift_right1 = "52%", 1200);
+                setTimeout(() => this.frown_opacity_1 = "100%", 1500);
+            },
+            animate_frown_2(){
+                this.trans_2 = 'scaleX(1)'
+                setTimeout(() => this.trans_2 = 'scaleX(-1)', 200);
+                setTimeout(() => this.trans_2 = 'scaleX(1)', 400);
+                setTimeout(() => this.trans_2 = 'scaleX(-1)', 600);
+                setTimeout(() => this.shift_left = "38%", 1200);
+                setTimeout(() => this.frown_opacity_2 = "100%", 1500);
+            },
+            animate_frown_3(){
+                this.trans_3 = 'scaleX(1)'
+                setTimeout(() => this.trans_3 = 'scaleX(-1)', 200);
+                setTimeout(() => this.trans_3 = 'scaleX(1)', 400);
+                setTimeout(() => this.trans_3 = 'scaleX(-1)', 600);
+                setTimeout(() => this.trans_3 = 'scaleX(1)', 800);
+                setTimeout(() => this.shift_right2 = "52%", 1200);
+                setTimeout(() => this.frown_opacity_3 = "100%", 1500);
+                setTimeout(() => this.locked = false, 1800);
+                setTimeout(() => this.mutex = false, 1800);
+            },
         },
     }
 </script>

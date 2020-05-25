@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-instruction4" 
       size="xl"
-      centered title="Tutorial#4"
+      centered title="Instructions page 4"
       v-model="show"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"

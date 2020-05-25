@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-instruction7" 
       size="xl"
-      centered title="Tutorial 7"
+      centered title="Instructions page 7"
       v-model="show"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
@@ -16,18 +16,11 @@
       :hide-header-close="true"
     >
       <b-container class="align-bottom" :style="this.windowsize"  >
-          <b-row class="mt-5" >
-              <h1 style="text-align: center; left: 50%; transform: translate(-50%, 0); margin-left: 50%;"> Experiment Tutorial </h1>
-                <p style="font-size: 30px; font-family: Calibri;" class="text-center mx-5 px-5">Please read and fill out the consent form. Please do not select
-                the “refresh” button. This experiment should last about an hour.
-                This tutorial will only allow you to progress to the experiment
-                once you correctly answer every comprehension question because
-                it is essential that you understand the task. You may use the
-                arrow keys or the “BACK” and “NEXT” buttons to move forwards
-                and backwards through the tutorial as needed. Experimenters
-                are nearby to help but protocol prevents them from answering
-                some questions. </p>
-          </b-row>
+          <div style="text-align: center;">
+              <img :src="require('../../assets/tutorials/Equal Preferences.png')" v-bind:style="{ maxWidth: '40%', height: 'auto', transform: 'translate(-50%, 0)', marginLeft: this.first_left_margin, position: 'absolute', marginTop: '20%', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
+               <img :src="require('../../assets/tutorials/Page7T.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', transform: 'translate(-50%, 0)', marginLeft: this.first_left_margin, position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
+            </div>
+              
       </b-container>
         <b-button @click="$bvModal.hide('modal-center-instruction7')" v-b-modal.modal-center-instruction6 variant="outline-primary" size="lg">Back</b-button>
         <b-button style="float: right;" @click="$bvModal.hide('modal-center-instruction7')" variant="outline-primary" size="lg" v-b-modal.modal-center-instruction8>Next</b-button>
@@ -41,7 +34,9 @@
         components: {
         },
         data() {
-            return {}
+            return {
+                shift_left: "44.3%"
+            }
         },
         computed: {
         },

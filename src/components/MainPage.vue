@@ -13,7 +13,7 @@
     <div class="bv-example-row bv-example-row-flex-cols">
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
-        <b-button v-b-modal.modal-center-instruction3 >Instructions</b-button>
+        <b-button v-b-modal.modal-center-instruction36 >Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
@@ -128,6 +128,47 @@
     <Tutorial6 :windowsize ="this.window_size" />
     <Tutorial7 :windowsize ="this.window_size" />
     <Tutorial8 :windowsize ="this.window_size" />
+    <Tutorial9 :windowsize ="this.window_size" />
+    <Tutorial10 :windowsize ="this.window_size" />
+    <Tutorial11 :windowsize ="this.window_size" />
+    <Tutorial12 :windowsize ="this.window_size" />
+    <Tutorial13 :windowsize ="this.window_size" />
+    <Tutorial14 :windowsize ="this.window_size" />
+    <Tutorial15 :windowsize ="this.window_size" />
+    <Tutorial16 :windowsize ="this.window_size" />
+    <Tutorial17 :windowsize ="this.window_size" />
+    <Tutorial18 :windowsize ="this.window_size" />
+    <Tutorial19 :windowsize ="this.window_size" />
+    <Tutorial20 :windowsize ="this.window_size" />
+    <Tutorial21 :windowsize ="this.window_size" />
+    <Tutorial22 :windowsize ="this.window_size" />
+    <Tutorial23 :windowsize ="this.window_size" />
+    <Tutorial24 :windowsize ="this.window_size" />
+    <Tutorial25 :windowsize ="this.window_size" />
+    <Tutorial26 :windowsize ="this.window_size" />
+    <Tutorial27 :windowsize ="this.window_size" />
+    <Tutorial28 :windowsize ="this.window_size" />
+    <Tutorial29 :windowsize ="this.window_size" />
+    <Tutorial30 :windowsize ="this.window_size" />
+    <Tutorial31 :windowsize ="this.window_size" />
+    <Tutorial32 :windowsize ="this.window_size" />
+    <Tutorial33 :windowsize ="this.window_size" />
+    <Tutorial34 :windowsize ="this.window_size" />
+    <Tutorial35 :windowsize ="this.window_size" />
+    <Tutorial36 :windowsize ="this.window_size" />
+    <Tutorial37 :windowsize ="this.window_size" />
+    <Tutorial38 :windowsize ="this.window_size" />
+    <Tutorial39 :windowsize ="this.window_size" />
+    <Tutorial40 :windowsize ="this.window_size" />
+    <Tutorial41 :windowsize ="this.window_size" />
+    <Tutorial42 :windowsize ="this.window_size" />
+    <Tutorial43 :windowsize ="this.window_size" />
+    <Tutorial44 :windowsize ="this.window_size" />
+    <Tutorial45 :windowsize ="this.window_size" />
+    <Tutorial46 :windowsize ="this.window_size" />
+    <Tutorial47 :windowsize ="this.window_size" />
+    <Tutorial48 :windowsize ="this.window_size" />
+
     <BlockOne @blockOneDone="blockOneFinished" :participant_name="this.form.name"/>
     <BlockTwo @blockTwoDone="blockTwoFinished" :participant_name="this.form.name"/>
     <BlockThree @blockThreeDone="blockThreeFinished" :participant_name="this.form.name"/>
@@ -146,6 +187,46 @@ import Tutorial5 from './tutorialPages/page_5.vue'
 import Tutorial6 from './tutorialPages/page_6.vue'
 import Tutorial7 from './tutorialPages/page_7.vue'
 import Tutorial8 from './tutorialPages/page_8.vue'
+import Tutorial9 from './tutorialPages/page_9.vue'
+import Tutorial10 from './tutorialPages/page_10.vue'
+import Tutorial11 from './tutorialPages/page_11.vue'
+import Tutorial12 from './tutorialPages/page_12.vue'
+import Tutorial13 from './tutorialPages/page_13.vue'
+import Tutorial14 from './tutorialPages/page_14.vue'
+import Tutorial15 from './tutorialPages/page_15.vue'
+import Tutorial16 from './tutorialPages/page_16.vue'
+import Tutorial17 from './tutorialPages/page_17.vue'
+import Tutorial18 from './tutorialPages/page_18.vue'
+import Tutorial19 from './tutorialPages/page_19.vue'
+import Tutorial20 from './tutorialPages/page_20.vue'
+import Tutorial21 from './tutorialPages/page_21.vue'
+import Tutorial22 from './tutorialPages/page_22.vue'
+import Tutorial23 from './tutorialPages/page_23.vue'
+import Tutorial24 from './tutorialPages/page_24.vue'
+import Tutorial25 from './tutorialPages/page_25.vue'
+import Tutorial26 from './tutorialPages/page_26.vue'
+import Tutorial27 from './tutorialPages/page_27.vue'
+import Tutorial28 from './tutorialPages/page_28.vue'
+import Tutorial29 from './tutorialPages/page_29.vue'
+import Tutorial30 from './tutorialPages/page_30.vue'
+import Tutorial31 from './tutorialPages/page_31.vue'
+import Tutorial32 from './tutorialPages/page_32.vue'
+import Tutorial33 from './tutorialPages/page_33.vue'
+import Tutorial34 from './tutorialPages/page_34.vue'
+import Tutorial35 from './tutorialPages/page_35.vue'
+import Tutorial36 from './tutorialPages/page_36.vue'
+import Tutorial37 from './tutorialPages/page_37.vue'
+import Tutorial38 from './tutorialPages/page_38.vue'
+import Tutorial39 from './tutorialPages/page_39.vue'
+import Tutorial40 from './tutorialPages/page_40.vue'
+import Tutorial41 from './tutorialPages/page_41.vue'
+import Tutorial42 from './tutorialPages/page_42.vue'
+import Tutorial43 from './tutorialPages/page_43.vue'
+import Tutorial44 from './tutorialPages/page_44.vue'
+import Tutorial45 from './tutorialPages/page_45.vue'
+import Tutorial46 from './tutorialPages/page_46.vue'
+import Tutorial47 from './tutorialPages/page_47.vue'
+import Tutorial48 from './tutorialPages/page_48.vue'
 import json from './dataSample.json'
 
 export default {
@@ -162,6 +243,46 @@ export default {
     Tutorial6,
     Tutorial7,
     Tutorial8,
+    Tutorial9,
+    Tutorial10,
+    Tutorial11,
+    Tutorial12,
+    Tutorial13,
+    Tutorial14,
+    Tutorial15,
+    Tutorial16,
+    Tutorial17,
+    Tutorial18,
+    Tutorial19,
+    Tutorial20,
+    Tutorial21,
+    Tutorial22,
+    Tutorial23,
+    Tutorial24,
+    Tutorial25,
+    Tutorial26,
+    Tutorial27,
+    Tutorial28,
+    Tutorial29,
+    Tutorial30,
+    Tutorial31,
+    Tutorial32,
+    Tutorial33,
+    Tutorial34,
+    Tutorial35,
+    Tutorial36,
+    Tutorial37,
+    Tutorial38,
+    Tutorial39,
+    Tutorial40,
+    Tutorial41,
+    Tutorial42,
+    Tutorial43,
+    Tutorial44,
+    Tutorial45,
+    Tutorial46,
+    Tutorial47,
+    Tutorial48,
   },
   props: {
     msg: String
