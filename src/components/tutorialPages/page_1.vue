@@ -16,7 +16,7 @@
       :hide-header-close="true"
     >
       <b-container class="align-bottom" :style="this.windowsize"  >
-          <img :src="require('../../assets/tutorials/Single Slides/Experiment Info.png')" style="width: 100%; height: 100%; transform: translate(-50%, 0); margin-left: 50%;"/>
+          <img :src="require('../../assets/tutorials/Single Slides/Experiment Info.png')" style="width: 110%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"/>
       </b-container>
         <b-button variant="outline-primary" size="lg">Back</b-button>
         <b-button style="float: right;" @click="$bvModal.hide('modal-center-instruction1')" variant="outline-primary" size="lg" v-b-modal.modal-center-instruction2>Next</b-button>
