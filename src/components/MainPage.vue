@@ -13,7 +13,7 @@
     <div class="bv-example-row bv-example-row-flex-cols">
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
-        <b-button v-b-modal.modal-center-instruction72 >Instructions</b-button>
+        <b-button v-b-modal.modal-center-instruction1 >Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
