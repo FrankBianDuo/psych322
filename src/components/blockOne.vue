@@ -12,107 +12,100 @@
     :body-text-variant="bodyTextVariant"
     :footer-bg-variant="footerBgVariant"
     :footer-text-variant="footerTextVariant"
-    :no-close-on-backdrop="false"
+    :no-close-on-backdrop="true"
     :no-close-on-esc="true"
     :hide-header-close="true"
   >
   <!-- Encounter #1 Code -->
-    <b-container class="bv-example-row">
+    <b-container class="bv-example-row" :style="this.windowsize">
       <b-row class="justify-content-center align-items-center my-1">
         <b-progress style="width: 100%;" :value="this.current_progress" :max="this.max_avatar" show-progress animated></b-progress>
       </b-row>
       <b-row class="justify-content-center align-items-center my-1"
       :style=this.prior_choice_style>
-        <div style="position: absolute; top: 19%; left: 46%; z-index: 100;">
+        <!-- These two fading effects need to be rendered first, otherwise they would be in the way -->
+        <img :src="require(`../assets/Centered Atoms/Keep Control Glow.png`)" :style="this.global_size_keep_glow"/>
+        <img :src="require(`../assets/Centered Atoms/Give Control Glow.png`)" :style="this.global_size_give_glow"/>
+
+
           <!-- These following imgs are the dots that appear in encounter #1 -->
           <img 
-          style="max-width:50%; max-height:50%;"
-          v-if="this.encounter_1_payoff_show" :src="require(`../assets/redots/Dot${this.dots_identifier(
+           :style="this.global_size"
+          v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E1 UB${this.dots_identifier(
             this.combinations[this.current_avatar].pr_p.a_first 
-            )}b.png`)" />
-        </div>
-        <div style="position: absolute;  top: 19%; right: 31.7%; z-index: 100;">
+            )}.png`)" />
           <img
-          style="max-width:50%; max-height:50%;" 
-          v-if="this.encounter_1_payoff_show" :src="require(`../assets/redots/Dot${this.dots_identifier(
+           :style="this.global_size"
+          v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E1 UP${this.dots_identifier(
               this.combinations[this.current_avatar].pr_p.p_first 
             )}.png`
             )" />
-        </div>
-        <div style="position: absolute; top: 36%; left: 46%; z-index: 100;">
           <img
-          style="max-width:50%; max-height:50%;" 
-          v-if="this.encounter_1_payoff_show" :src="require(`../assets/redots/Dot${this.dots_identifier(
+           :style="this.global_size"
+          v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E1 DB${this.dots_identifier(
               this.combinations[this.current_avatar].pr_p.a_second 
-            )}b.png`
+            )}.png`
             )" />
-        </div>
-        <div style="position: absolute; top: 36%; right: 31.7%; z-index: 100;">
           <img
-          style="max-width:50%; max-height:50%;" 
-          v-if="this.encounter_1_payoff_show" :src="require(`../assets/redots/Dot${this.dots_identifier(
+           :style="this.global_size"
+          v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E1 DP${this.dots_identifier(
               this.combinations[this.current_avatar].pr_p.p_second 
             )}.png`
             )" />
-        </div>
-        <img :src="require('../assets/Blank Square.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
-        <img v-on:keyup.space="priorAvatar" :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; top: 22%;"/>
+        <img :src="require('../assets/Centered Atoms/E1 Box.png')" :style="this.global_size"/>
+        <img v-on:keyup.space="priorAvatar" :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:5%; max-height:5%; left: 28%; top: 29.5%;"/>
         <!-- Here are three alternatives of the arrow in encounter #1 {neutral, up, down} -->
         <!-- They will fade in or/and out depending on the current scenario -->
-        <img :src="require(`../assets/redots/Dot Holder Highlight White.png`)" :style="this.arrow_style_one" />
-        <img :src="require(`../assets/redots/Dot Holder Highlight Blue Up.png`)" :style="this.arrow_style_two" />
-        <img :src="require(`../assets/redots/Dot Holder Highlight Blue Dn.png`)" :style="this.arrow_style_three" />
+        <img :src="require(`../assets/Centered Atoms/E1 Dot Box Black.png`)" :style="this.arrow_style_one" />
+        <img :src="require(`../assets/Centered Atoms/E1 Dot Box Choice Up.png`)" :style="this.arrow_style_two" />
+        <img :src="require(`../assets/Centered Atoms/E1 Dot Box Choice Dn.png`)" :style="this.arrow_style_three" />
         <!-- ^^^^^^^^^^^^^^ -->
-        <img :src="require('../assets/You Full 1.png')" style="position: absolute;max-width:15%; max-height:15%; right: 28%; top: 22%;"/>
+        <img :src="require('../assets/Centered Atoms/E1 You.png')" :style="this.global_size"/>
       </b-row>
 
       <!-- Encounter #2 HTML code -->
       <b-row class="justify-content-center align-items-center mt-5 bt-5" :style=this.current_choice_style>
-        <div style="position: absolute; top: 67.8%; left: 46%; z-index: 100;">
           <img 
-          style="max-width:50%; max-height:50%;"
-          v-if="this.encounter_1_payoff_show" :src="require(`../assets/redots/Dot${this.dots_identifier(
+           :style="this.global_size"
+          v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E2 UB${this.dots_identifier(
             this.combinations[this.current_avatar].a_p.a_first 
-            )}b.png`)" />
-        </div>
-        <div style="position: absolute;  top: 67.8%; right: 31.7%; z-index: 100;">
+            )}.png`)" />
           <img 
-          style="max-width:50%; max-height:50%;"
-          v-if="this.encounter_1_payoff_show" :src="require(`../assets/redots/Dot${this.dots_identifier(
+           :style="this.global_size"
+          v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E2 UP${this.dots_identifier(
             this.combinations[this.current_avatar].a_p.p_first 
             )}.png`)" />
-        </div>
-        <div style="position: absolute; top: 84.3%; left: 46%; z-index: 100;">
           <img 
-          style="max-width:50%; max-height:50%;"
-          v-if="this.encounter_1_payoff_show" :src="require(`../assets/redots/Dot${this.dots_identifier(
+           :style="this.global_size"
+          v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E2 DB${this.dots_identifier(
             this.combinations[this.current_avatar].a_p.a_second 
-            )}b.png`)" />
-        </div>
-        <div style="position: absolute; top: 84.3%; right: 31.7%; z-index: 100;">
+            )}.png`)" />
             <img 
-          style="max-width:50%; max-height:50%;"
-          v-if="this.encounter_1_payoff_show" :src="require(`../assets/redots/Dot${this.dots_identifier(
+           :style="this.global_size"
+          v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E2 DP${this.dots_identifier(
               this.combinations[this.current_avatar].a_p.p_second 
             )}.png`)" />
-        </div>
-        <img :src="require('../assets/Blank Square.png')" style="position: relative; width: 50%; height: 50%; top: 10px;"/>
+        <img :src="require('../assets/Centered Atoms/E2 Box.png')" :style="this.global_size"/>
         <img :src="require(`../assets/Feedback Trust.png`)" :style=this.trust_effect_style />
 
         <!-- HTML Element that presents a random avatar -->
-        <img :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:15%; max-height:15%; left: 30%; bottom: 13%;"/>
-        <img :src="require(`../assets/redots/${current_arrow}`)" style="position: absolute;max-width:35%; max-height:35%; bottom: 4.5%; left: 36.5%;" />
-        <img :src="require(`../assets/redots/Dot Holder Sure Thing Highlight ${this.holder_stype}.png`)" style="position: absolute;max-width:20%; max-height:20%; bottom: 25%; right: 24.5%;" />
+        <img :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:5%; max-height:5%; left: 28%; bottom: 32.5%;"/>
+        <img :src="require(`../assets/Centered Atoms/E2 ${current_arrow}`)" :style="this.global_size" />
+        <img :src="require(`../assets/Centered Atoms/Keep Control Box Black.png`)" :style="this.global_size" />
 
         <!--  Background You Avatar -->
-        <img :src="require(`../assets/You Blank 1.png`)" style="position: absolute;max-width:15%; max-height:15%; right: 28%; bottom: 13%;"/>
-        <div style="position: absolute; top: 63%; right: 22%; z-index: 100;">
-            <img 
-          style="max-width:50%; max-height:50%;"
-          v-if="this.encounter_1_payoff_show" :src="require(`../assets/redots/Dot${this.dots_identifier(
-            this.combinations[this.current_avatar].pl_p
-            )}.png`)" />
-        </div>
+        <img :src="require(`../assets/Centered Atoms/E2 You.png`)" :style="this.global_size"/>
+        <img :src="require(`../assets/Centered Atoms/AZ.png`)" :style="this.global_size"/>
+        <img :src="require(`../assets/Centered Atoms/JK.png`)" :style="this.global_size"/>
+        
+        <img 
+      :style="this.global_size"
+      v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E2 CP${this.dots_identifier(
+        this.combinations[this.current_avatar].pl_p
+        )}.png`)" />
+        <img 
+      :style="this.global_size"
+      v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E2 CB3.png`)" />
       </b-row>
     </b-container>
     <b-modal ref="my-modal" hide-footer title="5 Minute Rest Break">
@@ -131,6 +124,10 @@ export default {
   },
   data() {
     return {
+    windowsize: 'height: 600px;',
+    global_size: 'position: absolute; width: 50%; height: auto; top: 100px;',
+    global_size_keep_glow: 'position: absolute; width: 50%; height: auto; top: 100px; opacity: 0%;',
+    global_size_give_glow: 'position: absolute; width: 50%; height: auto; top: 100px; opacity: 0%;',
     // Rest break data 
     rb_shown: false,
     rb_min: 0,
@@ -146,6 +143,7 @@ export default {
     fading: false,
     block_listeners: false,
     you_avatar_type: '1',
+    // avatar_size: '5%',
     // Data for styling
     variants: ['primary', 'secondary', 'success', 'warning', 'danger', 'info', 'light', 'dark'],
     headerBgVariant: 'dark',
@@ -163,15 +161,15 @@ export default {
     // These data help with the fading effect with the arrow in encounter #1
     trust_effect_style: "position: absolute; max-width:75%; max-height:75%; left: 16%; bottom: -10%; opacity: 0%",
     holder_stype: "White",
-    arrow_style_one: "position: absolute;max-width:35%; max-height:35%; top: 12%; left: 36.5%; opacity: 100%; transition: opacity 0.5s;",
-    arrow_style_two: "position: absolute;max-width:35%; max-height:35%; top: 12%; left: 36.5%; opacity: 0%; transition: opacity 0.5s;",
-    arrow_style_three: "position: absolute;max-width:35%; max-height:35%; top: 12%; left: 36.5%; opacity: 0%; transition: opacity 0.5s;",
+    arrow_style_one: "position: absolute; width: 50%; height: auto; top: 100px; opacity: 100%; transition: opacity 0.5s;",
+    arrow_style_two: "position: absolute; width: 50%; height: auto; top: 100px; opacity: 0%; transition: opacity 0.5s;",
+    arrow_style_three: "position: absolute; width: 50%; height: auto; top: 100px; opacity: 0%; transition: opacity 0.5s;",
     arrow_num: '1',
     avatar_num: '1',
     avatar_list: this.shuffle(Array(1080).fill().map((x,i)=>i)),
     current_avatar: 0,
     current_progress: 0,
-    current_arrow: 'Dot Holder Highlight White.png',
+    current_arrow: 'Dot Boxes.png',
     show_cur_num: false,
     prediction: null,
     // How many games to run
@@ -290,14 +288,14 @@ export default {
       let parent = this;
       setTimeout(function() {
         parent.arrow_num = parent.combinations[parent.current_avatar].a_c;
-        parent.arrow_style_one = "position: absolute;max-width:35%; max-height:35%; top: 12%; left: 36.5%; opacity: 0%; transition: opacity 0.5s;";
+        parent.arrow_style_one = "position: absolute; width: 50%; height: auto; top: 100px; opacity: 0%; transition: opacity 0.5s;";
         if 
           (parent.arrow_num == '2')  {
-          parent.arrow_style_two = "position: absolute;max-width:35%; max-height:35%; top: 12%; left: 36.5%; opacity: 100%; transition: opacity 0.5s;";
+          parent.arrow_style_two = "position: absolute; width: 50%; height: auto; top: 100px; opacity: 100%; transition: opacity 0.5s;";
           // eslint-disable-next-line no-console
         console.log("arrow 2")
         } else {
-          parent.arrow_style_three = "position: absolute;max-width:35%; max-height:35%; top: 12%; left: 36.5%;opacity: 100%; transition: opacity 0.5s;";
+          parent.arrow_style_three = "position: absolute; width: 50%; height: auto; top: 100px; opacity: 100%; transition: opacity 0.5s;";
           // eslint-disable-next-line no-console
         console.log("arrow 3")
         }
@@ -312,7 +310,7 @@ export default {
     predictUp() {
       // eslint-disable-next-line no-console
       console.log('Predict Up')
-      this.current_arrow = 'Dot Holder Highlight Green Up.png'
+      this.current_arrow = 'Pred Up.png'
       if (this.combinations[this.current_avatar].enctr_2_reverse == 1) {
         this.prediction = 0
       }
@@ -326,7 +324,10 @@ export default {
     predictDown() {
       // eslint-disable-next-line no-console
       console.log('Predict Down')
-      this.current_arrow = 'Dot Holder Highlight Green Dn.png'
+      this.current_arrow = 'Pred Dn.png'
+      if (this.combinations[this.current_avatar].enctr_2_reverse == 1) {
+        this.prediction = 1
+      }
         this.prediction = 0
       this.combinations[this.current_avatar].keypress = 'Z'
       let parent = this
@@ -348,7 +349,7 @@ export default {
       console.log('Trust')
       this.fading = true
       let parent = this
-      this.trust_effect_style = "position: absolute; max-width:75%; max-height:75%; left: 16%; bottom: -10%; opacity: 100%";
+      this.global_size_give_glow = "position: absolute; width: 50%; height: auto; top: 100px; opacity: 100%;";
       this.combinations[this.current_avatar].keypress +=  'J'
       setTimeout(function() {
         parent.ChoiceHelper(1);
@@ -359,7 +360,7 @@ export default {
       console.log('Distrust')
       this.fading = true
       let parent = this
-      this.holder_stype = "Purp";
+      this.global_size_keep_glow = "position: absolute; width: 50%; height: auto; top: 100px; opacity: 100%;";
       this.combinations[this.current_avatar].keypress +=  'K'
       setTimeout(function() {
         parent.ChoiceHelper(0);
@@ -415,10 +416,11 @@ export default {
       setTimeout(function() { 
         parent.fading = false
         parent.encounter_1_payoff_show = false
-        parent.trust_effect_style = "position: absolute; max-width:75%; max-height:75%; left: 16%; bottom: -10%; opacity: 0%"
-        parent.holder_stype = "White"
+        parent.global_size_keep_glow = 'position: absolute; width: 50%; height: auto; top: 100px; opacity: 0%;'
+        parent.global_size_give_glow = 'position: absolute; width: 50%; height: auto; top: 100px; opacity: 0%;'
         parent.free_space = true
-        parent.current_arrow = 'Dot Holder Highlight White.png'
+        parent.current_arrow = 'Dot Boxes.png'
+
         parent.prediction = null
         parent.show_cur_num = false
         parent.current_avatar += 1;
@@ -438,9 +440,9 @@ export default {
               // 1000 = 1s
         }
         parent.show_prior = 1; 
-        parent.arrow_style_two = "position: absolute;max-width:35%; max-height:35%; top: 12%; left: 36.5%; opacity: 0%; transition: opacity 0.15s;";
-        parent.arrow_style_three = "position: absolute;max-width:35%; max-height:35%; top: 12%; left: 36.5%; opacity: 0%; transition: opacity 0.15s;";
-        parent.arrow_style_one = "position: absolute;max-width:35%; max-height:35%; top: 12%; left: 36.5%; opacity: 100%; transition: opacity 0.15s;";
+        parent.arrow_style_two = "position: absolute; width: 50%; height: auto; top: 100px; opacity: 0%; transition: opacity 0.15s;";
+        parent.arrow_style_three = "position: absolute; width: 50%; height: auto; top: 100px; opacity: 0%; transition: opacity 0.15s;";
+        parent.arrow_style_one = "position: absolute; width: 50%; height: auto; top: 100px; opacity: 100%; transition: opacity 0.15s;";
       }, 750);
     },
     shuffle(array) {

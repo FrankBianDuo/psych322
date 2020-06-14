@@ -6,7 +6,7 @@
       :title="this.center_title"
       v-model="show"
       :hide-footer="true"
-      :no-close-on-backdrop="false"
+      :no-close-on-backdrop="true"
       :no-close-on-esc="true"
       :hide-header-close="true"
     >
@@ -61,7 +61,7 @@
                 num_4: '4',
                 // 1 2
                 // 3 4 
-                right_ans: 1,
+                right_ans: 2,
                 mutex: false,
                 lock: true,
                 ans_received: null,

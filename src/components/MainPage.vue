@@ -13,14 +13,14 @@
     <div class="bv-example-row bv-example-row-flex-cols">
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
-        <b-button v-b-modal.modal-center-instruction72 >Instructions</b-button>
+        <b-button v-b-modal.modal-center-instruction15 >Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_1" v-b-modal.modal-center>Experiment 1</b-button>
-        <download-csv v-if="this.finished_1" class="btn btn-default" :data="this.blockOneResults" :name="this.blockOneFileName()">
+        <download-csv class="btn btn-default">
           <!-- These download buttons become visible after some progress has been made -->
-            <b-button> Download data for Block #1 </b-button>
+            <b-button @click="this.formSubmit"> Download data for Block #1 </b-button>
         </download-csv>
       </b-row>
       <b-row class="my-4 justify-content-center">
@@ -363,6 +363,8 @@ export default {
   // Survey data and final output file data
   data() {
     return {
+      API_KEY: 'AIzaSyAxlUCye8_1_QFtX1S7ychFF8KpmpylaRk',
+      CLIENT_ID: '292287515987-0ujosbnm7d5v37l9dkp3fk5pfkoi4b27.apps.googleusercontent.com',
       dataJson: json,
       finished_1: false,
       finished_2: false,
@@ -422,8 +424,20 @@ export default {
   computed: {
   },
   methods: {
-    showInstructions(){
-      window.open('https://github.com/FrankBianDuo/psych322/blob/master/src/assets/Instructions.pdf', '_blank')
+    formSubmit(e) {
+        e.preventDefault();
+        let currentObj = this;
+        this.axios.post(`https://www.googleapis.com/drive/v3/files?key=[${this.API_KEY}]`, {
+            name: 'testing_1',
+        })
+        .then(function (response) {
+            currentObj.output = response.data;
+        })
+        .catch(function (error) {
+            currentObj.output = error;
+        });
+        // eslint-disable-next-line no-console
+        console.log(currentObj)
     },
     onReset(evt) {
       evt.preventDefault()
