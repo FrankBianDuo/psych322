@@ -17,8 +17,8 @@
             </div>
               
       </b-container>
-        <b-button :disabled="true" variant="outline-primary" size="lg">Back</b-button>
-        <b-button :disabled="true" style="float: right;" variant="outline-primary" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_back" variant="outline-primary" size="lg">Back</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" size="lg">Next</b-button>
 
         <b-button @click="reveal_False" :disabled="this.ans_disable" v-bind:style="{ marginLeft: '6%', marginTop: '-16%',  }" :variant="this.b_1_style" size="lg">False</b-button>
         <b-button @click="reveal_True" :disabled="this.ans_disable" v-bind:style="{ marginRight: '6%', marginTop: '-8%',  }" style="float: right;" :variant="this.b_2_style" size="lg">True</b-button>
@@ -64,6 +64,14 @@
             })
         },
         methods: {
+            reset_animation_back() {
+                this.$bvModal.hide("modal-center-instruction" + this.page_num)
+                this.$bvModal.show("modal-center-instruction" + ((Number(this.page_num) - 1).toString()))
+            },
+            reset_animation_next() {
+                this.$bvModal.hide("modal-center-instruction" + this.page_num)
+                this.$bvModal.show("modal-center-instruction" + ((Number(this.page_num) - 1).toString()))
+            },
             reveal_False() {
                 this.opacity_a = "0%"
                 this.ans_disable = true

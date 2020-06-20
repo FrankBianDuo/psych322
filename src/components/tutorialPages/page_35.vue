@@ -27,8 +27,8 @@
             </div>
               
       </b-container>
-        <b-button :disabled="true" variant="outline-primary" size="lg">Back</b-button>
-        <b-button :disabled="true" style="float: right;" variant="outline-primary" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_back" variant="outline-primary" size="lg">Back</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -86,6 +86,14 @@
             })
         },
         methods: {
+            reset_animation_back() {
+                this.$bvModal.hide("modal-center-instruction" + this.page_num)
+                this.$bvModal.show("modal-center-instruction" + ((Number(this.page_num) - 1).toString()))
+            },
+            reset_animation_next() {
+                this.$bvModal.hide("modal-center-instruction" + this.page_num)
+                this.$bvModal.show("modal-center-instruction" + ((Number(this.page_num) - 1).toString()))
+            },
             animate() {
                 this.opacity_1 = "0%"
                 this.opacity_2 = "100%"

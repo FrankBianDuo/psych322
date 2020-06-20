@@ -19,8 +19,8 @@
             </div>
               
       </b-container>
-        <b-button :disabled="true" variant="outline-primary" size="lg">Back</b-button>
-        <b-button :disabled="true" style="float: right;" variant="outline-primary" size="lg">Next</b-button>
+        <b-button @click="$bvModal.hide(`modal-center-instruction13`)" v-b-modal.modal-center-instruction12 variant="outline-primary" size="lg">Back</b-button>
+        <b-button @click="$bvModal.hide(`modal-center-instruction13`)" v-b-modal.modal-center-instruction14 style="float: right;" variant="outline-primary" size="lg">Next</b-button>
     </b-modal>
 </template>
 

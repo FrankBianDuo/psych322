@@ -13,15 +13,13 @@
     <div class="bv-example-row bv-example-row-flex-cols">
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
-        <b-button v-b-modal.modal-center-instruction15 >Instructions</b-button>
+        <b-button v-b-modal.modal-center-instruction11 >Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_1" v-b-modal.modal-center>Experiment 1</b-button>
-        <download-csv class="btn btn-default">
           <!-- These download buttons become visible after some progress has been made -->
-            <b-button @click="this.formSubmit"> Download data for Block #1 </b-button>
-        </download-csv>
+            <b-button class="btn btn-default" @click="this.formSubmit"> Download data for Block #1 </b-button>
       </b-row>
       <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_2" v-b-modal.modal-center-2>Experiment 2</b-button>
@@ -428,7 +426,7 @@ export default {
         e.preventDefault();
         let currentObj = this;
         this.axios.post(`https://www.googleapis.com/drive/v3/files?key=[${this.API_KEY}]`, {
-            name: 'testing_1',
+            Authorization: 'Oauth 292287515987-0ujosbnm7d5v37l9dkp3fk5pfkoi4b27.apps.googleusercontent.com',
         })
         .then(function (response) {
             currentObj.output = response.data;
