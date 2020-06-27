@@ -12,7 +12,7 @@
     :body-text-variant="bodyTextVariant"
     :footer-bg-variant="footerBgVariant"
     :footer-text-variant="footerTextVariant"
-    :no-close-on-backdrop="true"
+    :no-close-on-backdrop="false"
     :no-close-on-esc="true"
     :hide-header-close="true"
   >
@@ -198,6 +198,14 @@ export default {
   beforeMount() {
     this.buildCombinations();
   },
+  mounted() {
+    this.$root.$on('bv::modal::show', (bvEvent, modalId) => {
+      if (modalId != "modal-center") {
+          return
+      }
+      this.hide_tutorial()
+    })
+  },
   // Event listener for all keyboard events
   created: function () {
     let parent = this
@@ -239,6 +247,9 @@ export default {
       },
   },
   methods: {
+    hide_tutorial() {
+      this.$bvModal.hide("modal-center-instruction73")
+    },
     showModal() {
       if (this.rb_sec < 10) {
         this.rb_seczero = "0";
@@ -428,6 +439,7 @@ export default {
         if(parent.current_avatar == parent.max_avatar) {
             parent.show = false;
             alert('Block #1 finished')
+            // FIXME: connect this to the survey pages
             parent.b_show_1 = false;
         }
         if (parent.current_avatar == 12 || 

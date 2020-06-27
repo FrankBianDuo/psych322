@@ -13,13 +13,13 @@
     <div class="bv-example-row bv-example-row-flex-cols">
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
-        <b-button v-b-modal.modal-center-instruction11 >Instructions</b-button>
+        <b-button v-b-modal.modal-center-instruction1 >Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_1" v-b-modal.modal-center>Experiment 1</b-button>
           <!-- These download buttons become visible after some progress has been made -->
-            <b-button class="btn btn-default" @click="this.formSubmit"> Download data for Block #1 </b-button>
+            <b-button class="btn btn-default" @click="this.fetchPresignedUrl"> Download data for Block #1 </b-button>
       </b-row>
       <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_2" v-b-modal.modal-center-2>Experiment 2</b-button>
@@ -137,16 +137,16 @@
     <Tutorial17 :windowsize ="this.window_size" />
     <Tutorial18 :windowsize ="this.window_size" />
     <Tutorial19 :windowsize ="this.window_size" />
-    <Tutorial20 :windowsize ="this.window_size" />
-    <Tutorial21 :windowsize ="this.window_size" />
-    <Tutorial22 :windowsize ="this.window_size" />
-    <Tutorial23 :windowsize ="this.window_size" />
-    <Tutorial24 :windowsize ="this.window_size" />
-    <Tutorial25 :windowsize ="this.window_size" />
-    <Tutorial26 :windowsize ="this.window_size" />
-    <Tutorial27 :windowsize ="this.window_size" />
-    <Tutorial28 :windowsize ="this.window_size" />
-    <Tutorial29 :windowsize ="this.window_size" />
+    <Tutorial20 @answered="onAnsChild20"  :windowsize ="this.window_size" />
+    <Tutorial21 @answered="onAnsChild21" :windowsize ="this.window_size" />
+    <Tutorial22 @answered="onAnsChild22" :windowsize ="this.window_size" />
+    <Tutorial23 @answered="onAnsChild23" :windowsize ="this.window_size" />
+    <Tutorial24 @answered="onAnsChild24" :windowsize ="this.window_size" />
+    <Tutorial25 @answered="onAnsChild25" :windowsize ="this.window_size" />
+    <Tutorial26 @answered="onAnsChild26" :windowsize ="this.window_size" />
+    <Tutorial27 @answered="onAnsChild27" :windowsize ="this.window_size" />
+    <Tutorial28 @answered="onAnsChild28" :windowsize ="this.window_size" />
+    <Tutorial29 @answered="onAnsChild29" :windowsize ="this.window_size" />
     <Tutorial30 :windowsize ="this.window_size" />
     <Tutorial31 :windowsize ="this.window_size" />
     <Tutorial32 :windowsize ="this.window_size" />
@@ -178,19 +178,19 @@
     <Tutorial58 :windowsize ="this.window_size" />
     <Tutorial59 :windowsize ="this.window_size" />
     <Tutorial60 :windowsize ="this.window_size" />
-    <Tutorial61 :windowsize ="this.window_size" />
-    <Tutorial62 :windowsize ="this.window_size" />
-    <Tutorial63 :windowsize ="this.window_size" />
-    <Tutorial64 :windowsize ="this.window_size" />
-    <Tutorial65 :windowsize ="this.window_size" />
-    <Tutorial66 :windowsize ="this.window_size" />
-    <Tutorial67 :windowsize ="this.window_size" />
-    <Tutorial68 :windowsize ="this.window_size" />
+    <Tutorial61 @answered="onAnsChild61" :windowsize ="this.window_size" />
+    <Tutorial62 @answered="onAnsChild62" :windowsize ="this.window_size" />
+    <Tutorial63 @answered="onAnsChild63" :windowsize ="this.window_size" />
+    <Tutorial64 @answered="onAnsChild64" :windowsize ="this.window_size" />
+    <Tutorial65 @answered="onAnsChild65" :windowsize ="this.window_size" />
+    <Tutorial66 @answered="onAnsChild66" :windowsize ="this.window_size" />
+    <Tutorial67 @answered="onAnsChild67" :windowsize ="this.window_size" />
+    <Tutorial68 @answered="onAnsChild68" :windowsize ="this.window_size" />
     <Tutorial69 :windowsize ="this.window_size" />
     <Tutorial70 :windowsize ="this.window_size" />
     <Tutorial71 :windowsize ="this.window_size" />
-    <Tutorial72 :windowsize ="this.window_size" />
-    <Tutorial73 :windowsize ="this.window_size" />
+    <Tutorial72 :previous_ans="this.ans_tutorial" :windowsize ="this.window_size" />
+    <Tutorial73 :previous_ans="this.ans_tutorial" :windowsize ="this.window_size" />
 
     <BlockOne @blockOneDone="blockOneFinished" :participant_name="this.form.name"/>
     <BlockTwo @blockTwoDone="blockTwoFinished" :participant_name="this.form.name"/>
@@ -274,7 +274,9 @@ import Tutorial69 from './tutorialPages/page_69.vue'
 import Tutorial70 from './tutorialPages/page_70.vue'
 import Tutorial71 from './tutorialPages/page_71.vue'
 import Tutorial72 from './tutorialPages/page_72.vue'
+import Tutorial73 from './tutorialPages/page_73.vue'
 import json from './dataSample.json'
+import Vue from 'vue'
 
 export default {
   name: 'MainPage',
@@ -354,6 +356,7 @@ export default {
     Tutorial70,
     Tutorial71,
     Tutorial72,
+    Tutorial73,
   },
   props: {
     msg: String
@@ -414,6 +417,13 @@ export default {
         { value: 'Monwarul Islam', text: 'Monwarul Islam' },
         { value: 'Al-Taimee Hassan', text: 'Al-Taimee Hassan' },
       ],
+      // A true means the participant got that question right, and vice verse
+      ans_tutorial: {},
+      aws_bucket_name: "experimentdata2020",
+      aws_object_name: "test111.txt",
+      // serverlessrepo-s3-presigned-url-s3presignedurl-EF2SRE90YXDY?BucketName="experimentdata2020"&ObjectName="test10.txt"&ExpiredIn=3600
+      aws_presigned_lambda: `https://cors-anywhere.herokuapp.com/https://5wmf85807b.execute-api.us-east-2.amazonaws.com/default/serverlessrepo-s3-presigned-url-s3presignedurl-EF2SRE90YXDY?BucketName=`,
+      aws_s3_post_url: `https://cors-anywhere.herokuapp.com/https://experimentdata2020.s3.amazonaws.com`
     }
   },
   beforeMount() {
@@ -422,6 +432,132 @@ export default {
   computed: {
   },
   methods: {
+    fetchPresignedUrl() {
+      let sending_url = this.aws_presigned_lambda + this.aws_bucket_name + "&ObjectName=" + this.aws_object_name
+      Vue.axios.get(sending_url).then(response => {
+      // JSON responses are automatically parsed.
+      // eslint-disable-next-line no-console
+      console.log((response.data))
+      var raw_data = response.data.replace(/'/g, '"');
+      let parsed_data = JSON.parse(raw_data)
+      // eslint-disable-next-line no-console
+      console.log(parsed_data)
+      let post_request_body = parsed_data['fields']
+      post_request_body['file'] = 'testing,testing,testing'
+      // eslint-disable-next-line no-console
+      console.log(post_request_body)
+      var form_data = new FormData();
+
+      for ( var key in post_request_body ) {
+          form_data.append(key, post_request_body[key]);
+      }
+      Vue.axios.post(this.aws_s3_post_url, 
+      form_data, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'x-requested-with': 'xxxx',
+          }
+      }
+      ).then(response => {
+        // 204 No Content
+        // eslint-disable-next-line no-console
+        console.log(response.data)
+      }).catch(e => {
+        // eslint-disable-next-line no-console
+        console.log(e)
+      })
+    })
+    },
+    onAnsChild20(value) {
+      this.ans_tutorial[20] = value
+      // eslint-disable-next-line no-console
+      console.log(this.ans_tutorial)
+    },
+    onAnsChild21(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[21] = value
+    },
+    onAnsChild22(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[22] = value
+    },
+    onAnsChild23(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[23] = value
+    },
+    onAnsChild24(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[24] = value
+    },
+    onAnsChild25(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[25] = value
+    },
+    onAnsChild26(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[26] = value
+    },
+    onAnsChild27(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[27] = value
+    },
+    onAnsChild28(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[28] = value
+    },
+    onAnsChild29(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[29] = value
+    },
+    onAnsChild61(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[61] = value
+    },
+    onAnsChild62(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[62] = value
+    },
+    onAnsChild63(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[63] = value
+    },
+    onAnsChild64(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[64] = value
+    },
+    onAnsChild65(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[65] = value
+    },
+    onAnsChild66(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[66] = value
+    },
+    onAnsChild67(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[67] = value
+    },
+    onAnsChild68(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[68] = value
+    },
     formSubmit(e) {
         e.preventDefault();
         let currentObj = this;

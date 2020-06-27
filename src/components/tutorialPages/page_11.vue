@@ -6,7 +6,7 @@
       :title="this.center_title"
       v-model="show"
       :hide-footer="true"
-      :no-close-on-backdrop="true"
+      :no-close-on-backdrop="false"
       :no-close-on-esc="true"
       :hide-header-close="true"
     >
@@ -56,7 +56,7 @@
             },
             reset_animation_next() {
                 this.$bvModal.hide("modal-center-instruction" + this.page_num)
-                this.$bvModal.show("modal-center-instruction" + ((Number(this.page_num) - 1).toString()))
+                this.$bvModal.show("modal-center-instruction" + ((Number(this.page_num) + 1).toString()))
             },
         },
     }

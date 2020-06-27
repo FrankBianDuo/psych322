@@ -6,7 +6,7 @@
       :title="this.center_title"
       v-model="show"
       :hide-footer="true"
-      :no-close-on-backdrop="true"
+      :no-close-on-backdrop="false"
       :no-close-on-esc="true"
       :hide-header-close="true"
     >
@@ -18,7 +18,7 @@
               
       </b-container>
         <b-button @click="$bvModal.hide(`modal-center-instruction21`)" v-b-modal.modal-center-instruction20 variant="outline-primary" size="lg">Back</b-button>
-        <b-button @click="$bvModal.hide(`modal-center-instruction21`)" v-b-modal.modal-center-instruction22 style="float: right;" variant="outline-primary" size="lg">Next</b-button>
+        <b-button @click="$bvModal.hide(`modal-center-instruction21`)" v-b-modal.modal-center-instruction72 style="float: right;" variant="outline-primary" size="lg">Next</b-button>
 
         <b-button @click="reveal_False" :disabled="this.ans_disable" v-bind:style="{ marginLeft: '6%', marginTop: '-16%',  }" :variant="this.b_1_style" size="lg">False</b-button>
         <b-button @click="reveal_True" :disabled="this.ans_disable" v-bind:style="{ marginRight: '6%', marginTop: '-8%',  }" style="float: right;" :variant="this.b_2_style" size="lg">True</b-button>
@@ -65,11 +65,13 @@
         },
         methods: {
             reveal_False() {
+                this.$emit('answered', [this.ans == 'f', this.ans])
                 this.opacity_a = "0%"
                 this.ans_disable = true
                 this.button_after()
             },
             reveal_True() {
+                this.$emit('answered', [this.ans == 't', this.ans])
                 this.opacity_a = "0%"
                 this.ans_disable = true
                 this.button_after()

@@ -3,7 +3,6 @@
       id="modal-center-instruction1" 
       size="xl"
       centered title="Instructions page 1"
-      v-model="show"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
       :header-text-variant="headerTextVariant"
@@ -11,7 +10,7 @@
       :body-text-variant="bodyTextVariant"
       :footer-bg-variant="footerBgVariant"
       :footer-text-variant="footerTextVariant"
-      :no-close-on-backdrop="true"
+      :no-close-on-backdrop="false"
       :no-close-on-esc="true"
       :hide-header-close="true"
     >

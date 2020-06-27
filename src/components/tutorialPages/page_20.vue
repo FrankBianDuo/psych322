@@ -6,7 +6,7 @@
       :title="this.center_title"
       v-model="show"
       :hide-footer="true"
-      :no-close-on-backdrop="true"
+      :no-close-on-backdrop="false"
       :no-close-on-esc="true"
       :hide-header-close="true"
     >
@@ -64,11 +64,13 @@
         },
         methods: {
             reveal_False() {
+                this.$emit('answered', [this.ans == 'f', this.ans])
                 this.opacity_a = "0%"
                 this.ans_disable = true
                 this.button_after()
             },
             reveal_True() {
+                this.$emit('answered', [this.ans == 't', this.ans])
                 this.opacity_a = "0%"
                 this.ans_disable = true
                 this.button_after()

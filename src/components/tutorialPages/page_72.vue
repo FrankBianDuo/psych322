@@ -6,7 +6,7 @@
       :title="this.center_title"
       v-model="show"
       :hide-footer="true"
-      :no-close-on-backdrop="true"
+      :no-close-on-backdrop="false"
       :no-close-on-esc="true"
       :hide-header-close="true"
     >
@@ -24,7 +24,10 @@
 <script>
     export default {
         name: 'Tutorial72',
-        props: ['windowsize'],
+        props: {
+            windowsize: String,
+            previous_ans: Object
+        },
         components: {
         },
         data() {
@@ -66,7 +69,18 @@
             },
             reset_animation_next() {
                 this.$bvModal.hide("modal-center-instruction" + this.page_num)
-                this.$bvModal.show("modal-center-instruction" + ((Number(this.page_num) - 1).toString()))
+                let wrong_questions = []
+                for (let [key, value] of Object.entries(this.previous_ans)) {
+                    if (value[0] == false) {
+                        wrong_questions.push(key)
+                    }
+                }
+                if (wrong_questions.length == 0) {
+                    this.$bvModal.show("modal-center")
+                }
+                else {
+                    this.$bvModal.show("modal-center-instruction" + ((Number(this.page_num) + 1).toString()))
+                }
             },
             animate() {
                 this.opacity_1 = '0%'
