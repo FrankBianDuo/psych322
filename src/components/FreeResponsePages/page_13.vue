@@ -16,7 +16,8 @@
       :hide-header-close="true"
     >
       <b-container class="align-bottom" :style="this.windowsize"  >
-          <img :src="require('../../assets/Free Response/Free Response 07.png')" style="width: 50%; height: auto; transform: translate(-50%, 0%); margin-left: 50%;"/>
+          <h3>In general, how did you feel about this experiment? Please state any
+comments, suggestion, or general reactions.</h3>
           <b-form-textarea
             style="transform: translate(0%, 20%);"
             id="textarea"
@@ -33,13 +34,13 @@
 
 <script>
     export default {
-        name: 'FR7',
+        name: 'FR13',
         props: ['windowsize'],
         components: {
         },
         data() {
             return {
-                page_num: "7",
+                page_num: "13",
                 text: ''
             }
         },
@@ -59,7 +60,7 @@
             go_to_next() {
                 this.$bvModal.hide("modal-center-FR" + this.page_num)
                 this.$bvModal.show("modal-center-FR" + ((Number(this.page_num) + 1).toString()))
-                this.$emit('FR7Done', this.text)
+                this.$emit('FR13Done', this.text)
             }
         },
     }

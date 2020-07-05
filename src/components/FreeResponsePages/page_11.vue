@@ -1,9 +1,9 @@
 <template>
     <b-modal 
-      id="modal-center-FR1" 
+      :id="this.page_id" 
       size="xl"
-      centered title="Free Response 1"
-      v-model="show"
+      centered 
+      :title="this.center_title"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
       :header-text-variant="headerTextVariant"
@@ -16,30 +16,51 @@
       :hide-header-close="true"
     >
       <b-container class="align-bottom" :style="this.windowsize"  >
-          <b-row class="mt-5" >
-             
-          </b-row>
+          <img :src="require('../../assets/Free Response/Free Response 11.png')" style="width: 50%; height: auto; transform: translate(-50%, 0%); margin-left: 50%;"/>
+          <b-form-textarea
+            style="transform: translate(0%, 20%);"
+            id="textarea"
+            v-model="text"
+            placeholder="Enter your answer here..."
+            rows="5"
+            max-rows="5"
+            ></b-form-textarea>
       </b-container>
-        <b-button variant="outline-primary" size="lg">Back</b-button>
-        <b-button style="float: right;" @click="$bvModal.hide('modal-center-FR1')" variant="outline-primary" size="lg" v-b-modal.modal-center-FR2>Next</b-button>
+        <b-button variant="outline-primary" @click="this.go_to_back"  size="lg">Back</b-button>
+        <b-button style="float: right;" @click="this.go_to_next" variant="outline-primary" size="lg">Next</b-button>
     </b-modal>
 </template>
 
 <script>
     export default {
-        name: 'FR1',
+        name: 'FR11',
         props: ['windowsize'],
         components: {
         },
         data() {
             return {
-                show: true,
+                page_num: "11",
+                text: ''
             }
         },
         computed: {
+            page_id() {
+                return "modal-center-FR" + this.page_num
+            },
+            center_title() {
+                return "Free Response " + this.page_num
+            },
         },
         methods: {
-            
+            go_to_back() {
+                this.$bvModal.hide("modal-center-FR" + this.page_num)
+                this.$bvModal.show("modal-center-FR" + ((Number(this.page_num) - 1).toString()))
+            },
+            go_to_next() {
+                this.$bvModal.hide("modal-center-FR" + this.page_num)
+                this.$bvModal.show("modal-center-FR" + ((Number(this.page_num) + 1).toString()))
+                this.$emit('FR11Done', this.text)
+            }
         },
     }
 </script>

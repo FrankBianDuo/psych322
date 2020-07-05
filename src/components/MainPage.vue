@@ -34,7 +34,10 @@
         </download-csv>
       </b-row>
       <b-row class="my-4 justify-content-center">
-        <b-button v-b-modal.modal-prevent-closing>Experiment Survey</b-button>
+        <b-button v-b-modal.modal-center-FR1>Experiment Free Response</b-button>
+      </b-row>
+      <b-row class="my-4 justify-content-center">
+        <b-button v-b-modal.modal-center-survey1>Experiment Survey</b-button>
       </b-row>
       <b-row class="my-4 justify-content-center">
         Participant ID: {{this.form.name}}
@@ -42,82 +45,6 @@
       <b-row class="my-4 justify-content-center">
       </b-row>
     </div>
-
-
-    <b-modal
-      id="modal-prevent-closing"
-      ref="modal"
-      title="Experiment Survey"
-    >
-    <!-- Here's the HTML code for the survey form -->
-      <b-form>
-
-      <b-form-group id="input-group-2" label="Participant ID:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="form.id"
-          required
-        ></b-form-input>
-      </b-form-group>
-
-      <b-form-group id="input-group-2" label="Date:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="form.date"
-          required
-        ></b-form-input>
-      </b-form-group>
-      <b-form-group id="input-group-2" label="Gender:" label-for="input-2">
-        <b-form-select v-model="form.gender" :options="gender_options"></b-form-select>
-      </b-form-group>
-
-      <b-form-group id="input-group-2" label="RA Present:" label-for="input-2">
-        <b-form-select v-model="form.ra" :options="ra_options"></b-form-select>
-      </b-form-group>
-
-      <b-form-group id="input-group-2" label="Age:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="form.age"
-          required
-        ></b-form-input>
-      </b-form-group>
-
-      <b-form-group id="input-group-2" label="Number of Older Brother(s):" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="form.olderBro"
-          required
-        ></b-form-input>
-      </b-form-group>
-
-      <b-form-group id="input-group-2" label="Number of Older Sister(s):" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="form.olderSis"
-          required
-        ></b-form-input>
-      </b-form-group>
-
-      <b-form-group id="input-group-2" label="Number of Younger Brother(s):" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="form.youngerBro"
-          required
-        ></b-form-input>
-      </b-form-group>
-
-      <b-form-group id="input-group-2" label="Number of Younger Sister(s):" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="form.youngerSis"
-          required
-        ></b-form-input>
-      </b-form-group>
-
-      <b-button variant="primary" @click="this.surveyFinish">Submit</b-button>
-    </b-form>
-    </b-modal>
     <Tutorial1 :windowsize ="this.window_size" />
     <Tutorial2 :windowsize ="this.window_size" />
     <Tutorial3 :windowsize ="this.window_size" />
@@ -191,6 +118,22 @@
     <Tutorial71 :windowsize ="this.window_size" />
     <Tutorial72 :previous_ans="this.ans_tutorial" :windowsize ="this.window_size" />
     <Tutorial73 :previous_ans="this.ans_tutorial" :windowsize ="this.window_size" />
+    <FRpage1 @FR1Done="FR1Finished" :windowsize ="this.window_size" />
+    <FRpage2 @FR2Done="FR2Finished" :windowsize ="this.window_size" />
+    <FRpage3 @FR3Done="FR3Finished" :windowsize ="this.window_size" />
+    <FRpage4 @FR4Done="FR4Finished" :windowsize ="this.window_size" />
+    <FRpage5 @FR5Done="FR5Finished" :windowsize ="this.window_size" />
+    <FRpage6 @FR6Done="FR6Finished" :windowsize ="this.window_size" />
+    <FRpage7 @FR7Done="FR7Finished" :windowsize ="this.window_size" />
+    <FRpage8 @FR8Done="FR8Finished" :windowsize ="this.window_size" />
+    <FRpage9 @FR9Done="FR9Finished" :windowsize ="this.window_size" />
+    <FRpage10 @FR10Done="FR10Finished" :windowsize ="this.window_size" />
+    <FRpage11 @FR11Done="FR11Finished" :windowsize ="this.window_size" />
+    <FRpage12 @FR12Done="FR12Finished" :windowsize ="this.window_size" />
+    <FRpage13 @FR13Done="FR13Finished" :windowsize ="this.window_size" />
+    <Survey1 @Survey1Done="Survey1Finished" :windowsize ="this.window_size" />
+    <Survey2 @Survey1Done="Survey2Finished" :windowsize ="this.window_size" />
+    <Survey3 @Survey1Done="Survey3Finished" :windowsize ="this.window_size" />
 
     <BlockOne @blockOneDone="blockOneFinished" :participant_name="this.form.name"/>
     <BlockTwo @blockTwoDone="blockTwoFinished" :participant_name="this.form.name"/>
@@ -275,12 +218,44 @@ import Tutorial70 from './tutorialPages/page_70.vue'
 import Tutorial71 from './tutorialPages/page_71.vue'
 import Tutorial72 from './tutorialPages/page_72.vue'
 import Tutorial73 from './tutorialPages/page_73.vue'
+import FRpage1 from './FreeResponsePages/page_1.vue'
+import FRpage2 from './FreeResponsePages/page_2.vue'
+import FRpage3 from './FreeResponsePages/page_3.vue'
+import FRpage4 from './FreeResponsePages/page_4.vue'
+import FRpage5 from './FreeResponsePages/page_5.vue'
+import FRpage6 from './FreeResponsePages/page_6.vue'
+import FRpage7 from './FreeResponsePages/page_7.vue'
+import FRpage8 from './FreeResponsePages/page_8.vue'
+import FRpage9 from './FreeResponsePages/page_9.vue'
+import FRpage10 from './FreeResponsePages/page_10.vue'
+import FRpage11 from './FreeResponsePages/page_11.vue'
+import FRpage12 from './FreeResponsePages/page_12.vue'
+import FRpage13 from './FreeResponsePages/page_13.vue'
+import Survey1 from './SurveyPages/page_1.vue'
+import Survey2 from './SurveyPages/page_2.vue'
+import Survey3 from './SurveyPages/page_3.vue'
 import json from './dataSample.json'
 import Vue from 'vue'
 
 export default {
   name: 'MainPage',
   components: {
+    Survey1,
+    Survey2,
+    Survey3,
+    FRpage1,
+    FRpage2,
+    FRpage3,
+    FRpage4,
+    FRpage5,
+    FRpage6,
+    FRpage7,
+    FRpage8,
+    FRpage9,
+    FRpage10,
+    FRpage11,
+    FRpage12,
+    FRpage13,
     BlockOne,
     BlockTwo,
     BlockThree,
@@ -587,6 +562,12 @@ export default {
     surveyFinish() {
       alert('Survey submitted!')
       this.blockOneResults = this.processOneResults(this.blockOneRawResults)
+    },
+    FR1Finished(results) {
+      this.FR1Results = results
+    },
+    Survey1Finished(results) {
+      this.S1Results = results
     },
     blockOneFinished(results) {
       // this.b_show_1 = false
