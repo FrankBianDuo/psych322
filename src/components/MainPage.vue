@@ -132,12 +132,32 @@
     <FRpage12 @FR12Done="FR12Finished" :windowsize ="this.window_size" />
     <FRpage13 @FR13Done="FR13Finished" :windowsize ="this.window_size" />
     <Survey1 @Survey1Done="Survey1Finished" :windowsize ="this.window_size" />
-    <Survey2 @Survey1Done="Survey2Finished" :windowsize ="this.window_size" />
-    <Survey3 @Survey1Done="Survey3Finished" :windowsize ="this.window_size" />
+    <Survey2 @Survey2Done="Survey2Finished" :windowsize ="this.window_size" />
+    <Survey3 @Survey3Done="Survey3Finished" :windowsize ="this.window_size" />
 
     <BlockOne @blockOneDone="blockOneFinished" :participant_name="this.form.name"/>
     <BlockTwo @blockTwoDone="blockTwoFinished" :participant_name="this.form.name"/>
     <BlockThree @blockThreeDone="blockThreeFinished" :participant_name="this.form.name"/>
+    <b-modal 
+      id="modal-center-end" 
+      size="xl"
+      centered 
+      title="The end"
+      :hide-footer="true"
+      :header-bg-variant="headerBgVariant"
+      :header-text-variant="headerTextVariant"
+      :body-bg-variant="bodyBgVariant"
+      :body-text-variant="bodyTextVariant"
+      :footer-bg-variant="footerBgVariant"
+      :footer-text-variant="footerTextVariant"
+      :no-close-on-backdrop="false"
+      :no-close-on-esc="true"
+      :hide-header-close="true"
+    >
+      <b-container class="align-bottom" :style="this.windowsize"  >
+        End of Survey URL here
+      </b-container>
+    </b-modal>
   </div>
 </template>
 
@@ -339,6 +359,8 @@ export default {
   // Survey data and final output file data
   data() {
     return {
+      form: '',
+      S1Results: '',
       API_KEY: 'AIzaSyAxlUCye8_1_QFtX1S7ychFF8KpmpylaRk',
       CLIENT_ID: '292287515987-0ujosbnm7d5v37l9dkp3fk5pfkoi4b27.apps.googleusercontent.com',
       dataJson: json,
@@ -363,19 +385,8 @@ export default {
       scenarioColor: `height: 280px; backgroundColor: red;`,
       index: 0,
       // ---------------------------------------------
-      // Recorded data from the form
-      form: {
-          id: '',
-          date: '',
-          gender: '',
-          ra: '',
-          age: '',
-          olderBro: '',
-          olderSis: '',
-          youngerBro: '',
-          youngerSis: '',
-        },
-      formshow: true,
+      end_survey_form: new Object(),
+      FRResults: ['','','','','','','','','','','','','','', ''],
       blockOneRawResults: null,
       blockOneResults: null,
       blockTwoResults: null,
@@ -395,7 +406,7 @@ export default {
       // A true means the participant got that question right, and vice verse
       ans_tutorial: {},
       aws_bucket_name: "experimentdata2020",
-      aws_object_name: "test111.txt",
+      aws_object_name: "testinit2.txt",
       // serverlessrepo-s3-presigned-url-s3presignedurl-EF2SRE90YXDY?BucketName="experimentdata2020"&ObjectName="test10.txt"&ExpiredIn=3600
       aws_presigned_lambda: `https://cors-anywhere.herokuapp.com/https://5wmf85807b.execute-api.us-east-2.amazonaws.com/default/serverlessrepo-s3-presigned-url-s3presignedurl-EF2SRE90YXDY?BucketName=`,
       aws_s3_post_url: `https://cors-anywhere.herokuapp.com/https://experimentdata2020.s3.amazonaws.com`
@@ -418,7 +429,7 @@ export default {
       // eslint-disable-next-line no-console
       console.log(parsed_data)
       let post_request_body = parsed_data['fields']
-      post_request_body['file'] = 'testing,testing,testing'
+      post_request_body['file'] = this.$papa.unparse(this.blockOneResults)
       // eslint-disable-next-line no-console
       console.log(post_request_body)
       var form_data = new FormData();
@@ -533,41 +544,74 @@ export default {
       console.log(value)
       this.ans_tutorial[68] = value
     },
-    formSubmit(e) {
-        e.preventDefault();
-        let currentObj = this;
-        this.axios.post(`https://www.googleapis.com/drive/v3/files?key=[${this.API_KEY}]`, {
-            Authorization: 'Oauth 292287515987-0ujosbnm7d5v37l9dkp3fk5pfkoi4b27.apps.googleusercontent.com',
-        })
-        .then(function (response) {
-            currentObj.output = response.data;
-        })
-        .catch(function (error) {
-            currentObj.output = error;
-        });
-        // eslint-disable-next-line no-console
-        console.log(currentObj)
-    },
-    onReset(evt) {
-      evt.preventDefault()
-      this.form.email = ''
-      this.form.name = ''
-      this.form.food = null
-      this.form.checked = []
-      this.formshow = false
-      this.$nextTick(() => {
-        this.formshow = true
-      })
-    },
-    surveyFinish() {
-      alert('Survey submitted!')
-      this.blockOneResults = this.processOneResults(this.blockOneRawResults)
-    },
     FR1Finished(results) {
-      this.FR1Results = results
+      this.FRResults[1] = results
+    },
+    FR2Finished(results) {
+      this.FRResults[2] = results
+    },
+    FR3Finished(results) {
+      this.FRResults[3] = results
+    },
+    FR4Finished(results) {
+      this.FRResults[4] = results
+    },
+    FR5Finished(results) {
+      this.FRResults[5] = results
+    },
+    FR6Finished(results) {
+      this.FRResults[6] = results
+    },
+    FR7Finished(results) {
+      this.FRResults[7] = results
+    },
+    FR8Finished(results) {
+      this.FRResults[8] = results
+    },
+    FR9Finished(results) {
+      this.FRResults[9] = results
+    },
+    FR10Finished(results) {
+      this.FRResults[10] = results
+    },
+    FR11Finished(results) {
+      this.FRResults[11] = results
+    },
+    FR12Finished(results) {
+      this.FRResults[12] = results
+    },
+    FR13Finished(results) {
+      this.FRResults[13] = results
     },
     Survey1Finished(results) {
-      this.S1Results = results
+      // eslint-disable-next-line no-console
+      console.log(results)
+      this.end_survey_form.school = results.school
+      this.end_survey_form.happy = results.avatars
+      this.end_survey_form.love = results.loves
+      this.end_survey_form.age = results.yob
+      this.end_survey_form.gender = results.genders
+    },
+    Survey2Finished(results) {
+      // eslint-disable-next-line no-console
+      console.log(results)
+      this.end_survey_form.olderBro = results.older_bro
+      this.end_survey_form.olderSis = results.older_sis
+      this.end_survey_form.youngerBro = results.younger_bro
+      this.end_survey_form.youngerSis = results.younger_sis
+      this.end_survey_form.english = results.english
+      this.end_survey_form.country = results.countries
+    },
+    Survey3Finished(results) {
+      // eslint-disable-next-line no-console
+      console.log(results)
+      // Generate form data at the end of our survey
+      this.end_survey_form.money = results.money
+      this.end_survey_form.gods = results.divine
+      this.end_survey_form.political = results.political
+      this.end_survey_form.attractive = results.view
+      this.end_survey_form.power = results.interact
+      this.end_survey_form.agree = results.agree
     },
     blockOneFinished(results) {
       // this.b_show_1 = false
@@ -602,14 +646,6 @@ export default {
           'Pred_RT': raw[i].reaction_time_prediction,
           'Control_Choice': raw[i].trust,
           'Control_RT': raw[i].reaction_time_trust,
-          'RA_pres': this.form.ra,
-          'Date': this.form.date,
-          'Age': this.form.age,
-          'Gender': this.form.gender,
-          'Old_bro': this.form.olderBro,
-          'Old_sis': this.form.olderSis,
-          'Yng_bro': this.form.youngerBro,
-          'Yng_sis': this.form.youngerSis,
           'E1&2_Act_Type': this.dataJson[Number(raw[i].trial_id) - 1]['E1&2_Act_Type'],
           'E1&2_Act_Deg': this.dataJson[Number(raw[i].trial_id) - 1]['E1&2_Act_Deg'],
           'Equality': this.dataJson[Number(raw[i].trial_id) - 1]['Equality'],
@@ -622,11 +658,43 @@ export default {
           // 'Rat_Act': this.ratAct(),
           // 'Rat_Deg': this.ratDeg(),
           // 'Red_Flag': this.redFlag(raw),
+          // The generating functions here are still bugged... using None values for now
           'Inst_Rat': '',
           'Rat_Sure': '',
           'Rat_Act': '',
           'Rat_Deg': '',
           'Red_Flag': '',
+          'Date': this.end_survey_form.date,
+          'Age': this.end_survey_form.age,
+          'Gender': this.end_survey_form.gender,
+          'Old_bro': this.end_survey_form.olderBro,
+          'Old_sis': this.end_survey_form.olderSis,
+          'Yng_bro': this.end_survey_form.youngerBro,
+          'Yng_sis': this.end_survey_form.youngerSis,
+          'Happy': this.end_survey_form.happy,
+          'Love': this.end_survey_form.love,
+          'English': this.end_survey_form.english,
+          'School': this.end_survey_form.school,
+          'Money': this.end_survey_form.money,
+          'Gods': this.end_survey_form.gods,
+          'Political': this.end_survey_form.political,
+          'Attractive': this.end_survey_form.attractive,
+          'Power': this.end_survey_form.power,
+          'Country': this.end_survey_form.country,
+          'Agreement': this.end_survey_form.agree,
+          'WRQ01': this.FRResults[1],
+          'WRQ02': this.FRResults[2],
+          'WRQ03': this.FRResults[3],
+          'WRQ04': this.FRResults[4],
+          'WRQ05': this.FRResults[5],
+          'WRQ06': this.FRResults[6],
+          'WRQ07': this.FRResults[7],
+          'WRQ08': this.FRResults[8],
+          'WRQ09': this.FRResults[9],
+          'WRQ10': this.FRResults[10],
+          'WRQ11': this.FRResults[11],
+          'WRQ12': this.FRResults[12],
+          'WRQ13': this.FRResults[13],
         }
         output.push(current)
       }

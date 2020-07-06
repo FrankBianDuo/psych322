@@ -16,7 +16,7 @@
       :hide-header-close="true"
     >
       <b-container class="align-bottom" :style="this.windowsize"  >
-          <b-form @submit="onSubmit" @reset="onReset">
+          <b-form>
             <b-form-group id="input-group-2" label="In US dollars, how much money do you typically make per day?" label-for="input-2">
                 <b-form-select
                 id="input-8"
@@ -88,7 +88,6 @@ divine?" label-for="input-3">
             return {
                 page_num: "3",
                 form: {
-                school: '',
                 money: '',
                 divine: '',
                 political: '',
@@ -112,17 +111,20 @@ divine?" label-for="input-3">
             center_title() {
                 return "Survey " + this.page_num
             },
+            block() {
+                return !(this.form.money != '' && this.form.divine != '' && this.form.political != '' && this.form.view != '' && this.form.interact != '' && this.form.agree != '')
+            }
         },
         methods: {
             go_to_next() {
                 this.$bvModal.hide("modal-center-survey" + this.page_num)
-                this.$bvModal.show("modal-center-survey" + ((Number(this.page_num) + 1).toString()))
-                this.$emit('Survey3Done', this.text)
+                this.$bvModal.show("modal-center-end")
+                this.$emit('Survey3Done', this.form)
             },
             go_to_back() {
                 this.$bvModal.hide("modal-center-survey" + this.page_num)
                 this.$bvModal.show("modal-center-survey" + ((Number(this.page_num) - 1).toString()))
-                this.$emit('Survey3Done', this.text)
+                this.$emit('Survey3Done', this.form)
             }
         },
     }

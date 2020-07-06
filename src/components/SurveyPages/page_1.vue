@@ -17,7 +17,7 @@
     >
       <b-container class="align-bottom" :style="this.windowsize"  >
           <img :src="require('../../assets/Free Response/Happiness Question.png')" style="width: 60%; height: auto; transform: translate(-50%, 0%); margin-left: 50%;"/>
-          <b-form @submit="onSubmit" @reset="onReset">
+          <b-form>
 
 
             <b-form-group id="input-group-1" label="Which of these people best represents you?" label-for="input-1">
@@ -36,9 +36,10 @@
                 required
                 ></b-form-select>
             </b-form-group>
-            <b-form-group id="input-group-3" label="Year of birth:" label-for="input-3">
+            <b-form-group id="input-group-3" label="Year of birth (number only):" label-for="input-3">
                 <b-form-input
                 id="input-3"
+                type='number'
                 v-model="form.yob"
                 required
                 placeholder="Enter your year of birth here..."
@@ -63,8 +64,8 @@
 
             </b-form>
       </b-container>
-        <b-button variant="outline-primary" size="lg">Back</b-button>
-        <b-button style="float: right;" @click="this.go_to_next" variant="outline-primary" size="lg">Next</b-button>
+        <b-button :disabled="block" variant="outline-primary" size="lg">Back</b-button>
+        <b-button :disabled="block" style="float: right;" @click="this.go_to_next" variant="outline-primary" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -78,13 +79,13 @@
             return {
                 page_num: "1",
                 form: {
+                avatars: '',
+                loves: '',
+                genders: '',
                 yob: '',
-                name: '',
-                food: null,
-                checked: [],
                 school: '',
                 },
-                avatars: [{ text: 'Select One', value: null }, 'Very sad avatar', 'Sad avatar', 'Medium avatar', 'Very happy avatar', 'happy avatar'],
+                avatars: [{ text: 'Select One', value: null }, 'Very sad people', 'Sad people', 'Medium people', 'happy people', 'Very happy people'],
                 loves: [{ text: 'Select One', value: null }, 'Strongly agree', 'Agree', 'Neutral', 'Disagree', 'Strongly disagree'],
                 genders: [{ text: 'Select One', value: null }, 'Male', 'Female', 'Other'],
                     
@@ -97,12 +98,15 @@
             center_title() {
                 return "Survey " + this.page_num
             },
+            block() {
+                return !(this.form.avatars != '' && this.form.loves != '' && this.form.genders != '' && this.form.yob != '' && this.form.school != '')
+            }
         },
         methods: {
             go_to_next() {
                 this.$bvModal.hide("modal-center-survey" + this.page_num)
                 this.$bvModal.show("modal-center-survey" + ((Number(this.page_num) + 1).toString()))
-                this.$emit('Survey1Done', this.text)
+                this.$emit('Survey1Done', this.form)
             }
         },
     }

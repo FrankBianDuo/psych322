@@ -53,7 +53,8 @@
             )}.png`
             )" />
         <img :src="require('../assets/Centered Atoms/E1 Box.png')" :style="this.global_size"/>
-        <img v-on:keyup.space="priorAvatar" :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:5%; max-height:5%; left: 28%; top: 29.5%;"/>
+        <img v-on:keyup.space="priorAvatar" :src="require(`../assets/Avatars/Blind Avatars/avb${this.pad(this.avatar_list[this.current_avatar], 4)}.png`)" :style="this.avatar_1"/>
+        <img v-on:keyup.space="priorAvatar" :src="require(`../assets/Avatars/Avatar Eyes/Eyes 90.png`)" :style="this.avatar_1"/>
         <!-- Here are three alternatives of the arrow in encounter #1 {neutral, up, down} -->
         <!-- They will fade in or/and out depending on the current scenario -->
         <img :src="require(`../assets/Centered Atoms/E1 Dot Box Black.png`)" :style="this.arrow_style_one" />
@@ -65,6 +66,8 @@
 
       <!-- Encounter #2 HTML code -->
       <b-row class="justify-content-center align-items-center mt-5 bt-5" :style=this.current_choice_style>
+        <img :src="require(`../assets/Centered Atoms/E2 Pred Up.png`)" :style="this.global_size_pred_up" />
+        <img :src="require(`../assets/Centered Atoms/E2 Pred Dn.png`)" :style="this.global_size_pred_dn" />
           <img 
            :style="this.global_size"
           v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E2 UB${this.dots_identifier(
@@ -89,23 +92,28 @@
         <img :src="require(`../assets/Feedback Trust.png`)" :style=this.trust_effect_style />
 
         <!-- HTML Element that presents a random avatar -->
-        <img :src="require(`../assets/avatarsgalore/slice${this.avatar_list[this.current_avatar]}.png`)" style="position: absolute; max-width:5%; max-height:5%; left: 28%; bottom: 32.5%;"/>
+        <img :src="require(`../assets/Avatars/Blind Avatars/avb${this.pad(this.avatar_list[this.current_avatar], 4)}.png`)" :style="this.avatar_2"/>
+        <img v-on:keyup.space="priorAvatar" :src="require(`../assets/Avatars/Avatar Eyes/Eyes 90.png`)" :style="this.avatar_2"/>
         <img :src="require(`../assets/Centered Atoms/E2 ${current_arrow}`)" :style="this.global_size" />
-        <img :src="require(`../assets/Centered Atoms/Keep Control Box Black.png`)" :style="this.global_size" />
+        <img :src="require(`../assets/Centered Atoms/Faded Arrows.png`)" :style="this.global_size" />
+        <img :src="require(`../assets/Centered Atoms/Keep Control Box Black.png`)" :style="this.global_size_control_box" />
 
         <!--  Background You Avatar -->
         <img :src="require(`../assets/Centered Atoms/E2 You.png`)" :style="this.global_size"/>
-        <img :src="require(`../assets/Centered Atoms/AZ.png`)" :style="this.global_size"/>
-        <img :src="require(`../assets/Centered Atoms/JK.png`)" :style="this.global_size"/>
+        <img :src="require(`../assets/Centered Atoms/You Arrows.png`)" :style="this.global_size_control_box"/>
+        <img :src="require(`../assets/Centered Atoms/AZ.png`)" :style="this.global_size_AZ"/>
+        <img :src="require(`../assets/Centered Atoms/JK.png`)" :style="this.global_size_JK"/>
+        <img :src="require(`../assets/Centered Atoms/Barrier.png`)" :style="this.global_size_control_box"/>
+
+        <img 
+        :style="this.global_size_control_box"
+        v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E2 CP${this.dots_identifier(
+          this.combinations[this.current_avatar].pl_p
+          )}.png`)" />
+        <img 
+          :style="this.global_size_control_box"
+          v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E2 CB3.png`)" />
         
-        <img 
-      :style="this.global_size"
-      v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E2 CP${this.dots_identifier(
-        this.combinations[this.current_avatar].pl_p
-        )}.png`)" />
-        <img 
-      :style="this.global_size"
-      v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E2 CB3.png`)" />
       </b-row>
     </b-container>
     <b-modal ref="my-modal" hide-footer title="5 Minute Rest Break">
@@ -125,15 +133,22 @@ export default {
   data() {
     return {
     windowsize: 'height: 600px;',
-    global_size: 'position: absolute; width: 50%; height: auto; top: 100px;',
-    global_size_keep_glow: 'position: absolute; width: 50%; height: auto; top: 100px; opacity: 0%;',
-    global_size_give_glow: 'position: absolute; width: 50%; height: auto; top: 100px; opacity: 0%;',
+    global_size: 'position: absolute; width: 70%; height: auto; top: 50px;',
+    global_size_keep_glow: 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;',
+    global_size_give_glow: 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;',
+    global_size_AZ: 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;',
+    global_size_JK: 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;',
+    global_size_pred_up: 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;',
+    global_size_pred_dn: 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;',
+    global_size_control_box: 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;',
     // Rest break data 
     rb_shown: false,
     rb_min: 0,
-    rb_sec: 15,
+    rb_sec: 15, 
     rb_seczero: "",
     // ^^^^^
+    avatar_1: "position: absolute; max-width: 7%; max-height: auto; left: 17%; top: 21.4%;",
+    avatar_2: "position: absolute; max-width:7%; max-height:auto; left: 17%; bottom: 27.8%;",
 
     // show is the data that toggles the visibility of block #1's modal
     show: false,
@@ -161,12 +176,12 @@ export default {
     // These data help with the fading effect with the arrow in encounter #1
     trust_effect_style: "position: absolute; max-width:75%; max-height:75%; left: 16%; bottom: -10%; opacity: 0%",
     holder_stype: "White",
-    arrow_style_one: "position: absolute; width: 50%; height: auto; top: 100px; opacity: 100%; transition: opacity 0.5s;",
-    arrow_style_two: "position: absolute; width: 50%; height: auto; top: 100px; opacity: 0%; transition: opacity 0.5s;",
-    arrow_style_three: "position: absolute; width: 50%; height: auto; top: 100px; opacity: 0%; transition: opacity 0.5s;",
+    arrow_style_one: "position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%; transition: opacity 0.5s;",
+    arrow_style_two: "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%; transition: opacity 0.5s;",
+    arrow_style_three: "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%; transition: opacity 0.5s;",
     arrow_num: '1',
     avatar_num: '1',
-    avatar_list: this.shuffle(Array(1080).fill().map((x,i)=>i)),
+    avatar_list: this.shuffle(Array(324).fill().map((x,i)=>i)),
     current_avatar: 0,
     current_progress: 0,
     current_arrow: 'Dot Boxes.png',
@@ -235,7 +250,7 @@ export default {
           parent.block_listeners = true
           parent.predictDown();
         }
-      } 
+      }
     });
   },
   computed: {
@@ -247,6 +262,13 @@ export default {
       },
   },
   methods: {
+    reset_ectr2_visuals(){
+      this.global_size_AZ = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;'
+      this.global_size_JK = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
+      this.global_size_pred_up = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
+      this.global_size_pred_dn = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
+      this.global_size_control_box = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;'
+    },
     hide_tutorial() {
       this.$bvModal.hide("modal-center-instruction73")
     },
@@ -299,14 +321,14 @@ export default {
       let parent = this;
       setTimeout(function() {
         parent.arrow_num = parent.combinations[parent.current_avatar].a_c;
-        parent.arrow_style_one = "position: absolute; width: 50%; height: auto; top: 100px; opacity: 0%; transition: opacity 0.5s;";
+        parent.arrow_style_one = "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%; transition: opacity 0.5s;";
         if 
           (parent.arrow_num == '2')  {
-          parent.arrow_style_two = "position: absolute; width: 50%; height: auto; top: 100px; opacity: 100%; transition: opacity 0.5s;";
+          parent.arrow_style_two = "position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%; transition: opacity 0.5s;";
           // eslint-disable-next-line no-console
         console.log("arrow 2")
         } else {
-          parent.arrow_style_three = "position: absolute; width: 50%; height: auto; top: 100px; opacity: 100%; transition: opacity 0.5s;";
+          parent.arrow_style_three = "position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%; transition: opacity 0.5s;";
           // eslint-disable-next-line no-console
         console.log("arrow 3")
         }
@@ -321,7 +343,8 @@ export default {
     predictUp() {
       // eslint-disable-next-line no-console
       console.log('Predict Up')
-      this.current_arrow = 'Pred Up.png'
+      // this.current_arrow = 'Pred Up.png'
+      this.global_size_pred_up = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;'
       if (this.combinations[this.current_avatar].enctr_2_reverse == 1) {
         this.prediction = 0
       }
@@ -335,7 +358,8 @@ export default {
     predictDown() {
       // eslint-disable-next-line no-console
       console.log('Predict Down')
-      this.current_arrow = 'Pred Dn.png'
+      this.global_size_pred_dn = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;'
+      // this.current_arrow = 'Pred Dn.png'
       if (this.combinations[this.current_avatar].enctr_2_reverse == 1) {
         this.prediction = 1
       }
@@ -347,6 +371,8 @@ export default {
       }, 250);
     },
     predictionHelper() {
+      this.global_size_AZ = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
+      this.global_size_JK = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;'
       this.show_cur_num = true
       var d = new Date();
       var n = d.getTime();
@@ -360,7 +386,9 @@ export default {
       console.log('Trust')
       this.fading = true
       let parent = this
-      this.global_size_give_glow = "position: absolute; width: 50%; height: auto; top: 100px; opacity: 100%;";
+      this.global_size_JK = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
+      this.global_size_control_box = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
+      this.global_size_give_glow = "position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;";
       this.combinations[this.current_avatar].keypress +=  'J'
       setTimeout(function() {
         parent.ChoiceHelper(1);
@@ -370,8 +398,10 @@ export default {
       // eslint-disable-next-line no-console
       console.log('Distrust')
       this.fading = true
+      this.global_size_JK = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
       let parent = this
-      this.global_size_keep_glow = "position: absolute; width: 50%; height: auto; top: 100px; opacity: 100%;";
+      this.global_size_control_box = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
+      this.global_size_keep_glow = "position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;";
       this.combinations[this.current_avatar].keypress +=  'K'
       setTimeout(function() {
         parent.ChoiceHelper(0);
@@ -424,13 +454,13 @@ export default {
       this.combinations[this.current_avatar].trial_order = this.current_progress
       this.combinations[this.current_avatar].prediction = this.prediction
       this.combinations[this.current_avatar].avatar_id = this.avatar_list[this.current_avatar]
+      parent.global_size_keep_glow = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
+      parent.global_size_give_glow = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
       setTimeout(function() { 
         parent.fading = false
         parent.encounter_1_payoff_show = false
-        parent.global_size_keep_glow = 'position: absolute; width: 50%; height: auto; top: 100px; opacity: 0%;'
-        parent.global_size_give_glow = 'position: absolute; width: 50%; height: auto; top: 100px; opacity: 0%;'
         parent.free_space = true
-        parent.current_arrow = 'Dot Boxes.png'
+        // parent.current_arrow = 'Dot Boxes.png'
 
         parent.prediction = null
         parent.show_cur_num = false
@@ -452,9 +482,10 @@ export default {
               // 1000 = 1s
         }
         parent.show_prior = 1; 
-        parent.arrow_style_two = "position: absolute; width: 50%; height: auto; top: 100px; opacity: 0%; transition: opacity 0.15s;";
-        parent.arrow_style_three = "position: absolute; width: 50%; height: auto; top: 100px; opacity: 0%; transition: opacity 0.15s;";
-        parent.arrow_style_one = "position: absolute; width: 50%; height: auto; top: 100px; opacity: 100%; transition: opacity 0.15s;";
+        parent.arrow_style_two = "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%; transition: opacity 0.15s;";
+        parent.arrow_style_three = "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%; transition: opacity 0.15s;";
+        parent.arrow_style_one = "position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%; transition: opacity 0.15s;";
+        parent.reset_ectr2_visuals()
       }, 750);
     },
     shuffle(array) {
@@ -557,6 +588,11 @@ export default {
     }
     first_segment = this.shuffle(first_segment)
     this.combinations = first_segment
+    },
+    pad(n, width, z) {
+      z = z || '0';
+      n = n + '';
+      return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
     },
   }
 

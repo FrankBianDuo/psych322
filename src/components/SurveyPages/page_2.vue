@@ -16,7 +16,7 @@
       :hide-header-close="true"
     >
       <b-container class="align-bottom" :style="this.windowsize"  >
-          <b-form @submit="onSubmit" @reset="onReset">
+          <b-form>
             <b-form-group id="input-group-1" label="How many older brother(s) do you have?" label-for="input-1">
                 <b-form-input
                 id="input-1"
@@ -88,9 +88,8 @@ of years you lived there, and if this was in a rural, suburban, or urban area." 
                 older_sis: '',
                 younger_bro: '',
                 younger_sis: '',
-                school: '',
-                food: null,
-                checked: []
+                countries: '',
+                english: '',
                 },
                 avatars: [{ text: 'Select One', value: null }, 'Very sad avatar', 'Sad avatar', 'Medium avatar', 'Very happy avatar', 'happy avatar'],
                 loves: [{ text: 'Select One', value: null }, 'Strongly agree', 'Agree', 'Neutral', 'Disagree', 'Strongly disagree'],
@@ -107,17 +106,20 @@ of years you lived there, and if this was in a rural, suburban, or urban area." 
             center_title() {
                 return "Survey " + this.page_num
             },
+            block() {
+                return !(this.form.older_bro != '' && this.form.older_sis != '' && this.form.younger_bro != '' && this.form.younger_sis != '' && this.form.countries != '' && this.form.english != '')
+            }
         },
         methods: {
             go_to_next() {
                 this.$bvModal.hide("modal-center-survey" + this.page_num)
                 this.$bvModal.show("modal-center-survey" + ((Number(this.page_num) + 1).toString()))
-                this.$emit('Survey2Done', this.text)
+                this.$emit('Survey2Done', this.form)
             },
             go_to_back() {
                 this.$bvModal.hide("modal-center-survey" + this.page_num)
                 this.$bvModal.show("modal-center-survey" + ((Number(this.page_num) - 1).toString()))
-                this.$emit('Survey2Done', this.text)
+                this.$emit('Survey2Done', this.form)
             }
         },
     }
