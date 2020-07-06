@@ -13,7 +13,7 @@
     <div class="bv-example-row bv-example-row-flex-cols">
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
-        <b-button v-b-modal.modal-center-instruction1 >Instructions</b-button>
+        <b-button v-b-modal.modal-center-EndTF1>Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
@@ -118,7 +118,53 @@
       <b-button variant="primary" @click="this.surveyFinish">Submit</b-button>
     </b-form>
     </b-modal>
+    <BotStopper :windowsize ="this.window_size" />
+    <Consent :windowsize ="this.window_size" />
+    <ExperInfo :windowsize ="this.window_size" />
+    <ExperTutorial :windowsize ="this.window_size" />
+    <MeetPeople :windowsize ="this.window_size" />
+    <WantMoreDots :windowsize ="this.window_size" />
+    <CommKnow :windowsize ="this.window_size" />
+    <ConstantValue :windowsize ="this.window_size" />
+    <ReferenceDependence :windowsize ="this.window_size" /> 
+    <RefDepComp :windowsize ="this.window_size" /> 
+    <RefDepEqual :windowsize ="this.window_size" /> 
+    <Cursor1 :windowsize ="this.window_size" /> 
+    <PredPract1 :windowsize ="this.window_size" />
+    <PredPract2 :windowsize ="this.window_size" />
+    <MoralChoice1 :windowsize ="this.window_size" />
+    <MoralChoice2 :windowsize ="this.window_size" />
+    <TwoOptions :windowsize ="this.window_size" />
+    <NoSharing :windowsize ="this.window_size" />
+    <EvapDots :windowsize ="this.window_size" />
+    <ActPass :windowsize ="this.window_size" />
+    <NoTalking :windowsize ="this.window_size" />
+    <TF110 :windowsize ="this.window_size" />
+    <EndTF1 :windowsize ="this.window_size" />
+    <Cursor2 :windowsize ="this.window_size" />
+    <TF1118 :windowsize ="this.window_size" />
+    <EndTF2 :windowsize ="this.window_size" />
+    <ProgBar :windowsize ="this.window_size" />
+    <EndInstr :windowsize ="this.window_size" />
+    <GameFlow1 :windowsize ="this.window_size" />
+    <GameFlow1 :windowsize ="this.window_size" />
+    <GameFlow2 :windowsize ="this.window_size" />
+    <GameFlow3 :windowsize ="this.window_size" />
+    <GameFlow4 :windowsize ="this.window_size" />
+    <GameFlow5 :windowsize ="this.window_size" />
+    <Control1 :windowsize ="this.window_size" />
+    <Control2 :windowsize ="this.window_size" />
+    <Control3 :windowsize ="this.window_size" />
+    <Control3 :windowsize ="this.window_size" />
+    <Feedback :windowsize ="this.window_size" />    
+    <Knowledge1 :windowsize ="this.window_size" />
+    <Knowledge2 :windowsize ="this.window_size" />
+    <Knowledge3 :windowsize ="this.window_size" />
+    <Knowledge4 :windowsize ="this.window_size" />
+    <Knowledge5 :windowsize ="this.window_size" />
+    <Knowledge6 :windowsize ="this.window_size" />
     <Tutorial1 :windowsize ="this.window_size" />
+    <Tutorial1b :windowsize ="this.window_size" />
     <Tutorial2 :windowsize ="this.window_size" />
     <Tutorial3 :windowsize ="this.window_size" />
     <Tutorial4 :windowsize ="this.window_size" />
@@ -202,7 +248,51 @@
 import BlockOne from './blockOne.vue'
 import BlockTwo from './blockTwo.vue'
 import BlockThree from './blockThree.vue'
+import BotStopper from './tutorialPages/BotStopper.vue'
+import Consent from './tutorialPages/Consent.vue'
+import ExperInfo from './tutorialPages/ExperInfo.vue'
+import ExperTutorial from './tutorialPages/ExperTutorial.vue'
+import MeetPeople from './tutorialPages/MeetPeople.vue'
+import WantMoreDots from './tutorialPages/WantMoreDots.vue'
+import CommKnow from './tutorialPages/CommKnow.vue'
+import ConstantValue from './tutorialPages/ConstantValue.vue'
+import ReferenceDependence from './tutorialPages/ReferenceDependence.vue'
+import RefDepComp from './tutorialPages/RefDepComp.vue'
+import RefDepEqual from './tutorialPages/RefDepEqual.vue'
+import Cursor1 from './tutorialPages/Cursor1.vue'
+import PredPract1 from './tutorialPages/PredPract1.vue'
+import PredPract2 from './tutorialPages/PredPract2.vue'
+import MoralChoice1 from './tutorialPages/MoralChoice1.vue'
+import MoralChoice2 from './tutorialPages/MoralChoice2.vue'
+import TwoOptions from './tutorialPages/TwoOptions.vue'
+import NoSharing from './tutorialPages/NoSharing.vue'
+import EvapDots from './tutorialPages/EvapDots.vue'
+import ActPass from './tutorialPages/ActPass.vue'
+import NoTalking from './tutorialPages/NoTalking.vue'
+import TF110 from './tutorialPages/TF110.vue'
+import EndTF1 from './tutorialPages/EndTF1.vue'
+import Cursor2 from './tutorialPages/Cursor2.vue'
+import TF1118 from './tutorialPages/TF1118.vue'
+import EndTF2 from './tutorialPages/EndTF2.vue'
+import ProgBar from './tutorialPages/ProgBar.vue'
+import EndInstr from './tutorialPages/EndInstr.vue'
+import GameFlow1 from './tutorialPages/GameFlow1.vue'
+import GameFlow2 from './tutorialPages/GameFlow2.vue'
+import GameFlow3 from './tutorialPages/GameFlow3.vue'
+import GameFlow4 from './tutorialPages/GameFlow4.vue'
+import GameFlow5 from './tutorialPages/GameFlow5.vue'
+import Control1 from './tutorialPages/Control1.vue'
+import Control2 from './tutorialPages/Control2.vue'
+import Control3 from './tutorialPages/Control3.vue'
+import Feedback from './tutorialPages/Feedback.vue'
+import Knowledge1 from './tutorialPages/Knowledge1.vue'
+import Knowledge2 from './tutorialPages/Knowledge2.vue'
+import Knowledge3 from './tutorialPages/Knowledge3.vue'
+import Knowledge4 from './tutorialPages/Knowledge4.vue'
+import Knowledge5 from './tutorialPages/Knowledge5.vue'
+import Knowledge6 from './tutorialPages/Knowledge6.vue'
 import Tutorial1 from './tutorialPages/page_1.vue'
+import Tutorial1b from './tutorialPages/page_1b.vue'
 import Tutorial2 from './tutorialPages/page_2.vue'
 import Tutorial3 from './tutorialPages/page_3.vue'
 import Tutorial4 from './tutorialPages/page_4.vue'
@@ -284,7 +374,51 @@ export default {
     BlockOne,
     BlockTwo,
     BlockThree,
+    BotStopper,
+    Consent,
+    ExperInfo,
+    ExperTutorial,
+    MeetPeople,
+    WantMoreDots,
+    CommKnow,
+    ConstantValue,
+    ReferenceDependence,
+    RefDepComp,
+    RefDepEqual,
+    Cursor1,
+    PredPract1,
+    PredPract2,
+    MoralChoice1,
+    MoralChoice2,
+    TwoOptions,
+    NoSharing,
+    EvapDots,
+    ActPass,
+    NoTalking,
+    TF110,
+    EndTF1,
+    Cursor2,
+    TF1118,
+    EndTF2,
+    ProgBar,
+    EndInstr,
+    GameFlow1,
+    GameFlow2,
+    GameFlow3,
+    GameFlow4,
+    GameFlow5,
+    Control1,
+    Control2,
+    Control3,
+    Feedback,
+    Knowledge1,
+    Knowledge2,
+    Knowledge3,
+    Knowledge4,
+    Knowledge5,
+    Knowledge6,
     Tutorial1,
+    Tutorial1b,
     Tutorial2,
     Tutorial3,
     Tutorial4,

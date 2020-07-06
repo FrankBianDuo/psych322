@@ -1,0 +1,46 @@
+<template>
+    <b-modal 
+      id="modal-center-Consent" 
+      size="xl"
+      centered title="Consent To Participant In Study"
+      :hide-footer="true"
+      :header-bg-variant="headerBgVariant"
+      :header-text-variant="headerTextVariant"
+      :body-bg-variant="bodyBgVariant"
+      :body-text-variant="bodyTextVariant"
+      :footer-bg-variant="footerBgVariant"
+      :footer-text-variant="footerTextVariant"
+      :no-close-on-backdrop="false"
+      :no-close-on-esc="true"
+      :hide-header-close="true"
+    >
+      <b-container class="align-bottom" :style="this.windowsize"  >
+          <img :src="require('../../assets/Instructions/Text Only Pages/Consent.png')" style="width: 90%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"/>
+      </b-container>
+        <b-button @click="$bvModal.hide('modal-center-Consent')" v-b-modal.modal-center-BotStopper variant="outline-primary" size="lg">Back</b-button>
+        <b-button style="float: right;" @click="$bvModal.hide('modal-center-Consent')" variant="outline-primary" size="lg" v-b-modal.modal-center-ExperInfo>Next</b-button>
+    </b-modal>
+</template>
+
+<script>
+    export default {
+        name: 'Consent',
+        props: ['windowsize'],
+        components: {
+        },
+        data() {
+            return {
+                show: false,
+            }
+        },
+        computed: {
+        },
+        methods: {
+            
+        },
+    }
+</script>
+
+
+<style scoped>
+</style>

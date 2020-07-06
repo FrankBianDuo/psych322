@@ -12,7 +12,7 @@
     >
       <b-container class="align-bottom" :style="this.windowsize"  >
           <div style="text-align: center;">
-               <img :src="require('../../assets/tutorials/Page10.png')" v-bind:style="{ maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
+               <img :src="require('../../assets/Instructions/Moral Choice/Moral Choice 06.png')" v-bind:style="{ maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
             </div>
               
       </b-container>

@@ -12,13 +12,13 @@
     >
       <b-container class="align-bottom" :style="this.windowsize"  >
           <div style="text-align: center;">
-               <img :src="require('../../assets/tutorials/Quiz2/Q8.png')" v-bind:style="{ maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' }"/>
-               <img :src="require('../../assets/tutorials/Quiz2/A.png')" v-bind:style="{ maxWidth: '73%', height: 'auto', marginTop: '10%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }"/>
+               <img :src="require('../../assets/Instructions/Questions TF/Q18a.png')" v-bind:style="{ maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }"/>
+               <img :src="require('../../assets/Instructions/Questions TF/Q18b.png')" v-bind:style="{ maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.5s' }"/>
             </div>
               
       </b-container>
-        <b-button @click="this.reset_animation_back" variant="outline-primary" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" size="lg">Next</b-button>
+         <b-button @click="$bvModal.hide(`modal-center-instruction20`)" v-b-modal.modal-center-instruction67 variant="outline-primary" size="lg">Back</b-button>
+        <b-button @click="$bvModal.hide(`modal-center-instruction20`)" v-b-modal.modal-center-EndTF2 style="float: right;" variant="outline-primary" size="lg">Next</b-button>
 
         <b-button @click="reveal_False" :disabled="this.ans_disable" v-bind:style="{ marginLeft: '6%', marginTop: '-16%',  }" :variant="this.b_1_style" size="lg">False</b-button>
         <b-button @click="reveal_True" :disabled="this.ans_disable" v-bind:style="{ marginRight: '6%', marginTop: '-8%',  }" style="float: right;" :variant="this.b_2_style" size="lg">True</b-button>
@@ -35,6 +35,7 @@
             return {
                 page_num: "68",
                 opacity_a: '100%',
+                opacity_b: '0%',
                 ans_disable: false,
                 b_1_style: 'primary',
                 b_2_style: 'primary',
@@ -74,12 +75,14 @@
             reveal_False() {
                 this.$emit('answered', [this.ans == 'f', this.ans])
                 this.opacity_a = "0%"
+                this.opacity_b = "100%"
                 this.ans_disable = true
                 this.button_after()
             },
             reveal_True() {
                 this.$emit('answered', [this.ans == 't', this.ans])
                 this.opacity_a = "0%"
+                this.opacity_b = "100%"
                 this.ans_disable = true
                 this.button_after()
             },

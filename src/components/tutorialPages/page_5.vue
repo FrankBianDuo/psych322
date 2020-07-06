@@ -18,7 +18,7 @@
       <b-container class="align-bottom" :style="this.windowsize"  >
           <b-row class="mt-5" >
               <p style="font-size: 30px; font-family: Calibri; margin-left: 17%; display:inline; text-align: center;">
-                    Everyone knows that everyone always prefers more dots.
+                             This is common knowledge.
                 </p>
                 <img :src="require('../../assets/tutorials/Page_5_ori.png')" v-bind:style="{ maxWidth: '45%', height: 'auto', marginLeft: '24%', position: 'absolute', marginTop: '5%', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
                 <img :src="require('../../assets/tutorials/Page_5_base.png')" v-bind:style="{ maxWidth: '45%', height: 'auto', marginLeft: '24%', position: 'absolute', marginTop: '5%', opacity: this.opacity_2, transition: 'opacity 0.5s' }"/>

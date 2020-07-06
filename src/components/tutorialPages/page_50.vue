@@ -42,7 +42,7 @@
         props: ['windowsize'],
         components: {
         },
-        data() {
+        data() { // WARNING!!!  THE CORRECT ANSWER IS 3 NOT 4!!!  PLEASE EDIT!!!
             return {
                 page_num: "50",
                 square_left: "-22%",
