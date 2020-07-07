@@ -12,8 +12,8 @@
     >
       <b-container class="align-bottom" :style="this.windowsize"  >
           <div style="text-align: center;">
-               <img :src="require(`../../assets/tutorials/QuizFull/Q${this.q_num}.png`)" v-bind:style="{ maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' }"/>
-               <img :src="require(`../../assets/tutorials/QuizFull/A${this.q_num}.png`)" v-bind:style="{ maxWidth: '10%', height: 'auto', marginTop: '21.8%', transform: 'translate(-50%, 0) scalex(8) scaleY(6)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }"/>
+               <img :src="require('../../assets/Instructions/Questions TF/Q07a.png')" v-bind:style="{ maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }"/>
+               <img :src="require('../../assets/Instructions/Questions TF/Q07b.png')" v-bind:style="{ maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.5s' }"/>
             </div>
               
       </b-container>
@@ -36,6 +36,7 @@
                 page_num: "26",
                 q_num: '7',
                 opacity_a: '100%',
+                opacity_b: '0%',
                 ans_disable: false,
                 b_1_style: 'primary',
                 b_2_style: 'primary',
@@ -75,12 +76,14 @@
             reveal_False() {
                 this.$emit('answered', [this.ans == 'f', this.ans])
                 this.opacity_a = "0%"
+                this.opacity_b = "100"
                 this.ans_disable = true
                 this.button_after()
             },
             reveal_True() {
                 this.$emit('answered', [this.ans == 't', this.ans])
                 this.opacity_a = "0%"
+                this.opacity_b = "100"
                 this.ans_disable = true
                 this.button_after()
             },

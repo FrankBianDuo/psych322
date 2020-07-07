@@ -43,6 +43,22 @@
                 text: ''
             }
         },
+        created: function () {
+            let parent = this
+            window.addEventListener('keydown', function(event) {
+            // eslint-disable-next-line no-console
+            if (parent.show) {
+                // eslint-disable-next-line no-console
+                console.log("called")
+                // Space
+                if (event.keyCode == 32 && parent.free_space) {
+                // eslint-disable-next-line no-console
+                console.log('Space Listener Event Fired')
+                // event.preventDefault();
+                }
+            }
+            });
+        },
         computed: {
             page_id() {
                 return "modal-center-FR" + this.page_num

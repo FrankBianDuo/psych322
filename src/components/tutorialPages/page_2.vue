@@ -23,7 +23,7 @@
                 <img :src="require('../../assets/tutorials/Avatars.png')" style="width: 70%; height: 70%; transform: translate(-50%, 0); margin-left: 50%;"/>
           </b-row>
       </b-container>
-       <b-button @click="$bvModal.hide('modal-center-instruction2')" v-b-modal.modal-center-instruction1 variant="outline-primary" size="lg">Back</b-button>
+       <b-button @click="$bvModal.hide('modal-center-instruction2')" v-b-modal.modal-center-instruction1b variant="outline-primary" size="lg">Back</b-button>
         <b-button style="float: right;" @click="$bvModal.hide('modal-center-instruction2')" variant="outline-primary" size="lg" v-b-modal.modal-center-instruction3>Next</b-button>
     </b-modal>
 </template>

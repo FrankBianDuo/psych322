@@ -13,6 +13,6 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f https://github.com/FrankBianDuo/psych322.git master:gh-pages
+git push -f https://github.com/FrankBianDuo/M3LabExperiments.git master:gh-pages
 
 cd -

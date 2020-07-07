@@ -224,8 +224,11 @@ export default {
   // Event listener for all keyboard events
   created: function () {
     let parent = this
-    window.addEventListener('keyup', function(event) {
-      // eslint-disable-next-line no-console
+    window.addEventListener('keydown', function(event) {
+      // Prevent the spacebar jerk
+      if (event.keyCode == 32) {
+        event.preventDefault();
+      }
       if (parent.show) {
         // Space
         if (event.keyCode == 32 && parent.free_space) {

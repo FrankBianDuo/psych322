@@ -330,29 +330,29 @@
         beforeMount() {
             this.buildCombinations();
         },
-        created: function () {
-          let parent = this
-          window.addEventListener('keyup', function(event) {
-            if (parent.show) {
-              if (event.keyCode == 32) {
-                parent.priorAvatar();
-                var d = new Date();
-                var n = d.getTime();
-                parent.trial_started = n;
-              } else if (event.keyCode == 37 && parent.prediction != null) {
-                parent.otherChoice();
-              } else if (event.keyCode == 39 && parent.prediction != null) {
-                parent.selfChoice();
-              } else if (event.keyCode == 65 && parent.prediction == null) {
-                // Prediction A
-                parent.predictUp();
-              } else if (event.keyCode == 90 && parent.prediction == null) {
-                // Prediction Z
-                parent.predictDown();
-              }
-            } 
-          });
-        },
+        // created: function () {
+        //   let parent = this
+        //   window.addEventListener('keyup', function(event) {
+        //     if (parent.show) {
+        //       if (event.keyCode == 32) {
+        //         parent.priorAvatar();
+        //         var d = new Date();
+        //         var n = d.getTime();
+        //         parent.trial_started = n;
+        //       } else if (event.keyCode == 37 && parent.prediction != null) {
+        //         parent.otherChoice();
+        //       } else if (event.keyCode == 39 && parent.prediction != null) {
+        //         parent.selfChoice();
+        //       } else if (event.keyCode == 65 && parent.prediction == null) {
+        //         // Prediction A
+        //         parent.predictUp();
+        //       } else if (event.keyCode == 90 && parent.prediction == null) {
+        //         // Prediction Z
+        //         parent.predictDown();
+        //       }
+        //     } 
+        //   });
+        // },
         computed: {
             prior_choice_style() {
             return `opacity: ${this.show_prior}; transition: opacity 0.5s;`
