@@ -2,8 +2,7 @@
     <b-modal 
       :id="this.page_id" 
       size="xl"
-      centered 
-      :title="this.center_title"
+      centered title="These are missed questions you must correctly answer before progressing."
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -134,7 +133,7 @@
                     parent.ans_disable = false
                     this.opacity_a = "100%"
                     this.opacity_b = "0%"
-                }, 1000);
+                }, 2400);
             },
             gen_question_src(q_id) {
                 var srcmap = {
@@ -142,109 +141,109 @@
                         "q_img_src": `Q01a.png`,
                         "a_img_src": `Q01b.png`,
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
                     21: {
                         "q_img_src": `Q02a.png`,
                         "a_img_src": `Q02b.png`,
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
                     22: {
                         "q_img_src": `Q03a.png`,
                         "a_img_src": `Q03b.png`,
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
                     23: {
                         "q_img_src": `Q04a.png`,
                         "a_img_src": `Q04b.png`,
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
                     24: {
                         "q_img_src": `Q05a.png`,
                         "a_img_src": `Q05b.png`,
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
                     25: {
                         "q_img_src": `Q06a.png`,
                         "a_img_src": `Q06b.png`,
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
                     26: {
                         "q_img_src": `Q07a.png`,
                         "a_img_src": `Q07b.png`,
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
                     27: {
                         "q_img_src": `Q08a.png`,
                         "a_img_src": `Q08b.png`,
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
                     28: {
                         "q_img_src": `Q09a.png`,
                         "a_img_src": `Q09b.png`,
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
                     29: {
                         "q_img_src": `Q10a.png`,
                         "a_img_src": `Q10b.png`,
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
                     61: {
                         "q_img_src": `Q11a.png`,
                         "a_img_src": `Q11b.png`,
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
                     62: {
                         "q_img_src": `Q12a.png`,
                         "a_img_src": `Q12b.png`,
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
                     63: {
                         "q_img_src": `Q13a.png`,
                         "a_img_src": `Q13b.png`,
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
                     64: {
                         "q_img_src": `Q14a.png`,
                         "a_img_src": `Q14b.png`,
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
                     65: {
                         "q_img_src": `Q15a.png`,
                         "a_img_src": `Q15b.png`,
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
                     66: {
                         "q_img_src": `Q16a.png`,
                         "a_img_src": `Q16b.png`,
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
                     67: {
                         "q_img_src": `Q17a.png`,
                         "a_img_src": `Q17b.png`,
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
                     68: {
                         "q_img_src": `Q18a.png`,
                         "a_img_src": `Q18b.png`,
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     }
                 }
                 return srcmap[q_id]

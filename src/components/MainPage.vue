@@ -13,7 +13,8 @@
     <div class="bv-example-row bv-example-row-flex-cols">
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
-        <b-button v-b-modal.modal-center-EvapDots>Instructions</b-button>
+        <!-- <b-button v-b-modal.modal-center-WRITENAMEOFPAGEHERETOSEEITPOPUPFIRST>Instructions</b-button> -->
+        <b-button v-b-modal.modal-center-BotStopper>Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
@@ -146,7 +147,6 @@
     <EndTF2 :windowsize ="this.window_size" />
     <ProgBar :windowsize ="this.window_size" />
     <EndInstr :windowsize ="this.window_size" />
-    <GameFlow1 :windowsize ="this.window_size" />
     <GameFlow1 :windowsize ="this.window_size" />
     <GameFlow2 :windowsize ="this.window_size" />
     <GameFlow3 :windowsize ="this.window_size" />

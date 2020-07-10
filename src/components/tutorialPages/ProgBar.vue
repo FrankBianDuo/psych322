@@ -66,15 +66,15 @@
             reset_animation_back() {
                 //this.$bvModal.hide("modal-center-instruction" + this.page_num)  // this.$bvModal.hide(this current page)
                 this.resetAnimation()
-                this.$bvModal.show("modal-center-NoSharing") //this.$bvModal.show(previous page)
+                this.$bvModal.show("modal-center-EndTF2") //this.$bvModal.show(previous page)
             },
             reset_animation_next() {
                 //this.$bvModal.hide("modal-center-instruction" + this.page_num)
                 this.resetAnimation()
-                this.$bvModal.show("modal-center-EndTF2")
+                this.$bvModal.show("modal-center-EndInstr")
             },
             resetAnimation() {
-                this.$bvModal.hide('modal-center-EndInstr')
+                this.$bvModal.hide('modal-center-ProgBar')
                 this.opacity_1 = "100%"
                 this.opacity_2 = "0%"
                 this.opacity_3 = "0%"

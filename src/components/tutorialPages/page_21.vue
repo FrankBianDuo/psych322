@@ -17,8 +17,8 @@
             </div>
               
       </b-container>
-        <b-button @click="$bvModal.hide(`modal-center-instruction21`)" v-b-modal.modal-center-instruction20 variant="outline-primary" size="lg">Back</b-button>
-        <b-button @click="$bvModal.hide(`modal-center-instruction21`)" v-b-modal.modal-center-instruction22 style="float: right;" variant="outline-primary" size="lg">Next</b-button>
+        <b-button @click="$bvModal.hide(`modal-center-instruction21`)" v-b-modal.modal-center-instruction20 variant="outline-primary" :disabled="allowprogress" size="lg">Back</b-button>
+        <b-button @click="$bvModal.hide(`modal-center-instruction21`)" v-b-modal.modal-center-instruction22 style="float: right;" variant="outline-primary" :disabled="allowprogress" size="lg">Next</b-button>
 
         <b-button @click="reveal_False" :disabled="this.ans_disable" v-bind:style="{ marginLeft: '6%', marginTop: '-16%',  }" :variant="this.b_1_style" size="lg">False</b-button>
         <b-button @click="reveal_True" :disabled="this.ans_disable" v-bind:style="{ marginRight: '6%', marginTop: '-8%',  }" style="float: right;" :variant="this.b_2_style" size="lg">True</b-button>
@@ -41,6 +41,7 @@
                 b_1_style: 'primary',
                 b_2_style: 'primary',
                 ans: 'f',
+                allowprogress: true
             }
         },
         computed: {
@@ -48,7 +49,7 @@
                 return "modal-center-instruction" + this.page_num
             },
             center_title() {
-                return "True or False Question " + this.page_num
+                return "True or False Question " + (Number(this.page_num) - 19).toString()
             },
         },
         mounted() {
@@ -88,6 +89,7 @@
                     this.b_2_style = 'success'
                     this.b_1_style = 'danger'
                 }
+                this.allowprogress = false
             }
         },
     }
