@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-Cursor1" 
       size="xl"
-      centered title="Page x"
+      centered title="Instruction page 6"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
       :header-text-variant="headerTextVariant"
@@ -17,7 +17,7 @@
       <b-container class="align-bottom" :style="this.windowsize"  >
           <img :src="require('../../assets/Instructions/Text Only Pages/Cursor Select.png')" style="width: 90%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"/>
       </b-container>
-        <b-button @click="$bvModal.hide('modal-center-Cursor1')" v-b-modal.modal-center-RefDepEqual variant="outline-primary" size="lg">Back</b-button>
+        <b-button @click="$bvModal.hide('modal-center-Cursor1')" v-b-modal.modal-center-ReferenceDependence variant="outline-primary" size="lg">Back</b-button>
         <b-button style="float: right;" @click="$bvModal.hide('modal-center-Cursor1')" variant="outline-primary" size="lg" v-b-modal.modal-center-PredPract1>Next</b-button>
     </b-modal>
 </template>

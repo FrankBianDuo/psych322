@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-EndInstr" 
       size="xl"
-      centered title="Page x"
+      centered title="End of Instructions"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
       :header-text-variant="headerTextVariant"

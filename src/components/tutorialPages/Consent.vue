@@ -17,8 +17,8 @@
       <b-container class="align-bottom" :style="this.windowsize"  >
           <img :src="require('../../assets/Instructions/Text Only Pages/Consent.png')" style="width: 90%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"/>
       </b-container>
-        <b-button @click="$bvModal.hide('modal-center-Consent')" v-b-modal.modal-center-BotStopper variant="outline-primary" size="lg">Back</b-button>
-        <b-button style="float: right;" @click="$bvModal.hide('modal-center-Consent')" variant="outline-primary" size="lg" v-b-modal.modal-center-ExperInfo>Next</b-button>
+        <b-button @click="$bvModal.hide('modal-center-Consent')" v-b-modal.modal-center-BotStopper variant="outline-primary" size="lg">NO I REFUSE TO PARTICIPATE</b-button>
+        <b-button style="float: right;" @click="$bvModal.hide('modal-center-Consent')" variant="outline-primary" size="lg" v-b-modal.modal-center-ExperInfo>YES I CONSENT TO PARTICIPATE</b-button>
     </b-modal>
 </template>
 

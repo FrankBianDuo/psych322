@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-TF110" 
       size="xl"
-      centered title="Page x"
+      centered title="True or False Questions 1 - 10"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
       :header-text-variant="headerTextVariant"

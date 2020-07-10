@@ -48,7 +48,7 @@
                 return "modal-center-instruction" + this.page_num
             },
             center_title() {
-                return "Instructions page " + this.page_num
+                return "True or False Question " + this.page_num
             },
         },
         mounted() {

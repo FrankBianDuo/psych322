@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-BotStopper" 
       size="xl"
-      centered title="Are you a robot?"
+      centered title="CAPTCHA"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
       :header-text-variant="headerTextVariant"

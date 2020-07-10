@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-ReferenceDependence" 
       size="xl"
-      centered title="Page x"
+      centered title="Instruction page 4"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -27,8 +27,8 @@
             </div>
               
       </b-container>
-        <b-button @click="$bvModal.hide(`modal-center-ReferenceDependence`)" v-b-modal.modal-center-ConstantValue variant="outline-primary" size="lg">Back</b-button>
-        <b-button @click="$bvModal.hide(`modal-center-ReferenceDependence`)" v-b-modal.modal-center-RefDepComp style="float: right;" variant="outline-primary" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button> 
+        <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" :disabled="finishanimate" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -40,7 +40,7 @@
         },
         data() {
             return {
-                page_num: "13",
+                page_num: "4",
                 opacity_1: '100%',
                 opacity_2: '0%',
                 opacity_3: '0%',
@@ -55,6 +55,7 @@
                 opacity_12: '0%',
                 opacity_13: '0%',
                 mutex: false,
+                finishanimate: true
             }
         },
         computed: {
@@ -76,10 +77,20 @@
                 return
             }
             this.mutex = true;
-            setTimeout(() => this.animate(), 500); 
+            setTimeout(() => this.animate(), 300); 
             })
         },
-        methods: {
+  methods: {
+            reset_animation_back() {
+                //this.$bvModal.hide("modal-center-instruction" + this.page_num)  // this.$bvModal.hide(this current page)
+                this.resetAnimation()
+                this.$bvModal.show("modal-center-CommKnow") //this.$bvModal.show(previous page)
+            },
+            reset_animation_next() {
+                //this.$bvModal.hide("modal-center-instruction" + this.page_num)
+                this.resetAnimation()
+                this.$bvModal.show("modal-center-MoralChoice1")
+            },
             resetAnimation() {
                 this.$bvModal.hide('modal-center-ReferenceDependence')
                 this.opacity_1 = "100%"
@@ -97,35 +108,38 @@
                 this.opacity_13 = "0%"
                 this.locked = true
                 this.mutex = false
+                this.finishanimate = false
             },
             animate() {
                 let parent = this
                 // glow appears: up 1
-                setTimeout(() => {parent.opacity_2 = "100%" }, 500);
+                setTimeout(() => {parent.opacity_2 = "100%" }, 300);
                 // sad face appears
-                setTimeout(() => {parent.opacity_3 = "100%" }, 750);
+                setTimeout(() => {parent.opacity_3 = "100%" }, 400);
                 // glow replaces: dn 3
-                setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_4 = "100%" }, 1500);
+                setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_4 = "100%" }, 1000);
                 // happy face replaces
-                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_5 = "100%" }, 1750);
+                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_5 = "100%" }, 1100);
                 // glow appears: up 5
-                setTimeout(() => {parent.opacity_6 = "100%" }, 3250);
+                setTimeout(() => {parent.opacity_6 = "100%" }, 1700);
                 // happy face appears 
-                setTimeout(() => {parent.opacity_9 = "100%" }, 3500);
+                setTimeout(() => {parent.opacity_9 = "100%" }, 1800);
                 // glow replaces: dn 3
-                setTimeout(() => {parent.opacity_6 = "0%"; parent.opacity_8 = "100%" }, 4250);
+                setTimeout(() => {parent.opacity_6 = "0%"; parent.opacity_8 = "100%" }, 2400);
                 // sad face replaces
-                setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_7 = "100%" }, 4500);
+                setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_7 = "100%" }, 2500);
                 // glow appears: up 1
-                setTimeout(() => {parent.opacity_10 = "100%" }, 6000);
+                setTimeout(() => {parent.opacity_10 = "100%" }, 3100);
                 // sad face appears 
-                setTimeout(() => {parent.opacity_11 = "100%" }, 6250);
+                setTimeout(() => {parent.opacity_11 = "100%" }, 3200);
                 // glow replaces: dn 5
-                setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_12 = "100%" }, 7000);
+                setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_12 = "100%" }, 3800);
                 // happy face replaces
-                setTimeout(() => {parent.opacity_11 = "0%"; parent.opacity_13 = "100%" }, 7250); 
+                setTimeout(() => {parent.opacity_11 = "0%"; parent.opacity_13 = "100%" }, 3900); 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
+                // Disables BACK NEXT buttons until animation finishes at 4 seconds.
+                setTimeout(() => {parent.finishanimate = false}, 4000);
             },
         },
     }

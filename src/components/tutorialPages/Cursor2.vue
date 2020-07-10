@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-Cursor2" 
       size="xl"
-      centered title="Page x"
+      centered title=""
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
       :header-text-variant="headerTextVariant"

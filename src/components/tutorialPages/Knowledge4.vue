@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-Knowledge4" 
       size="xl"
-      centered title="Page x"
+      centered title="Instructions Page 12"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -17,8 +17,8 @@
             </div>
               
       </b-container>
-        <b-button @click="$bvModal.hide(`modal-center-Knowledge4`)" v-b-modal.modal-center-Knowledge3 variant="outline-primary" size="lg">Back</b-button>
-        <b-button @click="$bvModal.hide(`modal-center-Knowledge4`)" v-b-modal.modal-center-Knowledge5 style="float: right;" variant="outline-primary" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" :disabled="finishanimate" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -30,11 +30,12 @@
         },
         data() {
             return {
-                page_num: "13",
+                page_num: "12",
                 opacity_1: '100%',
                 opacity_2: '0%',
                 opacity_3: '0%',
                 mutex: false,
+                finishanimate: true
             }
         },
         computed: {
@@ -60,6 +61,16 @@
             })
         },
         methods: {
+            reset_animation_back() {
+                //this.$bvModal.hide("modal-center-instruction" + this.page_num)  // this.$bvModal.hide(this current page)
+                this.resetAnimation()
+                this.$bvModal.show("modal-center-Knowledge3") //this.$bvModal.show(previous page)
+            },
+            reset_animation_next() {
+                //this.$bvModal.hide("modal-center-instruction" + this.page_num)
+                this.resetAnimation()
+                this.$bvModal.show("modal-center-Knowledge5")
+            },
             resetAnimation() {
                 this.$bvModal.hide('modal-center-Knowledge4')
                 this.opacity_1 = "100%"
@@ -67,6 +78,7 @@
                 this.opacity_3 = "0%"
                 this.locked = true
                 this.mutex = false
+                this.finishanimate = false
             },
             animate() {
                 let parent = this
@@ -74,6 +86,8 @@
                 setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_3 = "100%" }, 2000); 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
+                // Disables BACK NEXT buttons until animation finishes at 2.5 seconds.
+                setTimeout(() => {parent.finishanimate = false}, 2500);
             },
         },
     }

@@ -12,13 +12,12 @@
     >
       <b-container class="align-bottom" :style="this.windowsize"  >
           <div style="text-align: center;">
-               <img :src="require(`../../assets/tutorials/${this.gen_question_src(this.wrong_questions[0])['q_img_src']}`)" v-bind:style="this.gen_question_src(this.wrong_questions[0])['q_img_style']"/>
-               <img :src="require(`../../assets/tutorials/${this.gen_question_src(this.wrong_questions[0])['a_img_src']}`)" v-bind:style="this.gen_question_src(this.wrong_questions[0])['a_img_style']"/>
+               <img :src="require(`../../assets/Instructions/Questions TF/${this.gen_question_src(this.wrong_questions[0])['q_img_src']}`)" v-bind:style="this.gen_question_src(this.wrong_questions[0])['q_img_style']"/>
+               <img :src="require(`../../assets/Instructions/Questions TF/${this.gen_question_src(this.wrong_questions[0])['a_img_src']}`)" v-bind:style="this.gen_question_src(this.wrong_questions[0])['a_img_style']"/>
             </div>
               
       </b-container>
-        <!-- <b-button :disabled="true" @click="this.reset_animation_back" variant="outline-primary" size="lg">Back</b-button>
-        <b-button :disabled="this.proceed" @click="this.reset_animation_next" style="float: right;" variant="outline-primary" size="lg">Next</b-button> -->
+        <!-- We need to find a way to make the questions hide.  The answers fade in prior to the question and then disappear again. -->
 
         <b-button @click="reveal_False" :disabled="this.ans_disable" v-bind:style="{ marginLeft: '6%', marginTop: '-16%',  }" :variant="this.b_1_style" size="lg">False</b-button>
         <b-button @click="reveal_True" :disabled="this.ans_disable" v-bind:style="{ marginRight: '6%', marginTop: '-8%',  }" style="float: right;" :variant="this.b_2_style" size="lg">True</b-button>
@@ -39,6 +38,7 @@
                 proceed: true,
                 page_num: "73",
                 opacity_a: '100%',
+                opacity_b: '0%',
                 ans_disable: false,
                 b_1_style: 'primary',
                 b_2_style: 'primary',
@@ -98,11 +98,13 @@
             },
             reveal_False() {
                 this.opacity_a = "0%"
+                this.opacity_b = "100%"
                 this.ans_disable = true
                 this.button_after("f")
             },
             reveal_True() {
                 this.opacity_a = "0%"
+                this.opacity_b = "100%"
                 this.ans_disable = true
                 this.button_after("t")
             },
@@ -131,117 +133,118 @@
                     }
                     parent.ans_disable = false
                     this.opacity_a = "100%"
+                    this.opacity_b = "0%"
                 }, 1000);
             },
             gen_question_src(q_id) {
                 var srcmap = {
                     20: {
-                        "q_img_src": `QuizFull/Q1.png`,
-                        "a_img_src": `QuizFull/A1.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' },
-                        "a_img_style": { maxWidth: '10%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }
+                        "q_img_src": `Q01a.png`,
+                        "a_img_src": `Q01b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
                     },
                     21: {
-                        "q_img_src": `QuizFull/Q2.png`,
-                        "a_img_src": `QuizFull/A2.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' },
-                        "a_img_style": { maxWidth: '10%', height: 'auto', marginTop: '21.8%', transform: 'translate(-50%, 0) scalex(8) scaleY(7.5)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }
+                        "q_img_src": `Q02a.png`,
+                        "a_img_src": `Q02b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
                     },
                     22: {
-                        "q_img_src": `QuizFull/Q3.png`,
-                        "a_img_src": `QuizFull/A3.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' },
-                        "a_img_style": { maxWidth: '10%', height: 'auto', marginTop: '21.8%', transform: 'translate(-50%, 0) scalex(8) scaleY(7.5)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }
+                        "q_img_src": `Q03a.png`,
+                        "a_img_src": `Q03b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
                     },
                     23: {
-                        "q_img_src": `QuizFull/Q4.png`,
-                        "a_img_src": `QuizFull/A4.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' },
-                        "a_img_style": { maxWidth: '10%', height: 'auto', marginTop: '21.8%', transform: 'translate(-50%, 0) scalex(8) scaleY(7.5)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }
+                        "q_img_src": `Q04a.png`,
+                        "a_img_src": `Q04b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
                     },
                     24: {
-                        "q_img_src": `QuizFull/Q5.png`,
-                        "a_img_src": `QuizFull/A5.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' },
-                        "a_img_style": { maxWidth: '10%', height: 'auto', marginTop: '21.8%', transform: 'translate(-50%, 0) scalex(8) scaleY(7.5)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }
+                        "q_img_src": `Q05a.png`,
+                        "a_img_src": `Q05b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
                     },
                     25: {
-                        "q_img_src": `QuizFull/Q6.png`,
-                        "a_img_src": `QuizFull/A6.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' },
-                        "a_img_style": { maxWidth: '10%', height: 'auto', marginTop: '21.8%', transform: 'translate(-50%, 0) scalex(8) scaleY(7.5)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }
+                        "q_img_src": `Q06a.png`,
+                        "a_img_src": `Q06b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
                     },
                     26: {
-                        "q_img_src": `QuizFull/Q7.png`,
-                        "a_img_src": `QuizFull/A7.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' },
-                        "a_img_style": { maxWidth: '10%', height: 'auto', marginTop: '21.8%', transform: 'translate(-50%, 0) scalex(8) scaleY(6)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }
+                        "q_img_src": `Q07a.png`,
+                        "a_img_src": `Q07b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
                     },
                     27: {
-                        "q_img_src": `QuizFull/Q8.png`,
-                        "a_img_src": `QuizFull/A8.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' },
-                        "a_img_style": { maxWidth: '10%', height: 'auto', marginTop: '21.8%', transform: 'translate(-50%, 0) scalex(8) scaleY(7)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }
+                        "q_img_src": `Q08a.png`,
+                        "a_img_src": `Q08b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
                     },
                     28: {
-                        "q_img_src": `QuizFull/Q9.png`,
-                        "a_img_src": `QuizFull/A9.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' },
-                        "a_img_style": { maxWidth: '10%', height: 'auto', marginTop: '21.6%', transform: 'translate(-50%, 0) scalex(8) scaleY(7.5)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }
+                        "q_img_src": `Q09a.png`,
+                        "a_img_src": `Q09b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
                     },
                     29: {
-                        "q_img_src": `QuizFull/Q10.png`,
-                        "a_img_src": `QuizFull/A10.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' },
-                        "a_img_style": { maxWidth: '10%', height: 'auto', marginTop: '21.8%', transform: 'translate(-50%, 0) scalex(8) scaleY(7.5)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }
+                        "q_img_src": `Q10a.png`,
+                        "a_img_src": `Q10b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
                     },
                     61: {
-                        "q_img_src": `Quiz2/Q1.png`,
-                        "a_img_src": `Quiz2/A.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' },
-                        "a_img_style": { maxWidth: '73%', height: 'auto', marginTop: '10%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }
+                        "q_img_src": `Q11a.png`,
+                        "a_img_src": `Q11b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
                     },
                     62: {
-                        "q_img_src": `Quiz2/Q2.png`,
-                        "a_img_src": `Quiz2/A.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' },
-                        "a_img_style": { maxWidth: '73%', height: 'auto', marginTop: '4%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }
+                        "q_img_src": `Q12a.png`,
+                        "a_img_src": `Q12b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
                     },
                     63: {
-                        "q_img_src": `Quiz2/Q3.png`,
-                        "a_img_src": `Quiz2/A.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' },
-                        "a_img_style": { maxWidth: '73%', height: 'auto', marginTop: '4%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }
+                        "q_img_src": `Q13a.png`,
+                        "a_img_src": `Q13b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
                     },
                     64: {
-                        "q_img_src": `Quiz2/Q4.png`,
-                        "a_img_src": `Quiz2/A.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' },
-                        "a_img_style": { maxWidth: '73%', height: 'auto', marginTop: '7%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }
+                        "q_img_src": `Q14a.png`,
+                        "a_img_src": `Q14b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
                     },
                     65: {
-                        "q_img_src": `Quiz2/Q5.png`,
-                        "a_img_src": `Quiz2/A.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' },
-                        "a_img_style": { maxWidth: '75%', height: 'auto', marginTop: '4%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }
+                        "q_img_src": `Q15a.png`,
+                        "a_img_src": `Q15b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
                     },
                     66: {
-                        "q_img_src": `Quiz2/Q6.png`,
-                        "a_img_src": `Quiz2/A.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' },
-                        "a_img_style": { maxWidth: '73%', height: 'auto', marginTop: '7%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }
+                        "q_img_src": `Q16a.png`,
+                        "a_img_src": `Q16b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
                     },
                     67: {
-                        "q_img_src": `Quiz2/Q7.png`,
-                        "a_img_src": `Quiz2/A.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' },
-                        "a_img_style": { maxWidth: '20%', height: 'auto', marginTop: '25%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }
+                        "q_img_src": `Q17a.png`,
+                        "a_img_src": `Q17b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
                     },
                     68: {
-                        "q_img_src": `Quiz2/Q8.png`,
-                        "a_img_src": `Quiz2/A.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' },
-                        "a_img_style": { maxWidth: '73%', height: 'auto', marginTop: '10%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.5s' }
+                        "q_img_src": `Q18a.png`,
+                        "a_img_src": `Q18b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 2.0s' }
                     }
                 }
                 return srcmap[q_id]
