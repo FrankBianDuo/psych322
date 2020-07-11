@@ -14,7 +14,7 @@
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
         <!-- <b-button v-b-modal.modal-center-WRITENAMEOFPAGEHERETOSEEITPOPUPFIRST>Instructions</b-button> -->
-        <b-button v-b-modal.modal-center-BotStopper>Instructions</b-button>
+        <b-button v-b-modal.modal-center-instruction37>Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
@@ -130,6 +130,15 @@
     <ReferenceDependence :windowsize ="this.window_size" /> 
     <RefDepComp :windowsize ="this.window_size" /> 
     <RefDepEqual :windowsize ="this.window_size" /> 
+    <HowChoice1 :windowsize ="this.window_size" /> 
+    <HowChoice2 :windowsize ="this.window_size" /> 
+    <HowChoice3 :windowsize ="this.window_size" /> 
+    <HowChoice4 :windowsize ="this.window_size" /> 
+    <HowChoice5 :windowsize ="this.window_size" /> 
+    <HowChoice6 :windowsize ="this.window_size" /> 
+    <HowChoice7 :windowsize ="this.window_size" /> 
+    <HowChoice8 :windowsize ="this.window_size" /> 
+    <HowChoice9 :windowsize ="this.window_size" />
     <Cursor1 :windowsize ="this.window_size" /> 
     <PredPract1 :windowsize ="this.window_size" />
     <PredPract2 :windowsize ="this.window_size" />
@@ -261,6 +270,15 @@ import ConstantValue from './tutorialPages/ConstantValue.vue'
 import ReferenceDependence from './tutorialPages/ReferenceDependence.vue'
 import RefDepComp from './tutorialPages/RefDepComp.vue'
 import RefDepEqual from './tutorialPages/RefDepEqual.vue'
+import HowChoice1 from './tutorialPages/HowChoice1.vue'
+import HowChoice2 from './tutorialPages/HowChoice2.vue'
+import HowChoice3 from './tutorialPages/HowChoice3.vue'
+import HowChoice4 from './tutorialPages/HowChoice4.vue'
+import HowChoice5 from './tutorialPages/HowChoice5.vue'
+import HowChoice6 from './tutorialPages/HowChoice6.vue'
+import HowChoice7 from './tutorialPages/HowChoice7.vue'
+import HowChoice8 from './tutorialPages/HowChoice8.vue'
+import HowChoice9 from './tutorialPages/HowChoice9.vue'
 import Cursor1 from './tutorialPages/Cursor1.vue'
 import PredPract1 from './tutorialPages/PredPract1.vue'
 import PredPract2 from './tutorialPages/PredPract2.vue'
@@ -389,6 +407,15 @@ export default {
     ReferenceDependence,
     RefDepComp,
     RefDepEqual,
+    HowChoice1,
+    HowChoice2,
+    HowChoice3,
+    HowChoice4,
+    HowChoice5,
+    HowChoice6,
+    HowChoice7,
+    HowChoice8,
+    HowChoice9,
     Cursor1,
     PredPract1,
     PredPract2,

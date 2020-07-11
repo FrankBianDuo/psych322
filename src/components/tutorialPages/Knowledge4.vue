@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-Knowledge4" 
       size="xl"
-      centered title="Instructions Page 12"
+      centered title="Instructions Page 19 of x"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"

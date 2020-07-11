@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-Knowledge6" 
       size="xl"
-      centered title="Instructions Page 14"
+      centered title="Instructions Page 21 of x"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
       :header-text-variant="headerTextVariant"
