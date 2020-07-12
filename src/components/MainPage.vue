@@ -14,7 +14,7 @@
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
         <!-- <b-button v-b-modal.modal-center-WRITENAMEOFPAGEHERETOSEEITPOPUPFIRST>Instructions</b-button> -->
-        <b-button v-b-modal.modal-center-instruction37>Instructions</b-button>
+        <b-button v-b-modal.modal-center-end>Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
@@ -22,6 +22,10 @@
           <!-- These download buttons become visible after some progress has been made -->
             <b-button class="btn btn-default" @click="this.fetchPresignedUrl"> Download data for Block #1 </b-button>
       </b-row>
+      <download-csv class="btn btn-default" :data="this.blockOneResults" :name="this.blockOneFileName()">
+          <!-- These download buttons become visible after some progress has been made -->
+            <b-button> Download data for Block #1 to local machine </b-button>
+        </download-csv>
       <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_2" v-b-modal.modal-center-2>Experiment 2</b-button>
         <download-csv v-if="this.finished_2" class="btn btn-default" :data="this.blockTwoResults" :name="this.blockTwoFileName()">
@@ -275,7 +279,7 @@
       id="modal-center-end" 
       size="xl"
       centered 
-      title="The end"
+      title="Loading your end of experiment URL"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
       :header-text-variant="headerTextVariant"
@@ -287,8 +291,12 @@
       :no-close-on-esc="true"
       :hide-header-close="true"
     >
-      <b-container class="align-bottom" :style="this.windowsize"  >
-        End of Survey URL here
+      
+       <div v-if="!data_sent_to_s3" class="d-flex justify-content-center mb-3">
+        <b-spinner variant="primary" label="Loading..."></b-spinner>
+      </div>
+      <b-container v-if="data_sent_to_s3" class="align-bottom" :style="this.windowsize"  >
+        URL here
       </b-container>
     </b-modal>
   </div>
@@ -603,6 +611,7 @@ export default {
   // Survey data and final output file data
   data() {
     return {
+      data_sent_to_s3: false,
       participant_generated_id: this.generateParticipantId(),
       form: '',
       S1Results: '',
@@ -707,6 +716,7 @@ export default {
         // 204 No Content
         // eslint-disable-next-line no-console
         console.log(response.data)
+        parent.data_sent_to_s3 = true
       }).catch(e => {
         // eslint-disable-next-line no-console
         console.log(e)
