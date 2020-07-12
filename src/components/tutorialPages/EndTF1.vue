@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-EndTF1" 
       size="xl"
-      centered title="Page x"
+      centered title="End of True or False Questions 1 - 10"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
       :header-text-variant="headerTextVariant"

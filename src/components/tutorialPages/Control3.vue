@@ -18,8 +18,10 @@
             </div>
               
       </b-container>
-        <b-button @click="$bvModal.hide(`modal-center-Control3`)" v-b-modal.modal-center-Control2 variant="outline-primary" size="lg">Back</b-button>
-        <b-button @click="$bvModal.hide(`modal-center-Control3`)" v-b-modal.modal-center-Feedback style="float: right;" variant="outline-primary" size="lg">Next</b-button>
+        <!-- <b-button @click="$bvModal.hide(`modal-center-Control3`)" v-b-modal.modal-center-Control2 variant="outline-primary" size="lg">Back</b-button>
+        <b-button @click="$bvModal.hide(`modal-center-Control3`)" v-b-modal.modal-center-Feedback style="float: right;" variant="outline-primary" size="lg">Next</b-button> -->
+        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" :disabled="finishanimate" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -37,6 +39,7 @@
                 opacity_3: '0%',
                 opacity_4: '0%',
                 mutex: false,
+                finishanimate: true
             }
         },
         computed: {
@@ -58,10 +61,20 @@
                 return
             }
             this.mutex = true;
-            setTimeout(() => this.animate(), 500); 
+            setTimeout(() => this.animate(), 300); 
             })
         },
         methods: {
+            reset_animation_back() {
+                //this.$bvModal.hide("modal-center-instruction" + this.page_num)  // this.$bvModal.hide(this current page)
+                this.resetAnimation()
+                this.$bvModal.show("modal-center-Control2") //this.$bvModal.show(previous page)
+            },
+            reset_animation_next() {
+                //this.$bvModal.hide("modal-center-instruction" + this.page_num)
+                this.resetAnimation()
+                this.$bvModal.show("modal-center-Feedback")
+            },
             resetAnimation() {
                 this.$bvModal.hide('modal-center-Control3')
                 this.opacity_1 = "100%"
@@ -70,23 +83,27 @@
                 this.opacity_4 = "0%"
                 this.locked = true
                 this.mutex = false
+                this.finishanimate = false
             },
             animate() {
                 let parent = this
-                setTimeout(() => {parent.opacity_2 = "100%" }, 1000);
-                setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_3 = "100%" }, 1500);
-                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_4 = "100%" }, 2000);
-                setTimeout(() => {parent.opacity_4 = "0%"; parent.opacity_2 = "100%" }, 2500);
+                setTimeout(() => {parent.opacity_2 = "100%" }, 300);
+                setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_3 = "100%" }, 600);
+                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_4 = "100%" }, 900);
+                setTimeout(() => {parent.opacity_4 = "0%"; parent.opacity_3 = "100%" }, 1200);
+                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_2 = "100%" }, 1500);
+                setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_3 = "100%" }, 1800);
+                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_4 = "100%" }, 2100);
+                setTimeout(() => {parent.opacity_4 = "0%"; parent.opacity_3 = "100%" }, 2400);
+                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_2 = "100%" }, 2700);
                 setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_3 = "100%" }, 3000);
-                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_4 = "100%" }, 3500);
-                setTimeout(() => {parent.opacity_4 = "0%"; parent.opacity_2 = "100%" }, 4000);
-                setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_3 = "100%" }, 4500);
-                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_4 = "100%" }, 5000);
-                setTimeout(() => {parent.opacity_4 = "0%"; parent.opacity_2 = "100%" }, 5500);
-                setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_3 = "100%" }, 6000);
+                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_4 = "100%" }, 3300);
+                setTimeout(() => {parent.opacity_4 = "0%"; parent.opacity_3 = "100%" }, 3600);
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
+                // Disables BACK NEXT buttons until animation finishes at 3.6 seconds.
+                setTimeout(() => {parent.finishanimate = false}, 3600);
             },
         },
     }

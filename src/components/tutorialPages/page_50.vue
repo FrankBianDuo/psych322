@@ -28,7 +28,7 @@
                <img :src="require(`../../assets/tutorials/How Many/${this.center_text}.png`)" v-bind:style="{ maxWidth: '20%', height: 'auto', marginTop: '10%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
 
                <!-- CENTER STUFF -->
-               <img :src="require(`../../assets/tutorials/Center Stuff/${this.center_img}.png`)" v-bind:style="{ maxWidth: '20%', height: 'auto', marginTop: '20%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
+               <img :src="require(`../../assets/tutorials/Center Stuff/${this.center_img}.png`)" v-bind:style="{ maxWidth: '34%', height: 'auto', marginTop: '18.5%', marginLeft: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
 
             </div>
               
@@ -47,8 +47,8 @@
         data() { // WARNING!!!  THE CORRECT ANSWER IS 3 NOT 4!!!  PLEASE EDIT!!!
             return {
                 page_num: "50",
-                square_left: "-22%",
-                square_right: "22%",
+                square_left: "-28%",
+                square_right: "28%",
                 square_top: "2%",
                 square_bot: "25%",
                 center_text: "They Actually Get",
@@ -75,7 +75,7 @@
                 return "modal-center-instruction" + this.page_num
             },
             center_title() {
-                return "Instructions page " + this.page_num
+                return "Template Matching Question " + (Number(this.page_num) - 44).toString()
             },
             
         },
@@ -95,8 +95,8 @@
         },
         methods: { 
             reset_animation_back() {
-                this.$bvModal.hide("modal-center-instruction" + this.page_num)
-                this.$bvModal.show("modal-center-instruction" + ((Number(this.page_num) - 1).toString()))
+                this.$bvModal.hide("modal-center-instruction" + this.page_num)  // this.$bvModal.hide(this current page)
+                this.$bvModal.show("modal-center-instruction" + ((Number(this.page_num) - 1).toString())) //this.$bvModal.show(previous page)
             },
             reset_animation_next() {
                 this.$bvModal.hide("modal-center-instruction" + this.page_num)

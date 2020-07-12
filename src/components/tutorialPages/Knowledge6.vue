@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-Knowledge6" 
       size="xl"
-      centered title="Are you a robot?"
+      centered title="Instructions Page 21 of x"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
       :header-text-variant="headerTextVariant"
@@ -40,7 +40,5 @@
         },
     }
 </script>
-
-
 <style scoped>
 </style>

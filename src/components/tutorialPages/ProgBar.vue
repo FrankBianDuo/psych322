@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-ProgBar" 
       size="xl"
-      centered title="Page x"
+      centered title="Progress Bar"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -17,8 +17,10 @@
             </div>
               
       </b-container>
-        <b-button @click="$bvModal.hide(`modal-center-ProgBar`)" v-b-modal.modal-center-EndTF2 variant="outline-primary" size="lg">Back</b-button>
-        <b-button @click="$bvModal.hide(`modal-center-ProgBar`)" v-b-modal.modal-center-EndInstr style="float: right;" variant="outline-primary" size="lg">Next</b-button>
+        <!-- <b-button @click="$bvModal.hide(`modal-center-ProgBar`)" v-b-modal.modal-center-EndTF2 variant="outline-primary" size="lg">Back</b-button>
+        <b-button @click="$bvModal.hide(`modal-center-ProgBar`)" v-b-modal.modal-center-EndInstr style="float: right;" variant="outline-primary" size="lg">Next</b-button> -->
+        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" :disabled="finishanimate" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -35,6 +37,7 @@
                 opacity_2: '0%',
                 opacity_3: '0%',
                 mutex: false,
+                finishanimate: true
             }
         },
         computed: {
@@ -60,6 +63,16 @@
             })
         },
         methods: {
+            reset_animation_back() {
+                //this.$bvModal.hide("modal-center-instruction" + this.page_num)  // this.$bvModal.hide(this current page)
+                this.resetAnimation()
+                this.$bvModal.show("modal-center-EndTF2") //this.$bvModal.show(previous page)
+            },
+            reset_animation_next() {
+                //this.$bvModal.hide("modal-center-instruction" + this.page_num)
+                this.resetAnimation()
+                this.$bvModal.show("modal-center-EndInstr")
+            },
             resetAnimation() {
                 this.$bvModal.hide('modal-center-ProgBar')
                 this.opacity_1 = "100%"
@@ -67,13 +80,16 @@
                 this.opacity_3 = "0%"
                 this.locked = true
                 this.mutex = false
+                this.finishanimate = false
             },
             animate() {
                 let parent = this
-                setTimeout(() => {parent.opacity_1 = "0%"; parent.opacity_2 = "100%" }, 500); //2800 IN PRODUCTION
-                setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_3 = "100%" }, 1500); //2800 IN PRODUCTION
-                setTimeout(() => parent.mutex = false, 3600); //2800 IN PRODUCTION
-                setTimeout(() => parent.locked = false, 3600); //2800 IN PRODUCTION
+                setTimeout(() => {parent.opacity_1 = "0%"; parent.opacity_2 = "100%" }, 500); 
+                setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_3 = "100%" }, 1500); 
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
+                // Disables BACK NEXT buttons until animation finishes at 2 seconds.
+                setTimeout(() => {parent.finishanimate = false}, 2000);
             },
         },
     }

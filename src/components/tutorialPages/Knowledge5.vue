@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-Knowledge5" 
       size="xl"
-      centered title="Page x"
+      centered title="Instructions Page 20 of x"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -33,6 +33,7 @@
                 opacity_1: '100%',
                 opacity_2: '0%',
                 mutex: false,
+                finishanimate: true
             }
         },
         computed: {
@@ -57,13 +58,24 @@
             setTimeout(() => this.animate(), 500); 
             })
         },
-        methods: {
+       methods: {
+            reset_animation_back() {
+                //this.$bvModal.hide("modal-center-instruction" + this.page_num)  // this.$bvModal.hide(this current page)
+                this.resetAnimation()
+                this.$bvModal.show("modal-center-Knowledge3") //this.$bvModal.show(previous page)
+            },
+            reset_animation_next() {
+                //this.$bvModal.hide("modal-center-instruction" + this.page_num)
+                this.resetAnimation()
+                this.$bvModal.show("modal-center-Knowledge5")
+            },
             resetAnimation() {
                 this.$bvModal.hide('modal-center-Knowledge5')
                 this.opacity_1 = "100%"
                 this.opacity_2 = "0%"
                 this.locked = true
                 this.mutex = false
+                this.finishanimate = false
             },
             animate() {
                 let parent = this
@@ -73,6 +85,8 @@
                 setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_1 = "100%" }, 1600); 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
+                // Disables BACK NEXT buttons until animation finishes at 4 seconds.
+                setTimeout(() => {parent.finishanimate = false}, 4000);
             },
         },
     }

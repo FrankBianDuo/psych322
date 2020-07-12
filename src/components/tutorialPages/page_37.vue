@@ -26,12 +26,14 @@
                <img :src="require(`../../assets/tutorials/How Many/${this.center_text}.png`)" v-bind:style="{ maxWidth: '20%', height: 'auto', marginTop: '10%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
 
                <!-- CENTER STUFF -->
-               <img :src="require(`../../assets/tutorials/Center Stuff/${this.center_img}.png`)" v-bind:style="{ maxWidth: '20%', height: 'auto', marginTop: '20%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
+               <img :src="require(`../../assets/tutorials/Center Stuff/${this.center_img}.png`)" v-bind:style="{ maxWidth: '34%', height: 'auto', marginTop: '18.5%', marginLeft: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
 
             </div>
               
       </b-container>
-        <b-button @click="this.reset_animation_back" variant="outline-primary" size="lg">Back</b-button>
+      <!-- I am having difficulty hiding this page when I select BACK -->
+        <!-- <b-button @click="this.reset_animation_back" variant="outline-primary" size="lg">Back</b-button> -->
+        <b-button @click="$bvModal.hide('modal-center-instuction37')" v-b-modal.modal-center-Cursor2 variant="outline-primary" size="lg">Back</b-button>
         <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" size="lg">Next</b-button>
     </b-modal>
 </template>
@@ -45,8 +47,8 @@
         data() {
             return {
                 page_num: "37",
-                square_left: "-22%",
-                square_right: "22%",
+                square_left: "-28%",
+                square_right: "28%",
                 square_top: "2%",
                 square_bot: "25%",
                 center_text: "Think They Get",
@@ -73,7 +75,7 @@
                 return "modal-center-instruction" + this.page_num
             },
             center_title() {
-                return "Instructions page " + this.page_num
+                return "Template Matching Question " + (Number(this.page_num) - 36).toString()
             },
             
         },
@@ -88,13 +90,14 @@
                 return
             }
             this.mutex = true;
-            setTimeout(() => this.animate(), 1500); //2800 IN PRODUCTION
+            setTimeout(() => this.animate(), 1500); 
             })
         },
         methods: { 
             reset_animation_back() {
+                this.resetAnimation()
                 this.$bvModal.hide("modal-center-instruction" + this.page_num)
-                this.$bvModal.show("modal-center-instruction" + ((Number(this.page_num) - 1).toString()))
+                this.$bvModal.show("modal-center-Cursor2") 
             },
             reset_animation_next() {
                 this.$bvModal.hide("modal-center-instruction" + this.page_num)

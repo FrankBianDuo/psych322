@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-MeetPeople" 
       size="xl"
-      centered title="Treat the avatars like real people you just met and expect to see again."
+      centered title="Instruction page 1"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
       :header-text-variant="headerTextVariant"

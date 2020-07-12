@@ -4,16 +4,17 @@
     <h1>{{ msg }}</h1>
     <!-- Here is the vue Page for the index interface on our program -->
     <p>
-      (1) View the PowerPoint Instructions <br>
-      (2) Progress to Block 1. <br>
+      (1) View the Instructions <br>
+      (2) Progress to Experiment 1. <br>
       (3) Please fill out the survey. <br>
-      (4) You do not need to select Block 2 or Block 3. <br>
-      (5) Please do not click the refresh button.
+      (4) Ignore Experiments 2 and 3. <br>
+      (5) Never click the refresh button.
     </p>
     <div class="bv-example-row bv-example-row-flex-cols">
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
-        <b-button v-b-modal.modal-center-instruction50>Instructions</b-button>
+        <!-- <b-button v-b-modal.modal-center-WRITENAMEOFPAGEHERETOSEEITPOPUPFIRST>Instructions</b-button> -->
+        <b-button v-b-modal.modal-center-instruction37>Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
@@ -132,6 +133,15 @@
     <ReferenceDependence :windowsize ="this.window_size" /> 
     <RefDepComp :windowsize ="this.window_size" /> 
     <RefDepEqual :windowsize ="this.window_size" /> 
+    <HowChoice1 :windowsize ="this.window_size" /> 
+    <HowChoice2 :windowsize ="this.window_size" /> 
+    <HowChoice3 :windowsize ="this.window_size" /> 
+    <HowChoice4 :windowsize ="this.window_size" /> 
+    <HowChoice5 :windowsize ="this.window_size" /> 
+    <HowChoice6 :windowsize ="this.window_size" /> 
+    <HowChoice7 :windowsize ="this.window_size" /> 
+    <HowChoice8 :windowsize ="this.window_size" /> 
+    <HowChoice9 :windowsize ="this.window_size" />
     <Cursor1 :windowsize ="this.window_size" /> 
     <PredPract1 :windowsize ="this.window_size" />
     <PredPract2 :windowsize ="this.window_size" />
@@ -150,7 +160,6 @@
     <ProgBar :windowsize ="this.window_size" />
     <EndInstr :windowsize ="this.window_size" />
     <GameFlow1 :windowsize ="this.window_size" />
-    <GameFlow1 :windowsize ="this.window_size" />
     <GameFlow2 :windowsize ="this.window_size" />
     <GameFlow3 :windowsize ="this.window_size" />
     <GameFlow4 :windowsize ="this.window_size" />
@@ -159,6 +168,8 @@
     <Control2 :windowsize ="this.window_size" />
     <Control3 :windowsize ="this.window_size" />
     <Control3 :windowsize ="this.window_size" />
+    <Control4 :windowsize ="this.window_size" />
+    <Control5 :windowsize ="this.window_size" />
     <Feedback :windowsize ="this.window_size" />    
     <Knowledge1 :windowsize ="this.window_size" />
     <Knowledge2 :windowsize ="this.window_size" />
@@ -299,6 +310,15 @@ import ConstantValue from './tutorialPages/ConstantValue.vue'
 import ReferenceDependence from './tutorialPages/ReferenceDependence.vue'
 import RefDepComp from './tutorialPages/RefDepComp.vue'
 import RefDepEqual from './tutorialPages/RefDepEqual.vue'
+import HowChoice1 from './tutorialPages/HowChoice1.vue'
+import HowChoice2 from './tutorialPages/HowChoice2.vue'
+import HowChoice3 from './tutorialPages/HowChoice3.vue'
+import HowChoice4 from './tutorialPages/HowChoice4.vue'
+import HowChoice5 from './tutorialPages/HowChoice5.vue'
+import HowChoice6 from './tutorialPages/HowChoice6.vue'
+import HowChoice7 from './tutorialPages/HowChoice7.vue'
+import HowChoice8 from './tutorialPages/HowChoice8.vue'
+import HowChoice9 from './tutorialPages/HowChoice9.vue'
 import Cursor1 from './tutorialPages/Cursor1.vue'
 import PredPract1 from './tutorialPages/PredPract1.vue'
 import PredPract2 from './tutorialPages/PredPract2.vue'
@@ -324,6 +344,8 @@ import GameFlow5 from './tutorialPages/GameFlow5.vue'
 import Control1 from './tutorialPages/Control1.vue'
 import Control2 from './tutorialPages/Control2.vue'
 import Control3 from './tutorialPages/Control3.vue'
+import Control4 from './tutorialPages/Control4.vue'
+import Control5 from './tutorialPages/Control5.vue'
 import Feedback from './tutorialPages/Feedback.vue'
 import Knowledge1 from './tutorialPages/Knowledge1.vue'
 import Knowledge2 from './tutorialPages/Knowledge2.vue'
@@ -457,6 +479,15 @@ export default {
     ReferenceDependence,
     RefDepComp,
     RefDepEqual,
+    HowChoice1,
+    HowChoice2,
+    HowChoice3,
+    HowChoice4,
+    HowChoice5,
+    HowChoice6,
+    HowChoice7,
+    HowChoice8,
+    HowChoice9,
     Cursor1,
     PredPract1,
     PredPract2,
@@ -482,6 +513,8 @@ export default {
     Control1,
     Control2,
     Control3,
+    Control4,
+    Control5,
     Feedback,
     Knowledge1,
     Knowledge2,

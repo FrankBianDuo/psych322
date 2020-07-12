@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-CommKnow" 
       size="xl"
-      centered title="This is common knowledge."
+      centered title="Instruction page 3"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -18,8 +18,8 @@
             </div>
               
       </b-container>
-        <b-button @click="$bvModal.hide(`modal-center-CommKnow`)" v-b-modal.modal-center-WantMoreDots variant="outline-primary" size="lg">Back</b-button>
-        <b-button @click="$bvModal.hide(`modal-center-CommKnow`)" v-b-modal.modal-center-ConstantValue style="float: right;" variant="outline-primary" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" :disabled="finishanimate" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -37,6 +37,7 @@
                 opacity_3: '0%',
                 opacity_4: '0%',
                 mutex: false,
+                finishanimate: true
             }
         },
         computed: {
@@ -58,10 +59,19 @@
                 return
             }
             this.mutex = true;
-            setTimeout(() => this.animate(), 500); //2800 IN PRODUCTION
+            setTimeout(() => this.animate(), 250); 
             })
         },
         methods: {
+            reset_animation_back() {
+                this.resetAnimation()
+                this.$bvModal.show("modal-center-WantMoreDots") 
+            },
+            reset_animation_next() {
+                this.resetAnimation()
+                this.$bvModal.show("modal-center-ReferenceDependence")
+            },
+
             resetAnimation() {
                 this.$bvModal.hide('modal-center-CommKnow')
                 this.opacity_1 = "100%"
@@ -70,14 +80,17 @@
                 this.opacity_4 = "0%"
                 this.locked = true
                 this.mutex = false
+                this.finishanimate = false
             },
             animate() {
                 let parent = this
-                setTimeout(() => {parent.opacity_1 = "0%"; parent.opacity_2 = "100%" }, 500); //2800 IN PRODUCTION
-                setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_3 = "100%" }, 1000); //2800 IN PRODUCTION
-                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_4 = "100%" }, 1500); //2800 IN PRODUCTION
-                setTimeout(() => parent.mutex = false, 3600); //2800 IN PRODUCTION
-                setTimeout(() => parent.locked = false, 3600); //2800 IN PRODUCTION
+                setTimeout(() => {parent.opacity_1 = "0%"; parent.opacity_2 = "100%" }, 250); 
+                setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_3 = "100%" }, 725); 
+                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_4 = "100%" }, 1250); 
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
+                // Disables BACK NEXT buttons until animation finishes at 1 seconds.
+                setTimeout(() => {parent.finishanimate = false}, 1000);
             },
         },
     }
