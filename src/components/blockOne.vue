@@ -147,8 +147,8 @@ export default {
     rb_sec: 15, 
     rb_seczero: "",
     // ^^^^^
-    avatar_1: "position: absolute; max-width: 7%; max-height: auto; left: 17%; top: 21.4%;",
-    avatar_2: "position: absolute; max-width:7%; max-height:auto; left: 17%; bottom: 27.8%;",
+    avatar_1: "position: absolute; max-width: 8.6%; max-height: auto; left: 16%; top: 19.99%;",
+    avatar_2: "position: absolute; max-width:8.6%; max-height:auto; left: 16%; bottom: 26.3%;",
 
     // show is the data that toggles the visibility of block #1's modal
     show: false,

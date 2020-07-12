@@ -13,6 +13,8 @@
       <b-container class="align-bottom" :style="this.windowsize"  >
           <div style="text-align: center;">
               <!-- SQUARES AND NUMS -->
+              <!-- 1 2 -->
+              <!-- 3 4 -->
                <img @click="this.event_1" :src="require(`../../assets/tutorials/Squares and Numbers/Square ${this.color_1} ${this.num_1}.png`)" v-bind:style="{ maxWidth: '20%', height: 'auto', marginTop: this.square_top, marginLeft: this.square_left, transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
                <img @click="this.event_2" :src="require(`../../assets/tutorials/Squares and Numbers/Square ${this.color_2} ${this.num_2}.png`)" v-bind:style="{ maxWidth: '20%', height: 'auto', marginTop: this.square_top, marginLeft: this.square_right, transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
                <img @click="this.event_3" 
@@ -61,7 +63,7 @@
                 num_4: '3',
                 // 1 2
                 // 3 4 
-                right_ans: 3,
+                right_ans: 4,
                 mutex: false,
                 lock: true,
                 ans_received: null,
