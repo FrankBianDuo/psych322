@@ -103,7 +103,7 @@
         <img :src="require(`../assets/Centered Atoms/You Arrows.png`)" :style="this.global_size_control_box"/>
         <img :src="require(`../assets/Centered Atoms/AZ.png`)" :style="this.global_size_AZ"/>
         <img :src="require(`../assets/Centered Atoms/JK.png`)" :style="this.global_size_JK"/>
-        <img :src="require(`../assets/Centered Atoms/Barrier.png`)" :style="this.global_size_control_box"/>
+        <img :src="require(`../assets/Centered Atoms/Barrier.png`)" :style="this.global_size_barrier"/>
 
         <img 
         :style="this.global_size_control_box"
@@ -140,7 +140,8 @@ export default {
     global_size_JK: 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;',
     global_size_pred_up: 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;',
     global_size_pred_dn: 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;',
-    global_size_control_box: 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;',
+    global_size_control_box: 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;',
+    global_size_barrier: 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;',
     // Rest break data 
     rb_shown: false,
     rb_min: 0,
@@ -270,7 +271,8 @@ export default {
       this.global_size_JK = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
       this.global_size_pred_up = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
       this.global_size_pred_dn = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
-      this.global_size_control_box = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;'
+      this.global_size_control_box = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
+      this.global_size_barrier = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;'
     },
     hide_tutorial() {
       this.$bvModal.hide("modal-center-instruction73")
@@ -348,6 +350,7 @@ export default {
       console.log('Predict Up')
       // this.current_arrow = 'Pred Up.png'
       this.global_size_pred_up = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;'
+      this.global_size_control_box = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;'
       if (this.combinations[this.current_avatar].enctr_2_reverse == 1) {
         this.prediction = 0
       }
@@ -362,6 +365,7 @@ export default {
       // eslint-disable-next-line no-console
       console.log('Predict Down')
       this.global_size_pred_dn = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;'
+      this.global_size_control_box = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;'
       // this.current_arrow = 'Pred Dn.png'
       if (this.combinations[this.current_avatar].enctr_2_reverse == 1) {
         this.prediction = 1
@@ -384,18 +388,32 @@ export default {
       this.trial_started = n
       this.block_listeners = false;
     },
+    hide_choice_visuals() {
+      this.global_size_control_box = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
+      this.global_size_keep_glow = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
+      this.global_size_give_glow = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
+      this.global_size_pred_up = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
+      this.global_size_pred_dn = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
+      let parent = this
+      setTimeout(function() {
+        parent.global_size_barrier = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
+      }, 500);
+    },
     otherChoice() {
       // eslint-disable-next-line no-console
       console.log('Trust')
       this.fading = true
       let parent = this
       this.global_size_JK = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
-      this.global_size_control_box = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
+      
       this.global_size_give_glow = "position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;";
       this.combinations[this.current_avatar].keypress +=  'J'
       setTimeout(function() {
-        parent.ChoiceHelper(1);
+        parent.hide_choice_visuals();
       }, 500);
+      setTimeout(function() {
+        parent.ChoiceHelper(1);
+      }, 2000);
     },
     selfChoice() {
       // eslint-disable-next-line no-console
@@ -403,12 +421,14 @@ export default {
       this.fading = true
       this.global_size_JK = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
       let parent = this
-      this.global_size_control_box = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
       this.global_size_keep_glow = "position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;";
       this.combinations[this.current_avatar].keypress +=  'K'
       setTimeout(function() {
-        parent.ChoiceHelper(0);
+        parent.hide_choice_visuals();
       }, 500);
+      setTimeout(function() {
+        parent.ChoiceHelper(0);
+      }, 2000);
     },
     // Helper function for rest break count downs
     countDown() {
