@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-GameFlow1" 
       size="xl"
-      centered title="Instructions Page 14 of x"
+      centered title="Instructions Page 22 of 30"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"

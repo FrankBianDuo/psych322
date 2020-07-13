@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-MeetPeople" 
       size="xl"
-      centered title="Instruction page 1"
+      centered title="Instruction Page 1 of 30"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
       :header-text-variant="headerTextVariant"
