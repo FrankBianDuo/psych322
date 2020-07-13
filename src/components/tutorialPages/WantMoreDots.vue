@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-WantMoreDots" 
       size="xl"
-      centered title="Instruction page 2"
+      centered title="Instruction Page 2 of 30"
       v-model="show"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
@@ -45,7 +45,7 @@
       </b-container>
       <b-button @click="this.resetAnimation" v-b-modal.modal-center-MeetPeople variant="outline-primary" size="lg" :disabled="this.locked">Back</b-button>
                 
-            <b-button style="float: right;" @click="this.resetAnimation" variant="outline-primary" size="lg" v-b-modal.modal-center-CommKnow :disabled="this.locked">Next</b-button>
+            <b-button style="float: right;" @click="this.resetAnimation" variant="outline-primary" size="lg" v-b-modal.modal-center-HowHappy1 :disabled="this.locked">Next</b-button>
     </b-modal>
 </template>
 

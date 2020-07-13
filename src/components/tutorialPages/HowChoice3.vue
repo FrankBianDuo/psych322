@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-HowChoice3" 
       size="xl"
-      centered title="Instruction Page 7 of x"
+      centered title="Instruction Page 15 of 30"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -69,7 +69,7 @@
         methods: {
             reset_animation_back() {
                 this.resetAnimation()
-                this.$bvModal.show("modal-center-HowChoice2") 
+                this.$bvModal.show("modal-center-HowKnow8") 
             },
             reset_animation_next() {
                 this.resetAnimation()

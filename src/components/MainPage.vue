@@ -14,7 +14,7 @@
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
         <!-- <b-button v-b-modal.modal-center-WRITENAMEOFPAGEHERETOSEEITPOPUPFIRST>Instructions</b-button> -->
-        <b-button v-b-modal.modal-center-end>Instructions</b-button>
+        <b-button v-b-modal.modal-center-BotStopper>Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
@@ -137,6 +137,18 @@
     <ReferenceDependence :windowsize ="this.window_size" /> 
     <RefDepComp :windowsize ="this.window_size" /> 
     <RefDepEqual :windowsize ="this.window_size" /> 
+    <HowHappy1 :windowsize ="this.window_size" />
+    <HowHappy2 :windowsize ="this.window_size" />
+    <HowHappy3 :windowsize ="this.window_size" />
+    <HowHappy4 :windowsize ="this.window_size" />
+    <HowKnow1 :windowsize ="this.window_size" />
+    <HowKnow2 :windowsize ="this.window_size" />
+    <HowKnow3 :windowsize ="this.window_size" />
+    <HowKnow4 :windowsize ="this.window_size" />
+    <HowKnow5 :windowsize ="this.window_size" />
+    <HowKnow6 :windowsize ="this.window_size" />
+    <HowKnow7 :windowsize ="this.window_size" />
+    <HowKnow8 :windowsize ="this.window_size" />
     <HowChoice1 :windowsize ="this.window_size" /> 
     <HowChoice2 :windowsize ="this.window_size" /> 
     <HowChoice3 :windowsize ="this.window_size" /> 
@@ -318,6 +330,18 @@ import ConstantValue from './tutorialPages/ConstantValue.vue'
 import ReferenceDependence from './tutorialPages/ReferenceDependence.vue'
 import RefDepComp from './tutorialPages/RefDepComp.vue'
 import RefDepEqual from './tutorialPages/RefDepEqual.vue'
+import HowHappy1 from './tutorialPages/HowHappy1.vue'
+import HowHappy2 from './tutorialPages/HowHappy2.vue'
+import HowHappy3 from './tutorialPages/HowHappy3.vue'
+import HowHappy4 from './tutorialPages/HowHappy4.vue'
+import HowKnow1 from './tutorialPages/HowKnow1.vue'
+import HowKnow2 from './tutorialPages/HowKnow2.vue'
+import HowKnow3 from './tutorialPages/HowKnow3.vue'
+import HowKnow4 from './tutorialPages/HowKnow4.vue'
+import HowKnow5 from './tutorialPages/HowKnow5.vue'
+import HowKnow6 from './tutorialPages/HowKnow6.vue'
+import HowKnow7 from './tutorialPages/HowKnow7.vue'
+import HowKnow8 from './tutorialPages/HowKnow8.vue'
 import HowChoice1 from './tutorialPages/HowChoice1.vue'
 import HowChoice2 from './tutorialPages/HowChoice2.vue'
 import HowChoice3 from './tutorialPages/HowChoice3.vue'
@@ -487,6 +511,18 @@ export default {
     ReferenceDependence,
     RefDepComp,
     RefDepEqual,
+    HowHappy1,
+    HowHappy2,
+    HowHappy3,
+    HowHappy4,
+    HowKnow1,
+    HowKnow2,
+    HowKnow3,
+    HowKnow4,
+    HowKnow5,
+    HowKnow6,
+    HowKnow7,
+    HowKnow8,
     HowChoice1,
     HowChoice2,
     HowChoice3,

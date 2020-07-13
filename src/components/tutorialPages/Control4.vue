@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-Control4" 
       size="xl"
-      centered title="Instructions Page 15 of x"
+      centered title="Instructions Page 23 of 30"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
