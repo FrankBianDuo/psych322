@@ -67,6 +67,7 @@
         data() {
             return {
                 page_num: "13",
+                block_listeners: true,
                 opacity_1: '100%',
                 opacity_2: '100%',
                 opacity_3: '100%',
@@ -76,9 +77,9 @@
                 opacity_7: '100%',
                 opacity_8: '0%',
                 opacity_9: '0%',
-                opacity_10: '100%',
+                opacity_10: '0%',
                 opacity_11: '100%',
-                opacity_12: '0%',
+                opacity_12: '100%',
                 opacity_13: '100%',
                 opacity_14: '100%',
                 opacity_15: '0%',
@@ -90,7 +91,7 @@
                 opacity_21: '0%',
                 opacity_22: '100%',
                 opacity_23: '100%',
-                opacity_24: '0%',
+                opacity_24: '100%',
                 opacity_25: '0%',
                 opacity_26: '0%',
                 // opacity_27: '0%',
@@ -101,6 +102,37 @@
                 mutex: false,
                 finishanimate: true
             }
+        },
+        // Keyboard listener
+        created: function () {
+            let parent = this
+            window.addEventListener('keyup', function(event) {
+            // eslint-disable-next-line no-console
+            if (parent.show) {
+                if (parent.block_listeners == true) {
+                    return;
+                } 
+                if (event.keyCode == 65) {
+                    // Prediction A
+                    parent.animateA()
+                    parent.animate()
+                } else if (event.keyCode == 90) {
+                    // Prediction Z
+                    parent.animateZ()
+                    parent.animate();
+                }
+
+                // if (event.keyCode == 65) {
+                //     // Prediction A
+                //     parent.block_listeners = true
+                //     parent.predict('A');
+                // } else if (event.keyCode == 90) {
+                //     // Prediction Z
+                //     parent.block_listeners = true
+                //     parent.predict('Z');
+                // }
+            } 
+            });
         },
         computed: {
             page_id() {
@@ -121,7 +153,8 @@
                 return
             }
             this.mutex = true;
-            setTimeout(() => this.animate(), 0); 
+            this.block_listeners = false;
+            //setTimeout(() => this.animate(), 0); 
             })
         },
         methods: {
@@ -145,9 +178,9 @@
                 this.opacity_7 = "100%"
                 this.opacity_8 = "0%"
                 this.opacity_9 = "0%"
-                this.opacity_10 = "100%"
+                this.opacity_10 = "0%"
                 this.opacity_11 = "100%"
-                this.opacity_12 = "0%"
+                this.opacity_12 = "100%"
                 this.opacity_13 = "100%"
                 this.opacity_14 = "100%"
                 this.opacity_15 = "0%"
@@ -159,7 +192,7 @@
                 this.opacity_21 = "0%"
                 this.opacity_22 = "100%"
                 this.opacity_23 = "100%"
-                this.opacity_24 = "0%"
+                this.opacity_24 = "100%"
                 this.opacity_25 = "0%"
                 this.opacity_26 = "0%"
                 // this.opacity_27 = "0%"
@@ -171,35 +204,49 @@
                 this.mutex = false
                 this.finishanimate = false
             },
+
+            animateA() {
+                let parent = this 
+                setTimeout(() => {parent.opacity_25 = "100%";}, 0); 
+                setTimeout(() => {parent.opacity_25 = "0%";}, 1000);
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
+            },
+
+            animateZ() {
+                let parent = this 
+                setTimeout(() => {parent.opacity_26 = "100%";}, 0); 
+                setTimeout(() => {parent.opacity_26 = "0%";}, 1000);
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
+            },
+
             animate() {
                 let parent = this 
-                setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_12 = "100%"; }, 1000); 
-                setTimeout(() => {parent.opacity_24 = "100%"; }, 2500);  
-                setTimeout(() => {parent.opacity_26 = "100%"; }, 3500); 
-                
+ 
                 // Text swaps out
                 setTimeout(() => {parent.opacity_19 = "0%"; parent.opacity_20 = "100%"; }, 4000);
 
-                setTimeout(() => {parent.opacity_26 = "0%"; }, 4500);
-                setTimeout(() => {parent.opacity_4 = "100%"; }, 5000);
-                setTimeout(() => {parent.opacity_18 = "0%"; }, 5500);
+                setTimeout(() => {parent.opacity_26 = "0%"; }, 1000);
+                setTimeout(() => {parent.opacity_4 = "100%"; }, 1500);
+                setTimeout(() => {parent.opacity_18 = "0%"; }, 2000);
 
                 //Choose, barrier disappear, and sad face
-                setTimeout(() => {parent.opacity_8 = "100%"; }, 6000);
-                setTimeout(() => {parent.opacity_23 = "0%"; }, 6500);
-                setTimeout(() => {parent.opacity_16 = "100%"; }, 7000);
+                setTimeout(() => {parent.opacity_8 = "100%"; }, 3500);
+                setTimeout(() => {parent.opacity_23 = "0%"; }, 4400);
+                setTimeout(() => {parent.opacity_16 = "100%"; }, 4500);
 
 
 
 
                 // Text swaps out
-                setTimeout(() => {parent.opacity_20 = "0%"; parent.opacity_21 = "100%"; }, 6000);
+                setTimeout(() => {parent.opacity_20 = "0%"; parent.opacity_21 = "100%"; }, 5000);
 
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
-                // Disables BACK NEXT buttons until animation finishes at 6 seconds.
-                setTimeout(() => {parent.finishanimate = false}, 6000);
+                // Disables BACK NEXT buttons until animation finishes at 5.5 seconds.
+                setTimeout(() => {parent.finishanimate = false}, 5500);
             },
         },
     }

@@ -133,7 +133,7 @@
                     parent.ans_disable = false
                     this.opacity_a = "100%"
                     this.opacity_b = "0%"
-                }, 2400);
+                }, 6000);
             },
             gen_question_src(q_id) {
                 var srcmap = {

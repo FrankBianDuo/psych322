@@ -24,9 +24,9 @@
                <img :src="require('../../assets/Instructions/HowKnow/kchoice2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/HowKnow/kchoice3.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/HowKnow/dots1.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_9, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/HowKnow/dots2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_10, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/HowKnow/dots2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_10, transition: 'opacity 1.5s' }"/>
                <img :src="require('../../assets/Instructions/HowKnow/dots3.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/HowKnow/dotsswitch.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/HowKnow/dotsswitch.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 2.5s' }"/>
 
                <!-- Avatars and Smiles opacity 13-16 -->
                <img :src="require('../../assets/Instructions/HowKnow/avatar2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.2s' }"/>
@@ -48,6 +48,8 @@
                <img :src="require('../../assets/Instructions/HowKnow/barrier.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/HowKnow/az.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_23, transition: 'opacity 0.2s' }"/>
 
+               <!-- Extra dots that appear and disappear faster -->
+               <img :src="require('../../assets/Instructions/HowKnow/dots2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_24, transition: 'opacity 0.0s' }"/>
             </div>
               
       </b-container>
@@ -65,6 +67,7 @@
         data() {
             return {
                 page_num: "13",
+                block_listeners: true,
                 opacity_1: '100%',
                 opacity_2: '0%',
                 opacity_3: '100%',
@@ -88,7 +91,7 @@
                 opacity_21: '0%',
                 opacity_22: '0%',
                 opacity_23: '0%',
-                // opacity_24: '0%',
+                opacity_24: '0%',
                 // opacity_25: '0%',
                 // opacity_26: '0%',
                 // opacity_27: '0%',
@@ -99,6 +102,32 @@
                 mutex: false,
                 finishanimate: true
             }
+        },
+        // Keyboard listener
+        created: function () {
+            let parent = this
+            window.addEventListener('keyup', function(event) {
+            // eslint-disable-next-line no-console
+            if (parent.show) {
+                if (parent.block_listeners == true) {
+                    return;
+                } 
+                if (event.keyCode == 32) {
+                    // Spacebar
+                    parent.animate()
+                }
+
+                // if (event.keyCode == 65) {
+                //     // Prediction A
+                //     parent.block_listeners = true
+                //     parent.predict('A');
+                // } else if (event.keyCode == 90) {
+                //     // Prediction Z
+                //     parent.block_listeners = true
+                //     parent.predict('Z');
+                // }
+            } 
+            });
         },
         computed: {
             page_id() {
@@ -119,7 +148,8 @@
                 return
             }
             this.mutex = true;
-            setTimeout(() => this.animate(), 0); 
+            this.block_listeners = false;
+            //setTimeout(() => this.animate(), 0); 
             })
         },
         methods: {
@@ -157,7 +187,7 @@
                 this.opacity_21 = "0%"
                 this.opacity_22 = "0%"
                 this.opacity_23 = "0%"
-                // this.opacity_24 = "0%"
+                this.opacity_24 = "0%"
                 // this.opacity_25 = "0%"
                 // this.opacity_26 = "0%"
                 // this.opacity_27 = "0%"
@@ -171,15 +201,18 @@
             },
             animate() {
                 let parent = this 
-                setTimeout(() => {parent.opacity_7 = "100%"; }, 1500);  
+                setTimeout(() => {parent.opacity_7 = "100%"; }, 0);  
                 setTimeout(() => {parent.opacity_2 = "100%"; parent.opacity_4 = "100%"; parent.opacity_6 = "100%"; 
-                parent.opacity_10 = "100%"; parent.opacity_14 = "100%";}, 3000); 
-                setTimeout(() => {parent.opacity_22 = "100%"; parent.opacity_4 = "50%"}, 3500); 
-                setTimeout(() => {parent.opacity_18 = "100%"; }, 4000);
-                setTimeout(() => {parent.opacity_21 = "100%"; }, 4500);
+                parent.opacity_10 = "100%"; parent.opacity_14 = "100%"; parent.opacity_24 = "100%"; parent.opacity_10 = "100%";}, 1500); 
+                setTimeout(() => {parent.opacity_22 = "100%"; parent.opacity_4 = "50%"}, 2000); 
+                setTimeout(() => {parent.opacity_18 = "100%"; }, 2000);
+                setTimeout(() => {parent.opacity_21 = "100%"; }, 2500);
 
                 // Text swaps out
-                setTimeout(() => {parent.opacity_19 = "0%"; parent.opacity_20 = "100%"; }, 5000); 
+                setTimeout(() => {parent.opacity_19 = "0%"; parent.opacity_20 = "100%"; }, 6000); 
+                setTimeout(() => {parent.opacity_24 = "0%";}, 2500);
+                setTimeout(() => {parent.opacity_10 = "0%";}, 3500);
+                setTimeout(() => {parent.opacity_12 = "100%";}, 4500);
   
 
 

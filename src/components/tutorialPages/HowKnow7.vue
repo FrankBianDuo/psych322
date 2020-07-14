@@ -34,7 +34,7 @@
                <img :src="require('../../assets/Instructions/HowKnow/pfrown2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.2s' }"/>
                
                <!-- AZ and predictions 14-16-->
-               <img :src="require('../../assets/Instructions/HowKnow/az.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.2s' }"/>
+               <!-- <img :src="require('../../assets/Instructions/HowKnow/jk.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.2s' }"/> -->
                <img :src="require('../../assets/Instructions/HowKnow/pred1.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_15, transition: 'opacity 0.05s' }"/>
                <img :src="require('../../assets/Instructions/HowKnow/pred2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_16, transition: 'opacity 0.05s' }"/>
 
@@ -66,6 +66,7 @@
                <img :src="require('../../assets/Instructions/HowKnow/safedots3.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_34, transition: 'opacity 0.1s' }"/>
                <img :src="require('../../assets/Instructions/HowKnow/safedots4.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_35, transition: 'opacity 0.1s' }"/>
                 
+               <img :src="require('../../assets/Instructions/HowKnow/jk.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.2s' }"/>
 
             </div>
               
@@ -84,6 +85,7 @@
         data() {
             return {
                 page_num: "13",
+                block_listeners: true,
                 opacity_1: '100%',
                 opacity_2: '100%',
                 opacity_3: '100%',
@@ -124,6 +126,28 @@
                 finishanimate: true
             }
         },
+        // Keyboard listener
+        created: function () {
+            let parent = this
+            window.addEventListener('keyup', function(event) {
+            // eslint-disable-next-line no-console
+            if (parent.show) {
+                if (parent.block_listeners == true) {
+                    return;
+                } 
+                if (event.keyCode == 32) {
+                    // Spacebar
+                    parent.animate()
+                } else if (event.keyCode == 74) {
+                    // Give Control
+                    parent.animateJ()
+                } else if (event.keyCode == 75) {
+                    // Keep Control
+                    parent.animateK();
+                }
+            } 
+            });
+        },
         computed: {
             page_id() {
                 return "modal-center-instruction" + this.page_num
@@ -143,7 +167,8 @@
                 return
             }
             this.mutex = true;
-            setTimeout(() => this.animate(), 0); 
+            this.block_listeners = false;
+            //setTimeout(() => this.animate(), 0); 
             })
         },
         methods: {
@@ -198,50 +223,69 @@
                 this.mutex = false
                 this.finishanimate = false
             },
+            
+            animateJ() {
+                let parent = this 
+                setTimeout(() => {parent.opacity_31 = "100%";}, 0); 
+                setTimeout(() => {parent.opacity_31 = "0%";}, 1000);
+                setTimeout(() => {parent.opacity_28 = "100%"}, 1500);
+                setTimeout(() => {parent.opacity_14 = "0%";}, 0);
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
+            },
+
+            animateK() {
+                let parent = this 
+                setTimeout(() => {parent.opacity_32 = "100%";}, 0); 
+                setTimeout(() => {parent.opacity_32 = "0%";}, 1000);
+                setTimeout(() => {parent.opacity_28 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_14 = "0%";}, 0);
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
+            },
+
             animate() {
                 let parent = this 
-                setTimeout(() => {parent.opacity_26 = "100%"}, 1500); 
-                setTimeout(() => {parent.opacity_26 = "0%"}, 1600);
-                setTimeout(() => {parent.opacity_25 = "100%"}, 1700);
-                setTimeout(() => {parent.opacity_25 = "0%"}, 1800);
-                setTimeout(() => {parent.opacity_26 = "100%"}, 1900);
-                setTimeout(() => {parent.opacity_26 = "0%"}, 2000);
-                setTimeout(() => {parent.opacity_25 = "100%"}, 2100);
-                setTimeout(() => {parent.opacity_25 = "0%"}, 2200);
-                setTimeout(() => {parent.opacity_26 = "100%"}, 2300);
-                setTimeout(() => {parent.opacity_26 = "0%"}, 2400);
-                setTimeout(() => {parent.opacity_25 = "100%"}, 2500);
-                setTimeout(() => {parent.opacity_25 = "0%"}, 2600);
-                setTimeout(() => {parent.opacity_26 = "100%"}, 2700);
-                setTimeout(() => {parent.opacity_26 = "0%"}, 2800);
-                setTimeout(() => {parent.opacity_25 = "100%"}, 2900);
-                setTimeout(() => {parent.opacity_25 = "0%"}, 3000);
-                setTimeout(() => {parent.opacity_26 = "100%"}, 3100);
-                setTimeout(() => {parent.opacity_26 = "0%"}, 3100);
-                setTimeout(() => {parent.opacity_25 = "100%"}, 3200);
-                setTimeout(() => {parent.opacity_25 = "0%"}, 3300);
-                setTimeout(() => {parent.opacity_26 = "100%"}, 3400);
-                setTimeout(() => {parent.opacity_26 = "0%"}, 3500);
-                setTimeout(() => {parent.opacity_25 = "100%"}, 3600);
-                setTimeout(() => {parent.opacity_25 = "0%"}, 3700);
-                setTimeout(() => {parent.opacity_26 = "100%"}, 3800);
-                setTimeout(() => {parent.opacity_26 = "0%"}, 3900);
-                setTimeout(() => {parent.opacity_25 = "100%"}, 4000);
-                setTimeout(() => {parent.opacity_25 = "0%"}, 4100);
-                setTimeout(() => {parent.opacity_26 = "100%"}, 4200);
-                setTimeout(() => {parent.opacity_26 = "0%"}, 4300);
-                setTimeout(() => {parent.opacity_25 = "100%"}, 4400);
-                setTimeout(() => {parent.opacity_25 = "0%"}, 4500);
+                setTimeout(() => {parent.opacity_28 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_26 = "100%"}, 500); 
+                setTimeout(() => {parent.opacity_26 = "0%"}, 600);
+                setTimeout(() => {parent.opacity_25 = "100%"}, 700);
+                setTimeout(() => {parent.opacity_25 = "0%"}, 800);
+                setTimeout(() => {parent.opacity_26 = "100%"}, 900);
+                setTimeout(() => {parent.opacity_26 = "0%"}, 1000);
+                setTimeout(() => {parent.opacity_25 = "100%"}, 1100);
+                setTimeout(() => {parent.opacity_25 = "0%"}, 1200);
+                setTimeout(() => {parent.opacity_26 = "100%"}, 1300);
+                setTimeout(() => {parent.opacity_26 = "0%"}, 1400);
+                setTimeout(() => {parent.opacity_25 = "100%"}, 1500);
+                setTimeout(() => {parent.opacity_25 = "0%"}, 1600);
+                setTimeout(() => {parent.opacity_26 = "100%"}, 1700);
+                setTimeout(() => {parent.opacity_26 = "0%"}, 1800);
+                setTimeout(() => {parent.opacity_25 = "100%"}, 1900);
+                setTimeout(() => {parent.opacity_25 = "0%"}, 2000);
+                setTimeout(() => {parent.opacity_26 = "100%"}, 2100);
+                setTimeout(() => {parent.opacity_26 = "0%"}, 2100);
+                setTimeout(() => {parent.opacity_25 = "100%"}, 2200);
+                setTimeout(() => {parent.opacity_25 = "0%"}, 2300);
+                setTimeout(() => {parent.opacity_26 = "100%"}, 2400);
+                setTimeout(() => {parent.opacity_26 = "0%"}, 2500);
+                setTimeout(() => {parent.opacity_25 = "100%"}, 2600);
+                setTimeout(() => {parent.opacity_25 = "0%"}, 2700);
+                setTimeout(() => {parent.opacity_26 = "100%"}, 2800);
+                setTimeout(() => {parent.opacity_26 = "0%"}, 2900);
+                setTimeout(() => {parent.opacity_25 = "100%"}, 3000);
+                setTimeout(() => {parent.opacity_25 = "0%"}, 3100);
+                setTimeout(() => {parent.opacity_26 = "100%"}, 3200);
+                setTimeout(() => {parent.opacity_26 = "0%"}, 3300);
+                setTimeout(() => {parent.opacity_25 = "100%"}, 3400);
+                setTimeout(() => {parent.opacity_25 = "0%"}, 3500);
 
-                setTimeout(() => {parent.opacity_29 = "100%"}, 4500);
+                setTimeout(() => {parent.opacity_29 = "100%"}, 3600);
+
+                setTimeout(() => {parent.opacity_14 = "100%";}, 5700);
 
                 // Text swaps out
                 //setTimeout(() => {parent.opacity_17 = "0%"; parent.opacity_18 = "100%"; }, 6000);
-                
-                setTimeout(() => {parent.opacity_31 = "100%"}, 6000);
-
-                setTimeout(() => {parent.opacity_28 = "100%"}, 7000);
-
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
