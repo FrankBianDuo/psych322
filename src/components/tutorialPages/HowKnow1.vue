@@ -169,8 +169,9 @@
                 setTimeout(() => {parent.opacity_7 = "100%"; }, 1750);
                 setTimeout(() => {parent.opacity_11 = "100%"; }, 2000);
 
+
                 // Text swaps out
-                setTimeout(() => {parent.opacity_13 = "0%"; parent.opacity_14 = "100%"; }, 4000); 
+                setTimeout(() => {parent.opacity_14 = "100%"; }, 4000); 
                 setTimeout(() => {parent.opacity_14 = "0%"; parent.opacity_15 = "100%"; }, 6000);
   
                 // Encounter 2 appears 

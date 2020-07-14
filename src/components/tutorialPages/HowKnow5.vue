@@ -92,7 +92,7 @@
                 opacity_15: '0%',
                 opacity_16: '0%',
                 opacity_17: '0%',
-                opacity_18: '0%',
+                opacity_18: '100%',
                 opacity_19: '0%',
                 opacity_20: '100%',
                 opacity_21: '0%',
@@ -183,7 +183,7 @@
                 this.opacity_15 = "0%"
                 this.opacity_16 = "0%"
                 this.opacity_17 = "0%"
-                this.opacity_18 = "0%"
+                this.opacity_18 = "100%"
                 this.opacity_19 = "0%"
                 this.opacity_20 = "100%"
                 this.opacity_21 = "0%"

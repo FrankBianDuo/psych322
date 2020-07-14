@@ -336,8 +336,8 @@
                 setTimeout(() => {parent.opacity_27 = "0%"; parent.opacity_28 = "0%"; parent.opacity_29 = "0%"}, 6500);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
-                // Disables BACK NEXT buttons until animation finishes at 9.5 seconds.
-                setTimeout(() => {parent.finishanimate = false}, 9500);
+                // Disables BACK NEXT buttons until animation finishes at 7 seconds.
+                setTimeout(() => {parent.finishanimate = false}, 7000);
                 // // First choice
                 // setTimeout(() => {parent.opacity_19 = "100%"}, 250); 
                 // setTimeout(() => {parent.opacity_55 = "100%"}, 500); 
