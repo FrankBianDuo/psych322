@@ -21,7 +21,7 @@
             style="transform: translate(0%, -60%);"
             id="textarea"
             v-model="text"
-            placeholder="Enter your answer here..."
+            placeholder="Please write 1 - 3 full sentences here."
             rows="5"
             max-rows="5"
             ></b-form-textarea>

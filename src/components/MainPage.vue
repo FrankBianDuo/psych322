@@ -51,12 +51,16 @@
       </b-row>
     </div>
 
+      <!-- <b-container class="align-bottom" :style="this.windowsize"  >
+          <img :src="require('../../assets/Instructions/Contol Trees/Control Tree 1.png')" style="width: 90%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"/>
+      </b-container> -->
 
     <b-modal
       id="modal-prevent-closing"
       ref="modal"
       title="Experiment Survey"
     >
+
     <!-- Here's the HTML code for the survey form -->
       <b-form>
 
@@ -283,6 +287,8 @@
     <Survey1 @Survey1Done="Survey1Finished" :windowsize ="this.window_size" />
     <Survey2 @Survey2Done="Survey2Finished" :windowsize ="this.window_size" />
     <Survey3 @Survey3Done="Survey3Finished" :windowsize ="this.window_size" />
+    <Survey4 @Survey4Done="Survey4Finished" :windowsize ="this.window_size" />
+    <Survey5 @Survey5Done="Survey5Finished" :windowsize ="this.window_size" />
 
     <BlockOne @blockOneDone="blockOneFinished" :participant_name="this.form.name"/>
     <BlockTwo @blockTwoDone="blockTwoFinished" :participant_name="this.form.name"/>
@@ -303,7 +309,6 @@
       :no-close-on-esc="true"
       :hide-header-close="true"
     >
-      
        <div v-if="!data_sent_to_s3" class="d-flex justify-content-center mb-3">
         <b-spinner variant="primary" label="Loading..."></b-spinner>
       </div>
@@ -312,6 +317,7 @@
       </b-container>
     </b-modal>
   </div>
+  
 </template>
 
 <script>
@@ -475,6 +481,8 @@ import FRpage13 from './FreeResponsePages/page_13.vue'
 import Survey1 from './SurveyPages/page_1.vue'
 import Survey2 from './SurveyPages/page_2.vue'
 import Survey3 from './SurveyPages/page_3.vue'
+import Survey4 from './SurveyPages/page_4.vue'
+import Survey5 from './SurveyPages/page_5.vue'
 import json from './dataSample.json'
 import Vue from 'vue'
 
@@ -484,6 +492,8 @@ export default {
     Survey1,
     Survey2,
     Survey3,
+    Survey4,
+    Survey5,
     FRpage1,
     FRpage2,
     FRpage3,
@@ -918,6 +928,26 @@ export default {
       this.end_survey_form.power = results.interact
       this.end_survey_form.agree = results.agree
     },
+    Survey4Finished(results) {
+      // eslint-disable-next-line no-console
+      console.log(results)
+      // Generate form data at the end of our survey
+      this.end_survey_form.bigfive01 = results.bigfive01
+      this.end_survey_form.bigfive02 = results.bigfive02
+      this.end_survey_form.bigfive03 = results.bigfive03
+      this.end_survey_form.bigfive04 = results.bigfive04
+      this.end_survey_form.bigfive05 = results.bigfive05
+    },
+    Survey5Finished(results) {
+      // eslint-disable-next-line no-console
+      console.log(results)
+      // Generate form data at the end of our survey
+      this.end_survey_form.bigfive06 = results.bigfive06
+      this.end_survey_form.bigfive07 = results.bigfive07
+      this.end_survey_form.bigfive08 = results.bigfive08
+      this.end_survey_form.bigfive09 = results.bigfive09
+      this.end_survey_form.bigfive10 = results.bigfive10
+    },
     blockOneFinished(results) {
       // this.b_show_1 = false
       // this.b_show_2 = true
@@ -989,6 +1019,16 @@ export default {
           'Power': this.end_survey_form.power,
           'Country': this.end_survey_form.country,
           'Agreement': this.end_survey_form.agree,
+          'bigfive01': this.end_survey_form.bigfive01,
+          'bigfive02': this.end_survey_form.bigfive02,
+          'bigfive03': this.end_survey_form.bigfive03,
+          'bigfive04': this.end_survey_form.bigfive04,
+          'bigfive05': this.end_survey_form.bigfive05,
+          'bigfive06': this.end_survey_form.bigfive06,
+          'bigfive07': this.end_survey_form.bigfive07,
+          'bigfive08': this.end_survey_form.bigfive08,
+          'bigfive09': this.end_survey_form.bigfive09,
+          'bigfive10': this.end_survey_form.bigfive10,
           'WRQ01': this.FRResults[1],
           'WRQ02': this.FRResults[2],
           'WRQ03': this.FRResults[3],

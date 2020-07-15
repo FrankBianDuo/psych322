@@ -116,7 +116,7 @@
         
       </b-row>
     </b-container>
-    <b-modal ref="my-modal" hide-footer title="5 Minute Rest Break">
+    <b-modal ref="my-modal" hide-footer title="Rest Break">
       <h3 align="center"> 0{{this.rb_min}}:{{this.rb_seczero}}{{this.rb_sec}} </h3>
       <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Back to Block #1</b-button>
     </b-modal>

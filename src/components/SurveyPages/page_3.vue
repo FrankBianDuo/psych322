@@ -118,7 +118,7 @@ divine?" label-for="input-3">
         methods: {
             go_to_next() {
                 this.$bvModal.hide("modal-center-survey" + this.page_num)
-                this.$bvModal.show("modal-center-end")
+                this.$bvModal.show("modal-center-survey" + ((Number(this.page_num) + 1).toString()))
                 this.$emit('Survey3Done', this.form)
             },
             go_to_back() {

@@ -22,7 +22,7 @@ comments, suggestion, or general reactions.</h3>
             style="transform: translate(0%, 20%);"
             id="textarea"
             v-model="text"
-            placeholder="Enter your answer here..."
+            placeholder="Please write 1 - 3 full sentences here."
             rows="5"
             max-rows="5"
             ></b-form-textarea>

@@ -11,8 +11,8 @@
     >
       <b-container class="align-bottom" :style="this.windowsize"  >
           <div style="text-align: center;">
-              <img :src="require('../../assets/Instructions/They Dont Know/tdk 01.png')" v-bind:style="{ maxWidth: '60%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.0s' }"/>
-               <img :src="require('../../assets/Instructions/They Dont Know/tdk 02.png')" v-bind:style="{ maxWidth: '60%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_2, transition: 'opacity 0.0s' }"/>
+              <!-- <img :src="require('../../assets/Instructions/They Dont Know/tdk 01.png')" v-bind:style="{ maxWidth: '60%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/They Dont Know/tdk 02.png')" v-bind:style="{ maxWidth: '60%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_2, transition: 'opacity 0.0s' }"/> -->
             </div>
               
       </b-container>
