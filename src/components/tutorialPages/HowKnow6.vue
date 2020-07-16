@@ -240,7 +240,7 @@
                 setTimeout(() => {parent.opacity_25 = "100%"}, 1700);
                 setTimeout(() => {parent.opacity_25 = "0%"}, 1800);
                 setTimeout(() => {parent.opacity_26 = "100%"}, 1900);
-                setTimeout(() => {parent.opacity_26 = "0%"}, 32000);
+                setTimeout(() => {parent.opacity_26 = "0%"}, 3200);
                 setTimeout(() => {parent.opacity_26 = "100%"}, 2100);
                 setTimeout(() => {parent.opacity_26 = "0%"}, 2100);
                 setTimeout(() => {parent.opacity_25 = "100%"}, 2200);

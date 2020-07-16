@@ -116,16 +116,6 @@
                     // Spacebar
                     parent.animate()
                 }
-
-                // if (event.keyCode == 65) {
-                //     // Prediction A
-                //     parent.block_listeners = true
-                //     parent.predict('A');
-                // } else if (event.keyCode == 90) {
-                //     // Prediction Z
-                //     parent.block_listeners = true
-                //     parent.predict('Z');
-                // }
             } 
             });
         },

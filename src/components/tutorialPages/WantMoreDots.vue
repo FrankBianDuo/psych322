@@ -43,9 +43,9 @@
                 
           </div>
       </b-container>
-      <b-button @click="this.resetAnimation" v-b-modal.modal-center-MeetPeople variant="outline-primary" size="lg" :disabled="this.locked">Back</b-button>
+      <b-button @click="this.resetAnimation" v-b-modal.modal-center-WantMoreDots variant="outline-primary" size="lg" :disabled="this.locked">Back</b-button>
                 
-            <b-button style="float: right;" @click="this.resetAnimation" variant="outline-primary" size="lg" v-b-modal.modal-center-HowHappy1 :disabled="this.locked">Next</b-button>
+            <b-button style="float: right;" @click="this.resetAnimation" variant="outline-primary" size="lg" v-b-modal.modal-center-CommKnow :disabled="this.locked">Next</b-button>
     </b-modal>
 </template>
 

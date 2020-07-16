@@ -1,0 +1,266 @@
+<template>
+    <b-modal 
+      id="modal-center-Machines3" 
+      size="xl"
+      centered title="Instruction Page 3 of y"
+      v-model="show"
+      :hide-footer="true"
+      :no-close-on-backdrop="false"
+      :no-close-on-esc="true"
+      :hide-header-close="true"
+    >
+      <b-container class="align-bottom" :style="this.windowsize"  >
+          <div style="text-align: center;">
+              
+               <!-- Background items opacity 1-10 -->
+               <img :src="require('../../assets/Instructions/Machines/box1.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/box2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_2, transition: 'opacity 0.8s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/arms1.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_3, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/arms2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_4, transition: 'opacity 0.8s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/options3.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_5, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/options4.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_6, transition: 'opacity 0.8s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Bodies/machine12a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Bodies/machine12b.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.8s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/you1.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_9, transition: 'opacity 0.8s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/you2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_10, transition: 'opacity 0.8s' }"/>
+
+               <!-- opacity 11-17 -->
+               <img :src="require('../../assets/Instructions/Machines/az.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/jk.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/pred1.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/pred2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/controlgive.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_15, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/controlkeep.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_16, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/control1.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_17, transition: 'opacity 0.2s' }"/>
+
+               <!-- opacity 18-21 -->
+               <img :src="require('../../assets/Instructions/Machines/mchoice5.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_18, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/mchoice6.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_19, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/mchoice7.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_20, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/mchoice8.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_21, transition: 'opacity 0.0s' }"/>
+
+               <!-- opactiy 22-27 -->
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/meet1.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/meet2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_23, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/thisisyou.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_24, transition: 'opacity 3.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/next2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_25, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext05.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_26, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext06.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_27, transition: 'opacity 0.0s' }"/>
+            </div>
+              
+      </b-container>
+        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" :disabled="finishanimate" size="lg">Next</b-button>
+    </b-modal>
+</template>
+
+<script>
+    export default {
+        name: 'Machines3',
+        props: ['windowsize'],
+        components: {
+        },
+        data() {
+            return {
+                page_num: "13",
+                block_listeners: true,
+                opacity_1: '100%',
+                opacity_2: '0%',
+                opacity_3: '100%',
+                opacity_4: '0%',
+                opacity_5: '100%',
+                opacity_6: '0%',
+                opacity_7: '100%',
+                opacity_8: '0%',
+                opacity_9: '100%',
+                opacity_10: '0%',
+                opacity_11: '0%',
+                opacity_12: '0%',
+                opacity_13: '0%',
+                opacity_14: '0%',
+                opacity_15: '0%',
+                opacity_16: '0%',
+                opacity_17: '0%',
+                opacity_18: '0%',
+                opacity_19: '0%',
+                opacity_20: '0%',
+                opacity_21: '0%',
+                opacity_22: '0%',
+                opacity_23: '0%',
+                opacity_24: '0%',
+                opacity_25: '0%',
+                opacity_26: '100%',
+                opacity_27: '0%',
+                opacity_28: '0%',
+                opacity_29: '0%',
+
+                mutex: false,
+                finishanimate: true
+            }
+        },
+        // Keyboard listener
+        created: function () {
+            let parent = this
+            window.addEventListener('keyup', function(event) {
+            // eslint-disable-next-line no-console
+            if (parent.show) {
+                if (parent.block_listeners == true) {
+                    return;
+                } 
+                if (event.keyCode == 32) {
+                    // Spacebar 1
+                    parent.animate1()
+                } else if (event.keyCode == 65) {
+                    // Predict A
+                    parent.animateA()
+                } else if (event.keyCode == 90) {
+                    // Predict Z
+                    parent.animateZ()
+                } 
+            } 
+            });
+        },
+        computed: {
+            page_id() {
+                return "modal-center-instruction" + this.page_num
+            },
+            center_title() {
+                return "Instructions page " + this.page_num
+            },
+        },
+        mounted() {
+            this.$root.$on('bv::modal::show', (bvEvent, modalId) => {
+            // eslint-disable-next-line no-console
+            console.log('Modal is about to be shown', bvEvent, modalId)
+            if (modalId != "modal-center-Machines3") {
+                return;
+            }
+            if (this.mutex == true) {
+                return
+            }
+            this.mutex = true;
+            this.block_listeners = false;
+            //setTimeout(() => this.animate(), 0); 
+            })
+        },
+        methods: {
+            reset_animation_back() {
+                this.resetAnimation()
+                this.$bvModal.show("modal-center-Machines2") 
+            },
+            reset_animation_next() {
+                this.resetAnimation()
+                this.$bvModal.show("modal-center-Machines4")
+            },
+            resetAnimation() {
+                this.$bvModal.hide('modal-center-Machines3')
+                this.opacity_1 = "100%"
+                this.opacity_2 = "0%"
+                this.opacity_3 = "100%"
+                this.opacity_4 = "0%"
+                this.opacity_5 = "100%"
+                this.opacity_6 = "0%"
+                this.opacity_7 = "100%"
+                this.opacity_8 = "0%"
+                this.opacity_9 = "100%"
+                this.opacity_10 = "0%"
+                this.opacity_11 = "0%"
+                this.opacity_12 = "0%"
+                this.opacity_13 = "0%"
+                this.opacity_14 = "0%"
+                this.opacity_15 = "0%"
+                this.opacity_16 = "0%"
+                this.opacity_17 = "0%"
+                this.opacity_18 = "0%"
+                this.opacity_19 = "0%"
+                this.opacity_20 = "0%"
+                this.opacity_21 = "0%"
+                this.opacity_22 = "0%"
+                this.opacity_23 = "0%"
+                this.opacity_24 = "0%"
+                this.opacity_25 = "0%"
+                this.opacity_26 = "100%"
+                this.opacity_27 = "0%"
+                this.opacity_28 = "0%"
+                this.opacity_29 = "0%"
+                this.locked = true
+                this.mutex = false
+                this.finishanimate = false
+            },
+            animate1() {
+                let parent = this 
+
+                // Meeting 1 Flashing Prior Selections 
+                setTimeout(() => {parent.opacity_18 = "100%"}, 0); 
+                setTimeout(() => {parent.opacity_18 = "0%"}, 100);
+                setTimeout(() => {parent.opacity_19 = "100%"}, 200);
+                setTimeout(() => {parent.opacity_19 = "0%"}, 300);
+                setTimeout(() => {parent.opacity_18 = "100%"}, 400);
+                setTimeout(() => {parent.opacity_18 = "0%"}, 500);
+                setTimeout(() => {parent.opacity_19 = "100%"}, 600);
+                setTimeout(() => {parent.opacity_19 = "0%"}, 700);
+                setTimeout(() => {parent.opacity_18 = "100%"}, 800);
+                setTimeout(() => {parent.opacity_18 = "0%"}, 900);
+                setTimeout(() => {parent.opacity_19 = "100%"}, 1000);
+                setTimeout(() => {parent.opacity_19 = "0%"}, 1100);
+                setTimeout(() => {parent.opacity_18 = "100%"}, 1200);
+                setTimeout(() => {parent.opacity_18 = "0%"}, 1300);
+                setTimeout(() => {parent.opacity_19 = "100%"}, 1400);
+                setTimeout(() => {parent.opacity_19 = "0%"}, 1500);
+                setTimeout(() => {parent.opacity_18 = "100%"}, 1600);
+                setTimeout(() => {parent.opacity_18 = "0%"}, 1700);
+                setTimeout(() => {parent.opacity_19 = "100%"}, 1800);
+                setTimeout(() => {parent.opacity_19 = "0%"}, 1900);
+                setTimeout(() => {parent.opacity_18 = "100%"}, 2000);
+                setTimeout(() => {parent.opacity_18 = "0%"}, 2100);
+                setTimeout(() => {parent.opacity_18 = "100%"}, 2200);
+                setTimeout(() => {parent.opacity_18 = "0%"}, 2300);
+                setTimeout(() => {parent.opacity_19 = "100%"}, 2400);
+                setTimeout(() => {parent.opacity_19 = "0%"}, 2500);
+                setTimeout(() => {parent.opacity_19 = "100%"}, 2600);
+                setTimeout(() => {parent.opacity_19 = "0%"}, 2700);
+                setTimeout(() => {parent.opacity_18 = "100%"}, 2800);
+                setTimeout(() => {parent.opacity_18 = "0%"}, 2900);
+                setTimeout(() => {parent.opacity_19 = "100%"}, 3000);
+                setTimeout(() => {parent.opacity_19 = "0%"}, 3100);
+                setTimeout(() => {parent.opacity_9 = "100%"}, 4000);
+                setTimeout(() => {parent.opacity_2 = "100%"}, 4000);
+                setTimeout(() => {parent.opacity_4 = "100%"}, 4000);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 4000);
+                setTimeout(() => {parent.opacity_8 = "100%"}, 4000);
+                setTimeout(() => {parent.opacity_10 = "100%"}, 4000);
+                setTimeout(() => {parent.opacity_11 = "100%"}, 4400);
+                setTimeout(() => {parent.opacity_26 = "0%"; parent.opacity_27 = "100%"}, 5000);
+                //Disables BACK NEXT buttons until animation finishes at 6 seconds.
+                setTimeout(() => {parent.finishanimate = false}, 8000);
+            },
+            animateA() {
+                let parent = this 
+                // Prediction Feedback Up 
+                setTimeout(() => {parent.opacity_21 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_25 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_13 = "100%"; }, 0);
+                setTimeout(() => {parent.opacity_13 = "0%"; }, 2000);
+                setTimeout(() => {parent.opacity_21 = "100%"; }, 1100);
+                setTimeout(() => {parent.opacity_25 = "100%"; }, 2500);
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
+            },
+            animateZ() {
+                let parent = this 
+                // Prediction Feedback Down 
+                setTimeout(() => {parent.opacity_21 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_25 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_14 = "100%"; }, 0);
+                setTimeout(() => {parent.opacity_14 = "0%"; }, 2000);
+                setTimeout(() => {parent.opacity_21 = "100%"; }, 1100);
+                setTimeout(() => {parent.opacity_25 = "100%"; }, 2500);
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
+            },
+        },
+    }
+</script>
+
+<style scoped>
+</style>

@@ -197,6 +197,16 @@
     <Knowledge4 :windowsize ="this.window_size" />
     <Knowledge5 :windowsize ="this.window_size" />
     <Knowledge6 :windowsize ="this.window_size" />
+    <Machines1 :windowsize ="this.window_size" />
+    <Machines2 :windowsize ="this.window_size" />
+    <Machines3 :windowsize ="this.window_size" />
+    <Machines4 :windowsize ="this.window_size" />
+    <Machines5 :windowsize ="this.window_size" />
+    <Machines6 :windowsize ="this.window_size" />
+    <Machines7 :windowsize ="this.window_size" />
+    <Practice01 :windowsize ="this.window_size" />
+    <Practice02 :windowsize ="this.window_size" />
+    <Practice03 :windowsize ="this.window_size" />
     <Tutorial1 :windowsize ="this.window_size" />
     <Tutorial1b :windowsize ="this.window_size" />
     <Tutorial2 :windowsize ="this.window_size" />
@@ -391,6 +401,16 @@ import Knowledge3 from './tutorialPages/Knowledge3.vue'
 import Knowledge4 from './tutorialPages/Knowledge4.vue'
 import Knowledge5 from './tutorialPages/Knowledge5.vue'
 import Knowledge6 from './tutorialPages/Knowledge6.vue'
+import Machines1 from './tutorialPages/Machines1.vue'
+import Machines2 from './tutorialPages/Machines2.vue'
+import Machines3 from './tutorialPages/Machines3.vue'
+import Machines4 from './tutorialPages/Machines4.vue'
+import Machines5 from './tutorialPages/Machines5.vue'
+import Machines6 from './tutorialPages/Machines6.vue'
+import Machines7 from './tutorialPages/Machines7.vue'
+import Practice01 from './tutorialPages/Practice01.vue'
+import Practice02 from './tutorialPages/Practice02.vue'
+import Practice03 from './tutorialPages/Practice03.vue'
 import Tutorial1 from './tutorialPages/page_1.vue'
 import Tutorial1b from './tutorialPages/page_1b.vue'
 import Tutorial2 from './tutorialPages/page_2.vue'
@@ -576,6 +596,16 @@ export default {
     Knowledge4,
     Knowledge5,
     Knowledge6,
+    Machines1,
+    Machines2,
+    Machines3,
+    Machines4,
+    Machines5,
+    Machines6,
+    Machines7,
+    Practice01,
+    Practice02,
+    Practice03,
     Tutorial1,
     Tutorial1b,
     Tutorial2,

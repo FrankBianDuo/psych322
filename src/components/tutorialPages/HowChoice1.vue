@@ -69,7 +69,7 @@
         methods: {
             reset_animation_back() {
                 this.resetAnimation()
-                this.$bvModal.show("modal-center-ReferenceDependence") 
+                this.$bvModal.show("modal-center-HowKnow1") 
             },
             reset_animation_next() {
                 this.resetAnimation()

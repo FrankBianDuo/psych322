@@ -39,6 +39,9 @@
                <img :src="require('../../assets/Instructions/HowKnow/eyes1.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_16, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/HowKnow/eyes2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_17, transition: 'opacity 0.2s' }"/>
 
+               <!-- Reformat later to group with rest of text. -->
+               <img :src="require('../../assets/Instructions/HowKnow/text14.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_18, transition: 'opacity 0.2s' }"/>
+
 
                
             </div>
@@ -70,12 +73,12 @@
                 opacity_10: '0%',
                 opacity_11: '0%',
                 opacity_12: '0%',
-                opacity_13: '100%',
+                opacity_13: '0%',
                 opacity_14: '0%',
                 opacity_15: '0%',
                 opacity_16: '100%',
                 opacity_17: '0%',
-                // opacity_18: '0%',
+                opacity_18: '100%',
                 // opacity_19: '0%',
                 // opacity_20: '0%',
                 // opacity_21: '0%',
@@ -118,11 +121,11 @@
         methods: {
             reset_animation_back() {
                 this.resetAnimation()
-                this.$bvModal.show("modal-center-HowHappy4") 
+                this.$bvModal.show("modal-center-ReferenceDependence") 
             },
             reset_animation_next() {
                 this.resetAnimation()
-                this.$bvModal.show("modal-center-HowKnow2")
+                this.$bvModal.show("modal-center-HowChoice1")
             },
 
             resetAnimation() {
@@ -139,12 +142,12 @@
                 this.opacity_10 = "0%"
                 this.opacity_11 = "0%"
                 this.opacity_12 = "0%"
-                this.opacity_13 = "100%"
+                this.opacity_13 = "0%"
                 this.opacity_14 = "0%"
                 this.opacity_15 = "0%"
                 this.opacity_16 = "0%"
                 this.opacity_17 = "0%"
-                // this.opacity_18 = "0%"
+                this.opacity_18 = "100%"
                 // this.opacity_19 = "0%"
                 // this.opacity_20 = "0%"
                 // this.opacity_21 = "0%"
@@ -164,27 +167,28 @@
             },
             animate() {
                 let parent = this 
-                setTimeout(() => {parent.opacity_5 = "100%"; }, 750);  
-                setTimeout(() => {parent.opacity_16 = "0%"; }, 1250); 
-                setTimeout(() => {parent.opacity_7 = "100%"; }, 1750);
-                setTimeout(() => {parent.opacity_11 = "100%"; }, 2000);
+                setTimeout(() => {parent.opacity_13 = "100%"; }, 1000);
+                setTimeout(() => {parent.opacity_5 = "100%"; }, 1750);  
+                setTimeout(() => {parent.opacity_16 = "0%"; }, 2250); 
+                setTimeout(() => {parent.opacity_7 = "100%"; }, 2750);
+                setTimeout(() => {parent.opacity_11 = "100%"; }, 3000);
 
 
                 // Text swaps out
-                setTimeout(() => {parent.opacity_14 = "100%"; }, 4000); 
-                setTimeout(() => {parent.opacity_14 = "0%"; parent.opacity_15 = "100%"; }, 6000);
+                setTimeout(() => {parent.opacity_14 = "100%"; }, 5000); 
+                setTimeout(() => {parent.opacity_14 = "0%"; parent.opacity_15 = "100%"; }, 7000);
   
                 // Encounter 2 appears 
-                setTimeout(() => {parent.opacity_2 = "100%"; parent.opacity_4 = "100%"; parent.opacity_10 = "100%"; parent.opacity_17 = "100%"}, 8000);
-                setTimeout(() => {parent.opacity_6 = "100%"; }, 8750);  
-                setTimeout(() => {parent.opacity_17 = "0%"; }, 9250); 
-                setTimeout(() => {parent.opacity_8 = "100%"; }, 9750);
-                setTimeout(() => {parent.opacity_12 = "100%"; }, 10000);
+                setTimeout(() => {parent.opacity_2 = "100%"; parent.opacity_4 = "100%"; parent.opacity_10 = "100%"; parent.opacity_17 = "100%"}, 9000);
+                setTimeout(() => {parent.opacity_6 = "100%"; }, 9750);  
+                setTimeout(() => {parent.opacity_17 = "0%"; }, 10250); 
+                setTimeout(() => {parent.opacity_8 = "100%"; }, 10750);
+                setTimeout(() => {parent.opacity_12 = "100%"; }, 11000);
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
-                // Disables BACK NEXT buttons until animation finishes at 10 seconds.
-                setTimeout(() => {parent.finishanimate = false}, 10000);
+                // Disables BACK NEXT buttons until animation finishes at 11 seconds.
+                setTimeout(() => {parent.finishanimate = false}, 11000);
             },
         },
     }

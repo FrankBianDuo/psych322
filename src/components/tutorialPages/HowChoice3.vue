@@ -69,7 +69,7 @@
         methods: {
             reset_animation_back() {
                 this.resetAnimation()
-                this.$bvModal.show("modal-center-HowKnow8") 
+                this.$bvModal.show("modal-center-HowChoice2") 
             },
             reset_animation_next() {
                 this.resetAnimation()
