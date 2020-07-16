@@ -17,7 +17,7 @@
       <b-container class="align-bottom" :style="this.windowsize"  >
           <img :src="require('../../assets/Instructions/Single Slides/Cast of Characters.png')" style="width: 90%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"/>
       </b-container>
-        <b-button @click="$bvModal.hide('modal-center-MeetPeople')" v-b-modal.modal-center-ExperTutorial variant="outline-primary" size="lg">Back</b-button>
+        <b-button @click="$bvModal.hide('modal-center-MeetPeople')" v-b-modal.modal-center-Practice01 variant="outline-primary" size="lg">Back</b-button>
         <b-button style="float: right;" @click="$bvModal.hide('modal-center-MeetPeople')" variant="outline-primary" size="lg" v-b-modal.modal-center-WantMoreDots>Next</b-button>
     </b-modal>
 </template>
