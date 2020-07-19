@@ -11,8 +11,9 @@ import JsonCSV from 'vue-json-csv'
 import VuePapaParse from 'vue-papa-parse'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueCoreVideoPlayer from 'vue-core-video-player'
 
-
+Vue.use(VueCoreVideoPlayer)
 Vue.use(VueKonva)
 Vue.use(BootstrapVue)
 Vue.use(VuePapaParse)

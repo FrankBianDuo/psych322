@@ -59,7 +59,7 @@
                 return
             }
             this.mutex = true;
-            setTimeout(() => this.animate(), 250); 
+            setTimeout(() => this.animate(), 0); 
             })
         },
         methods: {
@@ -84,9 +84,10 @@
             },
             animate() {
                 let parent = this
-                setTimeout(() => {parent.opacity_1 = "0%"; parent.opacity_2 = "100%" }, 250); 
-                setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_3 = "100%" }, 725); 
-                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_4 = "100%" }, 1250); 
+                //this.$bvModal.hide('modal-center-WantMoreDots')
+                setTimeout(() => {parent.opacity_1 = "0%"; parent.opacity_2 = "100%" }, 500); 
+                setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_3 = "100%" }, 1000); 
+                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_4 = "100%" }, 1500); 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
                 // Disables BACK NEXT buttons until animation finishes at 1 seconds.

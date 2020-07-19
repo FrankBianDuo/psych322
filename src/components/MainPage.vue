@@ -14,7 +14,7 @@
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
         <!-- <b-button v-b-modal.modal-center-WRITENAMEOFPAGEHERETOSEEITPOPUPFIRST>Instructions</b-button> -->
-        <b-button v-b-modal.modal-center-BotStopper>Instructions</b-button>
+        <b-button v-b-modal.modal-center-Absurdity>Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
@@ -299,6 +299,12 @@
     <Survey3 @Survey3Done="Survey3Finished" :windowsize ="this.window_size" />
     <Survey4 @Survey4Done="Survey4Finished" :windowsize ="this.window_size" />
     <Survey5 @Survey5Done="Survey5Finished" :windowsize ="this.window_size" />
+    <Trystuffout :windowsize ="this.window_size" />
+    <Absurdity :windowsize ="this.window_size" />
+    <Silly :windowsize ="this.window_size" />
+    <Foolish :windowsize ="this.window_size" />
+    <Trymore1 :windowsize ="this.window_size" />
+    <Trymore2 :windowsize ="this.window_size" />
 
     <BlockOne @blockOneDone="blockOneFinished" :participant_name="this.form.name"/>
     <BlockTwo @blockTwoDone="blockTwoFinished" :participant_name="this.form.name"/>
@@ -411,6 +417,12 @@ import Machines7 from './tutorialPages/Machines7.vue'
 import Practice01 from './tutorialPages/Practice01.vue'
 import Practice02 from './tutorialPages/Practice02.vue'
 import Practice03 from './tutorialPages/Practice03.vue'
+import Trystuffout from './tutorialPages/Trystuffout.vue'
+import Absurdity from './tutorialPages/Absurdity.vue'
+import Silly from './tutorialPages/Silly.vue'
+import Foolish from './tutorialPages/Foolish.vue'
+import Trymore1 from './tutorialPages/Trymore1.vue'
+import Trymore2 from './tutorialPages/Trymore2.vue'
 import Tutorial1 from './tutorialPages/page_1.vue'
 import Tutorial1b from './tutorialPages/page_1b.vue'
 import Tutorial2 from './tutorialPages/page_2.vue'
@@ -606,6 +618,12 @@ export default {
     Practice01,
     Practice02,
     Practice03,
+    Trystuffout,
+    Absurdity,
+    Silly,
+    Foolish,
+    Trymore1,
+    Trymore2,
     Tutorial1,
     Tutorial1b,
     Tutorial2,

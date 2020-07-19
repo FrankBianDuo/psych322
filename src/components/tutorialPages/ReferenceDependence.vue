@@ -150,7 +150,7 @@
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
                 // Disables BACK NEXT buttons until animation finishes at 14.3 seconds.
-                setTimeout(() => {parent.finishanimate = false}, 14300);
+                setTimeout(() => {parent.finishanimate = false}, 6000);
             },
         },
     }
