@@ -25,7 +25,7 @@
                <img :src="require('../../assets/Instructions/Machines/Machine Text/programtext1.png')" v-bind:style="{ maxWidth: '44%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/programtext2.png')" v-bind:style="{ maxWidth: '44%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_9, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/programtext3.png')" v-bind:style="{ maxWidth: '44%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_10, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/space1.png')" v-bind:style="{ maxWidth: '44%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.8s' }"/>
+               <!-- <img :src="require('../../assets/Instructions/Machines/Machine Text/space1.png')" v-bind:style="{ maxWidth: '44%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.8s' }"/> -->
                <img :src="require('../../assets/Instructions/Machines/Machine Text/space2.png')" v-bind:style="{ maxWidth: '44%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 0.8s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/space3.png')" v-bind:style="{ maxWidth: '44%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.8s' }"/>
 
@@ -43,11 +43,20 @@
 
                <img :src="require('../../assets/Instructions/Machines/MeetMachines/ThreeMachines.png')" v-bind:style="{ maxWidth: '44%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_24, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/Machines/MeetMachines/ThreeOptions.png')" v-bind:style="{ maxWidth: '44%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_25, transition: 'opacity 0.2s' }"/>
+
+               <!-- Counters -->
+               <img :src="require('../../assets/Instructions/Machines/MeetMachines/count1.png')" v-bind:style="{ maxWidth: '44%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_26, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/MeetMachines/count2.png')" v-bind:style="{ maxWidth: '44%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_27, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/MeetMachines/count3.png')" v-bind:style="{ maxWidth: '44%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_28, transition: 'opacity 0.2s' }"/>
+            </div>
+
+            <div>
+                <b-button :variant="SpaceColor" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.5s'}" >Press space bar.</b-button>
             </div>
               
       </b-container>
         <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" :disabled="finishanimate" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finishanimate" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -61,6 +70,8 @@
             return {
                 page_num: "13",
                 block_listeners: true,
+                ButtonColor: "outline-primary",
+                SpaceColor: "outline-secondary",
                 spacenum_1: true,
                 spacenum_2: false,
                 spacenum_3: false,
@@ -96,6 +107,9 @@
                 opacity_23: '0%',
                 opacity_24: '100%',
                 opacity_25: '0%',
+                opacity_26: '0%',
+                opacity_27: '0%',
+                opacity_28: '0%',
                 mutex: false,
                 finishanimate: true
             }
@@ -235,7 +249,12 @@
                 this.opacity_23 = "0%"
                 this.opacity_24 = "100%"
                 this.opacity_25 = "0%"
+                this.opacity_26 = "0%"
+                this.opacity_27 = "0%"
+                this.opacity_28 = "0%"
 
+                this.ButtonColor = "outline-primary"
+                this.SpaceColor = "outline-secondary"
                 this.locked = true
                 this.mutex = false
                 this.finishanimate = false
@@ -243,6 +262,8 @@
 
             animate1() {
                 let parent = this 
+                setTimeout(() => {parent.opacity_15 = "0%"; parent.opacity_16 = "0%"; parent.opacity_17 = "0%"; parent.opacity_18 = "0%"; 
+                parent.opacity_19 = "0%"; parent.opacity_20 = "0%"; parent.opacity_21 = "0%"; parent.opacity_22 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_15 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_16 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_11 = "0%"}, 0);
@@ -265,6 +286,9 @@
                 setTimeout(() => {parent.opacity_14 = "0%"}, 4000);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
+                // This changes the button to info!
+                // Actually, it used to but I've changed it back to a fainter color.
+                setTimeout(() => {parent.SpaceColor = "outline-secondary";}, 2000);
             },
             animate3() {
                 let parent = this 
@@ -295,39 +319,10 @@
             },
             animate5() {
                 let parent = this 
-                setTimeout(() => {parent.opacity_19 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_20 = "100%"}, 0);
-                setTimeout(() => {parent.opacity_11 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_11 = "100%"}, 3000);
-                setTimeout(() => parent.mutex = false, 3600); 
-                setTimeout(() => parent.locked = false, 3600); 
-            },
-            animate6() {
-                let parent = this 
-                setTimeout(() => {parent.opacity_20 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_21 = "100%"}, 0);
-                setTimeout(() => {parent.opacity_11 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_11 = "100%"}, 3000);
-                setTimeout(() => parent.mutex = false, 3600); 
-                setTimeout(() => parent.locked = false, 3600); 
-            },
-            animate7() {
-                let parent = this 
-                setTimeout(() => {parent.opacity_21 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_22 = "100%"}, 0);
-                setTimeout(() => {parent.opacity_11 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_11 = "100%"}, 3000);
-                setTimeout(() => parent.mutex = false, 3600); 
-                setTimeout(() => parent.locked = false, 3600); 
-            },
-
-            animate8() {
-                let parent = this 
                 // Options + space text vanish and program text appears
                 setTimeout(() => {parent.opacity_11 = "0%"; parent.opacity_14 = "0%"; }, 0); 
 
                 // Machine 1 
-                setTimeout(() => {parent.opacity_16 = "0%"; parent.opacity_15 = "100%"; }, 0);
                 setTimeout(() => {parent.opacity_17 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_3 = "100%"}, 0); 
                 setTimeout(() => {parent.opacity_3 = "0%"}, 100);
@@ -354,14 +349,15 @@
                 setTimeout(() => {parent.opacity_3 = "100%"}, 2200);
                 setTimeout(() => {parent.opacity_3 = "0%"}, 2300);
                 setTimeout(() => {parent.opacity_8 = "100%"; }, 2400);
-                setTimeout(() => {parent.opacity_12 = "100%"; }, 2800);
+                setTimeout(() => {parent.opacity_11 = "100%"; }, 2800);
+                setTimeout(() => {parent.opacity_26 = "100%"; }, 3000);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
-            animate9() {
+            animate6() {
                 let parent = this 
                 // Machine 2 
-                setTimeout(() => {parent.opacity_12 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_11 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_4 = "100%"}, 0); 
                 setTimeout(() => {parent.opacity_4 = "0%"}, 100);
                 setTimeout(() => {parent.opacity_5 = "100%"}, 200);
@@ -379,14 +375,15 @@
                 setTimeout(() => {parent.opacity_5 = "100%"}, 1400);
                 setTimeout(() => {parent.opacity_5 = "0%"}, 1500);
                 setTimeout(() => {parent.opacity_9 = "100%"; }, 1600);
-                setTimeout(() => {parent.opacity_13 = "100%"; }, 2000);
+                setTimeout(() => {parent.opacity_11 = "100%"; }, 2000);
+                setTimeout(() => {parent.opacity_27 = "100%"; }, 2200);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
-            animate10() {
+            animate7() {
                 let parent = this 
                 // Machine 3 
-                setTimeout(() => {parent.opacity_13 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_11 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_6 = "100%"}, 0); 
                 setTimeout(() => {parent.opacity_6 = "0%"}, 100);
                 setTimeout(() => {parent.opacity_6 = "100%"}, 200);
@@ -420,13 +417,46 @@
                 setTimeout(() => {parent.opacity_7 = "100%"}, 3000);
                 setTimeout(() => {parent.opacity_7 = "0%"}, 3100);
                 setTimeout(() => {parent.opacity_10 = "100%"; }, 3200);
-                setTimeout(() => {parent.opacity_17 = "100%"; }, 6600);
-                setTimeout(() => {parent.opacity_8 = "0%"; }, 6300);
-                setTimeout(() => {parent.opacity_15 = "0%"; parent.opacity_16 = "100%"; }, 6500);
+                setTimeout(() => {parent.opacity_11 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_11 = "100%"}, 3200);
+                setTimeout(() => {parent.opacity_28 = "100%"; }, 3400);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
-                //Disables BACK NEXT buttons until animation finishes at 6.6 seconds.
-                setTimeout(() => {parent.finishanimate = false}, 6600);
+            },
+            animate8() {
+                let parent = this 
+                setTimeout(() => {parent.opacity_19 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_20 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_11 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_11 = "100%"}, 3000);
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
+            },
+            animate9() {
+                let parent = this 
+                setTimeout(() => {parent.opacity_20 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_21 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_11 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_11 = "100%"}, 3000);
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
+            },
+            animate10() {
+                let parent = this 
+                setTimeout(() => {parent.opacity_21 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_22 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_11 = "0%"}, 0);
+                
+                // This changes the button to green!
+                setTimeout(() => {parent.ButtonColor = "success";}, 2000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 2500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 3000);
+
+                //Disables BACK NEXT buttons until animation finishes at 2 seconds.
+                setTimeout(() => {parent.finishanimate = false}, 2000);
+
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
             },
         },
     }

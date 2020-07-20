@@ -15,7 +15,7 @@
                <div id="app">
                 <div class="player-container">
                     <!-- <vue-core-video-player src="../../assets/Instructions/Videos/Boolean Logic  Logic Gates Crash Course Computer Science 3.mp4"></vue-core-video-player> -->
-                    <vue-core-video-player src="https://media.vued.vanthink.cn/sparkle_your_name_am720p.mp4"></vue-core-video-player>
+                    <!-- <vue-core-video-player src="https://media.vued.vanthink.cn/sparkle_your_name_am720p.mp4"></vue-core-video-player> -->
                     <!-- <vue-core-video-player src="./GOPR3254.mp4"></vue-core-video-player> -->
                     <!-- <vue-core-video-player @play="your_method" src="../../assets/Instructions/Videos/Boolean Logic  Logic Gates Crash Course Computer Science 3.mp4"></vue-core-video-player> -->
                 </div>

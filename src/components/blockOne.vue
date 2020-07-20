@@ -96,11 +96,11 @@
         <img v-on:keyup.space="priorAvatar" :src="require(`../assets/Avatars/Avatar Eyes/Eyes 90.png`)" :style="this.avatar_2"/>
         <img :src="require(`../assets/Centered Atoms/E2 ${current_arrow}`)" :style="this.global_size" />
         <img :src="require(`../assets/Centered Atoms/Faded Arrows.png`)" :style="this.global_size" />
-        <img :src="require(`../assets/Centered Atoms/Keep Control Box Black.png`)" :style="this.global_size_control_box" />
+        <img :src="require(`../assets/Centered Atoms/Keep Control Box Black.png`)" :style="this.global_size_control_priors" />
 
         <!--  Background You Avatar -->
         <img :src="require(`../assets/Centered Atoms/E2 You.png`)" :style="this.global_size"/>
-        <img :src="require(`../assets/Centered Atoms/You Arrows.png`)" :style="this.global_size_control_box"/>
+        <img :src="require(`../assets/Centered Atoms/You Arrows.png`)" :style="this.global_size_control_priors"/>
         <img :src="require(`../assets/Centered Atoms/AZ.png`)" :style="this.global_size_AZ"/>
         <img :src="require(`../assets/Centered Atoms/JK.png`)" :style="this.global_size_JK"/>
         <img :src="require(`../assets/Centered Atoms/Barrier.png`)" :style="this.global_size_barrier"/>
@@ -111,7 +111,7 @@
           this.combinations[this.current_avatar].pl_p
           )}.png`)" />
         <img 
-          :style="this.global_size_control_box"
+          :style="this.global_size_control_priors"
           v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E2 CB3.png`)" />
         
       </b-row>
@@ -141,6 +141,7 @@ export default {
     global_size_pred_up: 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;',
     global_size_pred_dn: 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;',
     global_size_control_box: 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;',
+    global_size_control_priors: 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;',
     global_size_barrier: 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;',
     // Rest break data 
     rb_shown: false,
@@ -272,6 +273,7 @@ export default {
       this.global_size_pred_up = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
       this.global_size_pred_dn = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
       this.global_size_control_box = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
+      this.global_size_control_priors = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;'
       this.global_size_barrier = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;'
     },
     hide_tutorial() {
@@ -390,6 +392,7 @@ export default {
     },
     hide_choice_visuals() {
       this.global_size_control_box = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
+      this.global_size_control_priors = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
       this.global_size_keep_glow = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
       this.global_size_give_glow = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'
       this.global_size_pred_up = 'position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;'

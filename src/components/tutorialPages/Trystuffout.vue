@@ -61,11 +61,19 @@
                <img :src="require('../../assets/Instructions/Machines/Machine Text/yougot3.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_36, transition: 'opacity 0.5s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/yougot4.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_37, transition: 'opacity 0.5s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/yougot5.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_38, transition: 'opacity 0.5s' }"/>
+
+                <!-- This is an image I'm trying to let pop up randomly. -->
+               <img :src="require('../../assets/block2materials/Animal Avatar Turtle L.png')" v-bind:style="{ maxWidth: '25%', height: 'auto', marginTop: '20%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_40, transition: 'opacity 0.5s' }"/>
             </div>
               
+            <div>
+                <b-button @click="this.animateJ" :variant="SpaceColor" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_39}" >Press space bar.</b-button>
+            </div>
+
       </b-container>
         <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" :disabled="finishanimate" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finishanimate" size="lg">Next</b-button>
+        <!-- <b-button @click="this.reset_animation_next" variant="outline-primary" size='lg'  >Press space bar.</b-button> -->
     </b-modal>
 </template>
 
@@ -83,6 +91,11 @@
                 Dimmer: '1',
                 SetZero: '1',
                 Viel: true,
+                ButtonColor: "outline-primary",
+                SpaceColor: "outline-secondary",
+                RandNum: "6",
+                list: ['1','2'],
+                chosenNum: '',
                 opacity_1: '100%',
                 opacity_2: '100%',
                 opacity_3: '100%',
@@ -91,8 +104,8 @@
                 opacity_6: '100%',
                 opacity_7: '100%',
                 opacity_8: '100%',
-                opacity_9: '1',
-                opacity_10: '1',
+                opacity_9: '100%',
+                opacity_10: '100%',
                 opacity_11: '0%',
                 opacity_12: '0%',
                 opacity_13: '0%',
@@ -121,6 +134,8 @@
                 opacity_36: '0%',
                 opacity_37: '0%',
                 opacity_38: '0%',
+                opacity_39: '100%',
+                opacity_40: '100%',
 
                 mutex: false,
                 finishanimate: false
@@ -162,6 +177,10 @@
                 if (parent.Viel == true) {
                     this.$bvModal.hide("modal-center-Silly") 
                 }
+                // if (parent.RandNum == 4) {
+                //     setTimeout(() => {parent.randanimate()}, 3000);
+                //     //parent.randanimate()
+                // }
             } 
             });
         },
@@ -185,11 +204,28 @@
             }
             this.mutex = true;
             this.block_listeners = false;
-            //setTimeout(() => this.animate(), 0); 
+            setTimeout(() => this.picker(), 0);
+            setTimeout(() => this.randanimate(), 100); 
             //this.$bvModal.hide("modal-center-Silly") 
             })
         },
         methods: {
+            randanimate() {
+                let parent = this 
+                //RandNum = Math.floor(Math.random()*'1');
+                if (parent.chosenNum == "1") {
+                    setTimeout(() => {parent.opacity_40 = "10%"}, 1500);
+                } else if (parent.chosenNum == "2") {
+                    setTimeout(() => {parent.opacity_40 = "90%"}, 1500);
+                }
+                // setTimeout(() => {parent.opacity_40 = "50%"}, 3000);
+            },
+
+            picker: function(){
+                var chosenNumber = Math.floor(Math.random() * this.list.length);
+                this.chosenNum = this.list[chosenNumber];
+            },
+            
             killViel() {
                 this.$bvModal.hide("modal-center-Silly") 
             },
@@ -203,7 +239,7 @@
                 this.$bvModal.show("modal-center-Absurdity")
             },
             resetAnimation() {
-                this.$bvModal.hide('modal-center-Trystuffout')
+                
                 this.opacity_1 = "100%"
                 this.opacity_2 = "100%"
                 this.opacity_3 = "100%"
@@ -242,9 +278,14 @@
                 this.opacity_36 = "0%"
                 this.opacity_37 = "0%"
                 this.opacity_38 = "0%"
-                this.locked = true
-                this.mutex = false
-                this.finishanimate = false
+                this.opacity_39 = "100%"
+                this.opacity_40 = "100%"
+                // this.locked = true
+                // this.mutex = false
+                // this.finishanimate = false
+                this.ButtonColor = "outline-primary"
+                this.SpaceColor = "outline-secondary"
+                this.$bvModal.hide('modal-center-Trystuffout')
             },
             killAnimation() {
                 this.$bvModal.hide('modal-center-Silly')
@@ -291,6 +332,9 @@
                 //this.mutex = false
                 this.finishanimate = false
             },
+
+            
+
             animate1() {
                 let parent = this 
 
@@ -312,6 +356,10 @@
                 setTimeout(() => {parent.opacity_32 = "0%"; parent.opacity_33 = "1"*parent.Dimmer; }, 4200);
                 setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_24 = "1"*parent.Dimmer}, 5000);
                 setTimeout(() => {parent.opacity_12 = "100%";}, 0);
+
+                // This changes the button to green!
+                setTimeout(() => {parent.ButtonColor = "success";}, 5000);
+
                 //Disables BACK NEXT buttons until animation finishes at 6 seconds.
                 setTimeout(() => {parent.finishanimate = false}, 0);
             },
@@ -326,6 +374,8 @@
                 setTimeout(() => {parent.opacity_38 = "100%";}, 1500);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
+                // This changes the button to green!
+                setTimeout(() => {parent.SpaceColor = "info";}, 2000);
             },
 
             animateK() {
