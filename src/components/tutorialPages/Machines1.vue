@@ -48,6 +48,8 @@
                <img :src="require('../../assets/Instructions/Machines/MeetMachines/count1.png')" v-bind:style="{ maxWidth: '44%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_26, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/Machines/MeetMachines/count2.png')" v-bind:style="{ maxWidth: '44%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_27, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/Machines/MeetMachines/count3.png')" v-bind:style="{ maxWidth: '44%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_28, transition: 'opacity 0.2s' }"/>
+
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext02d.png')" v-bind:style="{ maxWidth: '44%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_29, transition: 'opacity 0.2s' }"/>
             </div>
 
             <div>
@@ -110,6 +112,7 @@
                 opacity_26: '0%',
                 opacity_27: '0%',
                 opacity_28: '0%',
+                opacity_29: '0%',
                 mutex: false,
                 finishanimate: true
             }
@@ -252,6 +255,7 @@
                 this.opacity_26 = "0%"
                 this.opacity_27 = "0%"
                 this.opacity_28 = "0%"
+                this.opacity_29 = "0%"
 
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
@@ -295,7 +299,7 @@
                 setTimeout(() => {parent.opacity_17 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_18 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_11 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_11 = "100%"}, 3000);
+                setTimeout(() => {parent.opacity_11 = "100%"}, 7000);
                 setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_4 = "0%"; parent.opacity_6 = "0%";}, 0);
                 setTimeout(() => {parent.opacity_3 = "100%"}, 1000); 
                 setTimeout(() => {parent.opacity_3 = "0%"}, 1200);
@@ -305,6 +309,22 @@
                 setTimeout(() => {parent.opacity_2 = "0%"}, 2000);
                 setTimeout(() => {parent.opacity_3 = "100%"}, 2200);
                 setTimeout(() => {parent.opacity_3 = "0%"}, 2400);
+                setTimeout(() => {parent.opacity_3 = "100%"}, 2600);
+                setTimeout(() => {parent.opacity_3 = "0%"}, 2800);
+                setTimeout(() => {parent.opacity_3 = "100%"}, 3000);
+                setTimeout(() => {parent.opacity_3 = "0%"}, 3200);
+                setTimeout(() => {parent.opacity_2 = "100%"}, 3400);
+                setTimeout(() => {parent.opacity_2 = "0%"}, 3600);
+                setTimeout(() => {parent.opacity_3 = "100%"}, 3800);
+                setTimeout(() => {parent.opacity_3 = "0%"}, 4000);
+                setTimeout(() => {parent.opacity_3 = "100%"}, 4200);
+                setTimeout(() => {parent.opacity_3 = "0%"}, 4400);
+                setTimeout(() => {parent.opacity_3 = "100%"}, 4600);
+                setTimeout(() => {parent.opacity_3 = "0%"}, 4800);
+                setTimeout(() => {parent.opacity_2 = "100%"}, 5000);
+                setTimeout(() => {parent.opacity_2 = "0%"}, 5200);
+                setTimeout(() => {parent.opacity_3 = "100%"}, 5400);
+                setTimeout(() => {parent.opacity_3 = "0%"}, 5600);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
@@ -325,32 +345,32 @@
                 // Machine 1 
                 setTimeout(() => {parent.opacity_17 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_3 = "100%"}, 0); 
-                setTimeout(() => {parent.opacity_3 = "0%"}, 100);
-                setTimeout(() => {parent.opacity_3 = "100%"}, 200);
-                setTimeout(() => {parent.opacity_3 = "0%"}, 300);
-                setTimeout(() => {parent.opacity_2 = "100%"}, 400);
-                setTimeout(() => {parent.opacity_2 = "0%"}, 500);
-                setTimeout(() => {parent.opacity_3 = "100%"}, 600);
-                setTimeout(() => {parent.opacity_3 = "0%"}, 700);
-                setTimeout(() => {parent.opacity_3 = "100%"}, 800);
-                setTimeout(() => {parent.opacity_3 = "0%"}, 900);
-                setTimeout(() => {parent.opacity_3 = "100%"}, 1000);
-                setTimeout(() => {parent.opacity_3 = "0%"}, 1100);
-                setTimeout(() => {parent.opacity_2 = "100%"}, 1200);
-                setTimeout(() => {parent.opacity_2 = "0%"}, 1300);
-                setTimeout(() => {parent.opacity_3 = "100%"}, 1400);
-                setTimeout(() => {parent.opacity_3 = "0%"}, 1500);
+                setTimeout(() => {parent.opacity_3 = "0%"}, 200);
+                setTimeout(() => {parent.opacity_3 = "100%"}, 400);
+                setTimeout(() => {parent.opacity_3 = "0%"}, 600);
+                setTimeout(() => {parent.opacity_2 = "100%"}, 800);
+                setTimeout(() => {parent.opacity_2 = "0%"}, 1000);
+                setTimeout(() => {parent.opacity_3 = "100%"}, 1200);
+                setTimeout(() => {parent.opacity_3 = "0%"}, 1400);
                 setTimeout(() => {parent.opacity_3 = "100%"}, 1600);
-                setTimeout(() => {parent.opacity_3 = "0%"}, 1700);
-                setTimeout(() => {parent.opacity_3 = "100%"}, 1800);
-                setTimeout(() => {parent.opacity_3 = "0%"}, 1900);
-                setTimeout(() => {parent.opacity_2 = "100%"}, 2000);
-                setTimeout(() => {parent.opacity_2 = "0%"}, 2100);
-                setTimeout(() => {parent.opacity_3 = "100%"}, 2200);
-                setTimeout(() => {parent.opacity_3 = "0%"}, 2300);
-                setTimeout(() => {parent.opacity_8 = "100%"; }, 2400);
-                setTimeout(() => {parent.opacity_11 = "100%"; }, 2800);
-                setTimeout(() => {parent.opacity_26 = "100%"; }, 3000);
+                setTimeout(() => {parent.opacity_3 = "0%"}, 1800);
+                setTimeout(() => {parent.opacity_3 = "100%"}, 2000);
+                setTimeout(() => {parent.opacity_3 = "0%"}, 2200);
+                setTimeout(() => {parent.opacity_2 = "100%"}, 2400);
+                setTimeout(() => {parent.opacity_2 = "0%"}, 2600);
+                setTimeout(() => {parent.opacity_3 = "100%"}, 2800);
+                setTimeout(() => {parent.opacity_3 = "0%"}, 3000);
+                setTimeout(() => {parent.opacity_3 = "100%"}, 3200);
+                setTimeout(() => {parent.opacity_3 = "0%"}, 3400);
+                setTimeout(() => {parent.opacity_3 = "100%"}, 3600);
+                setTimeout(() => {parent.opacity_3 = "0%"}, 3800);
+                setTimeout(() => {parent.opacity_2 = "100%"}, 4000);
+                setTimeout(() => {parent.opacity_2 = "0%"}, 4200);
+                setTimeout(() => {parent.opacity_3 = "100%"}, 4400);
+                setTimeout(() => {parent.opacity_3 = "0%"}, 4600);
+                setTimeout(() => {parent.opacity_8 = "100%"; }, 4800);
+                setTimeout(() => {parent.opacity_11 = "100%"; }, 5000);
+                setTimeout(() => {parent.opacity_26 = "100%"; }, 5200);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
@@ -359,24 +379,24 @@
                 // Machine 2 
                 setTimeout(() => {parent.opacity_11 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_4 = "100%"}, 0); 
-                setTimeout(() => {parent.opacity_4 = "0%"}, 100);
-                setTimeout(() => {parent.opacity_5 = "100%"}, 200);
-                setTimeout(() => {parent.opacity_5 = "0%"}, 300);
-                setTimeout(() => {parent.opacity_4 = "100%"}, 400);
-                setTimeout(() => {parent.opacity_4 = "0%"}, 500);
-                setTimeout(() => {parent.opacity_5 = "100%"}, 600);
-                setTimeout(() => {parent.opacity_5 = "0%"}, 700);
+                setTimeout(() => {parent.opacity_4 = "0%"}, 200);
+                setTimeout(() => {parent.opacity_5 = "100%"}, 400);
+                setTimeout(() => {parent.opacity_5 = "0%"}, 600);
                 setTimeout(() => {parent.opacity_4 = "100%"}, 800);
-                setTimeout(() => {parent.opacity_4 = "0%"}, 900);
-                setTimeout(() => {parent.opacity_5 = "100%"}, 1000);
-                setTimeout(() => {parent.opacity_5 = "0%"}, 1100);
-                setTimeout(() => {parent.opacity_4 = "100%"}, 1200);
-                setTimeout(() => {parent.opacity_4 = "0%"}, 1300);
-                setTimeout(() => {parent.opacity_5 = "100%"}, 1400);
-                setTimeout(() => {parent.opacity_5 = "0%"}, 1500);
-                setTimeout(() => {parent.opacity_9 = "100%"; }, 1600);
-                setTimeout(() => {parent.opacity_11 = "100%"; }, 2000);
-                setTimeout(() => {parent.opacity_27 = "100%"; }, 2200);
+                setTimeout(() => {parent.opacity_4 = "0%"}, 1000);
+                setTimeout(() => {parent.opacity_5 = "100%"}, 1200);
+                setTimeout(() => {parent.opacity_5 = "0%"}, 1400);
+                setTimeout(() => {parent.opacity_4 = "100%"}, 1600);
+                setTimeout(() => {parent.opacity_4 = "0%"}, 1800);
+                setTimeout(() => {parent.opacity_5 = "100%"}, 2000);
+                setTimeout(() => {parent.opacity_5 = "0%"}, 2200);
+                setTimeout(() => {parent.opacity_4 = "100%"}, 2400);
+                setTimeout(() => {parent.opacity_4 = "0%"}, 2600);
+                setTimeout(() => {parent.opacity_5 = "100%"}, 2800);
+                setTimeout(() => {parent.opacity_5 = "0%"}, 3000);
+                setTimeout(() => {parent.opacity_9 = "100%"; }, 3200);
+                setTimeout(() => {parent.opacity_11 = "100%"; }, 3400);
+                setTimeout(() => {parent.opacity_27 = "100%"; }, 3600);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
@@ -385,41 +405,41 @@
                 // Machine 3 
                 setTimeout(() => {parent.opacity_11 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_6 = "100%"}, 0); 
-                setTimeout(() => {parent.opacity_6 = "0%"}, 100);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 200);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 300);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 200);
                 setTimeout(() => {parent.opacity_6 = "100%"}, 400);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 500);
-                setTimeout(() => {parent.opacity_7 = "100%"}, 600);
-                setTimeout(() => {parent.opacity_7 = "0%"}, 700);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 600);
                 setTimeout(() => {parent.opacity_6 = "100%"}, 800);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 900);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 1000);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 1100);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 1200);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 1300);
-                setTimeout(() => {parent.opacity_7 = "100%"}, 1400);
-                setTimeout(() => {parent.opacity_7 = "0%"}, 1500);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 1000);
+                setTimeout(() => {parent.opacity_7 = "100%"}, 1200);
+                setTimeout(() => {parent.opacity_7 = "0%"}, 1400);
                 setTimeout(() => {parent.opacity_6 = "100%"}, 1600);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 1700);
-                setTimeout(() => {parent.opacity_7 = "100%"}, 1800);
-                setTimeout(() => {parent.opacity_7 = "0%"}, 1900);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 1800);
                 setTimeout(() => {parent.opacity_6 = "100%"}, 2000);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 2100);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 2200);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 2300);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 2200);
                 setTimeout(() => {parent.opacity_6 = "100%"}, 2400);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 2500);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 2600);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 2700);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 2800);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 2900);
-                setTimeout(() => {parent.opacity_7 = "100%"}, 3000);
-                setTimeout(() => {parent.opacity_7 = "0%"}, 3100);
-                setTimeout(() => {parent.opacity_10 = "100%"; }, 3200);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 2600);
+                setTimeout(() => {parent.opacity_7 = "100%"}, 2800);
+                setTimeout(() => {parent.opacity_7 = "0%"}, 3000);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 3200);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 3400);
+                setTimeout(() => {parent.opacity_7 = "100%"}, 3600);
+                setTimeout(() => {parent.opacity_7 = "0%"}, 3800);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 4000);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 4200);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 4400);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 4600);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 4800);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 5000);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 5200);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 5400);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 5600);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 5800);
+                setTimeout(() => {parent.opacity_7 = "100%"}, 6000);
+                setTimeout(() => {parent.opacity_7 = "0%"}, 6200);
+                setTimeout(() => {parent.opacity_10 = "100%"; }, 6400);
                 setTimeout(() => {parent.opacity_11 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_11 = "100%"}, 3200);
-                setTimeout(() => {parent.opacity_28 = "100%"; }, 3400);
+                setTimeout(() => {parent.opacity_11 = "100%"}, 6600);
+                setTimeout(() => {parent.opacity_28 = "100%"; }, 6800);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
@@ -448,9 +468,9 @@
                 setTimeout(() => {parent.opacity_11 = "0%"}, 0);
                 
                 // This changes the button to green!
-                setTimeout(() => {parent.ButtonColor = "success";}, 2000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 2500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 3000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 4000);
 
                 //Disables BACK NEXT buttons until animation finishes at 2 seconds.
                 setTimeout(() => {parent.finishanimate = false}, 2000);

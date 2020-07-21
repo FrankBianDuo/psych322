@@ -40,9 +40,9 @@
                <img :src="require('../../assets/Instructions/Machines/mchoice8.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_21, transition: 'opacity 0.0s' }"/>
 
                <!-- opactiy 22-24 -->
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/space4.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 0.0s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext08.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_23, transition: 'opacity 0.4s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext09.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_24, transition: 'opacity 0.4s' }"/>
+               <!-- <img :src="require('../../assets/Instructions/Machines/Machine Text/space4.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 0.0s' }"/> -->
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext08a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_23, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext09a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_24, transition: 'opacity 0.4s' }"/>
 
                <!-- Dots opacity 25-33 -->
                <img :src="require('../../assets/Instructions/Machines/Dots/dotspup1.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_25, transition: 'opacity 0.0s' }"/>
@@ -61,11 +61,24 @@
                <img :src="require('../../assets/Instructions/Machines/Machine Text/yougot3.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_36, transition: 'opacity 0.5s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/yougot4.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_37, transition: 'opacity 0.5s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/yougot5.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_38, transition: 'opacity 0.5s' }"/>
+
+               <!-- Counter -->
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/count01.03.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_39, transition: 'opacity 0.2s' }"/>
+
+               <!-- More text -->
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext08b.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_40, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext08c.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_41, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext09b.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_42, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext09c.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_43, transition: 'opacity 0.4s' }"/>
+            </div>
+              
+            <div>
+                <b-button :variant="SpaceColor" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 0.5s'}" >Press space bar.</b-button>
             </div>
               
       </b-container>
         <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" :disabled="finishanimate" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finishanimate" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -79,6 +92,11 @@
             return {
                 page_num: "13",
                 block_listeners: true,
+                spacenum_1: true,
+                spacenum_2: false,
+                spacenum_3: false,
+                ButtonColor: "outline-primary",
+                SpaceColor: "outline-secondary",
                 opacity_1: '100%',
                 opacity_2: '100%',
                 opacity_3: '100%',
@@ -103,12 +121,12 @@
                 opacity_22: '100%',
                 opacity_23: '100%',
                 opacity_24: '0%',
-                opacity_25: '0%',
-                opacity_26: '100%',
+                opacity_25: '100%',
+                opacity_26: '0%',
                 opacity_27: '0%',
                 opacity_28: '0%',
-                opacity_29: '100%',
-                opacity_30: '0%',
+                opacity_29: '0%',
+                opacity_30: '100%',
                 opacity_31: '0%',
                 opacity_32: '0%',
                 opacity_33: '0%',
@@ -117,6 +135,11 @@
                 opacity_36: '0%',
                 opacity_37: '0%',
                 opacity_38: '0%',
+                opacity_39: '100%',
+                opacity_40: '0%',
+                opacity_41: '0%',
+                opacity_42: '0%',
+                opacity_43: '0%',
 
                 mutex: false,
                 finishanimate: true
@@ -131,9 +154,22 @@
                 if (parent.block_listeners == true) {
                     return;
                 } 
-                if (event.keyCode == 32) {
+                if (parent.spacenum_1 == true && parent.spacenum_2 == false && parent.spacenum_3 == false && event.keyCode == 32) {
                     // Spacebar 1
+                    parent.spacenum_1 = false
+                    parent.spacenum_2 = true
+                    //parent.spacenum_3 = true
                     parent.animate1()
+                } else if (parent.spacenum_1 == false && parent.spacenum_2 == true && parent.spacenum_3 == false && event.keyCode == 32) {
+                    // Spacebar 2
+                    parent.spacenum_2 = false
+                    parent.spacenum_3 = true
+                    parent.animate2()
+                } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == true && event.keyCode == 32) {
+                    // Spacebar 2
+                    parent.spacenum_3 = false
+                    parent.spacenum_1 = true
+                    parent.animate3()
                 } else if (event.keyCode == 74) {
                     // Give Control
                     parent.animateJ()
@@ -202,12 +238,12 @@
                 this.opacity_22 = "100%"
                 this.opacity_23 = "100%"
                 this.opacity_24 = "0%"
-                this.opacity_25 = "0%"
-                this.opacity_26 = "100%"
+                this.opacity_25 = "100%"
+                this.opacity_26 = "0%"
                 this.opacity_27 = "0%"
                 this.opacity_28 = "0%"
-                this.opacity_29 = "100%"
-                this.opacity_30 = "0%"
+                this.opacity_29 = "0%"
+                this.opacity_30 = "100%"
                 this.opacity_31 = "0%"
                 this.opacity_32 = "0%"
                 this.opacity_33 = "0%"
@@ -216,6 +252,13 @@
                 this.opacity_36 = "0%"
                 this.opacity_37 = "0%"
                 this.opacity_38 = "0%"
+                this.opacity_39 = "100%"
+                this.opacity_40 = "0%"
+                this.opacity_41 = "0%"
+                this.opacity_42 = "0%"
+                this.opacity_43 = "0%"
+                this.ButtonColor = "outline-primary"
+                this.SpaceColor = "outline-secondary"
                 this.locked = true
                 this.mutex = false
                 this.finishanimate = false
@@ -224,6 +267,11 @@
                 let parent = this 
 
                 setTimeout(() => {parent.opacity_22 = "0%"}, 100);
+
+                // This kills prior texts if you cycle back to the beginning. 
+                setTimeout(() => {parent.opacity_40 = "0%"; parent.opacity_41 = "0%"; parent.opacity_42 = "0%"; 
+                parent.opacity_43 = "0%"; parent.opacity_23 = "0%"; parent.opacity_24 = "0%";}, 0);
+
                 // Meeting 1 Flashing Prior Selections 
                 setTimeout(() => {parent.opacity_31 = "0%"; parent.opacity_32 = "100%"; parent.opacity_33 = "0%"; }, 300);
                 setTimeout(() => {parent.opacity_32 = "0%"; parent.opacity_33 = "100%"; }, 600);
@@ -239,31 +287,82 @@
                 setTimeout(() => {parent.opacity_32 = "0%"; parent.opacity_31 = "100%"; }, 3600);
                 setTimeout(() => {parent.opacity_31 = "0%"; parent.opacity_32 = "100%"; }, 3900);
                 setTimeout(() => {parent.opacity_32 = "0%"; parent.opacity_33 = "100%"; }, 4200);
-                setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_24 = "100%"}, 5000);
-                setTimeout(() => {parent.opacity_12 = "100%";}, 0);
-                //Disables BACK NEXT buttons until animation finishes at 6 seconds.
-                setTimeout(() => {parent.finishanimate = false}, 8000);
+
+                setTimeout(() => {parent.opacity_39 = "100%";}, 4400);
+
+                setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_41 = "0%"; parent.opacity_40 = "100%"}, 5000);
+
+                setTimeout(() => {parent.opacity_22 = "100%"}, 5800);
+            },
+            animate2() {
+                let parent = this 
+                setTimeout(() => {parent.opacity_22 = "0%"}, 100);
+                setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_40 = "0%"; parent.opacity_41 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_22 = "100%"}, 3000);
+            },
+            animate3() {
+                let parent = this 
+                setTimeout(() => {parent.opacity_22 = "0%"}, 0);
+                // Options + space text vanish and program text appears
+                setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_40 = "0%"; parent.opacity_41 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_24 = "100%";}, 1000);
+                setTimeout(() => {parent.opacity_12 = "100%";}, 400);
+                setTimeout(() => {parent.opacity_12 = "0%";}, 600);
+                setTimeout(() => {parent.opacity_12 = "100%";}, 800);
+                setTimeout(() => {parent.opacity_12 = "0%";}, 1200);
+                setTimeout(() => {parent.opacity_12 = "100%";}, 1600);
+                setTimeout(() => {parent.opacity_12 = "0%";}, 2000);
+                setTimeout(() => {parent.opacity_12 = "100%";}, 2400);
+
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
             },
             animateJ() {
                 let parent = this 
+                setTimeout(() => {parent.opacity_24 = "0%"; parent.opacity_43 = "0%";}, 0);
                 setTimeout(() => {parent.opacity_12 = "0%";}, 0);
                 setTimeout(() => {parent.opacity_37 = "0%";}, 0);
                 setTimeout(() => {parent.opacity_15 = "100%";}, 0); 
-                setTimeout(() => {parent.opacity_15 = "0%";}, 2000);
-                setTimeout(() => {parent.opacity_20 = "100%"}, 500);
+                setTimeout(() => {parent.opacity_16 = "0%";}, 0);
+                setTimeout(() => {parent.opacity_21 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_21 = "100%"}, 500);
                 setTimeout(() => {parent.opacity_38 = "100%";}, 1500);
+
+                setTimeout(() => {parent.opacity_42 = "100%";}, 1800);
+
+                // This changes the button to green!
+                setTimeout(() => {parent.ButtonColor = "success";}, 2000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 2500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 3000);
+
+                //Disables BACK NEXT buttons until animation finishes at 2 seconds.
+                setTimeout(() => {parent.finishanimate = false}, 2000);
+
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
 
             animateK() {
                 let parent = this 
+                setTimeout(() => {parent.opacity_24 = "0%"; parent.opacity_42 = "0%";}, 0);
                 setTimeout(() => {parent.opacity_12 = "0%";}, 0);
                 setTimeout(() => {parent.opacity_38 = "0%";}, 0);
                 setTimeout(() => {parent.opacity_16 = "100%";}, 0); 
-                setTimeout(() => {parent.opacity_16 = "0%";}, 2000);
-                setTimeout(() => {parent.opacity_20 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_15 = "0%";}, 0);
+                setTimeout(() => {parent.opacity_21 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_21 = "100%"}, 500);
                 setTimeout(() => {parent.opacity_37 = "100%";}, 1500);
+
+                setTimeout(() => {parent.opacity_43 = "100%";}, 1800);
+
+                // This changes the button to green!
+                setTimeout(() => {parent.ButtonColor = "success";}, 2000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 2500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 3000);
+
+                //Disables BACK NEXT buttons until animation finishes at 2 seconds.
+                setTimeout(() => {parent.finishanimate = false}, 2000);
+
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },

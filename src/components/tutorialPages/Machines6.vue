@@ -17,8 +17,8 @@
       <b-container class="align-bottom" :style="this.windowsize"  >
           <img :src="require('../../assets/Instructions/Machines/keyhands2.png')" v-bind:style="{ maxWidth: '56%', height: 'auto', marginTop: '0%', marginLeft: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_2, transition: 'opacity 0.4s' }"/>
       </b-container>
-        <b-button @click="$bvModal.hide('modal-center-ConstantValue')" v-b-modal.modal-center-Machines5 variant="outline-primary" size="lg">Back</b-button>
-        <b-button style="float: right;" @click="$bvModal.hide('modal-center-ConstantValue')" variant="outline-primary" size="lg" v-b-modal.modal-center-Machines7>Next</b-button>
+        <b-button @click="$bvModal.hide('modal-center-Machines6')" v-b-modal.modal-center-Machines5 variant="outline-primary" size="lg">Back</b-button>
+        <b-button style="float: right;" @click="$bvModal.hide('modal-center-Machines6')" variant="outline-primary" size="lg" v-b-modal.modal-center-Machines7>Next</b-button>
     </b-modal>
 </template>
 
