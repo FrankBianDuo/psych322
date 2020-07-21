@@ -207,6 +207,8 @@
     <Practice01 :windowsize ="this.window_size" />
     <Practice02 :windowsize ="this.window_size" />
     <Practice03 :windowsize ="this.window_size" />
+    <FlowKnow1 :windowsize ="this.window_size" />
+    <FlowKnow2 :windowsize ="this.window_size" />
     <Tutorial1 :windowsize ="this.window_size" />
     <Tutorial1b :windowsize ="this.window_size" />
     <Tutorial2 :windowsize ="this.window_size" />
@@ -417,6 +419,8 @@ import Machines7 from './tutorialPages/Machines7.vue'
 import Practice01 from './tutorialPages/Practice01.vue'
 import Practice02 from './tutorialPages/Practice02.vue'
 import Practice03 from './tutorialPages/Practice03.vue'
+import FlowKnow1 from './tutorialPages/FlowKnow1.vue'
+import FlowKnow2 from './tutorialPages/FlowKnow2.vue'
 import Trystuffout from './tutorialPages/Trystuffout.vue'
 import Absurdity from './tutorialPages/Absurdity.vue'
 import Silly from './tutorialPages/Silly.vue'
@@ -618,6 +622,8 @@ export default {
     Practice01,
     Practice02,
     Practice03,
+    FlowKnow1,
+    FlowKnow2,
     Trystuffout,
     Absurdity,
     Silly,

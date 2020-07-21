@@ -16,8 +16,8 @@
             </div>
               
       </b-container>
-        <b-button @click="$bvModal.hide(`modal-center-Knowledge5`)" v-b-modal.modal-center-Knowledge4 variant="outline-primary" size="lg">Back</b-button>
-        <b-button @click="$bvModal.hide(`modal-center-Knowledge5`)" v-b-modal.modal-center-Knowledge6 style="float: right;" variant="outline-primary" size="lg">Next</b-button>
+        <b-button @click="$bvModal.hide('modal-center-Knowledge5')" v-b-modal.modal-center-Knowledge4 variant="outline-primary" size="lg">Back</b-button>
+        <b-button @click="$bvModal.hide('modal-center-Knowledge5')" v-b-modal.modal-center-Knowledge6 style="float: right;" variant="outline-primary" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -62,12 +62,12 @@
             reset_animation_back() {
                 //this.$bvModal.hide("modal-center-instruction" + this.page_num)  // this.$bvModal.hide(this current page)
                 this.resetAnimation()
-                this.$bvModal.show("modal-center-Knowledge3") //this.$bvModal.show(previous page)
+                this.$bvModal.show("modal-center-Knowledge4") //this.$bvModal.show(previous page)
             },
             reset_animation_next() {
                 //this.$bvModal.hide("modal-center-instruction" + this.page_num)
                 this.resetAnimation()
-                this.$bvModal.show("modal-center-Knowledge5")
+                this.$bvModal.show("modal-center-Knowledge6")
             },
             resetAnimation() {
                 this.$bvModal.hide('modal-center-Knowledge5')

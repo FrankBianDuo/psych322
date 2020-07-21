@@ -24,7 +24,7 @@
 
 <script>
     export default {
-        name: 'Knowledge5',
+        name: 'Knowledge4',
         props: ['windowsize'],
         components: {
         },

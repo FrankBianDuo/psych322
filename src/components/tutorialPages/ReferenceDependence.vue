@@ -83,7 +83,7 @@
                 return
             }
             this.mutex = true;
-            setTimeout(() => this.animate(), 300); 
+            setTimeout(() => this.animate(), 1000); 
             })
         },
   methods: {
@@ -130,7 +130,7 @@
                 // happy face replaces
                 setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_5 = "100%" }, 2000);
                 // glow appears: up 5
-                setTimeout(() => {parent.opacity_6 = "100%" }, 300);
+                setTimeout(() => {parent.opacity_6 = "100%" }, 3000);
                 // happy face appears 
                 setTimeout(() => {parent.opacity_9 = "100%" }, 3800);
                 // glow replaces: dn 3
