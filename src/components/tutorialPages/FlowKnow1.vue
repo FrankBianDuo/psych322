@@ -13,26 +13,30 @@
           <div style="text-align: center;">
               
                <!-- opacity 1-5 -->
-               <img :src="require('../../assets/Instructions/FlowKnow/GF01a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/GF02a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_2, transition: 'opacity 0.5s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/FKmeet1.01a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/FKmeet2.01a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_2, transition: 'opacity 0.5s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/GFcontrol.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_3, transition: 'opacity 0.5s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/GFeyeleft.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_4, transition: 'opacity 0.5s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/GFaz.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_5, transition: 'opacity 0.0s' }"/>
                
                <!-- opacity 6-10 -->
-               <img :src="require('../../assets/Instructions/FlowKnow/GFjk.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_6, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GFjk.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_6, transition: 'opacity 0.0s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/GFpredup.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/GFpreddn.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/GFgk.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_9, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/GFkc.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_10, transition: 'opacity 0.2s' }"/>
 
                <!-- opacity 11-15 -->
-               <img :src="require('../../assets/Instructions/FlowKnow/GF01b.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/FKchoice2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/GF01c.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/fk text 01a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/fk text 02a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/fk text 03a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_15, transition: 'opacity 0.2s' }"/>
                
+               <!-- opacity 17-19 -->
+               <img :src="require('../../assets/Instructions/FlowKnow/GFd2b.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_17, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GFd2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_18, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GF01c.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_19, transition: 'opacity 0.0s' }"/>
                
                
             </div>
@@ -75,9 +79,9 @@
                 opacity_14: '0%',
                 opacity_15: '0%',
                 opacity_16: '0%',
-                // opacity_17: '0%',
-                // opacity_18: '0%',
-                // opacity_19: '0%',
+                opacity_17: '0%',
+                opacity_18: '0%',
+                opacity_19: '0%',
                 // opacity_20: '0%',
                 // opacity_21: '0%',
                 // opacity_22: '0%',
@@ -159,6 +163,7 @@
             reset_animation_back() {
                 this.resetAnimation()
                 this.$bvModal.show("modal-center-EndTF1") 
+                this.$bvModal.hide('modal-center-FlowKnow1')
             },
             reset_animation_next() {
                 this.resetAnimation()
@@ -182,9 +187,9 @@
                 this.opacity_14 = "0%"
                 this.opacity_15 = "0%"
                 this.opacity_16 = "0%"
-                // this.opacity_17 = "0%"
-                // this.opacity_18 = "0%"
-                // this.opacity_19 = "0%"
+                this.opacity_17 = "0%"
+                this.opacity_18 = "0%"
+                this.opacity_19 = "0%"
                 // this.opacity_20 = "0%"
                 // this.opacity_21 = "0%"
                 // this.opacity_22 = "0%"
@@ -229,8 +234,7 @@
                 // Meeting 2 appears.
                 setTimeout(() => {parent.opacity_11 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_2 = "100%"}, 1000);
-                setTimeout(() => {parent.opacity_2 = "100%"}, 1000);
-                setTimeout(() => {parent.opacity_4 = "100%"}, 1000);
+                setTimeout(() => {parent.opacity_3 = "100%"}, 1000);
                 
                 // Flashes AZ to grap attention 
                 setTimeout(() => {parent.opacity_5 = "100%"}, 1600);
@@ -245,22 +249,49 @@
             animateA() {
                 let parent = this 
                 // Prediction Feedback Up 
-                setTimeout(() => {parent.opacity_ = "0%"; parent.opacity_ = "0%"; parent.opacity_ = "100%";}, 0);
+                setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_8 = "0%"; parent.opacity_16 = "0%"; parent.opacity_7 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_6 = "100%"; parent.opacity_17 = "100%"}, 1000);
+
+                // Flashing safe dots
+                setTimeout(() => {parent.opacity_18 = "100%"}, 1200);
+                setTimeout(() => {parent.opacity_18 = "0%"}, 1400);
+                setTimeout(() => {parent.opacity_18 = "100%"}, 1600);
+                setTimeout(() => {parent.opacity_18 = "0%"}, 1800);
+
+                // Flashing JK
+                setTimeout(() => {parent.opacity_6 = "0%"}, 2000);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 2200);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 2400);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 2600);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
             animateZ() {
                 let parent = this 
-                // Prediction Feedback Down 
+                // Prediction Feedback Up 
+                setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_7 = "0%"; parent.opacity_16 = "0%"; parent.opacity_8 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_6 = "100%"; parent.opacity_17 = "100%"}, 1000);
 
+                // Flashing safe dots
+                setTimeout(() => {parent.opacity_18 = "100%"}, 1200);
+                setTimeout(() => {parent.opacity_18 = "0%"}, 1400);
+                setTimeout(() => {parent.opacity_18 = "100%"}, 1600);
+                setTimeout(() => {parent.opacity_18 = "0%"}, 1800);
+
+                // Flashing JK
+                setTimeout(() => {parent.opacity_6 = "0%"}, 2200);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 2400);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 2600);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 2800);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
             animateJ() {
                 let parent = this 
                 // Control Feedback Give
-
-
+                setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_13 = "0%"; parent.opacity_19 = "0%"; parent.opacity_9 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_19 = "100%"}, 1000);
+                setTimeout(() => {parent.opacity_14 = "100%"}, 2000);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
@@ -276,7 +307,9 @@
             animateK() {
                 let parent = this 
                 // Control Feedback Give
-
+                setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_13 = "0%"; parent.opacity_19 = "0%"; parent.opacity_10 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_19 = "100%"}, 1000);
+                setTimeout(() => {parent.opacity_14 = "100%"}, 2000);
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 

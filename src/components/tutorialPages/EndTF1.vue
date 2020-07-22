@@ -18,7 +18,7 @@
           <img :src="require('../../assets/Instructions/Text Only Pages/End TF Questions.png')" style="width: 90%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"/>
       </b-container>
         <b-button @click="$bvModal.hide('modal-center-EndTF1')" v-b-modal.modal-center-instruction29 variant="outline-primary" size="lg">Back</b-button>
-        <b-button style="float: right;" @click="$bvModal.hide('modal-center-EndTF1')" variant="outline-primary" size="lg" v-b-modal.modal-center-GameFlow1>Next</b-button>
+        <b-button style="float: right;" @click="$bvModal.hide('modal-center-EndTF1')" variant="outline-primary" size="lg" v-b-modal.modal-center-FlowKnow1>Next</b-button>
     </b-modal>
 </template>
 

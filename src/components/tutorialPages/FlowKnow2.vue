@@ -13,25 +13,40 @@
           <div style="text-align: center;">
               
                <!-- opacity 1-5 -->
-               <img :src="require('../../assets/Instructions/FlowKnow/GF01a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/GF02a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_2, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/GFcontrol.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_3, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/GFeyeleft.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_4, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/GFaz.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_5, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/FKmeet1.02a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/FKmeet2.02a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_2, transition: 'opacity 0.5s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GFcontrolb.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_3, transition: 'opacity 0.5s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/FKevap1.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_4, transition: 'opacity 0.5s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GFaz.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_5, transition: 'opacity 0.0s' }"/>
                
                <!-- opacity 6-10 -->
-               <img :src="require('../../assets/Instructions/FlowKnow/GFjk.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_6, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GFjk.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_6, transition: 'opacity 0.0s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/GFpredup.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/GFpreddn.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/GFgk.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_9, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/GFkc.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_10, transition: 'opacity 0.2s' }"/>
 
                <!-- opacity 11-15 -->
-               <img :src="require('../../assets/Instructions/FlowKnow/GF01b.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/FKchoice1.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/GF01c.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/fk text 03a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/fk text 04a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/fk text 05a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_15, transition: 'opacity 0.2s' }"/>
+               
+               <!-- opacity 17-21 -->
+               <img :src="require('../../assets/Instructions/FlowKnow/GFd3b.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_17, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GFd3.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_18, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/FKchoice3.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_19, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GFbarr1.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_20, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GFbarr2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_21, transition: 'opacity 0.0s' }"/>
+
+               <img :src="require('../../assets/Instructions/FlowKnow/FKdm2.02a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/FKevap1.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_23, transition: 'opacity 4.5s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/FKevap2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_24, transition: 'opacity 0.5s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/FKevap2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_25, transition: 'opacity 4.5s' }"/>
+
+               
+               
             </div>
 
             <div>
@@ -56,7 +71,7 @@
                 block_listeners: true,
                 SpaceColor: "outline-secondary",
                 ButtonColor: "outline-primary",
-                opacity_1: '0%',
+                opacity_1: '100%',
                 opacity_2: '0%',
                 opacity_3: '0%',
                 opacity_4: '0%',
@@ -68,19 +83,19 @@
                 opacity_10: '0%',
                 opacity_11: '0%',
                 opacity_12: '0%',
-                opacity_13: '0%',
+                opacity_13: '100%',
                 opacity_14: '0%',
                 opacity_15: '0%',
                 opacity_16: '0%',
-                // opacity_17: '0%',
-                // opacity_18: '0%',
-                // opacity_19: '0%',
-                // opacity_20: '0%',
-                // opacity_21: '0%',
-                // opacity_22: '0%',
-                // opacity_23: '0%',
-                // opacity_24: '0%',
-                // opacity_25: '0%',
+                opacity_17: '0%',
+                opacity_18: '0%',
+                opacity_19: '0%',
+                opacity_20: '0%',
+                opacity_21: '0%',
+                opacity_22: '0%',
+                opacity_23: '0%',
+                opacity_24: '0%',
+                opacity_25: '0%',
                 // opacity_26: '0%',
                 // opacity_27: '0%',
                 // opacity_28: '0%',
@@ -149,13 +164,14 @@
             }
             this.mutex = true;
             this.block_listeners = false;
-            //setTimeout(() => this.animate(), 0); 
+            setTimeout(() => this.animate0(), 0); 
             })
         },
         methods: {
             reset_animation_back() {
                 this.resetAnimation()
                 this.$bvModal.show("modal-center-FlowKnow1") 
+                this.$bvModal.hide('modal-center-FlowKnow2')
             },
             reset_animation_next() {
                 this.resetAnimation()
@@ -163,7 +179,7 @@
             },
             resetAnimation() {
                 this.$bvModal.hide('modal-center-FlowKnow2')
-                this.opacity_1 = "0%"
+                this.opacity_1 = "100%"
                 this.opacity_2 = "0%"
                 this.opacity_3 = "0%"
                 this.opacity_4 = "0%"
@@ -175,19 +191,19 @@
                 this.opacity_10 = "0%"
                 this.opacity_11 = "0%"
                 this.opacity_12 = "0%"
-                this.opacity_13 = "0%"
+                this.opacity_13 = "100%"
                 this.opacity_14 = "0%"
                 this.opacity_15 = "0%"
                 this.opacity_16 = "0%"
-                // this.opacity_17 = "0%"
-                // this.opacity_18 = "0%"
-                // this.opacity_19 = "0%"
-                // this.opacity_20 = "0%"
-                // this.opacity_21 = "0%"
-                // this.opacity_22 = "0%"
-                // this.opacity_23 = "0%"
-                // this.opacity_24 = "0%"
-                // this.opacity_25 = "0%"
+                this.opacity_17 = "0%"
+                this.opacity_18 = "0%"
+                this.opacity_19 = "0%"
+                this.opacity_20 = "0%"
+                this.opacity_21 = "0%"
+                this.opacity_22 = "0%"
+                this.opacity_23 = "0%"
+                this.opacity_24 = "0%"
+                this.opacity_25 = "0%"
                 // this.opacity_26 = "0%"
                 // this.opacity_27 = "0%"
                 // this.opacity_28 = "0%"
@@ -210,56 +226,136 @@
                 this.mutex = false
                 this.finishanimate = false
             },
+            animate0() {
+                let parent = this 
+                // 
+                setTimeout(() => {parent.opacity_16 = "70%"}, 2000);
+                setTimeout(() => {parent.SpaceColor = "primary";}, 2500);
+                setTimeout(() => {parent.SpaceColor = "outline-secondary";}, 3000);
+                setTimeout(() => {parent.opacity_16 = "100%"}, 3000);
+            },
             animate1() {
                 let parent = this 
 
-                // Meeting 1 Flashing Prior Selections 
-                setTimeout(() => {parent.opacity_ = "0%"}, 0);
+                // Meeting 2 appears.
+                setTimeout(() => {parent.opacity_11 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_2 = "100%"}, 1000);
+                setTimeout(() => {parent.opacity_3 = "100%"}, 1000);
+                setTimeout(() => {parent.opacity_4 = "100%"}, 1000);
+                setTimeout(() => {parent.opacity_22 = "100%"}, 1000);
+                setTimeout(() => {parent.opacity_20 = "100%"}, 1000);
+                setTimeout(() => {parent.opacity_24 = "100%"}, 1000);
+
+                // Slower transition evap dots appear after and quick transition evap dots vanish
+                setTimeout(() => {parent.opacity_23 = "100%"}, 1000);
+                setTimeout(() => {parent.opacity_4 = "0%"}, 5000);
                 
-                
+                // Flashes AZ to grap attention 
+                setTimeout(() => {parent.opacity_5 = "100%"}, 1600);
+                setTimeout(() => {parent.opacity_5 = "0%"}, 1800);
+                setTimeout(() => {parent.opacity_5 = "100%"}, 2000);
+                setTimeout(() => {parent.opacity_5 = "0%"}, 2200);
+                setTimeout(() => {parent.opacity_5 = "100%"}, 2400);
+
+                // Kill text
+                setTimeout(() => {parent.opacity_14 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_15 = "0%"}, 0);
+
+                // This turns the press space bar reminder off.
+                setTimeout(() => {parent.opacity_16 = "0%"}, 0); 
             },
             animateA() {
                 let parent = this 
                 // Prediction Feedback Up 
-                setTimeout(() => {parent.opacity_11 = "0%"; parent.opacity_12 = "100%"}, 0);
-                setTimeout(() => {parent.opacity_21 = "0%"; }, 0);
-                setTimeout(() => {parent.opacity_25 = "0%"; }, 0);
-                setTimeout(() => {parent.opacity_13 = "100%"; }, 0);
-                setTimeout(() => {parent.opacity_14 = "0%"; }, 0);
-                //setTimeout(() => {parent.opacity_21 = "100%"; }, 1100);
-                setTimeout(() => {parent.opacity_25 = "100%"; }, 2500);
+                setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_8 = "0%"; parent.opacity_16 = "0%"; parent.opacity_7 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_6 = "100%"; parent.opacity_17 = "100%"}, 1000);
+
+                // Barrier Flashes 
+                setTimeout(() => {parent.opacity_21 = "100%"}, 2400);
+                setTimeout(() => {parent.opacity_21 = "0%"}, 2500);
+                setTimeout(() => {parent.opacity_21 = "100%"}, 2600);
+                setTimeout(() => {parent.opacity_21 = "0%"}, 2700);
+                setTimeout(() => {parent.opacity_21 = "100%"}, 2800);
+                setTimeout(() => {parent.opacity_21 = "0%"}, 2900);
+                setTimeout(() => {parent.opacity_21 = "100%"}, 3000);
+                setTimeout(() => {parent.opacity_21 = "0%"}, 3100);
+
+                // Flashing JK
+                setTimeout(() => {parent.opacity_6 = "0%"}, 6700);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 6800);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 6900);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 7000);
+
+                // Swap text
+                setTimeout(() => {parent.opacity_15 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_13 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_14 = "100%"}, 4000);
+
+                // Put evap dots back if the user cycles back through to this point.
+                setTimeout(() => {parent.opacity_23 = "100%"}, 0);
+
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
             animateZ() {
                 let parent = this 
-                // Prediction Feedback Down 
-                setTimeout(() => {parent.opacity_11 = "0%"; parent.opacity_12 = "100%"}, 0);
-                setTimeout(() => {parent.opacity_21 = "0%"; }, 0);
-                setTimeout(() => {parent.opacity_25 = "0%"; }, 0);
-                setTimeout(() => {parent.opacity_14 = "100%"; }, 0);
-                setTimeout(() => {parent.opacity_13 = "0%"; }, 0);
-                //setTimeout(() => {parent.opacity_21 = "100%"; }, 1100);
-                setTimeout(() => {parent.opacity_25 = "100%"; }, 2500);
+                // Prediction Feedback Up 
+                setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_7 = "0%"; parent.opacity_16 = "0%"; parent.opacity_8 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_6 = "100%"; parent.opacity_17 = "100%"}, 1000);
+
+                // Barrier Flashes 
+                setTimeout(() => {parent.opacity_21 = "100%"}, 2400);
+                setTimeout(() => {parent.opacity_21 = "0%"}, 2500);
+                setTimeout(() => {parent.opacity_21 = "100%"}, 2600);
+                setTimeout(() => {parent.opacity_21 = "0%"}, 2700);
+                setTimeout(() => {parent.opacity_21 = "100%"}, 2800);
+                setTimeout(() => {parent.opacity_21 = "0%"}, 2900);
+                setTimeout(() => {parent.opacity_21 = "100%"}, 3000);
+                setTimeout(() => {parent.opacity_21 = "0%"}, 3100);
+
+                // Flashing JK
+                setTimeout(() => {parent.opacity_6 = "0%"}, 6700);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 6800);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 6900);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 7000);
+
+                // Swap text
+                setTimeout(() => {parent.opacity_15 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_13 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_14 = "100%"}, 4000);
+
+                // Put evap dots back if the user cycles back through to this point.
+                setTimeout(() => {parent.opacity_23 = "100%"}, 0);
+
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
             animateJ() {
                 let parent = this 
-                setTimeout(() => {parent.opacity_21 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_12 = "0%";}, 0);
-                setTimeout(() => {parent.opacity_37 = "0%";}, 0);
-                setTimeout(() => {parent.opacity_15 = "100%";}, 0); 
-                setTimeout(() => {parent.opacity_16 = "0%";}, 0);
-                setTimeout(() => {parent.opacity_21 = "100%"}, 500);
+                // Control Feedback Give
+                setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_13 = "0%"; parent.opacity_14 = "0%"; parent.opacity_19 = "0%"; parent.opacity_9 = "100%"}, 0);
+           
+                // Control stuff dissapears and then barrier.
+                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_6 = "0%"; parent.opacity_17 = "0%"; parent.opacity_24 = "0%"}, 1000);
+                setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_10 = "0%"}, 2000);
+                setTimeout(() => {parent.opacity_20 = "0%"}, 3000);
+
+                // Meeting 2 choice
+                setTimeout(() => {parent.opacity_19 = "100%"}, 4000);
+
+                //Final text
+                setTimeout(() => {parent.opacity_15 = "100%"}, 7000);
+
+                // Dots evaporate
+                setTimeout(() => {parent.opacity_23 = "0%"}, 4000);
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // This changes the button to green!
-                setTimeout(() => {parent.ButtonColor = "success";}, 3000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 4000);
+                setTimeout(() => {parent.ButtonColor = "success";}, 8000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
 
                 //Disables BACK NEXT buttons until animation finishes at 4 seconds.
                 setTimeout(() => {parent.finishanimate = false}, 4000);
@@ -267,19 +363,30 @@
 
             animateK() {
                 let parent = this 
-                setTimeout(() => {parent.opacity_21 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_12 = "0%";}, 0);
-                setTimeout(() => {parent.opacity_38 = "0%";}, 0);
-                setTimeout(() => {parent.opacity_16 = "100%";}, 0); 
-                setTimeout(() => {parent.opacity_15 = "0%";}, 0);
-                setTimeout(() => {parent.opacity_21 = "100%"}, 500);
+                // Control Feedback Give
+                setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_13 = "0%"; parent.opacity_14 = "0%"; parent.opacity_19 = "0%"; parent.opacity_10 = "100%"}, 0);
+
+                // Control stuff dissapears and then barrier.
+                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_6 = "0%"; parent.opacity_17 = "0%"; parent.opacity_24 = "0%"}, 1000);
+                setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_10 = "0%"}, 2000);
+                setTimeout(() => {parent.opacity_20 = "0%"}, 3000);
+
+                // Meeting 2 choice
+                setTimeout(() => {parent.opacity_19 = "100%"}, 4000);
+
+                //Final text
+                setTimeout(() => {parent.opacity_15 = "100%"}, 7000);
+
+                // Dots evaporate
+                setTimeout(() => {parent.opacity_23 = "0%"}, 4000);
+
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // This changes the button to green!
-                setTimeout(() => {parent.ButtonColor = "success";}, 3000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 4000);
+                setTimeout(() => {parent.ButtonColor = "success";}, 8000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
 
                 //Disables BACK NEXT buttons until animation finishes at 4 seconds.
                 setTimeout(() => {parent.finishanimate = false}, 4000);

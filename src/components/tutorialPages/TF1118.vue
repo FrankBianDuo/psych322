@@ -17,7 +17,7 @@
       <b-container class="align-bottom" :style="this.windowsize"  >
           <img :src="require('../../assets/Instructions/Text Only Pages/True False 11-18.png')" style="width: 90%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"/>
       </b-container>
-        <b-button @click="$bvModal.hide('modal-center-TF1118')" v-b-modal.modal-center-instuction52 variant="outline-primary" size="lg">Back</b-button>
+        <b-button @click="$bvModal.hide('modal-center-TF1118')" v-b-modal.modal-center-FlowKnow2 variant="outline-primary" size="lg">Back</b-button>
         <b-button style="float: right;" @click="$bvModal.hide('modal-center-TF1118')" variant="outline-primary" size="lg" v-b-modal.modal-center-instruction61>Next</b-button>
     </b-modal>
 </template>
