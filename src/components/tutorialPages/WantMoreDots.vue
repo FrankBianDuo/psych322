@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-WantMoreDots" 
       size="xl"
-      centered title="Instruction Page 2 of 30"
+      centered title="Instruction Page 12 of 23"
       v-model="show"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
@@ -45,7 +45,7 @@
       </b-container>
       <b-button @click="this.resetAnimation" v-b-modal.modal-center-WantMoreDots variant="outline-primary" size="lg" :disabled="this.locked">Back</b-button>
                 
-            <b-button style="float: right;" @click="this.resetAnimation" variant="outline-primary" size="lg" v-b-modal.modal-center-CommKnow :disabled="this.locked">Next</b-button>
+            <b-button style="float: right;" @click="this.resetAnimation" :variant="ButtonColor" size="lg" v-b-modal.modal-center-CommKnow :disabled="this.locked">Next</b-button>
     </b-modal>
 </template>
 
@@ -58,6 +58,8 @@
         },
         data() {
             return {
+                ButtonColor: "outline-primary",
+                SpaceColor: "outline-secondary",
                 dot_size: "7%",
                 avatar_size: "5%",
                 show_avatar: "100%",
@@ -110,6 +112,7 @@
                 this.trans_1 = 'scaleX(-1)'
                 this.trans_2 = 'scaleX(-1)'
                 this.trans_3 = 'scaleX(-1)'
+                this.ButtonColor = "outline-primary"
             },
             animate(){
                 let parent = this
@@ -146,6 +149,11 @@
                 setTimeout(() => this.frown_opacity_3 = "100%", 1500);
                 setTimeout(() => this.locked = false, 1800);
                 setTimeout(() => this.mutex = false, 1800);
+
+                // This changes the button to green!
+                setTimeout(() => {parent.ButtonColor = "success";}, 3500);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 4000);
+                setTimeout(() => {parent.ButtonColor = "success";}, 4500);
             },
         },
     }

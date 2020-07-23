@@ -11,9 +11,9 @@
     >
       <b-container class="align-bottom" :style="this.windowsize"  >
           <div style="text-align: center;">
-              <img :src="require('../../assets/Instructions/HowChoice/hc 12.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
+              <!-- <img :src="require('../../assets/Instructions/HowChoice/hc 12.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/> -->
                <img :src="require('../../assets/Instructions/HowChoice/hc 13.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_2, transition: 'opacity 0.5s' }"/>
-               <img :src="require('../../assets/Instructions/HowChoice/hc 14.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_3, transition: 'opacity 0.5s' }"/>
+               <!-- <img :src="require('../../assets/Instructions/HowChoice/hc 14.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_3, transition: 'opacity 0.5s' }"/> -->
                <img :src="require('../../assets/Instructions/HowChoice/hc you.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_4, transition: 'opacity 2.0s' }"/>
                <img :src="require('../../assets/Instructions/HowChoice/hc avatar 2.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_5, transition: 'opacity 1.0s' }"/>
                <img :src="require('../../assets/Instructions/HowChoice/hc avatar 3.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_6, transition: 'opacity 0.0s' }"/>
@@ -111,7 +111,7 @@
                 this.opacity_9 = "100%"
                 this.opacity_10 = "100%"
                 this.opacity_11 = "100%"
-                this.opacity_12 = "100%"
+                this.opacity_12 = "0%"
                 this.opacity_13 = "0%"
                 this.opacity_14 = "0%"
                 this.opacity_15 = "0%"
@@ -127,7 +127,7 @@
                 setTimeout(() => {parent.opacity_4 = "100%"}, 1000); 
                 setTimeout(() => {parent.opacity_13 = "100%"; parent.opacity_14 = "100%"}, 1500); 
                 setTimeout(() => {parent.opacity_1 = "100%"}, 2750); 
-                setTimeout(() => {parent.opacity_13 = "0%"; parent.opacity_14 = "0%"}, 3250); 
+                //setTimeout(() => {parent.opacity_13 = "0%"; parent.opacity_14 = "0%"}, 3250); 
                 setTimeout(() => {parent.opacity_1 = "0%"; parent.opacity_2 = "100%"}, 3750);
                 setTimeout(() => {parent.opacity_15 = "100%"}, 4000); 
                 // setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_3 = "100%"}, 9500);

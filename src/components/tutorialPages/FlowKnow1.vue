@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-FlowKnow1" 
       size="xl"
-      centered title="Instruction Page ? of ?"
+      centered title="Instruction Page 22 of 23"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -13,30 +13,30 @@
           <div style="text-align: center;">
               
                <!-- opacity 1-5 -->
-               <img :src="require('../../assets/Instructions/FlowKnow/FKmeet1.01a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/FKmeet2.01a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_2, transition: 'opacity 0.5s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/GFcontrol.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_3, transition: 'opacity 0.5s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/GFeyeleft.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_4, transition: 'opacity 0.5s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/GFaz.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_5, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/FKmeet1.01a.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.5s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/FKmeet2.01a.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_2, transition: 'opacity 0.5s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GFcontrol.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_3, transition: 'opacity 0.5s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GFeyeleft.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_4, transition: 'opacity 0.5s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GFaz.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_5, transition: 'opacity 0.0s' }"/>
                
                <!-- opacity 6-10 -->
-               <img :src="require('../../assets/Instructions/FlowKnow/GFjk.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_6, transition: 'opacity 0.0s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/GFpredup.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/GFpreddn.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/GFgk.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_9, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/GFkc.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_10, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GFjk.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_6, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GFpredup.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GFpreddn.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GFgk.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_9, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GFkc.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_10, transition: 'opacity 0.2s' }"/>
 
                <!-- opacity 11-15 -->
-               <img :src="require('../../assets/Instructions/FlowKnow/FKchoice2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/GF01c.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/fk text 01a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/fk text 02a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/fk text 03a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_15, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/FKchoice2.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GF01c.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/fk text 01a.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/fk text 02a.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/fk text 03a.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_15, transition: 'opacity 0.2s' }"/>
                
                <!-- opacity 17-19 -->
-               <img :src="require('../../assets/Instructions/FlowKnow/GFd2b.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_17, transition: 'opacity 0.0s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/GFd2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_18, transition: 'opacity 0.0s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/GF01c.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_19, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GFd2b.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_17, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GFd2.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_18, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/GF01c.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_19, transition: 'opacity 0.0s' }"/>
                
                
             </div>
@@ -46,8 +46,8 @@
             </div>
 
       </b-container>
-        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finishanimate" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="hold" size="lg">Back</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="hold" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -82,30 +82,11 @@
                 opacity_17: '0%',
                 opacity_18: '0%',
                 opacity_19: '0%',
-                // opacity_20: '0%',
-                // opacity_21: '0%',
-                // opacity_22: '0%',
-                // opacity_23: '0%',
-                // opacity_24: '0%',
-                // opacity_25: '0%',
-                // opacity_26: '0%',
-                // opacity_27: '0%',
-                // opacity_28: '0%',
-                // opacity_29: '0%',
-                // opacity_30: '0%',
-                // opacity_31: '0%',
-                // opacity_32: '0%',
-                // opacity_33: '0%',
-                // opacity_34: '0%',
-                // opacity_35: '0%',
-                // opacity_36: '0%',
-                // opacity_37: '0%',
-                // opacity_38: '0%',
-                // opacity_39: '0%',
-                // opacity_40: '0%',
-
                 mutex: false,
-                finishanimate: true
+                finishanimate: true,
+
+                // Experimental variable to prevent rapid page hopping
+                hold: true,
             }
         },
         // Keyboard listener
@@ -157,13 +138,16 @@
             this.mutex = true;
             this.block_listeners = false;
             setTimeout(() => this.animate0(), 0); 
+
+            // This is an experiment at preventing skipping through pages too quickly.
+            setTimeout(() => this.hold = false, 500);
+            
             })
         },
         methods: {
             reset_animation_back() {
                 this.resetAnimation()
-                this.$bvModal.show("modal-center-EndTF1") 
-                this.$bvModal.hide('modal-center-FlowKnow1')
+                this.$bvModal.show("modal-center-HowChoice6") 
             },
             reset_animation_next() {
                 this.resetAnimation()
@@ -190,43 +174,23 @@
                 this.opacity_17 = "0%"
                 this.opacity_18 = "0%"
                 this.opacity_19 = "0%"
-                // this.opacity_20 = "0%"
-                // this.opacity_21 = "0%"
-                // this.opacity_22 = "0%"
-                // this.opacity_23 = "0%"
-                // this.opacity_24 = "0%"
-                // this.opacity_25 = "0%"
-                // this.opacity_26 = "0%"
-                // this.opacity_27 = "0%"
-                // this.opacity_28 = "0%"
-                // this.opacity_29 = "0%"
-                // this.opacity_30 = "0%"
-                // this.opacity_31 = "0%"
-                // this.opacity_32 = "0%"
-                // this.opacity_33 = "0%"
-                // this.opacity_34 = "0%"
-                // this.opacity_35 = "0%"
-                // this.opacity_36 = "0%"
-                // this.opacity_37 = "0%"
-                // this.opacity_38 = "0%"
-                // this.opacity_39 = "0%"
-                // this.opacity_40 = "0%"
 
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
                 this.locked = true
                 this.mutex = false
                 this.finishanimate = false
+
+                // Experimental hold variable to prevent rapid page hopping
+                this.hold = true
             },
             animate0() {
                 let parent = this 
-                // 
+
                 setTimeout(() => {parent.opacity_16 = "70%"}, 2000);
                 setTimeout(() => {parent.SpaceColor = "primary";}, 2500);
                 setTimeout(() => {parent.SpaceColor = "outline-secondary";}, 3000);
-                setTimeout(() => {parent.opacity_16 = "100%"}, 3000);
-                
-                
+                setTimeout(() => {parent.opacity_16 = "100%"}, 3000); 
             },
             animate1() {
                 let parent = this 

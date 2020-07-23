@@ -416,7 +416,8 @@ export default {
       }, 500);
       setTimeout(function() {
         parent.ChoiceHelper(1);
-      }, 2000);
+        // This controls where meeting 2 fades out.
+      }, 1500);
     },
     selfChoice() {
       // eslint-disable-next-line no-console
@@ -431,7 +432,8 @@ export default {
       }, 500);
       setTimeout(function() {
         parent.ChoiceHelper(0);
-      }, 2000);
+        // This controls where meeting 2 fades out.
+      }, 1500);
     },
     // Helper function for rest break count downs
     countDown() {

@@ -24,18 +24,18 @@
       </b-row>
       <download-csv class="btn btn-default" :data="this.blockOneResults" :name="this.blockOneFileName()">
           <!-- These download buttons become visible after some progress has been made -->
-            <b-button> Download data for Block #1 to local machine </b-button>
+            <b-button> Download data for Experiment #1 to local machine </b-button>
         </download-csv>
       <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_2" v-b-modal.modal-center-2>Experiment 2</b-button>
         <download-csv v-if="this.finished_2" class="btn btn-default" :data="this.blockTwoResults" :name="this.blockTwoFileName()">
-            <b-button> Download data for Block #2 </b-button>
+            <b-button> Download data for Experiment #2 </b-button>
         </download-csv>
       </b-row>
       <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_3" v-b-modal.modal-center-3>Experiment 3</b-button>
         <download-csv v-if="this.finished_3" class="btn btn-default" :data="this.blockThreeResults" :name="this.blockThreeFileName()">
-            <b-button> Download data for Block #3 </b-button>
+            <b-button> Download data for Experiment #3 </b-button>
         </download-csv>
       </b-row>
       <b-row class="my-4 justify-content-center">
@@ -138,14 +138,14 @@
     <WantMoreDots :windowsize ="this.window_size" />
     <CommKnow :windowsize ="this.window_size" />
     <ConstantValue :windowsize ="this.window_size" />
-    <ReferenceDependence :windowsize ="this.window_size" /> 
+    <Reference :windowsize ="this.window_size" /> 
     <RefDepComp :windowsize ="this.window_size" /> 
     <RefDepEqual :windowsize ="this.window_size" /> 
     <HowHappy1 :windowsize ="this.window_size" />
     <HowHappy2 :windowsize ="this.window_size" />
     <HowHappy3 :windowsize ="this.window_size" />
     <HowHappy4 :windowsize ="this.window_size" />
-    <HowKnow1 :windowsize ="this.window_size" />
+    <HowChoice0 :windowsize ="this.window_size" />
     <HowKnow2 :windowsize ="this.window_size" />
     <HowKnow3 :windowsize ="this.window_size" />
     <HowKnow4 :windowsize ="this.window_size" />
@@ -351,14 +351,14 @@ import MeetPeople from './tutorialPages/MeetPeople.vue'
 import WantMoreDots from './tutorialPages/WantMoreDots.vue'
 import CommKnow from './tutorialPages/CommKnow.vue'
 import ConstantValue from './tutorialPages/ConstantValue.vue'
-import ReferenceDependence from './tutorialPages/ReferenceDependence.vue'
+import Reference from './tutorialPages/Reference.vue'
 import RefDepComp from './tutorialPages/RefDepComp.vue'
 import RefDepEqual from './tutorialPages/RefDepEqual.vue'
 import HowHappy1 from './tutorialPages/HowHappy1.vue'
 import HowHappy2 from './tutorialPages/HowHappy2.vue'
 import HowHappy3 from './tutorialPages/HowHappy3.vue'
 import HowHappy4 from './tutorialPages/HowHappy4.vue'
-import HowKnow1 from './tutorialPages/HowKnow1.vue'
+import HowChoice0 from './tutorialPages/HowChoice0.vue'
 import HowKnow2 from './tutorialPages/HowKnow2.vue'
 import HowKnow3 from './tutorialPages/HowKnow3.vue'
 import HowKnow4 from './tutorialPages/HowKnow4.vue'
@@ -554,14 +554,14 @@ export default {
     WantMoreDots,
     CommKnow,
     ConstantValue,
-    ReferenceDependence,
+    Reference,
     RefDepComp,
     RefDepEqual,
     HowHappy1,
     HowHappy2,
     HowHappy3,
     HowHappy4,
-    HowKnow1,
+    HowChoice0,
     HowKnow2,
     HowKnow3,
     HowKnow4,
@@ -1313,6 +1313,59 @@ export default {
     },
   }
 }
+
+// Provisional Sequence of Instruction Pages: 
+// BotStopper
+// Consent
+// ExperInfo
+// ExperTutorial
+// Machines1
+// Machines2
+// Machines3
+// Machines4
+// Machines5
+// Machines6
+// Machines7
+// Practice01
+// Practice02
+// Practice03
+// MeetPeople
+// WantMoreDots
+// CommKnow
+// Reference
+// HowChoice0
+// HowChoice1
+// HowChoice2
+// HowChoice3
+// HowChoice4
+// HowChoice5
+// HowChoice6
+// FlowKnow1
+// FlowKnow2
+// TF110
+// instruction20
+// instruction21
+// instruction22
+// instruction23
+// instruction24
+// instruction25
+// instruction26
+// instruction27
+// instruction28
+// instruction29
+// instruction61
+// instruction62
+// instruction63
+// instruction64
+// instruction65
+// instruction66
+// instruction67
+// instruction68
+// EndTF2
+// ProgBar
+// EndInstr
+// instruction 73
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

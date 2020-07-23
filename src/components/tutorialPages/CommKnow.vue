@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-CommKnow" 
       size="xl"
-      centered title="Instruction page 3"
+      centered title="Instruction page 13 of 23"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -18,8 +18,8 @@
             </div>
               
       </b-container>
-        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" :disabled="finishanimate" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="hold" size="lg">Back</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finish || hold" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -32,12 +32,15 @@
         data() {
             return {
                 page_num: "13",
+                ButtonColor: "outline-primary",
+                SpaceColor: "outline-secondary",
                 opacity_1: '100%',
                 opacity_2: '0%',
                 opacity_3: '0%',
                 opacity_4: '0%',
                 mutex: false,
-                finishanimate: true
+                finish: true,
+                hold: true,
             }
         },
         computed: {
@@ -60,6 +63,7 @@
             }
             this.mutex = true;
             setTimeout(() => this.animate(), 0); 
+            setTimeout(() => this.hold = false, 500);
             })
         },
         methods: {
@@ -69,7 +73,7 @@
             },
             reset_animation_next() {
                 this.resetAnimation()
-                this.$bvModal.show("modal-center-ReferenceDependence")
+                this.$bvModal.show("modal-center-Reference")
             },
 
             resetAnimation() {
@@ -80,7 +84,10 @@
                 this.opacity_4 = "0%"
                 this.locked = true
                 this.mutex = false
-                this.finishanimate = false
+                this.finish = false
+                this.hold = true
+                this.ButtonColor = "outline-primary"
+                this.SpaceColor = "outline-secondary"
             },
             animate() {
                 let parent = this
@@ -88,10 +95,16 @@
                 setTimeout(() => {parent.opacity_1 = "0%"; parent.opacity_2 = "100%" }, 500); 
                 setTimeout(() => {parent.opacity_2 = "0%"; parent.opacity_3 = "100%" }, 1000); 
                 setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_4 = "100%" }, 1500); 
+
+                // This changes the button to green!
+                setTimeout(() => {parent.ButtonColor = "success";}, 2000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 2500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 3000);
+
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
                 // Disables BACK NEXT buttons until animation finishes at 1 seconds.
-                setTimeout(() => {parent.finishanimate = false}, 1000);
+                setTimeout(() => {parent.finish = false}, 1000);
             },
         },
     }

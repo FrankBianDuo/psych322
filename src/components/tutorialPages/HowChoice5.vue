@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-HowChoice5" 
       size="xl"
-      centered title="Instruction Page 17 of 30"
+      centered title="Instruction Page 20 of 23"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -23,7 +23,7 @@
               
       </b-container>
         <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" :disabled="finishanimate" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finishanimate" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -45,7 +45,8 @@
                 opacity_7: '100%',
                 opacity_8: '0%',
                 mutex: false,
-                finishanimate: true
+                finishanimate: true,
+                ButtonColor: "outline-primary",
             }
         },
         computed: {
@@ -93,6 +94,7 @@
                 this.locked = true
                 this.mutex = false
                 this.finishanimate = false
+                this.ButtonColor = "outline-primary"
             },
             animate() {
                 let parent = this
@@ -104,6 +106,11 @@
                 setTimeout(() => parent.locked = false, 3600); 
                 // Disables BACK NEXT buttons until animation finishes at 1 seconds.
                 setTimeout(() => {parent.finishanimate = false}, 3000);
+
+                // This changes the button to green!
+                setTimeout(() => {parent.ButtonColor = "success";}, 5000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 5500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 6000);
             },
         },
     }

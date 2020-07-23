@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-HowChoice4" 
       size="xl"
-      centered title="Instruction Page 16 of 30"
+      centered title="Instruction Page 19 of 23"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -26,7 +26,7 @@
               
       </b-container>
         <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" :disabled="finishanimate" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finishanimate" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -51,7 +51,8 @@
                 opacity_10: '0%',
                 opacity_11: '0%',
                 mutex: false,
-                finishanimate: true
+                finishanimate: true,
+                ButtonColor: "outline-primary",
             }
         },
         computed: {
@@ -102,13 +103,12 @@
                 this.locked = true
                 this.mutex = false
                 this.finishanimate = false
+                this.ButtonColor = "outline-primary"
             },
             animate() {
                 let parent = this
-                // setTimeout(() => {parent.opacity_6 = "100%"}, 1800); 
                 setTimeout(() => {parent.opacity_1 = "0%"; parent.opacity_2 = "100%" }, 2000);  
                 
-                // setTimeout(() => {parent.opacity_6 = "0%"; parent.opacity_7 = "100%" }, 2000);
                 setTimeout(() => {parent.opacity_6 = "0%"; }, 600);
                 setTimeout(() => {parent.opacity_7 = "100%"; parent.opacity_8 = "100%"; parent.opacity_9 = "100%"; parent.opacity_10 = "100%"}, 600);
                 setTimeout(() => {parent.opacity_11 = "100%"; }, 2000);
@@ -117,6 +117,11 @@
                 setTimeout(() => parent.locked = false, 3600); 
                 // Disables BACK NEXT buttons until animation finishes at 1 seconds.
                 setTimeout(() => {parent.finishanimate = false}, 4000);
+
+                // This changes the button to green!
+                setTimeout(() => {parent.ButtonColor = "success";}, 6000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 6500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 7000);
             },
         },
     }

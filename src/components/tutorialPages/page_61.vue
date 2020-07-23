@@ -67,7 +67,7 @@
         methods: {
             reset_animation_back() {
                 this.$bvModal.hide("modal-center-instruction" + this.page_num)
-                this.$bvModal.show("modal-center-instruction" + ((Number(this.page_num) - 1).toString()))
+                this.$bvModal.show("modal-center-instruction" + ((Number(this.page_num) - 32).toString()))
             },
             reset_animation_next() {
                 this.$bvModal.hide("modal-center-instruction" + this.page_num)
