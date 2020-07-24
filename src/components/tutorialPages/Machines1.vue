@@ -57,8 +57,8 @@
             </div>
               
       </b-container>
-        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finishanimate" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="hold" size="lg">Back</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finish || hold" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -114,7 +114,8 @@
                 opacity_28: '0%',
                 opacity_29: '0%',
                 mutex: false,
-                finishanimate: true
+                finish: true,
+                hold: true,
             }
         },
         // Keyboard listener
@@ -212,13 +213,14 @@
             }
             this.mutex = true;
             this.block_listeners = false;
-            //setTimeout(() => this.animate(), 0); 
+            // This prevents skipping through pages too quickly.
+            setTimeout(() => this.hold = false, 1000);
             })
         },
         methods: {
             reset_animation_back() {
                 this.resetAnimation()
-                this.$bvModal.show("modal-center-ExperTutorial") 
+                this.$bvModal.show("modal-center-ExperTutor") 
             },
             reset_animation_next() {
                 this.resetAnimation()
@@ -261,7 +263,8 @@
                 this.SpaceColor = "outline-secondary"
                 this.locked = true
                 this.mutex = false
-                this.finishanimate = false
+                this.finish = false
+                this.hold = true
             },
 
             animate1() {
@@ -471,9 +474,11 @@
                 setTimeout(() => {parent.ButtonColor = "success";}, 3000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 4000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
 
                 //Disables BACK NEXT buttons until animation finishes at 2 seconds.
-                setTimeout(() => {parent.finishanimate = false}, 2000);
+                setTimeout(() => {parent.finish = false}, 2000);
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 

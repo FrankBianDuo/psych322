@@ -105,8 +105,6 @@
 
                 mutex: false,
                 finish: true,
-
-                // Experimental variable to prevent rapid page hopping
                 hold: true,
             }
         },
@@ -169,8 +167,8 @@
             this.block_listeners = false;
             setTimeout(() => this.animate0(), 0); 
 
-            // This is an experiment at preventing skipping through pages too quickly.
-            setTimeout(() => this.hold = false, 500);
+            // This prevents skipping through pages too quickly.
+            setTimeout(() => this.hold = false, 1000);
             })
         },
         methods: {
@@ -222,11 +220,7 @@
                 this.spacenum_3 = false
                 this.spacenum_4 = false
                 this.spacenum_5 = false
-                this.locked = true
                 this.mutex = false
-
-                // This prevents leaving page prematurely.  When revisiting the page
-                // finish no longer prevents you but hold keeps you for .5 seconds. 
                 this.finish = false
                 this.hold = true
             },
@@ -341,6 +335,8 @@
                 setTimeout(() => {parent.ButtonColor = "success";}, 4000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 4500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 5000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
             },
         },
     }

@@ -110,15 +110,16 @@
         v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E2 CP${this.dots_identifier(
           this.combinations[this.current_avatar].pl_p
           )}.png`)" />
-        <img 
+        <!-- I commented out these dots because I changed the instructions.  Now meeting 2 black dots vanish after avatar's choice, making these dots irrelevant. -->
+        <!-- <img 
           :style="this.global_size_control_priors"
-          v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E2 CB3.png`)" />
-        
+          v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E2 CB3.png`)" /> 
+         -->
       </b-row>
     </b-container>
     <b-modal ref="my-modal" hide-footer title="Rest Break">
       <h3 align="center"> 0{{this.rb_min}}:{{this.rb_seczero}}{{this.rb_sec}} </h3>
-      <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Back to Block #1</b-button>
+      <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Back to Experiment</b-button>
     </b-modal>
   </b-modal>
 </template>

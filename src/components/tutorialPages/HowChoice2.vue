@@ -24,8 +24,8 @@
             </div>
               
       </b-container>
-        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finishanimate" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="hold" size="lg">Back</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finish || hold" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -48,7 +48,8 @@
                 opacity_8: '0%',
                 opacity_9: '0%',
                 mutex: false,
-                finishanimate: true,
+                finish: true,
+                hold: true,
                 ButtonColor: "outline-primary",
             }
         },
@@ -72,6 +73,8 @@
             }
             this.mutex = true;
             setTimeout(() => this.animate(), 250); 
+            // This prevents skipping through pages too quickly.
+            setTimeout(() => this.hold = false, 1000);
             })
         },
         methods: {
@@ -95,9 +98,9 @@
                 this.opacity_7 = "100%"
                 this.opacity_8 = "0%"
                 this.opacity_9 = "0%"
-                this.locked = true
                 this.mutex = false
-                this.finishanimate = false
+                this.finish = false
+                this.hold = true
                 this.ButtonColor = "outline-primary"
             },
             animate() {
@@ -108,12 +111,14 @@
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
                 // Disables BACK NEXT buttons until animation finishes at 1 seconds.
-                setTimeout(() => {parent.finishanimate = false}, 2500);
+                setTimeout(() => {parent.finish = false}, 2500);
 
                 // This changes the button to green!
                 setTimeout(() => {parent.ButtonColor = "success";}, 4500);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 5000);
                 setTimeout(() => {parent.ButtonColor = "success";}, 5500);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
             },
         },
     }

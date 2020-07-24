@@ -41,8 +41,8 @@
 
                <!-- opactiy 22-24 -->
                <img :src="require('../../assets/Instructions/Machines/Machine Text/space4.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 0.0s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext11.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_23, transition: 'opacity 0.4s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext12.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_24, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext14a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_23, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext14b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_24, transition: 'opacity 0.4s' }"/>
 
                <!-- Dots opacity 25-33 -->
                <img :src="require('../../assets/Instructions/Machines/Dots/dotspup1.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_25, transition: 'opacity 0.8s' }"/>
@@ -62,6 +62,10 @@
                <img :src="require('../../assets/Instructions/Machines/Machine Text/yougot4.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_37, transition: 'opacity 0.5s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/yougot5.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_38, transition: 'opacity 0.5s' }"/>
 
+               <!-- This redundancy places the machine bodies in front of the flashing arms -->
+               <img :src="require('../../assets/Instructions/Machines/Bodies/machine04a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Bodies/machine04b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.8s' }"/>
+
                <!-- Counter -->
                <img :src="require('../../assets/Instructions/Machines/Machine Text/count04.12.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_40, transition: 'opacity 0.2s' }"/>
             </div>
@@ -71,8 +75,8 @@
             </div>
               
       </b-container>
-        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finishanimate" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="hold" size="lg">Back</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finish || hold" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -110,7 +114,7 @@
                 opacity_20: '0%',
                 opacity_21: '0%',
                 opacity_22: '0%',
-                opacity_23: '100%',
+                opacity_23: '0%',
                 opacity_24: '0%',
                 opacity_25: '0%',
                 opacity_26: '0%',
@@ -130,7 +134,8 @@
                 opacity_40: '0%',
 
                 mutex: false,
-                finishanimate: true
+                finish: true,
+                hold: true,
             }
         },
         // Keyboard listener
@@ -181,7 +186,8 @@
             }
             this.mutex = true;
             this.block_listeners = false;
-            //setTimeout(() => this.animate(), 0); 
+            // This prevents skipping through pages too quickly.
+            setTimeout(() => this.hold = false, 1000);
             })
         },
         methods: {
@@ -240,7 +246,8 @@
                 this.SpaceColor = "outline-secondary"
                 this.locked = true
                 this.mutex = false
-                this.finishanimate = false
+                this.finish = false
+                this.hold = true
             },
             animate1() {
                 let parent = this 
@@ -291,7 +298,11 @@
                 setTimeout(() => {parent.opacity_11 = "100%"}, 4400);
                 setTimeout(() => {parent.opacity_40 = "100%"}, 4600);
                 //Disables BACK NEXT buttons until animation finishes at 6 seconds.
-                setTimeout(() => {parent.finishanimate = false}, 6000);
+                setTimeout(() => {parent.finish = false}, 6000);
+
+                // Text Exchange:
+                setTimeout(() => {parent.opacity_23 = "100%"; parent.opacity_24 = "0%"}, 5000);
+
             },
             animateA() {
                 let parent = this 
@@ -330,10 +341,15 @@
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
+                // Text Exchange:
+                setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_24 = "100%"}, 1000);
+
                 // This changes the button to green!
                 setTimeout(() => {parent.ButtonColor = "success";}, 3000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 4000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
             },
 
             animateK() {
@@ -347,10 +363,15 @@
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
+                // Text Exchange:
+                setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_24 = "100%"}, 1000);
+
                 // This changes the button to green!
                 setTimeout(() => {parent.ButtonColor = "success";}, 3000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 4000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
             },
         },
     }

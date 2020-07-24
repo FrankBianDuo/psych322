@@ -43,9 +43,8 @@
                 
           </div>
       </b-container>
-      <b-button @click="this.resetAnimation" v-b-modal.modal-center-WantMoreDots variant="outline-primary" size="lg" :disabled="this.locked">Back</b-button>
-                
-            <b-button style="float: right;" @click="this.resetAnimation" :variant="ButtonColor" size="lg" v-b-modal.modal-center-CommKnow :disabled="this.locked">Next</b-button>
+        <b-button @click="this.resetAnimation" v-b-modal.modal-center-WantMoreDots variant="outline-primary" size="lg" :disabled="hold">Back</b-button>   
+        <b-button style="float: right;" @click="this.resetAnimation" :variant="ButtonColor" size="lg" v-b-modal.modal-center-CommKnow :disabled="hold">Next</b-button>
     </b-modal>
 </template>
 
@@ -77,7 +76,8 @@
                 trans_2: 'scaleX(-1)',
                 trans_3: 'scaleX(-1)',
                 locked: true,
-                mutex: false
+                mutex: false,
+                hold: true
             }
         },
         computed: {
@@ -94,6 +94,8 @@
             }
             this.mutex = true;
             setTimeout(() => this.animate(), 1500); 
+            // This prevents skipping through pages too quickly.
+            setTimeout(() => this.hold = false, 1000);
             })
         },
         beforeDestroy() {
@@ -103,6 +105,7 @@
             resetAnimation() {
                 this.$bvModal.hide('modal-center-WantMoreDots')
                 this.locked = true
+                this.hold = true
                 this.shift_left = "43.3%"
                 this.shift_right1 = "43.3%"
                 this.shift_right2 = "43.3%"
@@ -149,6 +152,8 @@
                 setTimeout(() => this.frown_opacity_3 = "100%", 1500);
                 setTimeout(() => this.locked = false, 1800);
                 setTimeout(() => this.mutex = false, 1800);
+
+                setTimeout(() => this.hold = false, 1000);
 
                 // This changes the button to green!
                 setTimeout(() => {parent.ButtonColor = "success";}, 3500);

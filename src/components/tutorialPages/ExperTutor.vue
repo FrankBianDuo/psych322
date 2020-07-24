@@ -1,6 +1,6 @@
 <template>
     <b-modal 
-      id="modal-center-ExperTutorial" 
+      id="modal-center-ExperTutor" 
       size="xl"
       centered title="Experiment Tutorial"
       :hide-footer="true"
@@ -17,14 +17,14 @@
       <b-container class="align-bottom" :style="this.windowsize"  >
           <img :src="require('../../assets/Instructions/Text Only Pages/Experiment Tutorial.png')" style="width: 90%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"/>
       </b-container>
-        <b-button @click="$bvModal.hide('modal-center-ExperTutorial')" v-b-modal.modal-center-ExperInfo variant="outline-primary" size="lg">Back</b-button>
-        <b-button style="float: right;" @click="$bvModal.hide('modal-center-ExperTutorial')" variant="outline-primary" size="lg" v-b-modal.modal-center-Machines1>Next</b-button>
+        <b-button @click="$bvModal.hide('modal-center-ExperTutor')" v-b-modal.modal-center-ExperInfo variant="outline-primary" size="lg">Back</b-button>
+        <b-button style="float: right;" @click="$bvModal.hide('modal-center-ExperTutor')" variant="outline-primary" size="lg" v-b-modal.modal-center-Machines1>Next</b-button>
     </b-modal>
 </template>
 
 <script>
     export default {
-        name: 'ExperTutorial',
+        name: 'ExperTutor',
         props: ['windowsize'],
         components: {
         },

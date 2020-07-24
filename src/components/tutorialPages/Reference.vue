@@ -30,10 +30,10 @@
                <img :src="require('../../assets/Instructions/Ref Dependence/smile02b.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/Ref Dependence/smile02c.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/Ref Dependence/smile02d.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_15, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/smile03a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_16, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/smile03d.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_16, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/Ref Dependence/smile03b.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_17, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/Ref Dependence/smile03c.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_18, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/smile03d.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_19, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/smile03a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_19, transition: 'opacity 0.2s' }"/>
                
                <!-- Text opacity 20-22 -->
                <img :src="require('../../assets/Instructions/Ref Dependence/reftext01a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_20, transition: 'opacity 0.2s' }"/>
@@ -100,8 +100,6 @@
 
                 mutex: false,
                 finish: true,
-
-                // Experimental variable to prevent rapid page hopping
                 hold: true,
             }
         },
@@ -157,7 +155,7 @@
             setTimeout(() => this.animate0(), 500); 
 
             // This is an experiment at preventing skipping through pages too quickly.
-            setTimeout(() => this.hold = false, 500);
+            setTimeout(() => this.hold = false, 1000);
             })
         },
         methods: {
@@ -210,8 +208,7 @@
                 this.locked = true
                 this.mutex = false
 
-                // This prevents leaving page prematurely.  When revisiting the page
-                // finish no longer prevents you but hold keeps you for .5 seconds. 
+                this.mutex = false
                 this.finish = false
                 this.hold = true
             },
@@ -276,6 +273,8 @@
                 setTimeout(() => {parent.ButtonColor = "success";}, 4000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 4500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 5000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
             },
             animate3() {
                 let parent = this 

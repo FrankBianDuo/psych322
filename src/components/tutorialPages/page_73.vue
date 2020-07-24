@@ -2,7 +2,7 @@
     <b-modal 
       :id="this.page_id" 
       size="xl"
-      centered title="These are missed questions you must correctly answer before progressing."
+      centered title="You must redo these missed questions.  Answers will show for 6 seconds."
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"

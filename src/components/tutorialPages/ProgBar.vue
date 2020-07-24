@@ -17,10 +17,8 @@
             </div>
               
       </b-container>
-        <!-- <b-button @click="$bvModal.hide(`modal-center-ProgBar`)" v-b-modal.modal-center-EndTF2 variant="outline-primary" size="lg">Back</b-button>
-        <b-button @click="$bvModal.hide(`modal-center-ProgBar`)" v-b-modal.modal-center-EndInstr style="float: right;" variant="outline-primary" size="lg">Next</b-button> -->
-        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" :disabled="finishanimate" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="hold" size="lg">Back</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finish || hold" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -37,7 +35,8 @@
                 opacity_2: '0%',
                 opacity_3: '0%',
                 mutex: false,
-                finishanimate: true
+                finish: true,
+                hold: true,
             }
         },
         computed: {
@@ -59,7 +58,9 @@
                 return
             }
             this.mutex = true;
-            setTimeout(() => this.animate(), 500); //2800 IN PRODUCTION
+            setTimeout(() => this.animate(), 500); 
+            // This is an experiment at preventing skipping through pages too quickly.
+            setTimeout(() => this.hold = false, 1000);
             })
         },
         methods: {
@@ -78,9 +79,9 @@
                 this.opacity_1 = "100%"
                 this.opacity_2 = "0%"
                 this.opacity_3 = "0%"
-                this.locked = true
                 this.mutex = false
-                this.finishanimate = false
+                this.finish = false
+                this.hold = true
             },
             animate() {
                 let parent = this
@@ -89,7 +90,13 @@
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
                 // Disables BACK NEXT buttons until animation finishes at 2 seconds.
-                setTimeout(() => {parent.finishanimate = false}, 2000);
+                setTimeout(() => {parent.finish = false}, 2000);
+                
+                setTimeout(() => {parent.ButtonColor = "success";}, 3000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 4000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
             },
         },
     }

@@ -57,6 +57,10 @@
                <img :src="require('../../assets/Instructions/Machines/Machine Text/yougot3.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_32, transition: 'opacity 0.0s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/yougot5.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_33, transition: 'opacity 0.0s' }"/>
 
+               <!-- This redundancy places the machine bodies in front of the flashing arms -->
+               <img :src="require('../../assets/Instructions/Machines/Bodies/machine07a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Bodies/machine07b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.8s' }"/>
+
                <!-- Counter -->
                <img :src="require('../../assets/Instructions/Machines/Machine Text/count12.04.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_34, transition: 'opacity 0.2s' }"/>
             </div>
@@ -66,8 +70,8 @@
             </div>
               
       </b-container>
-        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finishanimate" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="hold" size="lg">Back</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finish || hold" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -122,7 +126,8 @@
                 opacity_34: '0%',
 
                 mutex: false,
-                finishanimate: true
+                finish: true,
+                hold: true,
             }
         },
         // Keyboard listener
@@ -175,6 +180,8 @@
             this.mutex = true;
             this.block_listeners = false;
             setTimeout(() => this.animate0(), 0); 
+            // This prevents skipping through pages too quickly.
+            setTimeout(() => this.hold = false, 1000);
             })
         },
         methods: {
@@ -224,9 +231,9 @@
                 this.opacity_34 = "0%"
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
-                this.locked = true
                 this.mutex = false
-                this.finishanimate = false
+                this.finish = false
+                this.hold = true
             },
             animate0() {
                 let parent = this 
@@ -281,11 +288,13 @@
                 setTimeout(() => {parent.ButtonColor = "success";}, 3000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 4000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
                 //Disables BACK NEXT buttons until animation finishes at 3 seconds.
-                setTimeout(() => {parent.finishanimate = false}, 3000);
+                setTimeout(() => {parent.finish = false}, 3000);
             },
         },
     }

@@ -20,6 +20,7 @@
       </b-container>
         <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="hold" size="lg">Back</b-button>
         <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finish || hold" size="lg">Next</b-button>
+        
     </b-modal>
 </template>
 
@@ -63,7 +64,7 @@
             }
             this.mutex = true;
             setTimeout(() => this.animate(), 0); 
-            setTimeout(() => this.hold = false, 500);
+            setTimeout(() => this.hold = false, 1000);
             })
         },
         methods: {
@@ -100,6 +101,8 @@
                 setTimeout(() => {parent.ButtonColor = "success";}, 2000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 2500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 3000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 7500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 8000);
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 

@@ -133,7 +133,7 @@
     <BotStopper :windowsize ="this.window_size" />
     <Consent :windowsize ="this.window_size" />
     <ExperInfo :windowsize ="this.window_size" />
-    <ExperTutorial :windowsize ="this.window_size" />
+    <ExperTutor :windowsize ="this.window_size" />
     <MeetPeople :windowsize ="this.window_size" />
     <WantMoreDots :windowsize ="this.window_size" />
     <CommKnow :windowsize ="this.window_size" />
@@ -346,7 +346,7 @@ import BlockThree from './blockThree.vue'
 import BotStopper from './tutorialPages/BotStopper.vue'
 import Consent from './tutorialPages/Consent.vue'
 import ExperInfo from './tutorialPages/ExperInfo.vue'
-import ExperTutorial from './tutorialPages/ExperTutorial.vue'
+import ExperTutor from './tutorialPages/ExperTutor.vue'
 import MeetPeople from './tutorialPages/MeetPeople.vue'
 import WantMoreDots from './tutorialPages/WantMoreDots.vue'
 import CommKnow from './tutorialPages/CommKnow.vue'
@@ -549,7 +549,7 @@ export default {
     BotStopper,
     Consent,
     ExperInfo,
-    ExperTutorial,
+    ExperTutor,
     MeetPeople,
     WantMoreDots,
     CommKnow,
@@ -1318,7 +1318,7 @@ export default {
 // BotStopper
 // Consent
 // ExperInfo
-// ExperTutorial
+// ExperTutor
 // Machines1
 // Machines2
 // Machines3
@@ -1342,7 +1342,7 @@ export default {
 // HowChoice6
 // FlowKnow1
 // FlowKnow2
-// TF110
+// TF118
 // instruction20
 // instruction21
 // instruction22

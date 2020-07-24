@@ -93,9 +93,12 @@
                 opacity_23: '0%',
                 opacity_24: '0%',
                 opacity_25: '0%',
+                keyflow1: true,
+                keyflow2: false,
+                keyflow3: false,
 
                 mutex: false,
-                finishanimate: true,
+                finish: true,
 
                 // Experimental variable to prevent rapid page hopping
                 hold: true,
@@ -110,21 +113,31 @@
                 if (parent.block_listeners == true) {
                     return;
                 } 
-                if (event.keyCode == 32) {
+                if (parent.keyflow1 == true && parent.keyflow2 == false && parent.keyflow3 == false && event.keyCode == 32) {
                     // Spacebar 1
                     parent.animate1()
-                } else if (event.keyCode == 65) {
+                    parent.keyflow1 = false
+                    parent.keyflow2 = true
+                } else if (parent.keyflow1 == false && parent.keyflow2 == true && parent.keyflow3 == false && event.keyCode == 65) {
                     // Predict A
                     parent.animateA()
-                } else if (event.keyCode == 90) {
+                    parent.keyflow2 = false
+                    parent.keyflow3 = true
+                } else if (parent.keyflow1 == false && parent.keyflow2 == true && parent.keyflow3 == false && event.keyCode == 90) {
                     // Predict Z
                     parent.animateZ()
-                } else if (event.keyCode == 74) {
+                    parent.keyflow2 = false
+                    parent.keyflow3 = true
+                } else if (parent.keyflow1 == false && parent.keyflow2 == false && parent.keyflow3 == true && event.keyCode == 74) {
                     // Give Control
                     parent.animateJ()
-                } else if (event.keyCode == 75) {
+                    parent.keyflow3 = false
+                    parent.keyflow1 = true
+                } else if (parent.keyflow1 == false && parent.keyflow2 == false && parent.keyflow3 == true && event.keyCode == 75) {
                     // Keep Control
                     parent.animateK()
+                    parent.keyflow3 = false
+                    parent.keyflow1 = true
                 } 
             } 
             });
@@ -194,9 +207,12 @@
 
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
+                this.keyflow1 = true
+                this.keyflow2 = false
+                this.keyflow3 = false
                 this.locked = true
                 this.mutex = false
-                this.finishanimate = false
+                this.finish = false
 
                 // Experimental hold variable to prevent rapid page hopping
                 this.hold = true
@@ -219,7 +235,7 @@
                 setTimeout(() => {parent.opacity_4 = "100%"}, 1000);
                 setTimeout(() => {parent.opacity_22 = "100%"}, 1000);
                 setTimeout(() => {parent.opacity_20 = "100%"}, 1000);
-                setTimeout(() => {parent.opacity_24 = "100%"}, 1000);
+                //setTimeout(() => {parent.opacity_24 = "100%"}, 1000);
 
                 // Slower transition evap dots appear after and quick transition evap dots vanish
                 setTimeout(() => {parent.opacity_23 = "100%"}, 1000);
@@ -334,9 +350,11 @@
                 setTimeout(() => {parent.ButtonColor = "success";}, 8000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 9000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 11500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 12000);
 
                 //Disables BACK NEXT buttons until animation finishes at 4 seconds.
-                setTimeout(() => {parent.finishanimate = false}, 4000);
+                setTimeout(() => {parent.finish = false}, 4000);
             },
 
             animateK() {
@@ -368,9 +386,11 @@
                 setTimeout(() => {parent.ButtonColor = "success";}, 8000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 9000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 11500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 12000);
 
                 //Disables BACK NEXT buttons until animation finishes at 4 seconds.
-                setTimeout(() => {parent.finishanimate = false}, 4000);
+                setTimeout(() => {parent.finish = false}, 4000);
             },
         },
     }

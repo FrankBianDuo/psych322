@@ -70,6 +70,10 @@
                <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext08c.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_41, transition: 'opacity 0.4s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext09b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_42, transition: 'opacity 0.4s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext09c.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_43, transition: 'opacity 0.4s' }"/>
+
+               <!-- This redundancy places the machine bodies in front of the flashing arms -->
+               <img :src="require('../../assets/Instructions/Machines/Bodies/machine03a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Bodies/machine03b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.8s' }"/>
             </div>
               
             <div>
@@ -77,8 +81,8 @@
             </div>
               
       </b-container>
-        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="finishanimate" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finishanimate" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="hold" size="lg">Back</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finish || hold" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -142,7 +146,8 @@
                 opacity_43: '0%',
 
                 mutex: false,
-                finishanimate: true
+                finish: true,
+                hold: true,
             }
         },
         // Keyboard listener
@@ -200,7 +205,8 @@
             }
             this.mutex = true;
             this.block_listeners = false;
-            //setTimeout(() => this.animate(), 0); 
+            // This prevents skipping through pages too quickly.
+            setTimeout(() => this.hold = false, 1000);
             })
         },
         methods: {
@@ -259,9 +265,9 @@
                 this.opacity_43 = "0%"
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
-                this.locked = true
                 this.mutex = false
-                this.finishanimate = false
+                this.finish = false
+                this.hold = true
             },
             animate1() {
                 let parent = this 
@@ -334,9 +340,11 @@
                 setTimeout(() => {parent.ButtonColor = "success";}, 2000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 2500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 3000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
 
                 //Disables BACK NEXT buttons until animation finishes at 2 seconds.
-                setTimeout(() => {parent.finishanimate = false}, 2000);
+                setTimeout(() => {parent.finish = false}, 2000);
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
@@ -359,9 +367,11 @@
                 setTimeout(() => {parent.ButtonColor = "success";}, 2000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 2500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 3000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
 
                 //Disables BACK NEXT buttons until animation finishes at 2 seconds.
-                setTimeout(() => {parent.finishanimate = false}, 2000);
+                setTimeout(() => {parent.finish = false}, 2000);
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
