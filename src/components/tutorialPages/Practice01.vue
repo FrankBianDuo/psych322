@@ -177,7 +177,7 @@
         mounted() {
             this.$root.$on('bv::modal::show', (bvEvent, modalId) => {
             // eslint-disable-next-line no-console
-            console.log('Modal is about to be shown', bvEvent, modalId)
+            // console.log('Modal is about to be shown', bvEvent, modalId)
             if (modalId != "modal-center-Practice01") {
                 return;
             }

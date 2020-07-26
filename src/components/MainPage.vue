@@ -20,7 +20,7 @@
       <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_1" v-b-modal.modal-center>Experiment 1</b-button>
           <!-- These download buttons become visible after some progress has been made -->
-            <b-button class="btn btn-default" @click="this.fetchPresignedUrl"> Download data for Block #1 </b-button>
+            <!-- <b-button class="btn btn-default" @click="this.fetchPresignedUrl"> Download data for Block #1 </b-button> -->
       </b-row>
       <download-csv class="btn btn-default" :data="this.blockOneResults" :name="this.blockOneFileName()">
           <!-- These download buttons become visible after some progress has been made -->
@@ -711,6 +711,9 @@ export default {
   // Survey data and final output file data
   data() {
     return {
+      // ep1_shown is used to monitor if experiment 1 is shown
+      ep1_shown: false,
+      bot_shown: false,
       data_sent_to_s3: false,
       participant_generated_id: this.generateParticipantId(),
       form: '',
@@ -767,15 +770,63 @@ export default {
     }
   },
   created: function () {
-    // // eslint-disable-next-line no-console
-    //   console.log("event")
-    // // let parent = this
-    // window.addEventListener('keydown', function(event) {
-    //   // eslint-disable-next-line no-console
-    //   console.log(event)
-    // });
+    let parent = this
+    window.addEventListener('keydown', function(event) {
+      // Prevent the spacebar jerk
+      if (event.keyCode == 32) {
+        // eslint-disable-next-line no-console
+        console.log("event space detected")
+        if (parent.ep1_shown) {
+          // eslint-disable-next-line no-console
+          console.log("no scroll")
+          event.preventDefault();
+        }
+      }
+      // Prevent enter from booting people out of captcha page
+      if (event.keyCode == 13) {
+        // eslint-disable-next-line no-console
+          console.log("enter event")
+        if (parent.bot_shown) {
+          // eslint-disable-next-line no-console
+          console.log("no boot")
+          event.preventDefault();
+        }
+      }
+    });
   },
   computed: {
+  },
+  mounted() {
+    this.$root.$on('bv::modal::show', (bvEvent, modalId) => {
+      let parent = this
+      if (modalId == 'modal-center') {
+        // eslint-disable-next-line no-console
+        // console.log('Modal is about to be shown', bvEvent, modalId)
+        parent.ep1_shown = true
+        // eslint-disable-next-line no-console
+        console.log(parent.ep1_shown)
+      }
+      else if (modalId == 'modal-center-BotStopper') {
+        // eslint-disable-next-line no-console
+        // console.log('Modal is about to be shown', bvEvent, modalId)
+        parent.bot_shown = true
+      }
+    })
+    this.$root.$on('bv::modal::hide', (bvEvent, modalId) => {
+      let parent = this
+      if (modalId == 'modal-center') {
+        // eslint-disable-next-line no-console
+        // console.log('Modal is about to be hidden', bvEvent, modalId)
+        parent.ep1_shown = false
+        // eslint-disable-next-line no-console
+        console.log(parent.ep1_shown)
+      }
+      else if (modalId == 'modal-center-BotStopper') {
+        // eslint-disable-next-line no-console
+        // console.log('Modal is about to be shown', bvEvent, modalId)
+        parent.bot_shown = false
+      }
+    })
   },
   methods: {
     generateParticipantId() {

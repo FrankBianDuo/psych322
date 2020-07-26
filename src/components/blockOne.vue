@@ -229,9 +229,9 @@ export default {
     let parent = this
     window.addEventListener('keydown', function(event) {
       // Prevent the spacebar jerk
-      if (event.keyCode == 32) {
-        event.preventDefault();
-      }
+      // if (event.keyCode == 32) {
+      //   event.preventDefault();
+      // }
       if (parent.show) {
         // Space
         if (event.keyCode == 32 && parent.free_space) {
