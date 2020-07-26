@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-Machines1" 
       size="xl"
-      centered title="Instruction Page 1 of 23"
+      centered title="Instruction Page 1 of 18"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -13,43 +13,45 @@
           <div style="text-align: center;">
               
                <!-- Machines opacity 1-7 -->
-               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ThreeMeet.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ch1.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_2, transition: 'opacity 0.0s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ch2.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_3, transition: 'opacity 0.0s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ch3.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_4, transition: 'opacity 0.0s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ch4.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_5, transition: 'opacity 0.0s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ch5.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_6, transition: 'opacity 0.0s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ch6.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ThreeMeet2.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 2.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ch1b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_2, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ch2b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_3, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ch3b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_4, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ch4b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_5, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ch5b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_6, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ch6b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 0.0s' }"/>
 
                <!-- Text opacity 8-13 -->
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/programtext1.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/programtext2.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_9, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/programtext3.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_10, transition: 'opacity 0.2s' }"/>
-               <!-- <img :src="require('../../assets/Instructions/Machines/Machine Text/space1.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.8s' }"/> -->
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/space2.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 0.8s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/space3.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.8s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/programtext1.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/programtext2.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_9, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/programtext3.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_10, transition: 'opacity 0.2s' }"/>
+               <!-- <img :src="require('../../assets/Instructions/Machines/Machine Text/space1.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.8s' }"/> -->
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/space2.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 0.8s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/space3.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.8s' }"/>
 
                <!-- Text opacity 14-23 -->
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/optionsrg.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 1.2s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext01a.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_15, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext01b.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_16, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext01c.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_17, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext01d.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_18, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext01e.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_19, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext02a.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_20, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext02b.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_21, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext02c.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/next1.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_23, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/optionsrg.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 1.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext01a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_15, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext01b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_16, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext01c.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_17, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext01d.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_18, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext01e.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_19, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext01f.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_20, transition: 'opacity 0.2s' }"/>
+               <!-- <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext02b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_21, transition: 'opacity 0.2s' }"/> -->
+               <!-- <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext02c.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 0.2s' }"/> -->
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/next1.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_23, transition: 'opacity 0.2s' }"/>
 
-               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ThreeMachines.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_24, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ThreeOptions.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_25, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ThreeMachines2.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_24, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ThreeMachines1.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_30, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ThreeOptions2.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_25, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/MeetMachines/ThreeOptions1.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_31, transition: 'opacity 0.2s' }"/>
 
                <!-- Counters -->
-               <img :src="require('../../assets/Instructions/Machines/MeetMachines/count1.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_26, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/MeetMachines/count2.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_27, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/MeetMachines/count3.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '6%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_28, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/MeetMachines/count1.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_26, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/MeetMachines/count2.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_27, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/MeetMachines/count3.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_28, transition: 'opacity 0.2s' }"/>
 
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext02d.png')" v-bind:style="{ maxWidth: '46%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_29, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext02d.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_29, transition: 'opacity 0.2s' }"/>
             </div>
 
             <div>
@@ -107,12 +109,14 @@
                 opacity_21: '0%',
                 opacity_22: '0%',
                 opacity_23: '0%',
-                opacity_24: '100%',
+                opacity_24: '0%',
                 opacity_25: '0%',
                 opacity_26: '0%',
                 opacity_27: '0%',
                 opacity_28: '0%',
                 opacity_29: '0%',
+                opacity_30: '100%',
+                opacity_31: '0%',
                 mutex: false,
                 finish: true,
                 hold: true,
@@ -128,67 +132,69 @@
                     return;
                 } 
                 if (parent.spacenum_1 == true && parent.spacenum_2 == false && parent.spacenum_3 == false && parent.spacenum_4 == false && parent.spacenum_5 == false 
-                && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && parent.spacenum_9 == false && parent.spacenum_10 == false && event.keyCode == 32) {
+                && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && event.keyCode == 32) {
                     // Spacebar 1
                     parent.spacenum_1 = false
                     parent.spacenum_2 = true
                     //parent.spacenum_3 = true
                     parent.animate1()
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == true && parent.spacenum_3 == false && parent.spacenum_4 == false && parent.spacenum_5 == false 
-                && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && parent.spacenum_9 == false && parent.spacenum_10 == false && event.keyCode == 32) {
+                && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && event.keyCode == 32) {
                     // Spacebar 2
                     parent.spacenum_2 = false
                     parent.spacenum_3 = true
                     parent.animate2()
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == true && parent.spacenum_4 == false && parent.spacenum_5 == false 
-                && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && parent.spacenum_9 == false && parent.spacenum_10 == false && event.keyCode == 32) {
+                && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && event.keyCode == 32) {
                     // Spacebar 3
                     parent.spacenum_3 = false
                     parent.spacenum_4 = true
                     parent.animate3();
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == false && parent.spacenum_4 == true && parent.spacenum_5 == false 
-                && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && parent.spacenum_9 == false && parent.spacenum_10 == false && event.keyCode == 32) {
+                && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && event.keyCode == 32) {
                     // Spacebar 3
                     parent.spacenum_4 = false
                     parent.spacenum_5 = true
                     parent.animate4();
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == false && parent.spacenum_4 == false && parent.spacenum_5 == true 
-                && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && parent.spacenum_9 == false && parent.spacenum_10 == false && event.keyCode == 32) {
+                && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && event.keyCode == 32) {
                     // Spacebar 3
                     parent.spacenum_5 = false
                     parent.spacenum_6 = true
                     parent.animate5();
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == false && parent.spacenum_4 == false && parent.spacenum_5 == false 
-                && parent.spacenum_6 == true && parent.spacenum_7 == false && parent.spacenum_8 == false && parent.spacenum_9 == false && parent.spacenum_10 == false && event.keyCode == 32) {
+                && parent.spacenum_6 == true && parent.spacenum_7 == false && parent.spacenum_8 == false && event.keyCode == 32) {
                     // Spacebar 3
                     parent.spacenum_6 = false
                     parent.spacenum_7 = true
                     parent.animate6();
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == false && parent.spacenum_4 == false && parent.spacenum_5 == false 
-                && parent.spacenum_6 == false && parent.spacenum_7 == true && parent.spacenum_8 == false && parent.spacenum_9 == false && parent.spacenum_10 == false && event.keyCode == 32) {
+                && parent.spacenum_6 == false && parent.spacenum_7 == true && parent.spacenum_8 == false && event.keyCode == 32) {
                     // Spacebar 3
                     parent.spacenum_7 = false
                     parent.spacenum_8 = true
                     parent.animate7();
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == false && parent.spacenum_4 == false && parent.spacenum_5 == false 
-                && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == true && parent.spacenum_9 == false && parent.spacenum_10 == false && event.keyCode == 32) {
+                && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == true && event.keyCode == 32) {
                     // Spacebar 3
                     parent.spacenum_8 = false
-                    parent.spacenum_9 = true
+                    // parent.spacenum_9 = true
                     parent.animate8();
-                } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == false && parent.spacenum_4 == false && parent.spacenum_5 == false 
-                && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && parent.spacenum_9 == true && parent.spacenum_10 == false && event.keyCode == 32) {
-                    // Spacebar 3
-                    parent.spacenum_9 = false
-                    parent.spacenum_10 = true
-                    parent.animate9();
-                } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == false && parent.spacenum_4 == false && parent.spacenum_5 == false 
-                && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && parent.spacenum_9 == false && parent.spacenum_10 == true && event.keyCode == 32) {
-                    // Spacebar 3
-                    parent.spacenum_10 = false
-                    parent.spacenum_1 = true
-                    parent.animate10();
-                }
+                } 
+                
+                // else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == false && parent.spacenum_4 == false && parent.spacenum_5 == false 
+                // && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && parent.spacenum_9 == true && parent.spacenum_10 == false && event.keyCode == 32) {
+                //     // Spacebar 3
+                //     parent.spacenum_9 = false
+                //     parent.spacenum_10 = true
+                //     parent.animate9();
+                // } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == false && parent.spacenum_4 == false && parent.spacenum_5 == false 
+                // && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && parent.spacenum_9 == false && parent.spacenum_10 == true && event.keyCode == 32) {
+                //     // Spacebar 3
+                //     parent.spacenum_10 = false
+                //     parent.spacenum_1 = true
+                //     parent.animate10();
+                // }
             } 
             });
         },
@@ -252,16 +258,28 @@
                 this.opacity_21 = "0%"
                 this.opacity_22 = "0%"
                 this.opacity_23 = "0%"
-                this.opacity_24 = "100%"
+                this.opacity_24 = "0%"
                 this.opacity_25 = "0%"
                 this.opacity_26 = "0%"
                 this.opacity_27 = "0%"
                 this.opacity_28 = "0%"
                 this.opacity_29 = "0%"
+                this.opacity_30 = "100%"
+                this.opacity_31 = "0%"
+
+                this.spacenum_1 = true
+                this.spacenum_2 = false
+                this.spacenum_3 = false
+                this.spacenum_4 = false
+                this.spacenum_5 = false
+                this.spacenum_6 = false
+                this.spacenum_7 = false
+                this.spacenum_8 = false
+                // this.spacenum_9 = false
+                // this.spacenum_10 = false
 
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
-                this.locked = true
                 this.mutex = false
                 this.finish = false
                 this.hold = true
@@ -275,7 +293,7 @@
                 setTimeout(() => {parent.opacity_16 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_11 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_11 = "100%"}, 3000);
-                setTimeout(() => {parent.opacity_25 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_31 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_14 = "100%"}, 1000);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
@@ -286,11 +304,11 @@
                 setTimeout(() => {parent.opacity_17 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_11 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_11 = "100%"}, 3000);
-                setTimeout(() => {parent.opacity_24 = "0%"; parent.opacity_25 = "0%"; parent.opacity_1 = "100%";}, 0);
-                setTimeout(() => {parent.opacity_2 = "100%"}, 1000);
-                setTimeout(() => {parent.opacity_4 = "100%"}, 2000);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 3000);
-                setTimeout(() => {parent.opacity_14 = "0%"}, 4000);
+                setTimeout(() => {parent.opacity_24 = "0%"; parent.opacity_31 = "0%"; parent.opacity_1 = "100%";}, 0);
+                setTimeout(() => {parent.opacity_2 = "100%"}, 2000);
+                setTimeout(() => {parent.opacity_4 = "100%"}, 3000);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 4000);
+                setTimeout(() => {parent.opacity_14 = "0%"}, 5000);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
                 // This changes the button to info!
@@ -452,24 +470,7 @@
                 setTimeout(() => {parent.opacity_20 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_11 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_11 = "100%"}, 3000);
-                setTimeout(() => parent.mutex = false, 3600); 
-                setTimeout(() => parent.locked = false, 3600); 
-            },
-            animate9() {
-                let parent = this 
-                setTimeout(() => {parent.opacity_20 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_21 = "100%"}, 0);
-                setTimeout(() => {parent.opacity_11 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_11 = "100%"}, 3000);
-                setTimeout(() => parent.mutex = false, 3600); 
-                setTimeout(() => parent.locked = false, 3600); 
-            },
-            animate10() {
-                let parent = this 
-                setTimeout(() => {parent.opacity_21 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_22 = "100%"}, 0);
-                setTimeout(() => {parent.opacity_11 = "0%"}, 0);
-                
+
                 // This changes the button to green!
                 setTimeout(() => {parent.ButtonColor = "success";}, 3000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);

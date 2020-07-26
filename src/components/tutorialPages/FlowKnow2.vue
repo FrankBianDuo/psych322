@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-FlowKnow2" 
       size="xl"
-      centered title="Instruction Page 23 of 23"
+      centered title="Instruction Page 18 of 18"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -32,6 +32,7 @@
                <img :src="require('../../assets/Instructions/FlowKnow/fk text 03a.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/fk text 04a.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/fk text 05a.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_15, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/fk text 06a.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_26, transition: 'opacity 0.2s' }"/>
                
                <!-- opacity 17-21 -->
                <img :src="require('../../assets/Instructions/FlowKnow/GFd3b.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_17, transition: 'opacity 0.0s' }"/>
@@ -52,7 +53,7 @@
 
       </b-container>
         <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="hold" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="hold" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finish || hold" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -93,6 +94,7 @@
                 opacity_23: '0%',
                 opacity_24: '0%',
                 opacity_25: '0%',
+                opacity_26: '0%',
                 keyflow1: true,
                 keyflow2: false,
                 keyflow3: false,
@@ -137,7 +139,7 @@
                     // Keep Control
                     parent.animateK()
                     parent.keyflow3 = false
-                    parent.keyflow1 = true
+                    // parent.keyflow1 = true
                 } 
             } 
             });
@@ -204,6 +206,7 @@
                 this.opacity_23 = "0%"
                 this.opacity_24 = "0%"
                 this.opacity_25 = "0%"
+                this.opacity_26 = "0%"
 
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
@@ -228,6 +231,9 @@
             animate1() {
                 let parent = this 
 
+                // Text swap
+                setTimeout(() => {parent.opacity_13 = "0%"; parent.opacity_14 = "100%"}, 5000);
+
                 // Meeting 2 appears.
                 setTimeout(() => {parent.opacity_11 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_2 = "100%"}, 1000);
@@ -248,9 +254,19 @@
                 setTimeout(() => {parent.opacity_5 = "0%"}, 2200);
                 setTimeout(() => {parent.opacity_5 = "100%"}, 2400);
 
+                // Barrier Flashes 
+                setTimeout(() => {parent.opacity_21 = "100%"}, 3400);
+                setTimeout(() => {parent.opacity_21 = "0%"}, 3500);
+                setTimeout(() => {parent.opacity_21 = "100%"}, 3600);
+                setTimeout(() => {parent.opacity_21 = "0%"}, 3700);
+                setTimeout(() => {parent.opacity_21 = "100%"}, 3800);
+                setTimeout(() => {parent.opacity_21 = "0%"}, 3900);
+                setTimeout(() => {parent.opacity_21 = "100%"}, 4000);
+                setTimeout(() => {parent.opacity_21 = "0%"}, 4100);
+
                 // Kill text
-                setTimeout(() => {parent.opacity_14 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_15 = "0%"}, 0);
+                // setTimeout(() => {parent.opacity_14 = "0%"}, 0);
+                // setTimeout(() => {parent.opacity_15 = "0%"}, 0);
 
                 // This turns the press space bar reminder off.
                 setTimeout(() => {parent.opacity_16 = "0%"}, 0); 
@@ -261,26 +277,27 @@
                 setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_8 = "0%"; parent.opacity_16 = "0%"; parent.opacity_7 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_6 = "100%"; parent.opacity_17 = "100%"}, 1000);
 
-                // Barrier Flashes 
-                setTimeout(() => {parent.opacity_21 = "100%"}, 2400);
-                setTimeout(() => {parent.opacity_21 = "0%"}, 2500);
-                setTimeout(() => {parent.opacity_21 = "100%"}, 2600);
-                setTimeout(() => {parent.opacity_21 = "0%"}, 2700);
-                setTimeout(() => {parent.opacity_21 = "100%"}, 2800);
-                setTimeout(() => {parent.opacity_21 = "0%"}, 2900);
-                setTimeout(() => {parent.opacity_21 = "100%"}, 3000);
-                setTimeout(() => {parent.opacity_21 = "0%"}, 3100);
-
                 // Flashing JK
-                setTimeout(() => {parent.opacity_6 = "0%"}, 6700);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 6800);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 6900);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 7000);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 2200);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 2400);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 2600);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 2800);
+
+                setTimeout(() => {parent.opacity_6 = "0%"}, 8700);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 8800);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 8900);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 9000);
+
+                setTimeout(() => {parent.opacity_6 = "0%"}, 12200);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 12400);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 12600);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 12800);
 
                 // Swap text
-                setTimeout(() => {parent.opacity_15 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_13 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_14 = "100%"}, 4000);
+                setTimeout(() => {parent.opacity_14 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_15 = "100%"}, 4000);
+                setTimeout(() => {parent.opacity_26 = "0%"}, 0);
 
                 // Put evap dots back if the user cycles back through to this point.
                 setTimeout(() => {parent.opacity_23 = "100%"}, 0);
@@ -294,26 +311,27 @@
                 setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_7 = "0%"; parent.opacity_16 = "0%"; parent.opacity_8 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_6 = "100%"; parent.opacity_17 = "100%"}, 1000);
 
-                // Barrier Flashes 
-                setTimeout(() => {parent.opacity_21 = "100%"}, 2400);
-                setTimeout(() => {parent.opacity_21 = "0%"}, 2500);
-                setTimeout(() => {parent.opacity_21 = "100%"}, 2600);
-                setTimeout(() => {parent.opacity_21 = "0%"}, 2700);
-                setTimeout(() => {parent.opacity_21 = "100%"}, 2800);
-                setTimeout(() => {parent.opacity_21 = "0%"}, 2900);
-                setTimeout(() => {parent.opacity_21 = "100%"}, 3000);
-                setTimeout(() => {parent.opacity_21 = "0%"}, 3100);
-
                 // Flashing JK
-                setTimeout(() => {parent.opacity_6 = "0%"}, 6700);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 6800);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 6900);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 7000);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 2200);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 2400);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 2600);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 2800);
+
+                setTimeout(() => {parent.opacity_6 = "0%"}, 8700);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 8800);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 8900);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 9000);
+
+                setTimeout(() => {parent.opacity_6 = "0%"}, 12200);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 12400);
+                setTimeout(() => {parent.opacity_6 = "0%"}, 12600);
+                setTimeout(() => {parent.opacity_6 = "100%"}, 12800);
 
                 // Swap text
-                setTimeout(() => {parent.opacity_15 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_13 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_14 = "100%"}, 4000);
+                setTimeout(() => {parent.opacity_14 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_15 = "100%"}, 4000);
+                setTimeout(() => {parent.opacity_26 = "0%"}, 0);
 
                 // Put evap dots back if the user cycles back through to this point.
                 setTimeout(() => {parent.opacity_23 = "100%"}, 0);
@@ -334,11 +352,14 @@
                 // Meeting 2 choice
                 setTimeout(() => {parent.opacity_19 = "100%"}, 4000);
 
-                //Final text
-                setTimeout(() => {parent.opacity_15 = "100%"}, 7000);
+                // Swap text
+                setTimeout(() => {parent.opacity_13 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_14 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_15 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_26 = "100%"}, 7000);
 
                 // Dots evaporate
-                setTimeout(() => {parent.opacity_23 = "0%"}, 4000);
+                // setTimeout(() => {parent.opacity_23 = "0%"}, 4000);
 
                 // Kill JK if participant presses keys out of order
                 setTimeout(() => {parent.opacity_6 = "0%"}, 4000);
@@ -370,11 +391,14 @@
                 // Meeting 2 choice
                 setTimeout(() => {parent.opacity_19 = "100%"}, 4000);
 
-                //Final text
-                setTimeout(() => {parent.opacity_15 = "100%"}, 7000);
+                // Swap text
+                setTimeout(() => {parent.opacity_13 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_14 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_15 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_26 = "100%"}, 7000);
 
                 // Dots evaporate
-                setTimeout(() => {parent.opacity_23 = "0%"}, 4000);
+                // setTimeout(() => {parent.opacity_23 = "0%"}, 4000);
 
                 // Kill JK if participant presses keys out of order
                 setTimeout(() => {parent.opacity_6 = "0%"}, 4000);

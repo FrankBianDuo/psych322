@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-Practice01" 
       size="xl"
-      centered title="Instruction Page 8 of 23"
+      centered title="Instruction Page 9 of 18"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -41,7 +41,7 @@
 
                <!-- opactiy 22-24 -->
                <img :src="require('../../assets/Instructions/Machines/Machine Text/space4.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 0.0s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext13a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_23, transition: 'opacity 0.4s' }"/>
+               <!-- <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext13a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_23, transition: 'opacity 0.4s' }"/> -->
                <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext12.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_24, transition: 'opacity 0.4s' }"/>
 
                <!-- Dots opacity 25-33 -->
@@ -65,6 +65,10 @@
                <!-- This redundancy places the machine bodies in front of the flashing arms -->
                <img :src="require('../../assets/Instructions/Machines/Bodies/machine10a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 0.0s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Bodies/machine10b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.8s' }"/>
+
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext13e.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_41, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext13f.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_42, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext13g.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_43, transition: 'opacity 0.4s' }"/>
 
                <!-- Counter -->
                <img :src="require('../../assets/Instructions/Machines/Machine Text/count06.06.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_40, transition: 'opacity 0.2s' }"/>
@@ -132,6 +136,9 @@
                 opacity_38: '0%',
                 opacity_39: '100%',
                 opacity_40: '0%',
+                opacity_41: '100%',
+                opacity_42: '0%',
+                opacity_43: '0%',
 
                 mutex: false,
                 finish: true,
@@ -197,7 +204,7 @@
             },
             reset_animation_next() {
                 this.resetAnimation()
-                this.$bvModal.show("modal-center-Practice02")
+                this.$bvModal.show("modal-center-MeetPeople")
             },
             resetAnimation() {
                 this.$bvModal.hide('modal-center-Practice01')
@@ -241,6 +248,9 @@
                 this.opacity_38 = "0%"
                 this.opacity_39 = "100%"
                 this.opacity_40 = "0%"
+                this.opacity_41 = "100%"
+                this.opacity_42 = "0%"
+                this.opacity_43 = "0%"
 
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
@@ -331,6 +341,9 @@
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
+                // Text swap
+                setTimeout(() => {parent.opacity_41 = "0%"; parent.opacity_43 = "0%"; parent.opacity_42 = "100%"; }, 0);
+
                 // This changes the button to green!
                 setTimeout(() => {parent.ButtonColor = "success";}, 3000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
@@ -349,6 +362,9 @@
                 setTimeout(() => {parent.opacity_20 = "100%"}, 500);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
+
+                // Text swap
+                setTimeout(() => {parent.opacity_41 = "0%"; parent.opacity_42 = "0%"; parent.opacity_43 = "100%"; }, 0);
 
                 // This changes the button to green!
                 setTimeout(() => {parent.ButtonColor = "success";}, 3000);

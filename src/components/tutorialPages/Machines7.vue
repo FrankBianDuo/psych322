@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-Machines7" 
       size="xl"
-      centered title="Instruction Page 7 of 23"
+      centered title="Instruction Page 8 of 18"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -42,7 +42,10 @@
                <!-- opactiy 22-24 -->
                <img :src="require('../../assets/Instructions/Machines/Machine Text/space4.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 0.0s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext11.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_23, transition: 'opacity 0.4s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext12.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_24, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext12a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_24, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext12b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_41, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext12c.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_42, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext12d.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_43, transition: 'opacity 0.4s' }"/>
 
                <!-- Dots opacity 25-33 -->
                <img :src="require('../../assets/Instructions/Machines/Dots/dotspup1.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_25, transition: 'opacity 0.8s' }"/>
@@ -92,6 +95,8 @@
                 block_listeners: true,
                 SpaceColor: "outline-secondary",
                 ButtonColor: "outline-primary",
+                spacenum_1: true,
+                spacenum_2: false,
                 opacity_1: '100%',
                 opacity_2: '0%',
                 opacity_3: '100%',
@@ -132,6 +137,9 @@
                 opacity_38: '0%',
                 opacity_39: '100%',
                 opacity_40: '0%',
+                opacity_41: '0%',
+                opacity_42: '0%',
+                opacity_43: '0%',
 
                 mutex: false,
                 finish: true,
@@ -147,9 +155,15 @@
                 if (parent.block_listeners == true) {
                     return;
                 } 
-                if (event.keyCode == 32) {
+                if (parent.spacenum_1 == true && parent.spacenum_2 == false && event.keyCode == 32) {
                     // Spacebar 1
+                    parent.spacenum_1 = false
+                    parent.spacenum_2 = true
                     parent.animate1()
+                } else if (parent.spacenum_1 == false && parent.spacenum_2 == true && event.keyCode == 32) {
+                    // Spacebar 2
+                    parent.spacenum_2 = false
+                    parent.animate2()
                 } else if (event.keyCode == 65) {
                     // Predict A
                     parent.animateA()
@@ -241,6 +255,12 @@
                 this.opacity_38 = "0%"
                 this.opacity_39 = "100%"
                 this.opacity_40 = "0%"
+                this.opacity_41 = "0%"
+                this.opacity_42 = "0%"
+                this.opacity_43 = "0%"
+
+                this.spacenum_1 = true
+                this.spacenum_2 = false
 
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
@@ -282,12 +302,20 @@
                 setTimeout(() => {parent.opacity_11 = "100%"}, 2400);
                 setTimeout(() => {parent.opacity_40 = "100%"}, 2600);
                 setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_24 = "100%"}, 3000);
-                //Disables BACK NEXT buttons until animation finishes at 6 seconds.
-                setTimeout(() => {parent.finish = false}, 6000);
+
+            },
+            animate2() {
+                let parent = this 
+
+                setTimeout(() => {parent.opacity_24 = "0%"; parent.opacity_40 = "100%"}, 3000);
+                
             },
             animateA() {
                 let parent = this 
                 // Prediction Feedback Up 
+
+                setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_24 = "0%"; parent.opacity_40 = "0%"; parent.opacity_41 = "100%"}, 1000); 
+
                 setTimeout(() => {parent.opacity_11 = "0%"; parent.opacity_12 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_21 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_25 = "0%"; }, 0);
@@ -301,6 +329,9 @@
             animateZ() {
                 let parent = this 
                 // Prediction Feedback Down 
+
+                setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_24 = "0%"; parent.opacity_40 = "0%"; parent.opacity_41 = "100%"}, 1000); 
+                
                 setTimeout(() => {parent.opacity_11 = "0%"; parent.opacity_12 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_21 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_25 = "0%"; }, 0);
@@ -313,6 +344,10 @@
             },
             animateJ() {
                 let parent = this 
+
+                setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_24 = "0%"; parent.opacity_40 = "0%"; parent.opacity_41 = "0%";  parent.opacity_43 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_42 = "100%"}, 1000);
+
                 setTimeout(() => {parent.opacity_21 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_12 = "0%";}, 0);
                 setTimeout(() => {parent.opacity_37 = "0%";}, 0);
@@ -322,6 +357,9 @@
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
+
+                // Disables BACK NEXT buttons until animation finishes at 6 seconds.
+                setTimeout(() => {parent.finish = false}, 6000);
 
                 // This changes the button to green!
                 setTimeout(() => {parent.ButtonColor = "success";}, 3000);
@@ -333,6 +371,10 @@
 
             animateK() {
                 let parent = this 
+
+                setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_24 = "0%"; parent.opacity_40 = "0%"; parent.opacity_41 = "0%";  parent.opacity_42 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_43 = "100%"}, 1000);
+
                 setTimeout(() => {parent.opacity_21 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_12 = "0%";}, 0);
                 setTimeout(() => {parent.opacity_38 = "0%";}, 0);
@@ -341,6 +383,9 @@
                 setTimeout(() => {parent.opacity_21 = "100%"}, 500);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
+
+                // Disables BACK NEXT buttons until animation finishes at 6 seconds.
+                setTimeout(() => {parent.finish = false}, 6000);
 
                 // This changes the button to green!
                 setTimeout(() => {parent.ButtonColor = "success";}, 3000);

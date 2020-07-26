@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-Machines3" 
       size="xl"
-      centered title="Instruction Page 3 of 23"
+      centered title="Instruction Page 3 of 18"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -170,7 +170,7 @@
             },
             reset_animation_next() {
                 this.resetAnimation()
-                this.$bvModal.show("modal-center-Machines4")
+                this.$bvModal.show("modal-center-MachinesP")
             },
             resetAnimation() {
                 this.$bvModal.hide('modal-center-Machines3')

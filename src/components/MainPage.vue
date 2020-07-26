@@ -204,6 +204,7 @@
     <Machines5 :windowsize ="this.window_size" />
     <Machines6 :windowsize ="this.window_size" />
     <Machines7 :windowsize ="this.window_size" />
+    <MachinesP :windowsize ="this.window_size" />
     <Practice01 :windowsize ="this.window_size" />
     <Practice02 :windowsize ="this.window_size" />
     <Practice03 :windowsize ="this.window_size" />
@@ -416,6 +417,7 @@ import Machines4 from './tutorialPages/Machines4.vue'
 import Machines5 from './tutorialPages/Machines5.vue'
 import Machines6 from './tutorialPages/Machines6.vue'
 import Machines7 from './tutorialPages/Machines7.vue'
+import MachinesP from './tutorialPages/MachinesP.vue'
 import Practice01 from './tutorialPages/Practice01.vue'
 import Practice02 from './tutorialPages/Practice02.vue'
 import Practice03 from './tutorialPages/Practice03.vue'
@@ -619,6 +621,7 @@ export default {
     Machines5,
     Machines6,
     Machines7,
+    MachinesP,
     Practice01,
     Practice02,
     Practice03,
@@ -1322,23 +1325,18 @@ export default {
 // Machines1
 // Machines2
 // Machines3
+// MachinesP
 // Machines4
 // Machines5
 // Machines6
 // Machines7
 // Practice01
-// Practice02
-// Practice03
 // MeetPeople
 // WantMoreDots
 // CommKnow
 // Reference
 // HowChoice0
 // HowChoice1
-// HowChoice2
-// HowChoice3
-// HowChoice4
-// HowChoice5
 // HowChoice6
 // FlowKnow1
 // FlowKnow2

@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-Machines4" 
       size="xl"
-      centered title="Instruction Page 4 of 23"
+      centered title="Instruction Page 5 of 18"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -61,6 +61,10 @@
                <img :src="require('../../assets/Instructions/Machines/Bodies/machine07a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 0.0s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Bodies/machine07b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.8s' }"/>
 
+               <!-- Extra text -->
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext06f.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_35, transition: 'opacity 0.4s' }"/>
+               <!-- <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext06g.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_36, transition: 'opacity 0.4s' }"/> -->
+
                <!-- Counter -->
                <img :src="require('../../assets/Instructions/Machines/Machine Text/count12.04.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_34, transition: 'opacity 0.2s' }"/>
             </div>
@@ -112,7 +116,7 @@
                 opacity_20: '0%',
                 opacity_21: '0%',
                 opacity_22: '100%',
-                opacity_23: '100%',
+                opacity_23: '0%',
                 opacity_24: '0%',
                 opacity_25: '100%',
                 opacity_26: '0%',
@@ -124,6 +128,8 @@
                 opacity_32: '0%',
                 opacity_33: '0%',
                 opacity_34: '0%',
+                opacity_35: '100%',
+                opacity_36: '0%',
 
                 mutex: false,
                 finish: true,
@@ -187,7 +193,7 @@
         methods: {
             reset_animation_back() {
                 this.resetAnimation()
-                this.$bvModal.show("modal-center-Machines3") 
+                this.$bvModal.show("modal-center-MachinesP") 
             },
             reset_animation_next() {
                 this.resetAnimation()
@@ -217,7 +223,7 @@
                 this.opacity_20 = "0%"
                 this.opacity_21 = "0%"
                 this.opacity_22 = "100%"
-                this.opacity_23 = "100%"
+                this.opacity_23 = "0%"
                 this.opacity_24 = "0%"
                 this.opacity_25 = "100%"
                 this.opacity_26 = "0%"
@@ -229,6 +235,8 @@
                 this.opacity_32 = "0%"
                 this.opacity_33 = "0%"
                 this.opacity_34 = "0%"
+                 this.opacity_35 = "100%"
+                this.opacity_36 = "0%"
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
                 this.mutex = false
