@@ -18,11 +18,11 @@
           <img :src="require('../../assets/Instructions/Text Only Pages/Consent.png')" style="width: 90%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"/>
 
             <!-- This is where I'm trying to display the participant ID but I can't figure it out. -->
-            <!-- <div>
+            <div>
                 <h1>
-                    {{dispID}}
-                    </h1>
-            </div> -->
+                    {{pID}}
+                </h1>
+            </div>
 
       </b-container>
         <b-button @click="$bvModal.hide('modal-center-Consent')" v-b-modal.modal-center-BotStopper variant="outline-primary" size="lg">NO I REFUSE TO PARTICIPATE</b-button>
@@ -33,11 +33,11 @@
 <script>
     export default {
         name: 'Consent',
-        props: ['windowsize'],
+        props: ['windowsize', 'pID'],
         components: {
         },
         data() {
-            let parent = this
+            // let parent = this
             return {
                 // dispID: this.generateParticipantId(),
                 show: false,

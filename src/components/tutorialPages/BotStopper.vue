@@ -74,6 +74,9 @@
             if (this.mutex == true) {
                 return
             }
+            var d = new Date();
+            var n = d.getTime();
+            this.$emit('timesync', n)
             this.mutex = true;
             this.block_listeners = false;
             setTimeout(() => this.picker(), 0);

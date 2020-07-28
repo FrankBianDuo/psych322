@@ -4,17 +4,19 @@
       size="xl"
       centered 
       :title="this.center_title"
-      v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
       :no-close-on-esc="true"
       :hide-header-close="true"
     >
-      <b-container class="align-bottom" :style="this.windowsize"  >
+      <!-- <b-container class="align-bottom" :style="this.windowsize"  >
           <div style="text-align: center;">
                <img :src="require('../../assets/tutorials/end/t3.png')" v-bind:style="{ maxWidth: '70%', height: 'auto', transform: 'translate(-50%, 0)', position: 'absolute', transition: 'opacity 0.5s' }"/>
             </div>
               
+      </b-container> -->
+      <b-container class="align-bottom" :style="this.windowsize"  >
+          <img :src="require('../../assets/Instructions/Text Only Pages/End Instructions.png')" style="width: 90%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"/>
       </b-container>
         <b-button @click="this.reset_animation_back" variant="outline-primary" size="lg">Back</b-button>
         <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" size="lg">Next</b-button>
@@ -65,12 +67,20 @@
         methods: {
             reset_animation_back() {
                 this.$bvModal.hide("modal-center-instruction" + this.page_num)
-                this.$bvModal.show("modal-center-instruction" + ((Number(this.page_num) - 1).toString()))
+                this.$bvModal.show("modal-center-KeyHands")
             },
             reset_animation_next() {
+                // eslint-disable-next-line no-console
+                console.log("page 72!!!")
+                // eslint-disable-next-line no-console
+                console.log(Object.entries(this.previous_ans))
+                // eslint-disable-next-line no-console
+                console.log(this.previous_ans)
                 this.$bvModal.hide("modal-center-instruction" + this.page_num)
                 let wrong_questions = []
                 for (let [key, value] of Object.entries(this.previous_ans)) {
+                    // eslint-disable-next-line no-console
+                    console.log("loop!!!")
                     if (value[0] == false) {
                         wrong_questions.push(key)
                     }
