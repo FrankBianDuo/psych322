@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-Machines5" 
       size="xl"
-      centered title="Instruction Page 5 of 23"
+      centered title="Instruction Page 6 of 18"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -42,7 +42,7 @@
                <!-- opactiy 22-24 -->
                <!-- <img :src="require('../../assets/Instructions/Machines/Machine Text/space4.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 0.0s' }"/> -->
                <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext08a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_23, transition: 'opacity 0.4s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext09a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_24, transition: 'opacity 0.4s' }"/>
+               <!-- <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext09a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_24, transition: 'opacity 0.4s' }"/> -->
 
                <!-- Dots opacity 25-33 -->
                <img :src="require('../../assets/Instructions/Machines/Dots/dotspup1.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_25, transition: 'opacity 0.0s' }"/>
@@ -67,7 +67,7 @@
 
                <!-- More text -->
                <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext08b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_40, transition: 'opacity 0.4s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext08c.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_41, transition: 'opacity 0.4s' }"/>
+               <!-- <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext08c.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_41, transition: 'opacity 0.4s' }"/> -->
                <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext09b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_42, transition: 'opacity 0.4s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext09c.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_43, transition: 'opacity 0.4s' }"/>
 
@@ -98,7 +98,6 @@
                 block_listeners: true,
                 spacenum_1: true,
                 spacenum_2: false,
-                spacenum_3: false,
                 ButtonColor: "outline-primary",
                 SpaceColor: "outline-secondary",
                 opacity_1: '100%',
@@ -132,7 +131,7 @@
                 opacity_29: '0%',
                 opacity_30: '100%',
                 opacity_31: '0%',
-                opacity_32: '0%',
+                opacity_32: '100%',
                 opacity_33: '0%',
                 opacity_34: '0%',
                 opacity_35: '0%',
@@ -159,26 +158,26 @@
                 if (parent.block_listeners == true) {
                     return;
                 } 
-                if (parent.spacenum_1 == true && parent.spacenum_2 == false && parent.spacenum_3 == false && event.keyCode == 32) {
+                if (parent.spacenum_1 == true && event.keyCode == 32) {
                     // Spacebar 1
                     parent.spacenum_1 = false
-                    parent.spacenum_2 = true
-                    //parent.spacenum_3 = true
                     parent.animate1()
-                } else if (parent.spacenum_1 == false && parent.spacenum_2 == true && parent.spacenum_3 == false && event.keyCode == 32) {
-                    // Spacebar 2
-                    parent.spacenum_2 = false
-                    parent.spacenum_3 = true
-                    parent.animate2()
-                } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == true && event.keyCode == 32) {
-                    // Spacebar 2
-                    parent.spacenum_3 = false
-                    parent.spacenum_1 = true
-                    parent.animate3()
-                } else if (event.keyCode == 74) {
+                } 
+                // else if (parent.spacenum_1 == false && parent.spacenum_2 == true && parent.spacenum_3 == false && event.keyCode == 32) {
+                //     // Spacebar 2
+                //     parent.spacenum_2 = false
+                //     parent.spacenum_3 = true
+                //     parent.animate2()
+                // } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == true && event.keyCode == 32) {
+                //     // Spacebar 2
+                //     parent.spacenum_3 = false
+                //     parent.spacenum_1 = true
+                //     parent.animate3()
+                // } 
+                else if (parent.spacenum_2 == true && event.keyCode == 74) {
                     // Give Control
                     parent.animateJ()
-                } else if (event.keyCode == 75) {
+                } else if (parent.spacenum_2 == true && event.keyCode == 75) {
                     // Keep Control
                     parent.animateK()
                 } 
@@ -251,7 +250,7 @@
                 this.opacity_29 = "0%"
                 this.opacity_30 = "100%"
                 this.opacity_31 = "0%"
-                this.opacity_32 = "0%"
+                this.opacity_32 = "100%"
                 this.opacity_33 = "0%"
                 this.opacity_34 = "0%"
                 this.opacity_35 = "0%"
@@ -265,6 +264,8 @@
                 this.opacity_43 = "0%"
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
+                this.spacenum_1 = true
+                this.spacenum_2 = false
                 this.mutex = false
                 this.finish = false
                 this.hold = true
@@ -279,52 +280,64 @@
                 parent.opacity_43 = "0%"; parent.opacity_23 = "0%"; parent.opacity_24 = "0%";}, 0);
 
                 // Meeting 1 Flashing Prior Selections 
-                setTimeout(() => {parent.opacity_31 = "0%"; parent.opacity_32 = "100%"; parent.opacity_33 = "0%"; }, 300);
-                setTimeout(() => {parent.opacity_32 = "0%"; parent.opacity_33 = "100%"; }, 600);
-                setTimeout(() => {parent.opacity_33 = "0%"; parent.opacity_32 = "100%"; }, 900);
-                setTimeout(() => {parent.opacity_32 = "0%"; parent.opacity_31 = "100%"; }, 1200);
-                setTimeout(() => {parent.opacity_31 = "0%"; parent.opacity_32 = "100%"; }, 1500);
-                setTimeout(() => {parent.opacity_32 = "0%"; parent.opacity_33 = "100%"; }, 1800);
-                setTimeout(() => {parent.opacity_33 = "0%"; parent.opacity_32 = "100%"; }, 2100);
-                setTimeout(() => {parent.opacity_32 = "0%"; parent.opacity_31 = "100%"; }, 2400);
-                setTimeout(() => {parent.opacity_31 = "0%"; parent.opacity_32 = "100%"; }, 2700);
-                setTimeout(() => {parent.opacity_32 = "0%"; parent.opacity_33 = "100%"; }, 3000);
-                setTimeout(() => {parent.opacity_33 = "0%"; parent.opacity_32 = "100%"; }, 3300);
-                setTimeout(() => {parent.opacity_32 = "0%"; parent.opacity_31 = "100%"; }, 3600);
-                setTimeout(() => {parent.opacity_31 = "0%"; parent.opacity_32 = "100%"; }, 3900);
-                setTimeout(() => {parent.opacity_32 = "0%"; parent.opacity_33 = "100%"; }, 4200);
+                // setTimeout(() => {parent.opacity_31 = "0%"; parent.opacity_32 = "100%"; parent.opacity_33 = "0%"; }, 300);
+                // setTimeout(() => {parent.opacity_32 = "0%"; parent.opacity_33 = "100%"; }, 600);
+                // setTimeout(() => {parent.opacity_33 = "0%"; parent.opacity_32 = "100%"; }, 900);
+                // setTimeout(() => {parent.opacity_32 = "0%"; parent.opacity_31 = "100%"; }, 1200);
+                // setTimeout(() => {parent.opacity_31 = "0%"; parent.opacity_32 = "100%"; }, 1500);
+                // setTimeout(() => {parent.opacity_32 = "0%"; parent.opacity_33 = "100%"; }, 1800);
+                // setTimeout(() => {parent.opacity_33 = "0%"; parent.opacity_32 = "100%"; }, 2100);
+                // setTimeout(() => {parent.opacity_32 = "0%"; parent.opacity_31 = "100%"; }, 2400);
+                // setTimeout(() => {parent.opacity_31 = "0%"; parent.opacity_32 = "100%"; }, 2700);
+                // setTimeout(() => {parent.opacity_32 = "0%"; parent.opacity_33 = "100%"; }, 3000);
+                // setTimeout(() => {parent.opacity_33 = "0%"; parent.opacity_32 = "100%"; }, 3300);
+                // setTimeout(() => {parent.opacity_32 = "0%"; parent.opacity_31 = "100%"; }, 3600);
+                // setTimeout(() => {parent.opacity_31 = "0%"; parent.opacity_32 = "100%"; }, 3900);
+                // setTimeout(() => {parent.opacity_32 = "0%"; parent.opacity_33 = "100%"; }, 4200);
 
-                setTimeout(() => {parent.opacity_39 = "100%";}, 4400);
+                // setTimeout(() => {parent.opacity_39 = "100%";}, 4400);
 
-                setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_41 = "0%"; parent.opacity_40 = "100%"}, 5000);
+                // setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_41 = "0%"; parent.opacity_40 = "100%"}, 5000);
 
-                setTimeout(() => {parent.opacity_22 = "100%"}, 5800);
+                // setTimeout(() => {parent.opacity_22 = "100%"}, 5800);
+
+
+                setTimeout(() => {parent.opacity_39 = "100%";}, 1400);
+
+                setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_41 = "0%"; parent.opacity_40 = "100%"}, 2000);
+
+                setTimeout(() => {parent.opacity_22 = "100%"}, 2800);
+
+                setTimeout(() => {parent.opacity_12 = "100%";}, 3000);
+
+                setTimeout(() => {this.spacenum_2 = true}, 2900);
             },
-            animate2() {
-                let parent = this 
-                setTimeout(() => {parent.opacity_22 = "0%"}, 100);
-                setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_40 = "0%"; parent.opacity_41 = "100%"}, 0);
-                setTimeout(() => {parent.opacity_22 = "100%"}, 3000);
-            },
-            animate3() {
-                let parent = this 
-                setTimeout(() => {parent.opacity_22 = "0%"}, 0);
-                // Options + space text vanish and program text appears
-                setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_40 = "0%"; parent.opacity_41 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_24 = "100%";}, 1000);
-                setTimeout(() => {parent.opacity_12 = "100%";}, 400);
-                setTimeout(() => {parent.opacity_12 = "0%";}, 600);
-                setTimeout(() => {parent.opacity_12 = "100%";}, 800);
-                setTimeout(() => {parent.opacity_12 = "0%";}, 1200);
-                setTimeout(() => {parent.opacity_12 = "100%";}, 1600);
-                setTimeout(() => {parent.opacity_12 = "0%";}, 2000);
-                setTimeout(() => {parent.opacity_12 = "100%";}, 2400);
+            // animate2() {
+            //     let parent = this 
+            //     setTimeout(() => {parent.opacity_22 = "0%"}, 100);
+            //     setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_40 = "0%"; parent.opacity_41 = "100%"}, 0);
+            //     setTimeout(() => {parent.opacity_22 = "100%"}, 3000);
+            // },
+            // animate3() {
+            //     let parent = this 
+            //     setTimeout(() => {parent.opacity_22 = "0%"}, 0);
+            //     // Options + space text vanish and program text appears
+            //     setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_40 = "0%"; parent.opacity_41 = "0%"}, 0);
+            //     setTimeout(() => {parent.opacity_24 = "100%";}, 1000);
+            //     setTimeout(() => {parent.opacity_12 = "100%";}, 400);
+            //     setTimeout(() => {parent.opacity_12 = "0%";}, 600);
+            //     setTimeout(() => {parent.opacity_12 = "100%";}, 800);
+            //     setTimeout(() => {parent.opacity_12 = "0%";}, 1200);
+            //     setTimeout(() => {parent.opacity_12 = "100%";}, 1600);
+            //     setTimeout(() => {parent.opacity_12 = "0%";}, 2000);
+            //     setTimeout(() => {parent.opacity_12 = "100%";}, 2400);
 
-                setTimeout(() => parent.mutex = false, 3600); 
-                setTimeout(() => parent.locked = false, 3600); 
-            },
+            //     setTimeout(() => parent.mutex = false, 3600); 
+            //     setTimeout(() => parent.locked = false, 3600); 
+            // },
             animateJ() {
                 let parent = this 
+                setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_40 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_24 = "0%"; parent.opacity_43 = "0%";}, 0);
                 setTimeout(() => {parent.opacity_12 = "0%";}, 0);
                 setTimeout(() => {parent.opacity_37 = "0%";}, 0);
@@ -352,6 +365,7 @@
 
             animateK() {
                 let parent = this 
+                setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_40 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_24 = "0%"; parent.opacity_42 = "0%";}, 0);
                 setTimeout(() => {parent.opacity_12 = "0%";}, 0);
                 setTimeout(() => {parent.opacity_38 = "0%";}, 0);

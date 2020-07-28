@@ -94,7 +94,7 @@
                 return "modal-center-survey" + this.page_num
             },
             center_title() {
-                return "Survey " + this.page_num
+                return "Survey page " + this.page_num + " of 5"
             },
             block() {
                 return !(this.form.bigfive06 != '' && this.form.bigfive07 != '' && this.form.bigfive08 != '' && this.form.bigfive09 != '' && this.form.bigfive10 != '')

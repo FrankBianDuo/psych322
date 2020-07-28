@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-Reference" 
       size="xl"
-      centered title="Instruction Page 14 of 23"
+      centered title="Instruction Page 13 of 18"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"

@@ -178,6 +178,7 @@
     <TF1118 :windowsize ="this.window_size" />
     <EndTF2 :windowsize ="this.window_size" />
     <ProgBar :windowsize ="this.window_size" />
+    <KeyHands :windowsize ="this.window_size" />
     <EndInstr :windowsize ="this.window_size" />
     <GameFlow1 :windowsize ="this.window_size" />
     <GameFlow2 :windowsize ="this.window_size" />
@@ -204,6 +205,7 @@
     <Machines5 :windowsize ="this.window_size" />
     <Machines6 :windowsize ="this.window_size" />
     <Machines7 :windowsize ="this.window_size" />
+    <MachinesP :windowsize ="this.window_size" />
     <Practice01 :windowsize ="this.window_size" />
     <Practice02 :windowsize ="this.window_size" />
     <Practice03 :windowsize ="this.window_size" />
@@ -391,6 +393,7 @@ import Cursor2 from './tutorialPages/Cursor2.vue'
 import TF1118 from './tutorialPages/TF1118.vue'
 import EndTF2 from './tutorialPages/EndTF2.vue'
 import ProgBar from './tutorialPages/ProgBar.vue'
+import KeyHands from './tutorialPages/KeyHands.vue'
 import EndInstr from './tutorialPages/EndInstr.vue'
 import GameFlow1 from './tutorialPages/GameFlow1.vue'
 import GameFlow2 from './tutorialPages/GameFlow2.vue'
@@ -416,6 +419,7 @@ import Machines4 from './tutorialPages/Machines4.vue'
 import Machines5 from './tutorialPages/Machines5.vue'
 import Machines6 from './tutorialPages/Machines6.vue'
 import Machines7 from './tutorialPages/Machines7.vue'
+import MachinesP from './tutorialPages/MachinesP.vue'
 import Practice01 from './tutorialPages/Practice01.vue'
 import Practice02 from './tutorialPages/Practice02.vue'
 import Practice03 from './tutorialPages/Practice03.vue'
@@ -594,6 +598,7 @@ export default {
     TF1118,
     EndTF2,
     ProgBar,
+    KeyHands,
     EndInstr,
     GameFlow1,
     GameFlow2,
@@ -619,6 +624,7 @@ export default {
     Machines5,
     Machines6,
     Machines7,
+    MachinesP,
     Practice01,
     Practice02,
     Practice03,
@@ -934,36 +940,36 @@ export default {
       console.log(value)
       this.ans_tutorial[62] = value
     },
-    onAnsChild63(value) {
-      // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[63] = value
-    },
-    onAnsChild64(value) {
-      // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[64] = value
-    },
-    onAnsChild65(value) {
-      // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[65] = value
-    },
-    onAnsChild66(value) {
-      // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[66] = value
-    },
-    onAnsChild67(value) {
-      // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[67] = value
-    },
-    onAnsChild68(value) {
-      // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[68] = value
-    },
+    // onAnsChild63(value) {
+    //   // eslint-disable-next-line no-console
+    //   console.log(value)
+    //   this.ans_tutorial[63] = value
+    // },
+    // onAnsChild64(value) {
+    //   // eslint-disable-next-line no-console
+    //   console.log(value)
+    //   this.ans_tutorial[64] = value
+    // },
+    // onAnsChild65(value) {
+    //   // eslint-disable-next-line no-console
+    //   console.log(value)
+    //   this.ans_tutorial[65] = value
+    // },
+    // onAnsChild66(value) {
+    //   // eslint-disable-next-line no-console
+    //   console.log(value)
+    //   this.ans_tutorial[66] = value
+    // },
+    // onAnsChild67(value) {
+    //   // eslint-disable-next-line no-console
+    //   console.log(value)
+    //   this.ans_tutorial[67] = value
+    // },
+    // onAnsChild68(value) {
+    //   // eslint-disable-next-line no-console
+    //   console.log(value)
+    //   this.ans_tutorial[68] = value
+    // },
     FR1Finished(results) {
       this.FRResults[1] = results
     },
@@ -1373,23 +1379,18 @@ export default {
 // Machines1
 // Machines2
 // Machines3
+// MachinesP
 // Machines4
 // Machines5
 // Machines6
 // Machines7
 // Practice01
-// Practice02
-// Practice03
 // MeetPeople
 // WantMoreDots
 // CommKnow
 // Reference
 // HowChoice0
 // HowChoice1
-// HowChoice2
-// HowChoice3
-// HowChoice4
-// HowChoice5
 // HowChoice6
 // FlowKnow1
 // FlowKnow2
@@ -1414,6 +1415,7 @@ export default {
 // instruction68
 // EndTF2
 // ProgBar
+// KeyHands
 // EndInstr
 // instruction 73
 

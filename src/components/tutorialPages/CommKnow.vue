@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-CommKnow" 
       size="xl"
-      centered title="Instruction page 13 of 23"
+      centered title="Instruction page 12 of 18"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"

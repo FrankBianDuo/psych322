@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-WantMoreDots" 
       size="xl"
-      centered title="Instruction Page 12 of 23"
+      centered title="Instruction Page 11 of 18"
       v-model="show"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"

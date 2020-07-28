@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-HowChoice0" 
       size="xl"
-      centered title="Instruction Page 15 of 23"
+      centered title="Instruction Page 14 of 18"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -66,7 +66,7 @@
                 block_listeners: true,
                 ButtonColor: "outline-primary",
                 SpaceColor: "outline-secondary",
-                spacenum_1: true,
+                spacenum_1: false,
                 spacenum_2: false,
                 spacenum_3: false,
                 spacenum_4: false,
@@ -121,25 +121,21 @@
                 && parent.spacenum_4 == false && event.keyCode == 32) {
                     // Spacebar 1
                     parent.spacenum_1 = false
-                    parent.spacenum_2 = true
                     parent.animate1()
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == true && parent.spacenum_3 == false 
                 && parent.spacenum_4 == false && event.keyCode == 32) {
                     // Spacebar 2
                     parent.spacenum_2 = false
-                    parent.spacenum_3 = true
                     parent.animate2()
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == true 
                 && parent.spacenum_4 == false && event.keyCode == 32) {
                     // Spacebar 3
                     parent.spacenum_3 = false
-                    parent.spacenum_4 = true
                     parent.animate3();
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == false 
                 && parent.spacenum_4 == true && event.keyCode == 32) {
                     // Spacebar 3
                     parent.spacenum_4 = false
-                    parent.spacenum_1 = true
                     parent.animate4();
                 } 
             } 
@@ -215,7 +211,7 @@
                 // this.opacity_30 = "0%"
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
-                this.spacenum_1 = true
+                this.spacenum_1 = false
                 this.spacenum_2 = false
                 this.spacenum_3 = false
                 this.spacenum_4 = false
@@ -243,6 +239,7 @@
                 setTimeout(() => {parent.opacity_21 = "0%"; }, 1900);
                 setTimeout(() => {parent.opacity_21 = "100%"; }, 2000);
                 setTimeout(() => {parent.opacity_21 = "0%"; }, 2100);
+                setTimeout(() => {this.spacenum_1 = true}, 2200);
 
             },
             animate1() {
@@ -254,6 +251,7 @@
 
                 // Text exchange 
                 setTimeout(() => {parent.opacity_11 = "0%"; parent.opacity_12 = "100%"}, 0);
+                setTimeout(() => {this.spacenum_2 = true}, 1000);
 
                 this.opacity_0 = "0%"
                 this.opacity_1 = "100%"
@@ -289,6 +287,8 @@
                 // Choice and Smile
                 setTimeout(() => {parent.opacity_3 = "100%"; }, 1000);
                 setTimeout(() => {parent.opacity_4 = "100%"; }, 1500);
+
+                setTimeout(() => {this.spacenum_3 = true}, 1600);
                 
             },
             animate3() {
@@ -296,6 +296,7 @@
                 // Press Space Bar. 
                 setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_0 = "100%"; }, 3000);
+                setTimeout(() => {this.spacenum_4 = true}, 1600);
 
                 // Text exchange 
                 setTimeout(() => {parent.opacity_13 = "0%"; parent.opacity_14 = "100%"}, 0);
@@ -327,12 +328,12 @@
                 setTimeout(() => {parent.opacity_10 = "100%"; }, 1500);
 
                 //Disables BACK NEXT buttons until animation finishes at 6.0 seconds.
-                setTimeout(() => {parent.finish = false}, 6000);
+                // setTimeout(() => {parent.finish = false}, 4000);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // This changes the button to green!
-                setTimeout(() => {parent.ButtonColor = "success";}, 4000);
+                setTimeout(() => {parent.finish = false; parent.ButtonColor = "success";}, 4000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 4500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 5000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);

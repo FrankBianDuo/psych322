@@ -31,6 +31,7 @@
         data() {
             return {
                 page_num: "13",
+                ButtonColor: "outline-primary",
                 opacity_1: '100%',
                 opacity_2: '0%',
                 opacity_3: '0%',
@@ -72,13 +73,14 @@
             reset_animation_next() {
                 //this.$bvModal.hide("modal-center-instruction" + this.page_num)
                 this.resetAnimation()
-                this.$bvModal.show("modal-center-EndInstr")
+                this.$bvModal.show("modal-center-KeyHands")
             },
             resetAnimation() {
                 this.$bvModal.hide('modal-center-ProgBar')
                 this.opacity_1 = "100%"
                 this.opacity_2 = "0%"
                 this.opacity_3 = "0%"
+                this.ButtonColor = "outline-primary"
                 this.mutex = false
                 this.finish = false
                 this.hold = true
@@ -92,9 +94,9 @@
                 // Disables BACK NEXT buttons until animation finishes at 2 seconds.
                 setTimeout(() => {parent.finish = false}, 2000);
                 
+                setTimeout(() => {parent.ButtonColor = "success";}, 2000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 2500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 3000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 4000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 9000);
             },

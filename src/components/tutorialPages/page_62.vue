@@ -17,11 +17,18 @@
             </div>
               
       </b-container>
-        <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="allowprogress" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" :disabled="allowprogress" size="lg">Next</b-button>
+
+        <b-button @click="$bvModal.hide(`modal-center-instruction62`)" v-b-modal.modal-center-instruction61 variant="outline-primary" :disabled="allowprogress" size="lg">Back</b-button>
+        <b-button @click="$bvModal.hide(`modal-center-instruction62`)" v-b-modal.modal-center-EndTF2 style="float: right;" variant="outline-primary" :disabled="allowprogress" size="lg">Next</b-button>
 
         <b-button @click="reveal_False" :disabled="this.ans_disable" v-bind:style="{ marginLeft: '6%', marginTop: '-16%',  }" :variant="this.b_1_style" size="lg">False</b-button>
         <b-button @click="reveal_True" :disabled="this.ans_disable" v-bind:style="{ marginRight: '6%', marginTop: '-8%',  }" style="float: right;" :variant="this.b_2_style" size="lg">True</b-button>
+
+        <!-- <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="allowprogress" size="lg">Back</b-button> -->
+        <!-- <b-button @click="this.reset_animation_next" style="float: right;" variant="outline-primary" :disabled="allowprogress" size="lg">Next</b-button> -->
+
+        <!-- <b-button @click="reveal_False" :disabled="this.ans_disable" v-bind:style="{ marginLeft: '6%', marginTop: '-16%',  }" :variant="this.b_1_style" size="lg">False</b-button> -->
+        <!-- <b-button @click="reveal_True" :disabled="this.ans_disable" v-bind:style="{ marginRight: '6%', marginTop: '-8%',  }" style="float: right;" :variant="this.b_2_style" size="lg">True</b-button> -->
     </b-modal>
 </template>
 
@@ -71,7 +78,7 @@
             },
             reset_animation_next() {
                 this.$bvModal.hide("modal-center-instruction" + this.page_num)
-                this.$bvModal.show("modal-center-instruction" + ((Number(this.page_num) + 1).toString()))
+                this.$bvModal.show("modal-center-instruction" + ((Number(this.page_num) + 7).toString()))
             },
             reveal_False() {
                 this.$emit('answered', [this.ans == 'f', this.ans])

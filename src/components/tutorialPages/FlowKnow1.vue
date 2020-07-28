@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-FlowKnow1" 
       size="xl"
-      centered title="Instruction Page 22 of 23"
+      centered title="Instruction Page 17 of 18"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -47,7 +47,7 @@
 
       </b-container>
         <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="hold" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="hold" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finish || hold" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -82,7 +82,7 @@
                 opacity_17: '0%',
                 opacity_18: '0%',
                 opacity_19: '0%',
-                keyflow1: true,
+                keyflow1: false,
                 keyflow2: false,
                 keyflow3: false,
                 mutex: false,
@@ -105,27 +105,27 @@
                     // Spacebar 1
                     parent.animate1()
                     parent.keyflow1 = false
-                    parent.keyflow2 = true
+                    // parent.keyflow2 = true
                 } else if (parent.keyflow1 == false && parent.keyflow2 == true && parent.keyflow3 == false && event.keyCode == 65) {
                     // Predict A
                     parent.animateA()
                     parent.keyflow2 = false
-                    parent.keyflow3 = true
+                    //parent.keyflow3 = true
                 } else if (parent.keyflow1 == false && parent.keyflow2 == true && parent.keyflow3 == false && event.keyCode == 90) {
                     // Predict Z
                     parent.animateZ()
                     parent.keyflow2 = false
-                    parent.keyflow3 = true
+                    //parent.keyflow3 = true
                 } else if (parent.keyflow1 == false && parent.keyflow2 == false && parent.keyflow3 == true && event.keyCode == 74) {
                     // Give Control
                     parent.animateJ()
                     parent.keyflow3 = false
-                    parent.keyflow1 = true
+                    //parent.keyflow1 = true
                 } else if (parent.keyflow1 == false && parent.keyflow2 == false && parent.keyflow3 == true && event.keyCode == 75) {
                     // Keep Control
                     parent.animateK()
                     parent.keyflow3 = false
-                    parent.keyflow1 = true
+                    // parent.keyflow1 = true
                 } 
             } 
             });
@@ -190,7 +190,7 @@
 
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
-                this.keyflow1 = true
+                this.keyflow1 = false
                 this.keyflow2 = false
                 this.keyflow3 = false
                 this.locked = true
@@ -207,9 +207,13 @@
                 setTimeout(() => {parent.SpaceColor = "primary";}, 2500);
                 setTimeout(() => {parent.SpaceColor = "outline-secondary";}, 3000);
                 setTimeout(() => {parent.opacity_16 = "100%"}, 3000); 
+                setTimeout(() => {parent.keyflow1 = true}, 3100);
             },
             animate1() {
                 let parent = this 
+
+                // Text swap
+                setTimeout(() => {parent.opacity_13 = "0%"; parent.opacity_14 = "100%"}, 3000);
 
                 // Meeting 2 appears.
                 setTimeout(() => {parent.opacity_11 = "100%"}, 0);
@@ -223,14 +227,43 @@
                 setTimeout(() => {parent.opacity_5 = "0%"}, 2200);
                 setTimeout(() => {parent.opacity_5 = "100%"}, 2400);
 
+                if (parent.keyflow2 == true) {
+                    setTimeout(() => {parent.opacity_5 = "0%"}, 7400);
+                    setTimeout(() => {parent.opacity_5 = "100%"}, 7600);
+                    setTimeout(() => {parent.opacity_5 = "0%"}, 7800);
+                    setTimeout(() => {parent.opacity_5 = "100%"}, 8000);
+                    setTimeout(() => {parent.opacity_5 = "0%"}, 8200);
+                    setTimeout(() => {parent.opacity_5 = "100%"}, 8400);
+
+                    setTimeout(() => {parent.opacity_5 = "0%"}, 13400);
+                    setTimeout(() => {parent.opacity_5 = "100%"}, 13600);
+                    setTimeout(() => {parent.opacity_5 = "0%"}, 13800);
+                    setTimeout(() => {parent.opacity_5 = "100%"}, 14000);
+                    setTimeout(() => {parent.opacity_5 = "0%"}, 14200);
+                    setTimeout(() => {parent.opacity_5 = "100%"}, 14400);
+
+                    setTimeout(() => {parent.opacity_5 = "0%"}, 20400);
+                    setTimeout(() => {parent.opacity_5 = "100%"}, 20600);
+                    setTimeout(() => {parent.opacity_5 = "0%"}, 20800);
+                    setTimeout(() => {parent.opacity_5 = "100%"}, 21000);
+                    setTimeout(() => {parent.opacity_5 = "0%"}, 21200);
+                    setTimeout(() => {parent.opacity_5 = "100%"}, 21400);
+                } 
+
+                
+
+                // Enable progress
+                setTimeout(() => {parent.keyflow2 = true}, 1600);
+
                 // This turns the press space bar reminder off.
                 setTimeout(() => {parent.opacity_16 = "0%"}, 0); 
             },
             animateA() {
                 let parent = this 
                 // Prediction Feedback Up 
-                setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_8 = "0%"; parent.opacity_16 = "0%"; parent.opacity_7 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_8 = "0%"; parent.opacity_16 = "0%"; parent.opacity_7 = "100%"; parent.opacity_14 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_6 = "100%"; parent.opacity_17 = "100%"}, 1000);
+                setTimeout(() => {parent.opacity_15 = "100%"}, 0);
 
                 // Flashing safe dots
                 setTimeout(() => {parent.opacity_18 = "100%"}, 1200);
@@ -245,12 +278,16 @@
                 setTimeout(() => {parent.opacity_6 = "100%"}, 2600);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
+
+                // Enable progress
+                setTimeout(() => {parent.keyflow3 = true}, 2000);
             },
             animateZ() {
                 let parent = this 
                 // Prediction Feedback Up 
-                setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_7 = "0%"; parent.opacity_16 = "0%"; parent.opacity_8 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_7 = "0%"; parent.opacity_16 = "0%"; parent.opacity_8 = "100%"; parent.opacity_14 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_6 = "100%"; parent.opacity_17 = "100%"}, 1000);
+                setTimeout(() => {parent.opacity_15 = "100%"}, 0);
 
                 // Flashing safe dots
                 setTimeout(() => {parent.opacity_18 = "100%"}, 1200);
@@ -265,46 +302,40 @@
                 setTimeout(() => {parent.opacity_6 = "100%"}, 2800);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
+
+                // Enable progress
+                setTimeout(() => {parent.keyflow3 = true}, 2000);
             },
             animateJ() {
                 let parent = this 
                 // Control Feedback Give
-                setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_13 = "0%"; parent.opacity_19 = "0%"; parent.opacity_9 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_19 = "0%"; parent.opacity_9 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_19 = "100%"}, 1000);
-                setTimeout(() => {parent.opacity_14 = "100%"}, 2000);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // This changes the button to green!
-                setTimeout(() => {parent.ButtonColor = "success";}, 3000);
+                setTimeout(() => {parent.finish = false; parent.ButtonColor = "success";}, 3000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 4000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 9000);
-
-                //Disables BACK NEXT buttons until animation finishes at 4 seconds.
-                setTimeout(() => {parent.finish = false}, 4000);
             },
 
             animateK() {
                 let parent = this 
                 // Control Feedback Give
-                setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_13 = "0%"; parent.opacity_19 = "0%"; parent.opacity_10 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_19 = "0%"; parent.opacity_10 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_19 = "100%"}, 1000);
-                setTimeout(() => {parent.opacity_14 = "100%"}, 2000);
-
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // This changes the button to green!
-                setTimeout(() => {parent.ButtonColor = "success";}, 3000);
+                setTimeout(() => {parent.finish = false; parent.ButtonColor = "success";}, 3000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 4000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 9000);
-
-                //Disables BACK NEXT buttons until animation finishes at 4 seconds.
-                setTimeout(() => {parent.finish = false}, 4000);
             },
         },
     }

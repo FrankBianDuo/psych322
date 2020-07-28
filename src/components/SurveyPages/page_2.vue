@@ -50,7 +50,7 @@
                 ></b-form-input>
             </b-form-group>
             <b-form-group id="input-group-5" label="Please list the order of countries you have lived in for a year or more, the number
-of years you lived there, and if this was in a rural, suburban, or urban area." label-for="input-5">
+of years you lived there, and if this was in a rural, suburban, or urban area.  Example: Vietnam,24,Rural,Singapore,1,Urban,USA,2,Suburban" label-for="input-5">
                 <b-form-input
                 id="input-5"
                 v-model="form.countries"
@@ -104,7 +104,7 @@ of years you lived there, and if this was in a rural, suburban, or urban area." 
                 return "modal-center-survey" + this.page_num
             },
             center_title() {
-                return "Survey " + this.page_num
+                return "Survey page " + this.page_num + " of 5"
             },
             block() {
                 return !(this.form.older_bro != '' && this.form.older_sis != '' && this.form.younger_bro != '' && this.form.younger_sis != '' && this.form.countries != '' && this.form.english != '')
