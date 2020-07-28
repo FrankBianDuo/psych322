@@ -43,8 +43,6 @@
                 b_2_style: 'primary',
                 ans: 't',
                 wrong_questions: [20],
-                q_1_src: `QuizFull/Q1.png`,
-                a_1_src: `QuizFull/A1.png`
             }
         },
         computed: {
@@ -54,12 +52,6 @@
             center_title() {
                 return "Instructions page " + this.page_num
             },
-            // q_1_src() {
-            //     return `../../assets/tutorials/QuizFull/Q1.png`
-            // },
-            // a_1_src() {
-            //     return `../../assets/tutorials/QuizFull/A1.png`
-            // }
         },
         mounted() {
             this.$root.$on('bv::modal::show', (bvEvent, modalId) => {
@@ -81,6 +73,7 @@
             question_present() {
                 // eslint-disable-next-line no-console
                 console.log("to question_present")
+                // Get rid of the placeholder "20"
                 this.wrong_questions.pop()
                 for (let [key, value] of Object.entries(this.previous_ans)) {
                     if (value[0] == false) {
@@ -133,7 +126,8 @@
                     parent.ans_disable = false
                     this.opacity_a = "100%"
                     this.opacity_b = "0%"
-                }, 6000);
+                // 6000 seems a bit too high for this?
+                }, 6000); 
             },
             gen_question_src(q_id) {
                 var srcmap = {
@@ -209,42 +203,42 @@
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
                         "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
-                    // 63: {
-                    //     "q_img_src": `Q13a.png`,
-                    //     "a_img_src": `Q13b.png`,
-                    //     "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                    //     "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
-                    // },
-                    // 64: {
-                    //     "q_img_src": `Q14a.png`,
-                    //     "a_img_src": `Q14b.png`,
-                    //     "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                    //     "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
-                    // },
-                    // 65: {
-                    //     "q_img_src": `Q15a.png`,
-                    //     "a_img_src": `Q15b.png`,
-                    //     "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                    //     "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
-                    // },
-                    // 66: {
-                    //     "q_img_src": `Q16a.png`,
-                    //     "a_img_src": `Q16b.png`,
-                    //     "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                    //     "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
-                    // },
-                    // 67: {
-                    //     "q_img_src": `Q17a.png`,
-                    //     "a_img_src": `Q17b.png`,
-                    //     "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                    //     "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
-                    // },
-                    // 68: {
-                    //     "q_img_src": `Q18a.png`,
-                    //     "a_img_src": `Q18b.png`,
-                    //     "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                    //     "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
-                    // }
+                    63: {
+                        "q_img_src": `Q13a.png`,
+                        "a_img_src": `Q13b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
+                    },
+                    64: {
+                        "q_img_src": `Q14a.png`,
+                        "a_img_src": `Q14b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
+                    },
+                    65: {
+                        "q_img_src": `Q15a.png`,
+                        "a_img_src": `Q15b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
+                    },
+                    66: {
+                        "q_img_src": `Q16a.png`,
+                        "a_img_src": `Q16b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
+                    },
+                    67: {
+                        "q_img_src": `Q17a.png`,
+                        "a_img_src": `Q17b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
+                    },
+                    68: {
+                        "q_img_src": `Q18a.png`,
+                        "a_img_src": `Q18b.png`,
+                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
+                    }
                 }
                 return srcmap[q_id]
             }

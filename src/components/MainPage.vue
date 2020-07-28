@@ -14,7 +14,7 @@
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
         <!-- <b-button v-b-modal.modal-center-WRITENAMEOFPAGEHERETOSEEITPOPUPFIRST>Instructions</b-button> -->
-        <b-button v-b-modal.modal-center-Absurdity>Instructions</b-button>
+        <b-button v-b-modal.modal-center-BotStopper>Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
@@ -130,8 +130,8 @@
       <b-button variant="primary" @click="this.surveyFinish">Submit</b-button>
     </b-form>
     </b-modal>
-    <BotStopper :windowsize ="this.window_size" />
-    <Consent :windowsize ="this.window_size" />
+    <BotStopper @timesync="instructionStart" :windowsize ="this.window_size" />
+    <Consent :pID="this.participant_generated_id" :windowsize ="this.window_size" />
     <ExperInfo :windowsize ="this.window_size" />
     <ExperTutor :windowsize ="this.window_size" />
     <MeetPeople :windowsize ="this.window_size" />
@@ -310,7 +310,7 @@
     <Trymore1 :windowsize ="this.window_size" />
     <Trymore2 :windowsize ="this.window_size" />
 
-    <BlockOne @blockOneDone="blockOneFinished" :participant_name="this.form.name"/>
+    <BlockOne @timesync="instructionEnd" @blockOneDone="blockOneFinished" :participant_name="this.form.name"/>
     <BlockTwo @blockTwoDone="blockTwoFinished" :participant_name="this.form.name"/>
     <BlockThree @blockThreeDone="blockThreeFinished" :participant_name="this.form.name"/>
     <b-modal 
@@ -772,7 +772,11 @@ export default {
       aws_object_name: "testinit2.txt",
       // serverlessrepo-s3-presigned-url-s3presignedurl-EF2SRE90YXDY?BucketName="experimentdata2020"&ObjectName="test10.txt"&ExpiredIn=3600
       aws_presigned_lambda: `https://cors-anywhere.herokuapp.com/https://5wmf85807b.execute-api.us-east-2.amazonaws.com/default/serverlessrepo-s3-presigned-url-s3presignedurl-EF2SRE90YXDY?BucketName=`,
-      aws_s3_post_url: `https://cors-anywhere.herokuapp.com/https://experimentdata2020.s3.amazonaws.com`
+      aws_s3_post_url: `https://cors-anywhere.herokuapp.com/https://experimentdata2020.s3.amazonaws.com`,
+      // Variables for tracking how much time is spent on instructions
+      instrucStart: 0,
+      instrucEnd: 0,
+      instrucTime: 0,
     }
   },
   created: function () {
@@ -880,6 +884,13 @@ export default {
       })
     })
     },
+    instructionStart(value) {
+      this.instrucStart = value
+    },
+    instructionEnd(value) {
+      this.instrucEnd = value
+      this.instrucTime = this.instrucEnd - this.instrucStart
+    },
     onAnsChild20(value) {
       this.ans_tutorial[20] = value
       // eslint-disable-next-line no-console
@@ -940,36 +951,36 @@ export default {
       console.log(value)
       this.ans_tutorial[62] = value
     },
-    // onAnsChild63(value) {
-    //   // eslint-disable-next-line no-console
-    //   console.log(value)
-    //   this.ans_tutorial[63] = value
-    // },
-    // onAnsChild64(value) {
-    //   // eslint-disable-next-line no-console
-    //   console.log(value)
-    //   this.ans_tutorial[64] = value
-    // },
-    // onAnsChild65(value) {
-    //   // eslint-disable-next-line no-console
-    //   console.log(value)
-    //   this.ans_tutorial[65] = value
-    // },
-    // onAnsChild66(value) {
-    //   // eslint-disable-next-line no-console
-    //   console.log(value)
-    //   this.ans_tutorial[66] = value
-    // },
-    // onAnsChild67(value) {
-    //   // eslint-disable-next-line no-console
-    //   console.log(value)
-    //   this.ans_tutorial[67] = value
-    // },
-    // onAnsChild68(value) {
-    //   // eslint-disable-next-line no-console
-    //   console.log(value)
-    //   this.ans_tutorial[68] = value
-    // },
+    onAnsChild63(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[63] = value
+    },
+    onAnsChild64(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[64] = value
+    },
+    onAnsChild65(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[65] = value
+    },
+    onAnsChild66(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[66] = value
+    },
+    onAnsChild67(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[67] = value
+    },
+    onAnsChild68(value) {
+      // eslint-disable-next-line no-console
+      console.log(value)
+      this.ans_tutorial[68] = value
+    },
     FR1Finished(results) {
       this.FRResults[1] = results
     },
