@@ -36,18 +36,18 @@
                <img :src="require('../../assets/Instructions/Ref Dependence/smile03a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_19, transition: 'opacity 0.2s' }"/>
                
                <!-- Text opacity 20-22 -->
-               <img :src="require('../../assets/Instructions/Ref Dependence/reftext01a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_20, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/reftext02a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_21, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/reftext03a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/reftext01a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_20, transition: 'opacity 1.0s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/reftext02a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_21, transition: 'opacity 1.0s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/reftext03a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 1.0s' }"/>
             </div>
               
             <div>
-                <b-button :variant="SpaceColor" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_0, transition: 'opacity 0.5s'}" >Press space bar.</b-button>
+                <b-button :variant="sbc" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_0, transition: 'opacity 0.5s'}" >Press space bar.</b-button>
             </div>
               
       </b-container>
         <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="hold" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finish || hold" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="nbc" :disabled="finish || hold" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -61,11 +61,10 @@
             return {
                 page_num: "13",
                 block_listeners: true,
-                ButtonColor: "outline-primary",
-                SpaceColor: "outline-secondary",
-                spacenum_1: true,
-                spacenum_2: false,
-                spacenum_3: false,
+                nbc: "outline-primary",
+                sbc: "outline-secondary",
+                keyflow1: false,
+                keyflow2: false,
                 opacity_0: '0%',
                 opacity_1: '100%',
                 opacity_2: '0%',
@@ -90,13 +89,6 @@
                 opacity_21: '0%',
                 opacity_22: '0%',
                 opacity_23: '0%',
-                // opacity_24: '0%',
-                // opacity_25: '0%',
-                // opacity_26: '0%',
-                // opacity_27: '0%',
-                // opacity_28: '0%',
-                // opacity_29: '0%',
-                // opacity_30: '0%',
 
                 mutex: false,
                 finish: true,
@@ -112,22 +104,15 @@
                 if (parent.block_listeners == true) {
                     return;
                 } 
-                if (parent.spacenum_1 == true && parent.spacenum_2 == false && parent.spacenum_3 == false && event.keyCode == 32) {
+                if (parent.keyflow1 == true && parent.keyflow2 == false && event.keyCode == 32) {
                     // Spacebar 1
-                    parent.spacenum_1 = false
-                    parent.spacenum_2 = true
-                    //parent.spacenum_3 = true
+                    parent.keyflow1 = false
+                    //parent.keyflow3 = true
                     parent.animate1()
-                } else if (parent.spacenum_1 == false && parent.spacenum_2 == true && parent.spacenum_3 == false && event.keyCode == 32) {
+                } else if (parent.keyflow1 == false && parent.keyflow2 == true && event.keyCode == 32) {
                     // Spacebar 2
-                    parent.spacenum_2 = false
-                    parent.spacenum_3 = true
+                    parent.keyflow2 = false
                     parent.animate2()
-                } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == true && event.keyCode == 32) {
-                    // Spacebar 2
-                    parent.spacenum_3 = false
-                    parent.spacenum_1 = true
-                    parent.animate3()
                 } 
             } 
             });
@@ -193,18 +178,11 @@
                 this.opacity_21 = "0%"
                 this.opacity_22 = "0%"
                 this.opacity_23 = "0%"
-                // this.opacity_24 = "0%"
-                // this.opacity_25 = "0%"
-                // this.opacity_26 = "0%"
-                // this.opacity_27 = "0%"
-                // this.opacity_28 = "0%"
-                // this.opacity_29 = "0%"
-                // this.opacity_30 = "0%"
-                this.ButtonColor = "outline-primary"
-                this.SpaceColor = "outline-secondary"
-                this.spacenum_1 = true
-                this.spacenum_2 = false
-                this.spacenum_3 = false
+                this.nbc = "outline-primary"
+                this.sbc = "outline-secondary"
+                this.keyflow1 = false
+                this.keyflow2 = false
+                // this.keyflow3 = false
                 this.locked = true
                 this.mutex = false
 
@@ -214,20 +192,23 @@
             },
             animate0() {
                 let parent = this 
-                // Press Space Bar. 
-                setTimeout(() => {parent.opacity_0 = "100%"; }, 3000);
+                // Press Space Bar.
+                setTimeout(() => {this.keyflow1 = true; parent.opacity_0 = "100%"; }, 2500);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 3000);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 3500);
 
                 // Text exchange 
                 setTimeout(() => {parent.opacity_21 = "0%"; parent.opacity_22 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_20 = "100%"; }, 0);
-                
             },
             animate1() {
                 let parent = this 
 
                 // Press Space Bar. 
-                setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {parent.opacity_0 = "100%"; }, 3000);
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow2 = true; parent.opacity_0 = "100%"; }, 9000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 9500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 10000);
 
                 // Choice to smile set 1:
                 setTimeout(() => {parent.opacity_2 = "100%"; parent.opacity_3 = "0%"}, 500);
@@ -248,9 +229,8 @@
                 setTimeout(() => {parent.opacity_19 = "100%"; parent.opacity_16 = "0%"}, 7500);
 
                 // Text exchange 
-                setTimeout(() => {parent.opacity_20 = "0%"; parent.opacity_22 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_20 = "0%"; parent.opacity_22 = "0%"}, 8000);
-                setTimeout(() => {parent.opacity_21 = "100%"; }, 8000);
+                setTimeout(() => {parent.opacity_20 = "0%"; }, 8000);
+                setTimeout(() => {parent.opacity_21 = "100%"; }, 8800);
                 
             },
             animate2() {
@@ -258,72 +238,20 @@
 
                 // Press Space Bar. 
                 setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
-                // setTimeout(() => {parent.opacity_0 = "100%"; }, 3000);
 
                 // Text exchange 
                 setTimeout(() => {parent.opacity_20 = "0%"; parent.opacity_21 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_22 = "100%"; }, 0);
+                setTimeout(() => {parent.opacity_22 = "100%"; }, 800);
                 
-                //Disables BACK NEXT buttons until animation finishes at 6.0 seconds.
-                setTimeout(() => {parent.finish = false}, 6000);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // This changes the button to green!
-                setTimeout(() => {parent.ButtonColor = "success";}, 4000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 4500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 5000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
-            },
-            animate3() {
-                let parent = this 
-
-                // Press Space Bar. 
-                setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
-                // setTimeout(() => {parent.opacity_0 = "100%"; }, 3000);
-
-                // Kill all choices and smiles
-                this.opacity_2 = "0%"
-                this.opacity_3 = "0%"
-                this.opacity_4 = "0%"
-                this.opacity_5 = "0%"
-                this.opacity_6 = "0%"
-                this.opacity_7 = "0%"
-                this.opacity_8 = "0%"
-                this.opacity_9 = "0%"
-                this.opacity_10 = "0%"
-                this.opacity_11 = "0%"
-                this.opacity_12 = "0%"
-                this.opacity_13 = "0%"
-                this.opacity_14 = "0%"
-                this.opacity_15 = "0%"
-                this.opacity_16 = "0%"
-                this.opacity_17 = "0%"
-                this.opacity_18 = "0%"
-                this.opacity_19 = "0%"
-
-                // Choice to smile set 1:
-                setTimeout(() => {parent.opacity_3 = "100%"; parent.opacity_2 = "0%"}, 500);
-                setTimeout(() => {parent.opacity_9 = "100%"; parent.opacity_10 = "0%"}, 1500);
-                setTimeout(() => {parent.opacity_2 = "100%"; parent.opacity_3 = "0%"}, 2000);
-                setTimeout(() => {parent.opacity_10 = "100%"; parent.opacity_9 = "0%"}, 2500);
-
-                // Choice to smile set 2:
-                setTimeout(() => {parent.opacity_5 = "100%"; parent.opacity_4 = "0%"}, 3500);
-                setTimeout(() => {parent.opacity_14 = "100%"; parent.opacity_13 = "0%"}, 4000);
-                setTimeout(() => {parent.opacity_4 = "100%"; parent.opacity_5 = "0%"}, 4500);
-                setTimeout(() => {parent.opacity_13 = "100%"; parent.opacity_14 = "0%"}, 5000);
-
-                // Choice to smile set 3:
-                setTimeout(() => {parent.opacity_7 = "100%"; parent.opacity_6 = "0%"}, 6000);
-                setTimeout(() => {parent.opacity_19 = "100%"; parent.opacity_16 = "0%"}, 6500);
-                setTimeout(() => {parent.opacity_6 = "100%"; parent.opacity_7 = "0%"}, 7000);
-                setTimeout(() => {parent.opacity_16 = "100%"; parent.opacity_19 = "0%"}, 7500);
-
-                // Text exchange 
-                setTimeout(() => {parent.opacity_21 = "0%"; parent.opacity_22 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_20 = "100%"; }, 8000);
+                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 4000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 4500);
+                setTimeout(() => {parent.nbc = "success";}, 5000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 8500);
+                setTimeout(() => {parent.nbc = "success";}, 9000);
             },
         },
     }

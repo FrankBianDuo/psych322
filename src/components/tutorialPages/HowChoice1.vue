@@ -39,12 +39,12 @@
             </div>
 
             <div>
-                <b-button :variant="SpaceColor" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_0, transition: 'opacity 0.5s'}" >Press space bar.</b-button>
+                <b-button :variant="sbc" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_0, transition: 'opacity 0.5s'}" >Press space bar.</b-button>
             </div>
               
       </b-container>
         <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="hold" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finish || hold" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="nbc" :disabled="finish || hold" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -57,7 +57,7 @@
         data() {
             return {
                 page_num: "13",
-                ButtonColor: "outline-primary",
+                nbc: "outline-primary",
                 opacity_0: '0%',
                 opacity_1: '100%',
                 opacity_2: '0%',
@@ -81,10 +81,10 @@
                 opacity_20: '0%',
                 opacity_21: '0%',
                 opacity_22: '0%',
-                spacenum_1: true,
-                spacenum_2: false,
-                spacenum_3: false,
-                spacenum_4: false,
+                keyflow1: false,
+                keyflow2: false,
+                keyflow3: false,
+                keyflow4: false,
                 mutex: false,
                 finish: true,
                 hold: true,
@@ -99,22 +99,22 @@
                 if (parent.block_listeners == true) {
                     return;
                 } 
-                if (parent.spacenum_1 == true && parent.spacenum_2 == false && parent.spacenum_3 == false && parent.spacenum_4 == false && event.keyCode == 32) {
+                if (parent.keyflow1 == true && parent.keyflow2 == false && parent.keyflow3 == false && parent.keyflow4 == false && event.keyCode == 32) {
                     // Spacebar 1
-                    parent.spacenum_1 = false
+                    parent.keyflow1 = false
                     parent.animate1()
-                } else if (parent.spacenum_1 == false && parent.spacenum_2 == true && parent.spacenum_3 == false && parent.spacenum_4 == false && event.keyCode == 32) {
+                } else if (parent.keyflow1 == false && parent.keyflow2 == true && parent.keyflow3 == false && parent.keyflow4 == false && event.keyCode == 32) {
                     // Spacebar 2
-                    parent.spacenum_2 = false
+                    parent.keyflow2 = false
                     parent.opacity_9 = '100%',
                     parent.animate2()
-                } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == true && parent.spacenum_4 == false && event.keyCode == 32) {
+                } else if (parent.keyflow1 == false && parent.keyflow2 == false && parent.keyflow3 == true && parent.keyflow4 == false && event.keyCode == 32) {
                     // Spacebar 3
-                    parent.spacenum_3 = false
+                    parent.keyflow3 = false
                     parent.animate3();
-                } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == false && parent.spacenum_4 == true && event.keyCode == 32) {
+                } else if (parent.keyflow1 == false && parent.keyflow2 == false && parent.keyflow3 == false && parent.keyflow4 == true && event.keyCode == 32) {
                     // Spacebar 3
-                    parent.spacenum_4 = false
+                    parent.keyflow4 = false
                     parent.animate4();
                 } 
             } 
@@ -179,28 +179,40 @@
                 this.opacity_20 = "0%"
                 this.opacity_21 = "0%"
                 this.opacity_22 = "0%"
-                this.spacenum_1 = true
-                this.spacenum_2 = false
-                this.spacenum_3 = false
-                this.spacenum_4 = false
+                this.keyflow1 = false
+                this.keyflow2 = false
+                this.keyflow3 = false
+                this.keyflow4 = false
                 this.mutex = false
                 this.finish = false
                 this.hold = true
-                this.ButtonColor = "outline-primary"
+                this.nbc = "outline-primary"
             },
             animate0() {
                 let parent = this
                 setTimeout(() => {parent.opacity_4 = "100%"}, 1800); 
-                setTimeout(() => {parent.opacity_0 = "100%"}, 4200); 
+                // setTimeout(() => {parent.opacity_0 = "100%"}, 4200); 
+
+                // Press Space Bar. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow1 = true; parent.opacity_0 = "100%"; }, 4000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 4500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 5000);
+
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
             animate1() {
                 let parent = this
+
+                // Press Space Bar. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow2 = true; parent.opacity_0 = "100%"; }, 6500);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 7000);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 7500);
+
                 setTimeout(() => {parent.opacity_14 = "0%"; parent.opacity_15 = "0%"; parent.opacity_16 = "0%"; parent.opacity_17 = "0%"; parent.opacity_18 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_4 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_0 = "0%"}, 0); 
-                setTimeout(() => {parent.spacenum_2 = true; parent.opacity_0 = "100%"}, 6200);
                 setTimeout(() => {parent.opacity_6 = "100%"}, 1000); 
                 setTimeout(() => {parent.opacity_14 = "0%"}, 0);  
                 setTimeout(() => {parent.opacity_15 = "100%"}, 2000);
@@ -211,24 +223,33 @@
             },
             animate2() {
                 let parent = this 
+
+                // Press Space Bar. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow3 = true; parent.opacity_0 = "100%"; }, 5000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 5500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 6000);
+
                 setTimeout(() => {parent.opacity_1 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_3 = "100%"}, 1600);
                 setTimeout(() => {parent.opacity_4 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_6 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_0 = "0%"}, 0);
-                setTimeout(() => {parent.spacenum_3 = true; parent.opacity_0 = "100%"}, 5000);
-                setTimeout(() => {parent.opacity_14 = "0%"; parent.opacity_15 = "0%"; parent.opacity_16 = "0%"; parent.opacity_17 = "100%"; parent.opacity_18 = "0%"}, 0);
-                //setTimeout(() => {parent.opacity_6 = "100%"}, 1800);  
+                setTimeout(() => {parent.opacity_14 = "0%"; parent.opacity_15 = "0%"; parent.opacity_16 = "0%"; parent.opacity_17 = "100%"; parent.opacity_18 = "0%"}, 0); 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
             animate3() {
                 let parent = this 
+
+                // Press Space Bar. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow4 = true; parent.opacity_0 = "100%"; }, 7000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 7500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 8000);
+
                 setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_14 = "0%"; parent.opacity_15 = "0%"; parent.opacity_16 = "0%"; parent.opacity_17 = "0%"; parent.opacity_18 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_18 = "100%"}, 5400);
-                setTimeout(() => {parent.opacity_0 = "0%"}, 0);
-                setTimeout(() => {parent.spacenum_4 = true; parent.opacity_0 = "100%"}, 7000);
                 setTimeout(() => {parent.opacity_5 = "0%"; }, 1000);
                 setTimeout(() => {parent.opacity_7 = "100%"; parent.opacity_2 = "100%"; parent.opacity_11 = "100%"; parent.opacity_12 = "100%"}, 1400);
                 setTimeout(() => {parent.opacity_13 = "100%"; }, 3000);
@@ -240,7 +261,6 @@
                 let parent = this 
                 setTimeout(() => {parent.opacity_14 = "0%"; parent.opacity_15 = "0%"; parent.opacity_16 = "0%"; parent.opacity_17 = "0%"; parent.opacity_18 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_0 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_0 = "100%"}, 7000);
                 setTimeout(() => {parent.opacity_19 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_19 = "0%"; parent.opacity_20 = "100%" }, 1000);
                 setTimeout(() => {parent.opacity_20 = "0%"; parent.opacity_21 = "100%" }, 2000);  
@@ -255,11 +275,11 @@
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // This changes the button to green!
-                setTimeout(() => {parent.finish = false; parent.ButtonColor = "success";}, 5500);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 6000);
-                setTimeout(() => {parent.ButtonColor = "success";}, 6500);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
+                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 5500);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 6000);
+                setTimeout(() => {parent.nbc = "success";}, 6500);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 8500);
+                setTimeout(() => {parent.nbc = "success";}, 9000);
             },
         },
     }

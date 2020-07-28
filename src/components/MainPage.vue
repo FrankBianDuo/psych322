@@ -8,13 +8,13 @@
       (2) Progress to Experiment 1. <br>
       (3) Please fill out the survey. <br>
       (4) Ignore Experiments 2 and 3. <br>
-      (5) Never click the refresh button.
+      (5) Never refresh the page.
     </p>
     <div class="bv-example-row bv-example-row-flex-cols">
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
         <!-- <b-button v-b-modal.modal-center-WRITENAMEOFPAGEHERETOSEEITPOPUPFIRST>Instructions</b-button> -->
-        <b-button v-b-modal.modal-center-Absurdity>Instructions</b-button>
+        <b-button v-b-modal.modal-center-BotStopper>Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
@@ -24,7 +24,7 @@
       </b-row>
       <download-csv class="btn btn-default" :data="this.blockOneResults" :name="this.blockOneFileName()">
           <!-- These download buttons become visible after some progress has been made -->
-            <b-button> Download data for Experiment #1 to local machine </b-button>
+            <b-button> Download Data </b-button>
         </download-csv>
       <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_2" v-b-modal.modal-center-2>Experiment 2</b-button>
@@ -778,6 +778,7 @@ export default {
   created: function () {
     let parent = this
     window.addEventListener('keydown', function(event) {
+      let parent = this
       // Prevent the spacebar jerk
       if (event.keyCode == 32) {
         // eslint-disable-next-line no-console
@@ -1382,8 +1383,8 @@ export default {
 // MachinesP
 // Machines4
 // Machines5
-// Machines6
 // Machines7
+// Machines6
 // Practice01
 // MeetPeople
 // WantMoreDots
@@ -1407,12 +1408,6 @@ export default {
 // instruction29
 // instruction61
 // instruction62
-// instruction63
-// instruction64
-// instruction65
-// instruction66
-// instruction67
-// instruction68
 // EndTF2
 // ProgBar
 // KeyHands

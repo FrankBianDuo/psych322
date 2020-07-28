@@ -75,12 +75,12 @@
             </div>
 
             <div>
-                <b-button :variant="SpaceColor" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_39, transition: 'opacity 0.5s'}" >Press space bar.</b-button>
+                <b-button :variant="sbc" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_0, transition: 'opacity 0.5s'}" >Press space bar.</b-button>
             </div>
               
       </b-container>
         <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="hold" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finish || hold" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="nbc" :disabled="finish || hold" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -94,8 +94,8 @@
             return {
                 page_num: "13",
                 block_listeners: true,
-                SpaceColor: "outline-secondary",
-                ButtonColor: "outline-primary",
+                sbc: "primary",
+                nbc: "outline-primary",
                 opacity_1: '100%',
                 opacity_2: '0%',
                 opacity_3: '100%',
@@ -134,13 +134,13 @@
                 opacity_36: '0%',
                 opacity_37: '0%',
                 opacity_38: '0%',
-                opacity_39: '100%',
+                opacity_0: '100%',
                 opacity_40: '0%',
                 opacity_41: '100%',
                 opacity_42: '0%',
                 opacity_43: '0%',
 
-                keyflow1: true,
+                keyflow1: false,
                 keyflow2: false,
                 keyflow3: false,
 
@@ -202,6 +202,7 @@
             }
             this.mutex = true;
             this.block_listeners = false;
+            setTimeout(() => this.animate0(), 0);
             // This prevents skipping through pages too quickly.
             setTimeout(() => this.hold = false, 1000);
             })
@@ -209,7 +210,7 @@
         methods: {
             reset_animation_back() {
                 this.resetAnimation()
-                this.$bvModal.show("modal-center-Machines7") 
+                this.$bvModal.show("modal-center-Machines6") 
             },
             reset_animation_next() {
                 this.resetAnimation()
@@ -255,27 +256,38 @@
                 this.opacity_36 = "0%"
                 this.opacity_37 = "0%"
                 this.opacity_38 = "0%"
-                this.opacity_39 = "100%"
+                this.opacity_0 = "100%"
                 this.opacity_40 = "0%"
                 this.opacity_41 = "100%"
                 this.opacity_42 = "0%"
                 this.opacity_43 = "0%"
 
-                this.keyflow1 = true
+                this.keyflow1 = false
                 this.keyflow2 = false
                 this.keyflow3 = false
 
-                this.ButtonColor = "outline-primary"
-                this.SpaceColor = "outline-secondary"
+                this.nbc = "outline-primary"
+                this.sbc = "outline-secondary"
                 this.mutex = false
                 this.finish = false
                 this.hold = true
+            },
+            animate0() {
+                let parent = this 
+
+                // Press Space Bar. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow1 = true; parent.opacity_0 = "100%"; }, 2000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 2500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 3000);
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
             },
             animate1() {
                 let parent = this 
 
                 // Meeting 1 Flashing Prior Selections 
-                setTimeout(() => {parent.opacity_39 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_0 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_18 = "100%"}, 0); 
                 setTimeout(() => {parent.opacity_18 = "0%"}, 100);
                 setTimeout(() => {parent.opacity_19 = "100%"}, 200);
@@ -359,16 +371,13 @@
 
                 // Text swap
                 setTimeout(() => {parent.opacity_41 = "0%"; parent.opacity_43 = "0%"; parent.opacity_42 = "100%"; }, 0);
-
-                //Disables BACK NEXT buttons until animation finishes at 3 seconds.
-                setTimeout(() => {parent.finish = false}, 3000);
                 
                 // This changes the button to green!
-                setTimeout(() => {parent.ButtonColor = "success";}, 3000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 4000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
+                setTimeout(() => {parent.finish = false; parent.nbc = "success"}, 3000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 3500);
+                setTimeout(() => {parent.nbc = "success";}, 4000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 8500);
+                setTimeout(() => {parent.nbc = "success";}, 9000);
             },
 
             animateK() {
@@ -384,16 +393,13 @@
 
                 // Text swap
                 setTimeout(() => {parent.opacity_41 = "0%"; parent.opacity_42 = "0%"; parent.opacity_43 = "100%"; }, 0);
-
-                //Disables BACK NEXT buttons until animation finishes at 3 seconds.
-                setTimeout(() => {parent.finish = false}, 3000);
                 
                 // This changes the button to green!
-                setTimeout(() => {parent.ButtonColor = "success";}, 3000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 4000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
+                setTimeout(() => {parent.finish = false; parent.nbc = "success"}, 3000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 3500);
+                setTimeout(() => {parent.nbc = "success";}, 4000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 8500);
+                setTimeout(() => {parent.nbc = "success";}, 9000);
             },
         },
     }

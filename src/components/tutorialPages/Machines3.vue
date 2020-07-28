@@ -43,9 +43,9 @@
                <img :src="require('../../assets/Instructions/Machines/Machine Text/meet1.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 0.0s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/meet2.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_23, transition: 'opacity 0.0s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/thisisyou.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_24, transition: 'opacity 3.0s' }"/>
-               <!-- <img :src="require('../../assets/Instructions/Machines/Machine Text/next2.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_25, transition: 'opacity 0.0s' }"/> -->
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext05a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_26, transition: 'opacity 0.0s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext05b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_27, transition: 'opacity 0.0s' }"/>
+               <!-- <img :src="require('../../assets/Instructions/Machines/Machine Text/next2.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_0, transition: 'opacity 0.0s' }"/> -->
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext05a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_26, transition: 'opacity 0.3s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext05b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_27, transition: 'opacity 0.3s' }"/>
 
                <!-- Counter -->
                <img :src="require('../../assets/Instructions/Machines/Machine Text/count04.08.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_28, transition: 'opacity 0.2s' }"/>
@@ -60,12 +60,12 @@
             </div>
               
             <div>
-                <b-button :variant="SpaceColor" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_25, transition: 'opacity 0.5s'}" >Press space bar.</b-button>
+                <b-button :variant="sbc" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_0, transition: 'opacity 0.5s'}" >Press space bar.</b-button>
             </div>
               
       </b-container>
         <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="hold" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finish || hold" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="nbc" :disabled="finish || hold" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -79,8 +79,8 @@
             return {
                 page_num: "13",
                 block_listeners: true,
-                ButtonColor: "outline-primary",
-                SpaceColor: "outline-secondary",
+                nbc: "outline-primary",
+                sbc: "outline-secondary",
                 opacity_1: '100%',
                 opacity_2: '0%',
                 opacity_3: '100%',
@@ -105,15 +105,15 @@
                 opacity_22: '0%',
                 opacity_23: '0%',
                 opacity_24: '0%',
-                opacity_25: '100%',
+                opacity_0: '100%',
                 opacity_26: '100%',
                 opacity_27: '0%',
                 opacity_28: '0%',
                 opacity_29: '0%',
                 opacity_30: '0%',
 
-                keyFlow1: true,
-                keyFlow2: false,
+                keyflow1: false,
+                keyflow2: false,
 
                 mutex: false,
                 finish: true,
@@ -129,14 +129,14 @@
                 if (parent.block_listeners == true) {
                     return;
                 } 
-                if (parent.keyFlow1 == true && event.keyCode == 32) {
+                if (parent.keyflow1 == true && event.keyCode == 32) {
                     // Spacebar 1
-                    parent.keyFlow1 = false
+                    parent.keyflow1 = false
                     parent.animate1()
-                } else if (parent.keyFlow2 == true && event.keyCode == 65) {
+                } else if (parent.keyflow2 == true && event.keyCode == 65) {
                     // Predict A
                     parent.animateA()
-                } else if (parent.keyFlow2 == true && event.keyCode == 90) {
+                } else if (parent.keyflow2 == true && event.keyCode == 90) {
                     // Predict Z
                     parent.animateZ()
                 } 
@@ -163,6 +163,7 @@
             }
             this.mutex = true;
             this.block_listeners = false;
+            setTimeout(() => this.animate0(), 0);
             // This prevents skipping through pages too quickly.
             setTimeout(() => this.hold = false, 1000);
             })
@@ -202,25 +203,36 @@
                 this.opacity_22 = "0%"
                 this.opacity_23 = "0%"
                 this.opacity_24 = "0%"
-                this.opacity_25 = "100%"
+                this.opacity_0 = "100%"
                 this.opacity_26 = "100%"
                 this.opacity_27 = "0%"
                 this.opacity_28 = "0%"
                 this.opacity_29 = "0%"
                 this.opacity_30 = "0%"
-                this.ButtonColor = "outline-primary"
-                this.SpaceColor = "outline-secondary"
-                this.keyFlow1 = true
-                this.keyFlow2 = false
+                this.nbc = "outline-primary"
+                this.sbc = "outline-secondary"
+                this.keyflow1 = false
+                this.keyflow2 = false
                 this.mutex = false
                 this.finish = false
                 this.hold = true
+            },
+            animate0() {
+                let parent = this 
+
+                // Press Space Bar. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow1 = true; parent.opacity_0 = "100%"; }, 2000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 2500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 3000);
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
             },
             animate1() {
                 let parent = this 
 
                 // Meeting 1 Flashing Prior Selections 
-                setTimeout(() => {parent.opacity_25 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_0 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_19 = "100%"}, 0); 
                 setTimeout(() => {parent.opacity_19 = "0%"}, 100);
                 setTimeout(() => {parent.opacity_18 = "100%"}, 200);
@@ -256,7 +268,7 @@
                 setTimeout(() => {parent.opacity_11 = "100%"}, 3400);
 
                 // Enable predictions
-                setTimeout(() => {this.keyFlow2 = true}, 6500);
+                setTimeout(() => {this.keyflow2 = true}, 6500);
 
                 // Text swap
                 setTimeout(() => {parent.opacity_26 = "0%"}, 0);
@@ -266,9 +278,8 @@
                 let parent = this 
                 // Prediction Feedback Up 
                 setTimeout(() => {parent.opacity_21 = "0%"; }, 0);
-                setTimeout(() => {parent.opacity_25 = "0%"; }, 0);
-                setTimeout(() => {parent.opacity_13 = "100%"; }, 0);
-                setTimeout(() => {parent.opacity_13 = "0%"; }, 2000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_14 = "0%"; parent.opacity_13 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_21 = "100%"; }, 1100);
 
                 // This provides feedback about that prediction.
@@ -276,11 +287,11 @@
                 setTimeout(() => {parent.opacity_29 = "100%"; }, 1800);
 
                 // This changes the button to green!
-                setTimeout(() => {parent.finish = false; parent.ButtonColor = "success";}, 3000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 4000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
+                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 3000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 3500);
+                setTimeout(() => {parent.nbc = "success";}, 4000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 8500);
+                setTimeout(() => {parent.nbc = "success";}, 9000);
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
@@ -289,9 +300,8 @@
                 let parent = this 
                 // Prediction Feedback Down 
                 setTimeout(() => {parent.opacity_21 = "0%"; }, 0);
-                setTimeout(() => {parent.opacity_25 = "0%"; }, 0);
-                setTimeout(() => {parent.opacity_14 = "100%"; }, 0);
-                setTimeout(() => {parent.opacity_14 = "0%"; }, 2000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_13 = "0%"; parent.opacity_14 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_21 = "100%"; }, 1100);
 
                 // This provides feedback about that prediction.
@@ -299,11 +309,11 @@
                 setTimeout(() => {parent.opacity_30 = "100%"; }, 1800);
 
                 // This changes the button to green!
-                setTimeout(() => {parent.finish = false; parent.ButtonColor = "success";}, 3000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 4000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
+                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 3000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 3500);
+                setTimeout(() => {parent.nbc = "success";}, 4000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 8500);
+                setTimeout(() => {parent.nbc = "success";}, 9000);
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 

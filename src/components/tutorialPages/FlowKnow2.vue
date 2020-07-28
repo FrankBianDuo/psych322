@@ -48,12 +48,12 @@
             </div>
 
             <div>
-                <b-button :variant="SpaceColor" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_16, transition: 'opacity 0.5s'}" >Press space bar.</b-button>
+                <b-button :variant="sbc" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_0, transition: 'opacity 0.5s'}" >Press space bar.</b-button>
             </div>
 
       </b-container>
         <b-button @click="this.reset_animation_back" variant="outline-primary" :disabled="hold" size="lg">Back</b-button>
-        <b-button @click="this.reset_animation_next" style="float: right;" :variant="ButtonColor" :disabled="finish || hold" size="lg">Next</b-button>
+        <b-button @click="this.reset_animation_next" style="float: right;" :variant="nbc" :disabled="finish || hold" size="lg">Next</b-button>
     </b-modal>
 </template>
 
@@ -67,8 +67,8 @@
             return {
                 page_num: "13",
                 block_listeners: true,
-                SpaceColor: "outline-secondary",
-                ButtonColor: "outline-primary",
+                sbc: "outline-secondary",
+                nbc: "outline-primary",
                 opacity_1: '100%',
                 opacity_2: '0%',
                 opacity_3: '0%',
@@ -84,7 +84,7 @@
                 opacity_13: '100%',
                 opacity_14: '0%',
                 opacity_15: '0%',
-                opacity_16: '0%',
+                opacity_0: '0%',
                 opacity_17: '0%',
                 opacity_18: '0%',
                 opacity_19: '0%',
@@ -149,7 +149,7 @@
         mounted() {
             this.$root.$on('bv::modal::show', (bvEvent, modalId) => {
             // eslint-disable-next-line no-console
-            // console.log('Modal is about to be shown', bvEvent, modalId)
+            console.log('Modal is about to be shown', bvEvent, modalId)
             if (modalId != "modal-center-FlowKnow2") {
                 return;
             }
@@ -190,7 +190,7 @@
                 this.opacity_13 = "100%"
                 this.opacity_14 = "0%"
                 this.opacity_15 = "0%"
-                this.opacity_16 = "0%"
+                this.opacity_0 = "0%"
                 this.opacity_17 = "0%"
                 this.opacity_18 = "0%"
                 this.opacity_19 = "0%"
@@ -202,8 +202,8 @@
                 this.opacity_25 = "0%"
                 this.opacity_26 = "0%"
 
-                this.ButtonColor = "outline-primary"
-                this.SpaceColor = "outline-secondary"
+                this.nbc = "outline-primary"
+                this.sbc = "outline-secondary"
                 this.keyflow1 = false
                 this.keyflow2 = false
                 this.keyflow3 = false
@@ -217,11 +217,11 @@
             animate0() {
                 let parent = this 
 
-                setTimeout(() => {parent.opacity_16 = "70%"}, 2000);
-                setTimeout(() => {parent.SpaceColor = "primary";}, 2500);
-                setTimeout(() => {parent.SpaceColor = "outline-secondary";}, 3000);
-                setTimeout(() => {parent.opacity_16 = "100%"}, 3000);
-                setTimeout(() => {parent.keyflow1 = true}, 3100);
+                // Press Space Bar. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow1 = true; parent.opacity_0 = "100%"; }, 3000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 3500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 4000);
             },
             animate1() {
                 let parent = this 
@@ -259,19 +259,15 @@
                 setTimeout(() => {parent.opacity_21 = "100%"}, 4000);
                 setTimeout(() => {parent.opacity_21 = "0%"}, 4100);
 
-                // Kill text
-                // setTimeout(() => {parent.opacity_14 = "0%"}, 0);
-                // setTimeout(() => {parent.opacity_15 = "0%"}, 0);
-
                 // This turns the press space bar reminder off.
-                setTimeout(() => {parent.opacity_16 = "0%"}, 0); 
+                setTimeout(() => {parent.opacity_0 = "0%"}, 0); 
 
                 setTimeout(() => {parent.keyflow2 = true}, 5100);
             },
             animateA() {
                 let parent = this 
                 // Prediction Feedback Up 
-                setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_8 = "0%"; parent.opacity_16 = "0%"; parent.opacity_7 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_8 = "0%"; parent.opacity_0 = "0%"; parent.opacity_7 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_6 = "100%"; parent.opacity_17 = "100%"}, 1000);
 
                 // Flashing JK
@@ -295,9 +291,6 @@
                 setTimeout(() => {parent.opacity_14 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_15 = "100%"}, 4000);
                 setTimeout(() => {parent.opacity_26 = "0%"}, 0);
-
-                // Put evap dots back if the user cycles back through to this point.
-                setTimeout(() => {parent.opacity_23 = "100%"}, 0);
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
@@ -307,7 +300,7 @@
             animateZ() {
                 let parent = this 
                 // Prediction Feedback Up 
-                setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_7 = "0%"; parent.opacity_16 = "0%"; parent.opacity_8 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_7 = "0%"; parent.opacity_0 = "0%"; parent.opacity_8 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_6 = "100%"; parent.opacity_17 = "100%"}, 1000);
 
                 // Flashing JK
@@ -331,9 +324,6 @@
                 setTimeout(() => {parent.opacity_14 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_15 = "100%"}, 4000);
                 setTimeout(() => {parent.opacity_26 = "0%"}, 0);
-
-                // Put evap dots back if the user cycles back through to this point.
-                setTimeout(() => {parent.opacity_23 = "100%"}, 0);
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
@@ -366,11 +356,11 @@
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // This changes the button to green!
-                setTimeout(() => {parent.finish = false; parent.ButtonColor = "success";}, 8000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 11500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 12000);
+                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 10000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 10500);
+                setTimeout(() => {parent.nbc = "success";}, 11000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 14500);
+                setTimeout(() => {parent.nbc = "success";}, 15000);
             },
 
             animateK() {
@@ -392,9 +382,6 @@
                 setTimeout(() => {parent.opacity_15 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_26 = "100%"}, 7000);
 
-                // Dots evaporate
-                // setTimeout(() => {parent.opacity_23 = "0%"}, 4000);
-
                 // Kill JK if participant presses keys out of order
                 setTimeout(() => {parent.opacity_6 = "0%"}, 4000);
 
@@ -402,11 +389,11 @@
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // This changes the button to green!
-                setTimeout(() => {parent.finish = false; parent.ButtonColor = "success";}, 8000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 11500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 12000);
+                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 10000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 10500);
+                setTimeout(() => {parent.nbc = "success";}, 11000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 14500);
+                setTimeout(() => {parent.nbc = "success";}, 15000);
             },
         },
     }
