@@ -90,7 +90,7 @@
                 block_listeners: true,
                 ButtonColor: "outline-primary",
                 SpaceColor: "outline-secondary",
-                spacenum_1: true,
+                spacenum_1: false,
                 spacenum_2: false,
                 opacity_1: '0%',
                 opacity_2: '0%',
@@ -150,8 +150,6 @@
                 if (parent.spacenum_1 == true && parent.spacenum_2 == false && event.keyCode == 32) {
                     // Spacebar 1
                     parent.spacenum_1 = false
-                    parent.spacenum_2 = true
-                    //parent.spacenum_3 = true
                     parent.animate1()
                 } else if (event.keyCode == 65) {
                     // Predict A
@@ -241,6 +239,8 @@
                 // this.opacity_40 = "0%"
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
+                this.spacenum_1 = false
+                this.spacenum_2 = false
                 this.locked = true
                 this.mutex = false
                 this.finish = false
@@ -267,6 +267,7 @@
 
                 setTimeout(() => {parent.opacity_35 = "0%"; parent.opacity_36 = "100%"; parent.opacity_9 = "100%"}, 7000);
                 setTimeout(() => {parent.opacity_36 = "0%"; parent.opacity_37 = "100%"; parent.opacity_25 = "100%"}, 8500);
+                setTimeout(() => {this.spacenum_1 = true}, 8600);
             },
             animate1() {
                 let parent = this 
@@ -344,6 +345,8 @@
                 // setTimeout(() => {parent.opacity_11 = "100%"}, 21000);
                 // setTimeout(() => {parent.opacity_11 = "0%"}, 21200);
                 // setTimeout(() => {parent.opacity_11 = "100%"}, 21400);
+
+                setTimeout(() => {this.spacenum_2 = true}, 8600);
                 
             },
             animateA() {

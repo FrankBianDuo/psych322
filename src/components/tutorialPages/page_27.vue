@@ -40,7 +40,7 @@
                 ans_disable: false,
                 b_1_style: 'primary',
                 b_2_style: 'primary',
-                ans: 'f',
+                ans: 't',
                 allowprogress: true
             }
         },

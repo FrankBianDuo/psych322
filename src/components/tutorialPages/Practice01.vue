@@ -140,6 +140,10 @@
                 opacity_42: '0%',
                 opacity_43: '0%',
 
+                keyflow1: true,
+                keyflow2: false,
+                keyflow3: false,
+
                 mutex: false,
                 finish: true,
                 hold: true,
@@ -154,20 +158,25 @@
                 if (parent.block_listeners == true) {
                     return;
                 } 
-                if (event.keyCode == 32) {
+                if (parent.keyflow1 == true && event.keyCode == 32) {
                     // Spacebar 1
+                    parent.keyflow1 = false
                     parent.animate1()
-                } else if (event.keyCode == 65) {
+                } else if (parent.keyflow2 == true && event.keyCode == 65) {
                     // Predict A
+                    parent.keyflow2 = false
                     parent.animateA()
-                } else if (event.keyCode == 90) {
+                } else if (parent.keyflow2 == true && event.keyCode == 90) {
                     // Predict Z
+                    parent.keyflow2 = false
                     parent.animateZ()
-                } else if (event.keyCode == 74) {
+                } else if (parent.keyflow3 == true && event.keyCode == 74) {
                     // Give Control
+                    parent.keyflow3 = false
                     parent.animateJ()
-                } else if (event.keyCode == 75) {
+                } else if (parent.keyflow3 == true && event.keyCode == 75) {
                     // Keep Control
+                    parent.keyflow3 = false
                     parent.animateK()
                 } 
             } 
@@ -252,6 +261,10 @@
                 this.opacity_42 = "0%"
                 this.opacity_43 = "0%"
 
+                this.keyflow1 = true
+                this.keyflow2 = false
+                this.keyflow3 = false
+
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
                 this.mutex = false
@@ -290,7 +303,7 @@
                 setTimeout(() => {parent.opacity_17 = "100%"}, 2600);
                 setTimeout(() => {parent.opacity_26 = "100%"}, 2600);
                 setTimeout(() => {parent.opacity_29 = "100%"}, 2600);
-                setTimeout(() => {parent.opacity_31 = "100%"}, 2600);
+                setTimeout(() => {parent.opacity_33 = "100%"}, 2600);
                 setTimeout(() => {parent.opacity_2 = "100%"}, 2600);
                 setTimeout(() => {parent.opacity_4 = "100%"}, 2600);
                 setTimeout(() => {parent.opacity_6 = "100%"}, 2600);
@@ -298,8 +311,9 @@
                 setTimeout(() => {parent.opacity_10 = "100%"}, 2600);
                 setTimeout(() => {parent.opacity_11 = "100%"}, 3000);
                 setTimeout(() => {parent.opacity_40 = "100%"}, 3200);
-                //Disables BACK NEXT buttons until animation finishes at 6 seconds.
-                setTimeout(() => {parent.finish = false}, 6000);
+
+                setTimeout(() => {this.keyflow2 = true}, 4100);
+                
 
                 // Text Appears:
                 setTimeout(() => {parent.opacity_23 = "100%"}, 4000);
@@ -314,6 +328,7 @@
                 setTimeout(() => {parent.opacity_14 = "0%"; }, 0);
                 //setTimeout(() => {parent.opacity_21 = "100%"; }, 1100);
                 setTimeout(() => {parent.opacity_25 = "100%"; }, 2500);
+                setTimeout(() => {this.keyflow3 = true}, 2600);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
@@ -327,6 +342,7 @@
                 setTimeout(() => {parent.opacity_13 = "0%"; }, 0);
                 //setTimeout(() => {parent.opacity_21 = "100%"; }, 1100);
                 setTimeout(() => {parent.opacity_25 = "100%"; }, 2500);
+                setTimeout(() => {this.keyflow3 = true}, 2600);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
@@ -344,6 +360,9 @@
                 // Text swap
                 setTimeout(() => {parent.opacity_41 = "0%"; parent.opacity_43 = "0%"; parent.opacity_42 = "100%"; }, 0);
 
+                //Disables BACK NEXT buttons until animation finishes at 3 seconds.
+                setTimeout(() => {parent.finish = false}, 3000);
+                
                 // This changes the button to green!
                 setTimeout(() => {parent.ButtonColor = "success";}, 3000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
@@ -366,6 +385,9 @@
                 // Text swap
                 setTimeout(() => {parent.opacity_41 = "0%"; parent.opacity_42 = "0%"; parent.opacity_43 = "100%"; }, 0);
 
+                //Disables BACK NEXT buttons until animation finishes at 3 seconds.
+                setTimeout(() => {parent.finish = false}, 3000);
+                
                 // This changes the button to green!
                 setTimeout(() => {parent.ButtonColor = "success";}, 3000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);

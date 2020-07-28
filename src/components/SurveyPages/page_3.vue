@@ -109,7 +109,7 @@ divine?" label-for="input-3">
                 return "modal-center-survey" + this.page_num
             },
             center_title() {
-                return "Survey " + this.page_num
+                return "Survey page " + this.page_num + " of 5"
             },
             block() {
                 return !(this.form.money != '' && this.form.divine != '' && this.form.political != '' && this.form.view != '' && this.form.interact != '' && this.form.agree != '')

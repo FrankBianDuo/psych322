@@ -95,14 +95,12 @@
                 opacity_24: '0%',
                 opacity_25: '0%',
                 opacity_26: '0%',
-                keyflow1: true,
+                keyflow1: false,
                 keyflow2: false,
                 keyflow3: false,
 
                 mutex: false,
                 finish: true,
-
-                // Experimental variable to prevent rapid page hopping
                 hold: true,
             }
         },
@@ -119,22 +117,18 @@
                     // Spacebar 1
                     parent.animate1()
                     parent.keyflow1 = false
-                    parent.keyflow2 = true
                 } else if (parent.keyflow1 == false && parent.keyflow2 == true && parent.keyflow3 == false && event.keyCode == 65) {
                     // Predict A
                     parent.animateA()
                     parent.keyflow2 = false
-                    parent.keyflow3 = true
                 } else if (parent.keyflow1 == false && parent.keyflow2 == true && parent.keyflow3 == false && event.keyCode == 90) {
                     // Predict Z
                     parent.animateZ()
                     parent.keyflow2 = false
-                    parent.keyflow3 = true
                 } else if (parent.keyflow1 == false && parent.keyflow2 == false && parent.keyflow3 == true && event.keyCode == 74) {
                     // Give Control
                     parent.animateJ()
                     parent.keyflow3 = false
-                    parent.keyflow1 = true
                 } else if (parent.keyflow1 == false && parent.keyflow2 == false && parent.keyflow3 == true && event.keyCode == 75) {
                     // Keep Control
                     parent.animateK()
@@ -210,7 +204,7 @@
 
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
-                this.keyflow1 = true
+                this.keyflow1 = false
                 this.keyflow2 = false
                 this.keyflow3 = false
                 this.locked = true
@@ -227,6 +221,7 @@
                 setTimeout(() => {parent.SpaceColor = "primary";}, 2500);
                 setTimeout(() => {parent.SpaceColor = "outline-secondary";}, 3000);
                 setTimeout(() => {parent.opacity_16 = "100%"}, 3000);
+                setTimeout(() => {parent.keyflow1 = true}, 3100);
             },
             animate1() {
                 let parent = this 
@@ -270,6 +265,8 @@
 
                 // This turns the press space bar reminder off.
                 setTimeout(() => {parent.opacity_16 = "0%"}, 0); 
+
+                setTimeout(() => {parent.keyflow2 = true}, 5100);
             },
             animateA() {
                 let parent = this 
@@ -283,15 +280,15 @@
                 setTimeout(() => {parent.opacity_6 = "0%"}, 2600);
                 setTimeout(() => {parent.opacity_6 = "100%"}, 2800);
 
-                setTimeout(() => {parent.opacity_6 = "0%"}, 8700);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 8800);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 8900);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 9000);
+                // setTimeout(() => {parent.opacity_6 = "0%"}, 8700);
+                // setTimeout(() => {parent.opacity_6 = "100%"}, 8800);
+                // setTimeout(() => {parent.opacity_6 = "0%"}, 8900);
+                // setTimeout(() => {parent.opacity_6 = "100%"}, 9000);
 
-                setTimeout(() => {parent.opacity_6 = "0%"}, 12200);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 12400);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 12600);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 12800);
+                // setTimeout(() => {parent.opacity_6 = "0%"}, 12200);
+                // setTimeout(() => {parent.opacity_6 = "100%"}, 12400);
+                // setTimeout(() => {parent.opacity_6 = "0%"}, 12600);
+                // setTimeout(() => {parent.opacity_6 = "100%"}, 12800);
 
                 // Swap text
                 setTimeout(() => {parent.opacity_13 = "0%"}, 0);
@@ -304,6 +301,8 @@
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
+
+                setTimeout(() => {parent.keyflow3 = true}, 4100);
             },
             animateZ() {
                 let parent = this 
@@ -317,15 +316,15 @@
                 setTimeout(() => {parent.opacity_6 = "0%"}, 2600);
                 setTimeout(() => {parent.opacity_6 = "100%"}, 2800);
 
-                setTimeout(() => {parent.opacity_6 = "0%"}, 8700);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 8800);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 8900);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 9000);
+                // setTimeout(() => {parent.opacity_6 = "0%"}, 8700);
+                // setTimeout(() => {parent.opacity_6 = "100%"}, 8800);
+                // setTimeout(() => {parent.opacity_6 = "0%"}, 8900);
+                // setTimeout(() => {parent.opacity_6 = "100%"}, 9000);
 
-                setTimeout(() => {parent.opacity_6 = "0%"}, 12200);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 12400);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 12600);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 12800);
+                // setTimeout(() => {parent.opacity_6 = "0%"}, 12200);
+                // setTimeout(() => {parent.opacity_6 = "100%"}, 12400);
+                // setTimeout(() => {parent.opacity_6 = "0%"}, 12600);
+                // setTimeout(() => {parent.opacity_6 = "100%"}, 12800);
 
                 // Swap text
                 setTimeout(() => {parent.opacity_13 = "0%"}, 0);
@@ -338,6 +337,8 @@
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
+
+                setTimeout(() => {parent.keyflow3 = true}, 4100);
             },
             animateJ() {
                 let parent = this 
@@ -358,9 +359,6 @@
                 setTimeout(() => {parent.opacity_15 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_26 = "100%"}, 7000);
 
-                // Dots evaporate
-                // setTimeout(() => {parent.opacity_23 = "0%"}, 4000);
-
                 // Kill JK if participant presses keys out of order
                 setTimeout(() => {parent.opacity_6 = "0%"}, 4000);
 
@@ -368,14 +366,11 @@
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // This changes the button to green!
-                setTimeout(() => {parent.ButtonColor = "success";}, 8000);
+                setTimeout(() => {parent.finish = false; parent.ButtonColor = "success";}, 8000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 9000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 11500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 12000);
-
-                //Disables BACK NEXT buttons until animation finishes at 4 seconds.
-                setTimeout(() => {parent.finish = false}, 4000);
             },
 
             animateK() {
@@ -407,14 +402,11 @@
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // This changes the button to green!
-                setTimeout(() => {parent.ButtonColor = "success";}, 8000);
+                setTimeout(() => {parent.finish = false; parent.ButtonColor = "success";}, 8000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 9000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 11500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 12000);
-
-                //Disables BACK NEXT buttons until animation finishes at 4 seconds.
-                setTimeout(() => {parent.finish = false}, 4000);
             },
         },
     }

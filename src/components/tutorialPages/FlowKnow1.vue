@@ -82,7 +82,7 @@
                 opacity_17: '0%',
                 opacity_18: '0%',
                 opacity_19: '0%',
-                keyflow1: true,
+                keyflow1: false,
                 keyflow2: false,
                 keyflow3: false,
                 mutex: false,
@@ -190,7 +190,7 @@
 
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
-                this.keyflow1 = true
+                this.keyflow1 = false
                 this.keyflow2 = false
                 this.keyflow3 = false
                 this.locked = true
@@ -207,6 +207,7 @@
                 setTimeout(() => {parent.SpaceColor = "primary";}, 2500);
                 setTimeout(() => {parent.SpaceColor = "outline-secondary";}, 3000);
                 setTimeout(() => {parent.opacity_16 = "100%"}, 3000); 
+                setTimeout(() => {parent.keyflow1 = true}, 3100);
             },
             animate1() {
                 let parent = this 
@@ -314,14 +315,11 @@
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // This changes the button to green!
-                setTimeout(() => {parent.ButtonColor = "success";}, 3000);
+                setTimeout(() => {parent.finish = false; parent.ButtonColor = "success";}, 3000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 4000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 9000);
-
-                //Disables BACK NEXT buttons until animation finishes at 4 seconds.
-                setTimeout(() => {parent.finish = false}, 4000);
             },
 
             animateK() {
@@ -333,14 +331,11 @@
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // This changes the button to green!
-                setTimeout(() => {parent.ButtonColor = "success";}, 3000);
+                setTimeout(() => {parent.finish = false; parent.ButtonColor = "success";}, 3000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 3500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 4000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 9000);
-
-                //Disables BACK NEXT buttons until animation finishes at 4 seconds.
-                setTimeout(() => {parent.finish = false}, 4000);
             },
         },
     }

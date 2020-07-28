@@ -36,7 +36,7 @@
                <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext01c.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_17, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext01d.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_18, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext01e.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_19, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext01f.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_20, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext01f.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_20, transition: 'opacity 0.0s' }"/>
                <!-- <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext02b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_21, transition: 'opacity 0.2s' }"/> -->
                <!-- <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext02c.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 0.2s' }"/> -->
                <img :src="require('../../assets/Instructions/Machines/Machine Text/next1.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_23, transition: 'opacity 0.2s' }"/>
@@ -135,44 +135,44 @@
                 && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && event.keyCode == 32) {
                     // Spacebar 1
                     parent.spacenum_1 = false
-                    parent.spacenum_2 = true
+                    // parent.spacenum_2 = true
                     //parent.spacenum_3 = true
                     parent.animate1()
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == true && parent.spacenum_3 == false && parent.spacenum_4 == false && parent.spacenum_5 == false 
                 && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && event.keyCode == 32) {
                     // Spacebar 2
                     parent.spacenum_2 = false
-                    parent.spacenum_3 = true
+                    // parent.spacenum_3 = true
                     parent.animate2()
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == true && parent.spacenum_4 == false && parent.spacenum_5 == false 
                 && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && event.keyCode == 32) {
                     // Spacebar 3
                     parent.spacenum_3 = false
-                    parent.spacenum_4 = true
+                    // parent.spacenum_4 = true
                     parent.animate3();
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == false && parent.spacenum_4 == true && parent.spacenum_5 == false 
                 && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && event.keyCode == 32) {
                     // Spacebar 3
                     parent.spacenum_4 = false
-                    parent.spacenum_5 = true
+                    // parent.spacenum_5 = true
                     parent.animate4();
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == false && parent.spacenum_4 == false && parent.spacenum_5 == true 
                 && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == false && event.keyCode == 32) {
                     // Spacebar 3
                     parent.spacenum_5 = false
-                    parent.spacenum_6 = true
+                    // parent.spacenum_6 = true
                     parent.animate5();
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == false && parent.spacenum_4 == false && parent.spacenum_5 == false 
                 && parent.spacenum_6 == true && parent.spacenum_7 == false && parent.spacenum_8 == false && event.keyCode == 32) {
                     // Spacebar 3
                     parent.spacenum_6 = false
-                    parent.spacenum_7 = true
+                    // parent.spacenum_7 = true
                     parent.animate6();
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == false && parent.spacenum_4 == false && parent.spacenum_5 == false 
                 && parent.spacenum_6 == false && parent.spacenum_7 == true && parent.spacenum_8 == false && event.keyCode == 32) {
                     // Spacebar 3
                     parent.spacenum_7 = false
-                    parent.spacenum_8 = true
+                    // parent.spacenum_8 = true
                     parent.animate7();
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == false && parent.spacenum_4 == false && parent.spacenum_5 == false 
                 && parent.spacenum_6 == false && parent.spacenum_7 == false && parent.spacenum_8 == true && event.keyCode == 32) {
@@ -295,6 +295,7 @@
                 setTimeout(() => {parent.opacity_11 = "100%"}, 3000);
                 setTimeout(() => {parent.opacity_31 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_14 = "100%"}, 1000);
+                setTimeout(() => {this.spacenum_2 = true}, 3000);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
@@ -309,6 +310,7 @@
                 setTimeout(() => {parent.opacity_4 = "100%"}, 3000);
                 setTimeout(() => {parent.opacity_6 = "100%"}, 4000);
                 setTimeout(() => {parent.opacity_14 = "0%"}, 5000);
+                setTimeout(() => {this.spacenum_3 = true}, 5100);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
                 // This changes the button to info!
@@ -346,6 +348,7 @@
                 setTimeout(() => {parent.opacity_2 = "0%"}, 5200);
                 setTimeout(() => {parent.opacity_3 = "100%"}, 5400);
                 setTimeout(() => {parent.opacity_3 = "0%"}, 5600);
+                setTimeout(() => {this.spacenum_4 = true}, 5700);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
@@ -355,6 +358,7 @@
                 setTimeout(() => {parent.opacity_19 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_11 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_11 = "100%"}, 3000);
+                setTimeout(() => {this.spacenum_5 = true}, 3100);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
@@ -392,6 +396,7 @@
                 setTimeout(() => {parent.opacity_8 = "100%"; }, 4800);
                 setTimeout(() => {parent.opacity_11 = "100%"; }, 5000);
                 setTimeout(() => {parent.opacity_26 = "100%"; }, 5200);
+                setTimeout(() => {this.spacenum_6 = true}, 5300);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
@@ -418,6 +423,7 @@
                 setTimeout(() => {parent.opacity_9 = "100%"; }, 3200);
                 setTimeout(() => {parent.opacity_11 = "100%"; }, 3400);
                 setTimeout(() => {parent.opacity_27 = "100%"; }, 3600);
+                setTimeout(() => {this.spacenum_7 = true}, 3700);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
@@ -461,6 +467,7 @@
                 setTimeout(() => {parent.opacity_11 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_11 = "100%"}, 6600);
                 setTimeout(() => {parent.opacity_28 = "100%"; }, 6800);
+                setTimeout(() => {this.spacenum_8 = true}, 6900);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
@@ -468,6 +475,8 @@
                 let parent = this 
                 setTimeout(() => {parent.opacity_19 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_20 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_20 = "0%"}, 500);
+                setTimeout(() => {parent.opacity_20 = "100%"}, 600);
                 setTimeout(() => {parent.opacity_11 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_11 = "100%"}, 3000);
 

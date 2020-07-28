@@ -255,14 +255,11 @@
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // This changes the button to green!
-                setTimeout(() => {parent.ButtonColor = "success";}, 5500);
+                setTimeout(() => {parent.finish = false; parent.ButtonColor = "success";}, 5500);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 6000);
                 setTimeout(() => {parent.ButtonColor = "success";}, 6500);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 9000);
-
-                // Disables BACK NEXT buttons until animation finishes at 1 seconds.
-                setTimeout(() => {parent.finish = false}, 3000);
             },
         },
     }

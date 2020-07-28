@@ -49,7 +49,7 @@ comments, suggestion, or general reactions.</h3>
                 return "modal-center-FR" + this.page_num
             },
             center_title() {
-                return "Free Response " + this.page_num
+                return "Free Response page " + this.page_num + " of 13"
             },
         },
         methods: {

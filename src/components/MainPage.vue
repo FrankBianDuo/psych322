@@ -20,7 +20,7 @@
       <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_1" v-b-modal.modal-center>Experiment 1</b-button>
           <!-- These download buttons become visible after some progress has been made -->
-            <b-button class="btn btn-default" @click="this.fetchPresignedUrl"> Download data for Block #1 </b-button>
+            <b-button class="btn btn-default" @click="this.fetchPresignedUrl"> Download data for Experiment #1 </b-button>
       </b-row>
       <download-csv class="btn btn-default" :data="this.blockOneResults" :name="this.blockOneFileName()">
           <!-- These download buttons become visible after some progress has been made -->
@@ -178,6 +178,7 @@
     <TF1118 :windowsize ="this.window_size" />
     <EndTF2 :windowsize ="this.window_size" />
     <ProgBar :windowsize ="this.window_size" />
+    <KeyHands :windowsize ="this.window_size" />
     <EndInstr :windowsize ="this.window_size" />
     <GameFlow1 :windowsize ="this.window_size" />
     <GameFlow2 :windowsize ="this.window_size" />
@@ -392,6 +393,7 @@ import Cursor2 from './tutorialPages/Cursor2.vue'
 import TF1118 from './tutorialPages/TF1118.vue'
 import EndTF2 from './tutorialPages/EndTF2.vue'
 import ProgBar from './tutorialPages/ProgBar.vue'
+import KeyHands from './tutorialPages/KeyHands.vue'
 import EndInstr from './tutorialPages/EndInstr.vue'
 import GameFlow1 from './tutorialPages/GameFlow1.vue'
 import GameFlow2 from './tutorialPages/GameFlow2.vue'
@@ -596,6 +598,7 @@ export default {
     TF1118,
     EndTF2,
     ProgBar,
+    KeyHands,
     EndInstr,
     GameFlow1,
     GameFlow2,
@@ -886,36 +889,36 @@ export default {
       console.log(value)
       this.ans_tutorial[62] = value
     },
-    onAnsChild63(value) {
-      // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[63] = value
-    },
-    onAnsChild64(value) {
-      // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[64] = value
-    },
-    onAnsChild65(value) {
-      // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[65] = value
-    },
-    onAnsChild66(value) {
-      // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[66] = value
-    },
-    onAnsChild67(value) {
-      // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[67] = value
-    },
-    onAnsChild68(value) {
-      // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[68] = value
-    },
+    // onAnsChild63(value) {
+    //   // eslint-disable-next-line no-console
+    //   console.log(value)
+    //   this.ans_tutorial[63] = value
+    // },
+    // onAnsChild64(value) {
+    //   // eslint-disable-next-line no-console
+    //   console.log(value)
+    //   this.ans_tutorial[64] = value
+    // },
+    // onAnsChild65(value) {
+    //   // eslint-disable-next-line no-console
+    //   console.log(value)
+    //   this.ans_tutorial[65] = value
+    // },
+    // onAnsChild66(value) {
+    //   // eslint-disable-next-line no-console
+    //   console.log(value)
+    //   this.ans_tutorial[66] = value
+    // },
+    // onAnsChild67(value) {
+    //   // eslint-disable-next-line no-console
+    //   console.log(value)
+    //   this.ans_tutorial[67] = value
+    // },
+    // onAnsChild68(value) {
+    //   // eslint-disable-next-line no-console
+    //   console.log(value)
+    //   this.ans_tutorial[68] = value
+    // },
     FR1Finished(results) {
       this.FRResults[1] = results
     },
@@ -1361,6 +1364,7 @@ export default {
 // instruction68
 // EndTF2
 // ProgBar
+// KeyHands
 // EndInstr
 // instruction 73
 

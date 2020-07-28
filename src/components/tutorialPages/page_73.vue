@@ -209,42 +209,42 @@
                         "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
                         "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
                     },
-                    63: {
-                        "q_img_src": `Q13a.png`,
-                        "a_img_src": `Q13b.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
-                    },
-                    64: {
-                        "q_img_src": `Q14a.png`,
-                        "a_img_src": `Q14b.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
-                    },
-                    65: {
-                        "q_img_src": `Q15a.png`,
-                        "a_img_src": `Q15b.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
-                    },
-                    66: {
-                        "q_img_src": `Q16a.png`,
-                        "a_img_src": `Q16b.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
-                    },
-                    67: {
-                        "q_img_src": `Q17a.png`,
-                        "a_img_src": `Q17b.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
-                    },
-                    68: {
-                        "q_img_src": `Q18a.png`,
-                        "a_img_src": `Q18b.png`,
-                        "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
-                        "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
-                    }
+                    // 63: {
+                    //     "q_img_src": `Q13a.png`,
+                    //     "a_img_src": `Q13b.png`,
+                    //     "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                    //     "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
+                    // },
+                    // 64: {
+                    //     "q_img_src": `Q14a.png`,
+                    //     "a_img_src": `Q14b.png`,
+                    //     "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                    //     "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
+                    // },
+                    // 65: {
+                    //     "q_img_src": `Q15a.png`,
+                    //     "a_img_src": `Q15b.png`,
+                    //     "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                    //     "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
+                    // },
+                    // 66: {
+                    //     "q_img_src": `Q16a.png`,
+                    //     "a_img_src": `Q16b.png`,
+                    //     "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                    //     "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
+                    // },
+                    // 67: {
+                    //     "q_img_src": `Q17a.png`,
+                    //     "a_img_src": `Q17b.png`,
+                    //     "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                    //     "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
+                    // },
+                    // 68: {
+                    //     "q_img_src": `Q18a.png`,
+                    //     "a_img_src": `Q18b.png`,
+                    //     "q_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_a, transition: 'opacity 0.0s' },
+                    //     "a_img_style": { maxWidth: '70%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_b, transition: 'opacity 0.0s' }
+                    // }
                 }
                 return srcmap[q_id]
             }

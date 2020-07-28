@@ -66,7 +66,7 @@
                <!-- <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext06g.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_36, transition: 'opacity 0.4s' }"/> -->
 
                <!-- Counter -->
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/count12.04.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_34, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/count06.06.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_34, transition: 'opacity 0.2s' }"/>
             </div>
               
             <div>
@@ -91,7 +91,7 @@
                 block_listeners: true,
                 ButtonColor: "outline-primary",
                 SpaceColor: "outline-secondary",
-                spacenum_1: true,
+                spacenum_1: false,
                 spacenum_2: false,
                 spacenum_3: false,
                 opacity_1: '100%',
@@ -127,7 +127,7 @@
                 opacity_31: '0%',
                 opacity_32: '0%',
                 opacity_33: '0%',
-                opacity_34: '0%',
+                opacity_34: '100%',
                 opacity_35: '100%',
                 opacity_36: '0%',
 
@@ -148,18 +148,15 @@
                 if (parent.spacenum_1 == true && parent.spacenum_2 == false && parent.spacenum_3 == false && event.keyCode == 32) {
                     // Spacebar 1
                     parent.spacenum_1 = false
-                    parent.spacenum_2 = true
                     //parent.spacenum_3 = true
                     parent.animate1()
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == true && parent.spacenum_3 == false && event.keyCode == 32) {
                     // Spacebar 2
                     parent.spacenum_2 = false
-                    parent.spacenum_3 = true
                     parent.animate2()
                 } else if (parent.spacenum_1 == false && parent.spacenum_2 == false && parent.spacenum_3 == true && event.keyCode == 32) {
                     // Spacebar 3
                     parent.spacenum_3 = false
-                    parent.spacenum_1 = true
                     parent.animate3();
                 }
             } 
@@ -234,11 +231,14 @@
                 this.opacity_31 = "0%"
                 this.opacity_32 = "0%"
                 this.opacity_33 = "0%"
-                this.opacity_34 = "0%"
-                 this.opacity_35 = "100%"
+                this.opacity_34 = "100%"
+                this.opacity_35 = "100%"
                 this.opacity_36 = "0%"
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
+                this.spacenum_1 = false
+                this.spacenum_2 = false
+                this.spacenum_3 = false
                 this.mutex = false
                 this.finish = false
                 this.hold = true
@@ -250,6 +250,8 @@
                 setTimeout(() => {parent.opacity_25 = "100%"; parent.opacity_28 = "100%"; }, 1000);
                 setTimeout(() => {parent.opacity_25 = "0%"; parent.opacity_28 = "0%"; }, 1400); 
                 setTimeout(() => {parent.opacity_25 = "100%"; parent.opacity_28 = "100%"; }, 1800);
+
+                setTimeout(() => {this.spacenum_1 = true}, 1900);
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
@@ -267,6 +269,7 @@
                 setTimeout(() => {parent.opacity_20 = "100%"}, 1000);
                 setTimeout(() => {parent.opacity_31 = "100%"}, 1500);
                 setTimeout(() => {parent.opacity_22 = "100%"}, 2500);
+                setTimeout(() => {this.spacenum_2 = true}, 2600);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
@@ -279,6 +282,7 @@
                 setTimeout(() => {parent.opacity_21 = "100%"}, 1000);
                 setTimeout(() => {parent.opacity_32 = "100%"}, 1500);
                 setTimeout(() => {parent.opacity_22 = "100%"}, 2500);
+                setTimeout(() => {this.spacenum_3 = true}, 2600);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },

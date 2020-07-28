@@ -97,6 +97,7 @@
                 ButtonColor: "outline-primary",
                 spacenum_1: true,
                 spacenum_2: false,
+                spacenum_3: false,
                 opacity_1: '100%',
                 opacity_2: '0%',
                 opacity_3: '100%',
@@ -158,23 +159,23 @@
                 if (parent.spacenum_1 == true && parent.spacenum_2 == false && event.keyCode == 32) {
                     // Spacebar 1
                     parent.spacenum_1 = false
-                    parent.spacenum_2 = true
+                    // parent.spacenum_2 = true
                     parent.animate1()
-                } else if (parent.spacenum_1 == false && parent.spacenum_2 == true && event.keyCode == 32) {
-                    // Spacebar 2
-                    parent.spacenum_2 = false
-                    parent.animate2()
-                } else if (event.keyCode == 65) {
+                } else if (parent.spacenum_2 == true && event.keyCode == 65) {
                     // Predict A
+                    parent.spacenum_2 = false
                     parent.animateA()
-                } else if (event.keyCode == 90) {
+                } else if (parent.spacenum_2 == true && event.keyCode == 90) {
                     // Predict Z
+                    parent.spacenum_2 = false
                     parent.animateZ()
-                } else if (event.keyCode == 74) {
+                } else if (parent.spacenum_3 == true && event.keyCode == 74) {
                     // Give Control
+                    parent.spacenum_3 = false
                     parent.animateJ()
-                } else if (event.keyCode == 75) {
+                } else if (parent.spacenum_3 == true && event.keyCode == 75) {
                     // Keep Control
+                    parent.spacenum_3 = false
                     parent.animateK()
                 } 
             } 
@@ -261,6 +262,7 @@
 
                 this.spacenum_1 = true
                 this.spacenum_2 = false
+                this.spacenum_3 = false
 
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
@@ -302,13 +304,8 @@
                 setTimeout(() => {parent.opacity_11 = "100%"}, 2400);
                 setTimeout(() => {parent.opacity_40 = "100%"}, 2600);
                 setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_24 = "100%"}, 3000);
+                setTimeout(() => {this.spacenum_2 = true}, 3100);
 
-            },
-            animate2() {
-                let parent = this 
-
-                setTimeout(() => {parent.opacity_24 = "0%"; parent.opacity_40 = "100%"}, 3000);
-                
             },
             animateA() {
                 let parent = this 
@@ -323,6 +320,7 @@
                 setTimeout(() => {parent.opacity_14 = "0%"; }, 0);
                 //setTimeout(() => {parent.opacity_21 = "100%"; }, 1100);
                 setTimeout(() => {parent.opacity_25 = "100%"; }, 2500);
+                setTimeout(() => {this.spacenum_3 = true}, 2600);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
@@ -339,6 +337,7 @@
                 setTimeout(() => {parent.opacity_13 = "0%"; }, 0);
                 //setTimeout(() => {parent.opacity_21 = "100%"; }, 1100);
                 setTimeout(() => {parent.opacity_25 = "100%"; }, 2500);
+                setTimeout(() => {this.spacenum_3 = true}, 2600);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },

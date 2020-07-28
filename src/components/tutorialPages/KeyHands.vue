@@ -1,8 +1,8 @@
 <template>
     <b-modal 
-      id="modal-center-EndTF2" 
+      id="modal-center-KeyHands" 
       size="xl"
-      centered title="End of True or False Questions 10 - 18"
+      centered title="Place your hands on the keyboard like this."
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
       :header-text-variant="headerTextVariant"
@@ -15,16 +15,16 @@
       :hide-header-close="true"
     >
       <b-container class="align-bottom" :style="this.windowsize"  >
-          <img :src="require('../../assets/Instructions/Text Only Pages/End TF Questions.png')" style="width: 90%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"/>
+          <img :src="require('../../assets/Instructions/Machines/keyhands2.png')" v-bind:style="{ maxWidth: '56%', height: 'auto', marginTop: '0%', marginLeft: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_2, transition: 'opacity 0.4s' }"/>
       </b-container>
-        <b-button @click="$bvModal.hide('modal-center-EndTF2')" v-b-modal.modal-center-instruction62 variant="outline-primary" size="lg">Back</b-button>
-        <b-button style="float: right;" @click="$bvModal.hide('modal-center-EndTF2')" variant="outline-primary" size="lg" v-b-modal.modal-center-ProgBar>Next</b-button>
+        <b-button @click="$bvModal.hide('modal-center-KeyHands')" v-b-modal.modal-center-ProgBar variant="outline-primary" size="lg">Back</b-button>
+        <b-button style="float: right;" @click="$bvModal.hide('modal-center-KeyHands')" variant="success" size="lg" v-b-modal.modal-center-EndInstr>Next</b-button>
     </b-modal>
 </template>
 
 <script>
     export default {
-        name: 'EndTF2',
+        name: 'KeyHands',
         props: ['windowsize'],
         components: {
         },
@@ -40,6 +40,7 @@
         },
     }
 </script>
+
 
 <style scoped>
 </style>

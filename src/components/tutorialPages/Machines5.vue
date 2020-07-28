@@ -98,7 +98,6 @@
                 block_listeners: true,
                 spacenum_1: true,
                 spacenum_2: false,
-                spacenum_3: false,
                 ButtonColor: "outline-primary",
                 SpaceColor: "outline-secondary",
                 opacity_1: '100%',
@@ -162,8 +161,6 @@
                 if (parent.spacenum_1 == true && event.keyCode == 32) {
                     // Spacebar 1
                     parent.spacenum_1 = false
-                    parent.spacenum_2 = true
-                    //parent.spacenum_3 = true
                     parent.animate1()
                 } 
                 // else if (parent.spacenum_1 == false && parent.spacenum_2 == true && parent.spacenum_3 == false && event.keyCode == 32) {
@@ -177,10 +174,10 @@
                 //     parent.spacenum_1 = true
                 //     parent.animate3()
                 // } 
-                else if (event.keyCode == 74) {
+                else if (parent.spacenum_2 == true && event.keyCode == 74) {
                     // Give Control
                     parent.animateJ()
-                } else if (event.keyCode == 75) {
+                } else if (parent.spacenum_2 == true && event.keyCode == 75) {
                     // Keep Control
                     parent.animateK()
                 } 
@@ -267,6 +264,8 @@
                 this.opacity_43 = "0%"
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
+                this.spacenum_1 = true
+                this.spacenum_2 = false
                 this.mutex = false
                 this.finish = false
                 this.hold = true
@@ -308,6 +307,10 @@
                 setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_41 = "0%"; parent.opacity_40 = "100%"}, 2000);
 
                 setTimeout(() => {parent.opacity_22 = "100%"}, 2800);
+
+                setTimeout(() => {parent.opacity_12 = "100%";}, 3000);
+
+                setTimeout(() => {this.spacenum_2 = true}, 2900);
             },
             // animate2() {
             //     let parent = this 

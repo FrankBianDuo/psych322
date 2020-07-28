@@ -40,12 +40,13 @@
                 v-model="form.bigfive03"
                 :options="bigfive03"
                 required
+                placeholder="Enter here"
                 ></b-form-select>
             </b-form-group>
             <b-form-group id="input-group-4" label="I see myself as: anxious, easily upset." label-for="input-4">
                 <b-form-select
                 id="input-4"
-                v-model="bigfive04"
+                v-model="form.bigfive04"
                 :options="bigfive04"
                 required
                 placeholder="Enter here"
@@ -95,7 +96,7 @@
                 return "modal-center-survey" + this.page_num
             },
             center_title() {
-                return "Survey " + this.page_num
+                return "Survey page " + this.page_num + " of 5"
             },
             block() {
                 return !(this.form.bigfive01 != '' && this.form.bigfive02 != '' && this.form.bigfive03 != '' && this.form.bigfive04 != '' && this.form.bigfive05 != '')

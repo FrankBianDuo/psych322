@@ -66,7 +66,7 @@
                 block_listeners: true,
                 ButtonColor: "outline-primary",
                 SpaceColor: "outline-secondary",
-                spacenum_1: true,
+                spacenum_1: false,
                 spacenum_2: false,
                 spacenum_3: false,
 
@@ -191,7 +191,7 @@
                 this.opacity_23 = "0%"
                 this.ButtonColor = "outline-primary"
                 this.SpaceColor = "outline-secondary"
-                this.spacenum_1 = true
+                this.spacenum_1 = false
                 this.spacenum_2 = false
                 this.spacenum_3 = false
                 this.mutex = false
@@ -223,7 +223,7 @@
                 setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_11 = "0%"; }, 5100);
 
                 // Press Space Bar. 
-                setTimeout(() => {parent.opacity_0 = "100%"}, 3000);
+                setTimeout(() => {parent.spacenum_1 = true; parent.opacity_0 = "100%"}, 3000);
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
@@ -299,11 +299,9 @@
                 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
-                // Disables BACK NEXT buttons until animation finishes at 3 seconds.
-                setTimeout(() => {parent.finish = false}, 3000);
 
                 // This changes the button to green!
-                setTimeout(() => {parent.ButtonColor = "success";}, 4000);
+                setTimeout(() => {parent.finish = false; parent.ButtonColor = "success";}, 4000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 4500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 5000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
