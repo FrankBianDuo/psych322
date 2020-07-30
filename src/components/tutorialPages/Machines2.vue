@@ -65,6 +65,10 @@
                <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext02l.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_36, transition: 'opacity 0.4s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext02m.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_37, transition: 'opacity 0.4s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext02n.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_38, transition: 'opacity 0.4s' }"/>
+
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/point1.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_39, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/point3.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_40, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/point4.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_41, transition: 'opacity 0.4s' }"/>
             </div>
               
             <div>
@@ -131,8 +135,10 @@
                 opacity_36: '0%',
                 opacity_37: '0%',
                 opacity_38: '0%',
-                // opacity_39: '0%',
-                // opacity_40: '0%',
+                opacity_39: '0%',
+                opacity_40: '0%',
+                opacity_41: '0%',
+                opacity_42: '0%',
 
                 mutex: false,
                 finish: true,
@@ -242,8 +248,10 @@
                 this.opacity_36 = "0%"
                 this.opacity_37 = "0%"
                 this.opacity_38 = "0%"
-                // this.opacity_39 = "0%"
-                // this.opacity_40 = "0%"
+                this.opacity_39 = "0%"
+                this.opacity_40 = "0%"
+                this.opacity_41 = "0%"
+                this.opacity_42 = "0%"
                 this.nbc = "outline-primary"
                 this.sbc = "outline-secondary"
                 this.press = "space bar"
@@ -360,6 +368,9 @@
                 setTimeout(() => {parent.opacity_20 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_13 = "100%"; parent.opacity_14 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_20 = "100%"; }, 1100);
+                setTimeout(() => {parent.opacity_39 = "0%"; parent.opacity_40 = "0%"; parent.opacity_41 = "0%"; parent.opacity_42 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_39 = "100%"; }, 1300);
+                setTimeout(() => {parent.opacity_40 = "100%"; }, 200);
 
                 // This provides feedback about that prediction.
                 setTimeout(() => {parent.opacity_27 = "0%"; parent.opacity_30 = "0%"}, 0);
@@ -391,6 +402,9 @@
                 setTimeout(() => {parent.opacity_20 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_14 = "100%"; parent.opacity_13 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_20 = "100%"; }, 1100);
+                setTimeout(() => {parent.opacity_39 = "0%"; parent.opacity_40 = "0%"; parent.opacity_41 = "0%"; parent.opacity_42 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_39 = "100%"; }, 1300);
+                setTimeout(() => {parent.opacity_41 = "100%"; }, 200);
 
                 // This provides feedback about that prediction.
                 setTimeout(() => {parent.opacity_27 = "0%"; parent.opacity_29 = "0%"}, 0);

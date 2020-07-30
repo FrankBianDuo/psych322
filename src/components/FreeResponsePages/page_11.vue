@@ -48,7 +48,7 @@
                 return "modal-center-FR" + this.page_num
             },
             center_title() {
-                "Free Response page " + this.page_num + " of 13"
+                return "Free Response page " + this.page_num + " of 13"
             },
         },
         methods: {

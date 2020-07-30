@@ -57,6 +57,10 @@
                <!-- This redundancy places the machine bodies in front of the flashing arms -->
                <img :src="require('../../assets/Instructions/Machines/Bodies/machine12a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 0.0s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Bodies/machine12b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.8s' }"/>
+
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/point2.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_39, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/point4.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_40, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/point3.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_41, transition: 'opacity 0.4s' }"/>
             </div>
               
             <div>
@@ -113,6 +117,10 @@
                 opacity_28: '0%',
                 opacity_29: '0%',
                 opacity_30: '0%',
+                opacity_39: '0%',
+                opacity_40: '0%',
+                opacity_41: '0%',
+                opacity_42: '0%',
 
                 keyflow1: false,
                 keyflow2: false,
@@ -217,6 +225,10 @@
                 this.opacity_28 = "0%"
                 this.opacity_29 = "0%"
                 this.opacity_30 = "0%"
+                this.opacity_39 = "0%"
+                this.opacity_40 = "0%"
+                this.opacity_41 = "0%"
+                this.opacity_42 = "0%"
                 this.nbc = "outline-primary"
                 this.sbc = "outline-secondary"
                 this.press = "space bar"
@@ -243,6 +255,10 @@
 
                 // Meeting 1 Flashing Prior Selections 
                 setTimeout(() => {parent.opacity_0 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_0 = "0%"}, 1000);
+                setTimeout(() => {parent.opacity_0 = "0%"}, 2000);
+                setTimeout(() => {parent.opacity_0 = "0%"}, 3000);
+                setTimeout(() => {parent.opacity_0 = "0%"}, 4000);
                 setTimeout(() => {parent.opacity_19 = "100%"}, 0); 
                 setTimeout(() => {parent.opacity_19 = "0%"}, 100);
                 setTimeout(() => {parent.opacity_18 = "100%"}, 200);
@@ -298,6 +314,9 @@
                 setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_14 = "0%"; parent.opacity_13 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_21 = "100%"; }, 1100);
+                setTimeout(() => {parent.opacity_39 = "0%"; parent.opacity_40 = "0%"; parent.opacity_41 = "0%"; parent.opacity_42 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_39 = "100%"; }, 1300);
+                setTimeout(() => {parent.opacity_41 = "100%"; }, 200);
 
                 // This provides feedback about that prediction.
                 setTimeout(() => {parent.opacity_27 = "0%"; parent.opacity_30 = "0%"}, 0);
@@ -325,6 +344,9 @@
                 setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_13 = "0%"; parent.opacity_14 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_21 = "100%"; }, 1100);
+                setTimeout(() => {parent.opacity_39 = "0%"; parent.opacity_40 = "0%"; parent.opacity_41 = "0%"; parent.opacity_42 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_39 = "100%"; }, 1300);
+                setTimeout(() => {parent.opacity_41 = "100%"; }, 200);
 
                 // This provides feedback about that prediction.
                 setTimeout(() => {parent.opacity_27 = "0%"; parent.opacity_29 = "0%"}, 0);

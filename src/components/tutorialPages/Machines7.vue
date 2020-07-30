@@ -314,7 +314,7 @@
                 setTimeout(() => {parent.opacity_19 = "100%"}, 1400);
                 setTimeout(() => {parent.opacity_19 = "0%"}, 1500);
                 
-                setTimeout(() => {parent.opacity_17 = "100%"}, 2000);
+                setTimeout(() => {parent.opacity_17 = "100%"}, 2150);
                 setTimeout(() => {parent.opacity_26 = "100%"}, 2000);
                 setTimeout(() => {parent.opacity_29 = "100%"}, 2000);
                 setTimeout(() => {parent.opacity_31 = "100%"}, 2000);

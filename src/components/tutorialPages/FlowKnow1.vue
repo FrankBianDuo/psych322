@@ -239,12 +239,12 @@
                 let parent = this 
 
                 // Text swap
-                setTimeout(() => {parent.opacity_13 = "0%"; parent.opacity_14 = "100%"}, 3000);
+                setTimeout(() => {parent.opacity_13 = "0%"; parent.opacity_14 = "100%"}, 0);
 
                 // Meeting 2 appears.
-                setTimeout(() => {parent.opacity_11 = "100%"}, 0);
-                setTimeout(() => {parent.opacity_2 = "100%"}, 1000);
-                setTimeout(() => {parent.opacity_3 = "100%"}, 1000);
+                setTimeout(() => {parent.opacity_11 = "100%"}, 500);
+                setTimeout(() => {parent.opacity_2 = "100%"}, 1200);
+                setTimeout(() => {parent.opacity_3 = "100%"}, 1200);
                 
                 // Flashes AZ to grap attention 
                 setTimeout(() => {parent.opacity_5 = "100%"}, 1600);
