@@ -60,6 +60,7 @@
         data() {
             return {
                 page_num: "13",
+                skey: false,
                 block_listeners: true,
                 nbc: "outline-primary",
                 sbc: "outline-secondary",
@@ -113,6 +114,12 @@
                     // Spacebar 2
                     parent.keyflow2 = false
                     parent.animate2()
+                } else if (event.keyCode == 192) {
+                    // Enable Secret Key
+                    parent.skey = true
+                } else if (parent.skey == true && event.keyCode == 49) {
+                    // Secret Key
+                    parent.finish = false
                 } 
             } 
             });
@@ -182,7 +189,7 @@
                 this.sbc = "outline-secondary"
                 this.keyflow1 = false
                 this.keyflow2 = false
-                // this.keyflow3 = false
+                this.skey = false
                 this.locked = true
                 this.mutex = false
 
@@ -193,9 +200,9 @@
             animate0() {
                 let parent = this 
                 // Press Space Bar.
-                setTimeout(() => {this.keyflow1 = true; parent.opacity_0 = "100%"; }, 2500);
-                setTimeout(() => {parent.opacity_0 = "0%"; }, 3000);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 3500);
+                setTimeout(() => {this.keyflow1 = true; parent.opacity_0 = "100%"; }, 5500);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 6000);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 6500);
 
                 // Text exchange 
                 setTimeout(() => {parent.opacity_21 = "0%"; parent.opacity_22 = "0%"}, 0);
@@ -206,9 +213,9 @@
 
                 // Press Space Bar. 
                 setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow2 = true; parent.opacity_0 = "100%"; }, 9000);
-                setTimeout(() => {parent.opacity_0 = "0%"; }, 9500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 10000);
+                setTimeout(() => {this.keyflow2 = true; parent.opacity_0 = "100%"; }, 14000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 14500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 15000);
 
                 // Choice to smile set 1:
                 setTimeout(() => {parent.opacity_2 = "100%"; parent.opacity_3 = "0%"}, 500);
@@ -247,11 +254,11 @@
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // This changes the button to green!
-                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 4000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 4500);
-                setTimeout(() => {parent.nbc = "success";}, 5000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 8500);
-                setTimeout(() => {parent.nbc = "success";}, 9000);
+                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 7000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 7500);
+                setTimeout(() => {parent.nbc = "success";}, 8000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 11500);
+                setTimeout(() => {parent.nbc = "success";}, 12000);
             },
         },
     }

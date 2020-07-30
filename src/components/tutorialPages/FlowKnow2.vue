@@ -45,10 +45,16 @@
                <img :src="require('../../assets/Instructions/FlowKnow/FKevap1.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_23, transition: 'opacity 4.5s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/FKevap2.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_24, transition: 'opacity 0.5s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/FKevap2.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_25, transition: 'opacity 4.5s' }"/>
+
+               <img :src="require('../../assets/Instructions/FlowKnow/yougot1.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_31, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/yougot2.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_32, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/yougot3.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_33, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/yougot4.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_34, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/yougot5.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_35, transition: 'opacity 0.2s' }"/>
             </div>
 
             <div>
-                <b-button :variant="sbc" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_0, transition: 'opacity 0.5s'}" >Press space bar.</b-button>
+                <b-button :variant="sbc" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_0, transition: 'opacity 0.5s'}" >Press {{press}}.</b-button>
             </div>
 
       </b-container>
@@ -66,9 +72,11 @@
         data() {
             return {
                 page_num: "13",
+                skey: false,
                 block_listeners: true,
                 sbc: "outline-secondary",
                 nbc: "outline-primary",
+                press: "space bar",
                 opacity_1: '100%',
                 opacity_2: '0%',
                 opacity_3: '0%',
@@ -95,6 +103,11 @@
                 opacity_24: '0%',
                 opacity_25: '0%',
                 opacity_26: '0%',
+                opacity_31: '0%',
+                opacity_32: '0%',
+                opacity_33: '0%',
+                opacity_34: '0%',
+                opacity_35: '0%',
                 keyflow1: false,
                 keyflow2: false,
                 keyflow3: false,
@@ -134,6 +147,12 @@
                     parent.animateK()
                     parent.keyflow3 = false
                     // parent.keyflow1 = true
+                } else if (event.keyCode == 192) {
+                    // Enable Secret Key
+                    parent.skey = true
+                } else if (parent.skey == true && event.keyCode == 49) {
+                    // Secret Key
+                    parent.finish = false
                 } 
             } 
             });
@@ -201,12 +220,19 @@
                 this.opacity_24 = "0%"
                 this.opacity_25 = "0%"
                 this.opacity_26 = "0%"
+                this.opacity_31 = "0%"
+                this.opacity_32 = "0%"
+                this.opacity_33 = "0%"
+                this.opacity_34 = "0%"
+                this.opacity_35 = "0%"
 
                 this.nbc = "outline-primary"
                 this.sbc = "outline-secondary"
+                this.press = "space bar"
                 this.keyflow1 = false
                 this.keyflow2 = false
                 this.keyflow3 = false
+                this.skey = false
                 this.locked = true
                 this.mutex = false
                 this.finish = false
@@ -259,33 +285,23 @@
                 setTimeout(() => {parent.opacity_21 = "100%"}, 4000);
                 setTimeout(() => {parent.opacity_21 = "0%"}, 4100);
 
-                // This turns the press space bar reminder off.
-                setTimeout(() => {parent.opacity_0 = "0%"}, 0); 
-
-                setTimeout(() => {parent.keyflow2 = true}, 5100);
+                // Press A or Z. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow2 = true; this.press = "A or Z"; parent.opacity_0 = "100%"; parent.opacity_5 = "100%"; }, 6000);
+                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_5 = "0%"; }, 6500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_5 = "100%"; }, 7000);
             },
             animateA() {
                 let parent = this 
+
+                // Kill key reminder 
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_5 = "0%"; }, 0);
+
                 // Prediction Feedback Up 
                 setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_8 = "0%"; parent.opacity_0 = "0%"; parent.opacity_7 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_6 = "100%"; parent.opacity_17 = "100%"}, 1000);
 
-                // Flashing JK
-                setTimeout(() => {parent.opacity_6 = "0%"}, 2200);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 2400);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 2600);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 2800);
-
-                // setTimeout(() => {parent.opacity_6 = "0%"}, 8700);
-                // setTimeout(() => {parent.opacity_6 = "100%"}, 8800);
-                // setTimeout(() => {parent.opacity_6 = "0%"}, 8900);
-                // setTimeout(() => {parent.opacity_6 = "100%"}, 9000);
-
-                // setTimeout(() => {parent.opacity_6 = "0%"}, 12200);
-                // setTimeout(() => {parent.opacity_6 = "100%"}, 12400);
-                // setTimeout(() => {parent.opacity_6 = "0%"}, 12600);
-                // setTimeout(() => {parent.opacity_6 = "100%"}, 12800);
-
                 // Swap text
                 setTimeout(() => {parent.opacity_13 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_14 = "0%"}, 0);
@@ -295,30 +311,22 @@
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
-                setTimeout(() => {parent.keyflow3 = true}, 4100);
+                // Press J or K. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow3 = true; this.press = "J or K"; parent.opacity_6 = "100%"; parent.opacity_0 = "100%"; }, 4000);
+                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_6 = "0%"}, 4500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_6 = "100%"}, 5000);
             },
             animateZ() {
                 let parent = this 
+
+                // Kill key reminder 
+                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; }, 0);
+
                 // Prediction Feedback Up 
                 setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_7 = "0%"; parent.opacity_0 = "0%"; parent.opacity_8 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_6 = "100%"; parent.opacity_17 = "100%"}, 1000);
 
-                // Flashing JK
-                setTimeout(() => {parent.opacity_6 = "0%"}, 2200);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 2400);
-                setTimeout(() => {parent.opacity_6 = "0%"}, 2600);
-                setTimeout(() => {parent.opacity_6 = "100%"}, 2800);
-
-                // setTimeout(() => {parent.opacity_6 = "0%"}, 8700);
-                // setTimeout(() => {parent.opacity_6 = "100%"}, 8800);
-                // setTimeout(() => {parent.opacity_6 = "0%"}, 8900);
-                // setTimeout(() => {parent.opacity_6 = "100%"}, 9000);
-
-                // setTimeout(() => {parent.opacity_6 = "0%"}, 12200);
-                // setTimeout(() => {parent.opacity_6 = "100%"}, 12400);
-                // setTimeout(() => {parent.opacity_6 = "0%"}, 12600);
-                // setTimeout(() => {parent.opacity_6 = "100%"}, 12800);
-
                 // Swap text
                 setTimeout(() => {parent.opacity_13 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_14 = "0%"}, 0);
@@ -328,10 +336,18 @@
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
-                setTimeout(() => {parent.keyflow3 = true}, 4100);
+                // Press J or K. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow3 = true; this.press = "J or K"; parent.opacity_6 = "100%"; parent.opacity_0 = "100%"; }, 4000);
+                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_6 = "0%"}, 4500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_6 = "100%"}, 5000);
             },
             animateJ() {
                 let parent = this 
+
+                // Kill key reminder 
+                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; }, 0);
+
                 // Control Feedback Give
                 setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_13 = "0%"; parent.opacity_14 = "0%"; parent.opacity_19 = "0%"; parent.opacity_9 = "100%"}, 0);
            
@@ -361,10 +377,22 @@
                 setTimeout(() => {parent.nbc = "success";}, 11000);
                 setTimeout(() => {parent.nbc = "outline-primary";}, 14500);
                 setTimeout(() => {parent.nbc = "success";}, 15000);
+
+                // You Got x dots
+                setTimeout(() => {parent.opacity_35 = "100%"}, 4500);
+                setTimeout(() => {parent.opacity_31 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_32 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_33 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_34 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_35 = "0%"}, 0);
             },
 
             animateK() {
                 let parent = this 
+
+                // Kill key reminder 
+                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; }, 0);
+
                 // Control Feedback Give
                 setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_13 = "0%"; parent.opacity_14 = "0%"; parent.opacity_19 = "0%"; parent.opacity_10 = "100%"}, 0);
 
@@ -394,6 +422,14 @@
                 setTimeout(() => {parent.nbc = "success";}, 11000);
                 setTimeout(() => {parent.nbc = "outline-primary";}, 14500);
                 setTimeout(() => {parent.nbc = "success";}, 15000);
+
+                // You Got x dots
+                setTimeout(() => {parent.opacity_33 = "100%"}, 4500);
+                setTimeout(() => {parent.opacity_31 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_32 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_33 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_34 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_35 = "0%"}, 0);
             },
         },
     }

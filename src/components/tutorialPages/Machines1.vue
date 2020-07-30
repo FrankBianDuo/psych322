@@ -77,6 +77,7 @@
         data() {
             return {
                 page_num: "13",
+                skey: false,
                 block_listeners: true,
                 nbc: "outline-primary",
                 sbc: "outline-secondary",
@@ -187,6 +188,12 @@
                     parent.keyflow8 = false
                     // parent.keyflow9 = true
                     parent.animate8();
+                } else if (event.keyCode == 192) {
+                    // Enable Secret Key
+                    parent.skey = true
+                } else if (parent.skey == true && event.keyCode == 49) {
+                    // Secret Key
+                    parent.finish = false
                 } 
             } 
             });
@@ -275,6 +282,7 @@
 
                 this.nbc = "outline-primary"
                 this.sbc = "outline-secondary"
+                this.skey = false
                 this.mutex = false
                 this.finish = false
                 this.hold = true
@@ -284,9 +292,9 @@
 
                 // Press Space Bar. 
                 setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow1 = true; parent.opacity_0 = "100%"; }, 2000);
-                setTimeout(() => {parent.opacity_0 = "0%"; }, 2500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 3000);
+                setTimeout(() => {this.keyflow1 = true; parent.opacity_0 = "100%"; }, 1000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 1500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 2000);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
@@ -295,9 +303,9 @@
 
                 // Press Space Bar. 
                 setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow2 = true; parent.opacity_0 = "100%"; }, 2000);
-                setTimeout(() => {parent.opacity_0 = "0%"; }, 2500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 3000);
+                setTimeout(() => {this.keyflow2 = true; parent.opacity_0 = "100%"; }, 1000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 1500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 2000);
 
                 setTimeout(() => {parent.opacity_15 = "0%"; parent.opacity_16 = "0%"; parent.opacity_17 = "0%"; parent.opacity_18 = "0%"; 
                 parent.opacity_19 = "0%"; parent.opacity_20 = "0%"; parent.opacity_21 = "0%"; parent.opacity_22 = "0%"; }, 0);
@@ -313,23 +321,16 @@
 
                 // Press Space Bar. 
                 setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow3 = true; parent.opacity_0 = "100%"; }, 5000);
-                setTimeout(() => {parent.opacity_0 = "0%"; }, 5500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 6000);
+                setTimeout(() => {this.keyflow3 = true; parent.opacity_0 = "100%"; }, 3000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 3500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 4000);
 
                 setTimeout(() => {parent.opacity_16 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_17 = "100%"}, 0);
-                // setTimeout(() => {parent.opacity_24 = "0%"; parent.opacity_32 = "0%"; parent.opacity_1 = "100%";}, 0);
-                // setTimeout(() => {parent.opacity_24 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_2 = "100%"}, 2000);
-                // setTimeout(() => {parent.opacity_4 = "100%"}, 3000);
-                // setTimeout(() => {parent.opacity_6 = "100%"}, 4000);
-                setTimeout(() => {parent.opacity_14 = "0%"}, 5000);
+                setTimeout(() => {parent.opacity_2 = "100%"}, 1500);
+                setTimeout(() => {parent.opacity_14 = "0%"}, 3000);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
-                // This changes the button to info!
-                // Actually, it used to but I've changed it back to a fainter color.
-                setTimeout(() => {parent.sbc = "outline-secondary";}, 2000);
             },
             animate3() {
                 let parent = this 
@@ -355,7 +356,6 @@
 
                 // Text swap
                 setTimeout(() => {parent.opacity_19 = "0%"}, 0);
-                // setTimeout(() => {parent.opacity_27 = "100%"}, 4000);
 
                 // Press Space Bar. 
                 setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
@@ -485,14 +485,10 @@
                 setTimeout(() => {parent.opacity_0 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_28 = "100%"; parent.opacity_10 = "0%"}, 0);
 
-                // Machine Program and Count swap
-                // setTimeout(() => {parent.opacity_27 = "0%"; parent.opacity_9 = "0%"; parent.opacity_33 = "0%"; parent.opacity_34 = "100%"; }, 0);
-                // setTimeout(() => {parent.opacity_28 = "100%"; parent.opacity_10 = "100%"; }, 6800);
-
                 // This changes the button to green!
-                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 3000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 3500);
-                setTimeout(() => {parent.nbc = "success";}, 4000);
+                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 4500);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 5000);
+                setTimeout(() => {parent.nbc = "success";}, 5500);
                 setTimeout(() => {parent.nbc = "outline-primary";}, 8500);
                 setTimeout(() => {parent.nbc = "success";}, 9000);
 

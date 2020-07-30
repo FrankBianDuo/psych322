@@ -18,7 +18,7 @@
           <img :src="require('../../assets/Instructions/Text Only Pages/End Instructions.png')" style="width: 90%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"/>
       </b-container>
         <b-button @click="$bvModal.hide('modal-center-EndInstr')" v-b-modal.modal-center-KeyHands variant="outline-primary" size="lg">Back</b-button>
-        <b-button style="float: right;" @click="$bvModal.hide('modal-center-EndInstr')" variant="outline-primary" size="lg" v-b-modal.modal-center-instruction73>Next</b-button>
+        <b-button style="float: right;" @click="$bvModal.hide('modal-center-EndInstr')" variant="success" size="lg" v-b-modal.modal-center-instruction73>Next</b-button>
     </b-modal>
 </template>
 

@@ -91,7 +91,6 @@
             },
             animate() {
                 let parent = this
-                //this.$bvModal.hide('modal-center-WantMoreDots')
                 setTimeout(() => {parent.opacity_2 = "0%"}, 2000); 
                 setTimeout(() => {parent.opacity_1 = "100%"}, 3500); 
 

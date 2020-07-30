@@ -15,18 +15,17 @@
       :hide-header-close="true"
     >
       <b-container class="align-bottom" :style="this.windowsize"  >
-          <img :src="require('../../assets/Instructions/Text Only Pages/Consent.png')" style="width: 90%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"/>
+          <img :src="require('../../assets/Instructions/Text Only Pages/Consent SubPool.png')" style="width: 100%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"/>
 
-            <!-- This is where I'm trying to display the participant ID but I can't figure it out. -->
             <div>
                 <h1>
-                    {{pID}}
+                    {{"Participant ID: " + pID}}
                 </h1>
             </div>
 
       </b-container>
         <b-button @click="$bvModal.hide('modal-center-Consent')" v-b-modal.modal-center-BotStopper variant="outline-primary" size="lg">NO I REFUSE TO PARTICIPATE</b-button>
-        <b-button style="float: right;" @click="$bvModal.hide('modal-center-Consent')" variant="outline-primary" size="lg" v-b-modal.modal-center-ExperInfo>YES I CONSENT TO PARTICIPATE</b-button>
+        <b-button style="float: right;" @click="$bvModal.hide('modal-center-Consent')" variant="success" size="lg" v-b-modal.modal-center-ExperInfo>YES I CONSENT TO PARTICIPATE</b-button>
     </b-modal>
 </template>
 

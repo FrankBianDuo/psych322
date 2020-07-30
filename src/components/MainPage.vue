@@ -846,7 +846,7 @@ export default {
       for( let i=0; i < 3; i++ ) {
 				text += chars.charAt(Math.floor(Math.random() * chars.length))
       }
-      return String(moment(String(new Date())).format('YYYYMMDDhhmm')) + text
+      return String(moment(String(new Date())).format('YYYYMMDDhhmmss')) + text
     },
     fetchPresignedUrl() {
       let sending_url = this.aws_presigned_lambda + this.aws_bucket_name + "&ObjectName=" + this.aws_object_name
@@ -1406,7 +1406,7 @@ export default {
 // HowChoice6
 // FlowKnow1
 // FlowKnow2
-// TF118
+// TF110
 // instruction20
 // instruction21
 // instruction22

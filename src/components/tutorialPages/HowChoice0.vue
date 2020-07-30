@@ -63,6 +63,7 @@
         data() {
             return {
                 page_num: "13",
+                skey: false,
                 block_listeners: true,
                 nbc: "outline-primary",
                 sbc: "outline-secondary",
@@ -137,6 +138,12 @@
                     // Spacebar 3
                     parent.keyflow4 = false
                     parent.animate4();
+                } else if (event.keyCode == 192) {
+                    // Enable Secret Key
+                    parent.skey = true
+                } else if (parent.skey == true && event.keyCode == 49) {
+                    // Secret Key
+                    parent.finish = false
                 } 
             } 
             });
@@ -216,6 +223,7 @@
                 this.keyflow3 = false
                 this.keyflow4 = false
                 this.keyflow5 = false
+                this.skey = false
                 this.mutex = false
                 this.finish = false
                 this.hold = true

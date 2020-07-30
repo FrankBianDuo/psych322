@@ -60,7 +60,7 @@
             </div>
               
             <div>
-                <b-button :variant="sbc" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_0, transition: 'opacity 0.5s'}" >Press space bar.</b-button>
+                <b-button :variant="sbc" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_0, transition: 'opacity 0.5s'}" >Press {{press}}.</b-button>
             </div>
               
       </b-container>
@@ -78,9 +78,11 @@
         data() {
             return {
                 page_num: "13",
+                skey: false,
                 block_listeners: true,
                 nbc: "outline-primary",
                 sbc: "outline-secondary",
+                press: "space bar",
                 opacity_1: '100%',
                 opacity_2: '0%',
                 opacity_3: '100%',
@@ -139,6 +141,12 @@
                 } else if (parent.keyflow2 == true && event.keyCode == 90) {
                     // Predict Z
                     parent.animateZ()
+                } else if (event.keyCode == 192) {
+                    // Enable Secret Key
+                    parent.skey = true
+                } else if (parent.skey == true && event.keyCode == 49) {
+                    // Secret Key
+                    parent.finish = false
                 } 
             } 
             });
@@ -211,8 +219,10 @@
                 this.opacity_30 = "0%"
                 this.nbc = "outline-primary"
                 this.sbc = "outline-secondary"
+                this.press = "space bar"
                 this.keyflow1 = false
                 this.keyflow2 = false
+                this.skey = false
                 this.mutex = false
                 this.finish = false
                 this.hold = true
@@ -265,10 +275,12 @@
                 setTimeout(() => {parent.opacity_6 = "100%"}, 3000);
                 setTimeout(() => {parent.opacity_8 = "100%"}, 3000);
                 setTimeout(() => {parent.opacity_10 = "100%"}, 3000);
-                setTimeout(() => {parent.opacity_11 = "100%"}, 3400);
 
-                // Enable predictions
-                setTimeout(() => {this.keyflow2 = true}, 6500);
+                // Press A or Z. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow2 = true; this.press = "A or Z"; parent.opacity_0 = "100%"; parent.opacity_11 = "100%"; }, 6500);
+                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_11 = "0%"; }, 7000);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_11 = "100%"; }, 7500);
 
                 // Text swap
                 setTimeout(() => {parent.opacity_26 = "0%"}, 0);
@@ -276,6 +288,11 @@
             },
             animateA() {
                 let parent = this 
+
+                // Kill key reminder 
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_11 = "0%"; }, 0);
+
                 // Prediction Feedback Up 
                 setTimeout(() => {parent.opacity_21 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
@@ -287,9 +304,9 @@
                 setTimeout(() => {parent.opacity_29 = "100%"; }, 1800);
 
                 // This changes the button to green!
-                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 3000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 3500);
-                setTimeout(() => {parent.nbc = "success";}, 4000);
+                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 4000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 4500);
+                setTimeout(() => {parent.nbc = "success";}, 5000);
                 setTimeout(() => {parent.nbc = "outline-primary";}, 8500);
                 setTimeout(() => {parent.nbc = "success";}, 9000);
 
@@ -298,6 +315,11 @@
             },
             animateZ() {
                 let parent = this 
+
+                // Kill key reminder 
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_11 = "0%"; }, 0);
+
                 // Prediction Feedback Down 
                 setTimeout(() => {parent.opacity_21 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
@@ -309,9 +331,9 @@
                 setTimeout(() => {parent.opacity_30 = "100%"; }, 1800);
 
                 // This changes the button to green!
-                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 3000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 3500);
-                setTimeout(() => {parent.nbc = "success";}, 4000);
+                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 4000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 4500);
+                setTimeout(() => {parent.nbc = "success";}, 5000);
                 setTimeout(() => {parent.nbc = "outline-primary";}, 8500);
                 setTimeout(() => {parent.nbc = "success";}, 9000);
 

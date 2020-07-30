@@ -70,7 +70,7 @@
             </div>
               
             <div>
-                <b-button :variant="sbc" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_0, transition: 'opacity 0.5s'}" >Press space bar.</b-button>
+                <b-button :variant="sbc" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_0, transition: 'opacity 0.5s'}" >Press {{press}}.</b-button>
             </div>
               
       </b-container>
@@ -88,9 +88,11 @@
         data() {
             return {
                 page_num: "13",
+                skey: false,
                 block_listeners: true,
                 nbc: "outline-primary",
                 sbc: "outline-secondary",
+                press: "space bar",
                 keyflow1: false,
                 keyflow2: false,
                 opacity_1: '100%',
@@ -155,6 +157,12 @@
                 } else if (parent.keyflow1 == false && parent.keyflow2 == true && event.keyCode == 90) {
                     // Predict Z
                     parent.animateZ()
+                } else if (event.keyCode == 192) {
+                    // Enable Secret Key
+                    parent.skey = true
+                } else if (parent.skey == true && event.keyCode == 49) {
+                    // Secret Key
+                    parent.finish = false
                 } 
             } 
             });
@@ -233,8 +241,10 @@
                 this.opacity_36 = "0%"
                 this.nbc = "outline-primary"
                 this.sbc = "outline-secondary"
+                this.press = "space bar"
                 this.keyflow1 = false
                 this.keyflow2 = false
+                this.skey = false
                 this.mutex = false
                 this.finish = false
                 this.hold = true
@@ -253,12 +263,6 @@
             animate1() {
                 let parent = this 
 
-                // Flash AZ. 
-                setTimeout(() => {parent.opacity_11 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow2 = true; parent.opacity_11 = "200%"; }, 5500);
-                setTimeout(() => {parent.opacity_11 = "0%"; }, 6000);
-                setTimeout(() => {parent.opacity_11 = "200%"; }, 6500);
-
                 // Meeting 1 Flashing Prior Selections 
                 setTimeout(() => {parent.opacity_0 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_18 = "100%"}, 0); 
@@ -276,9 +280,19 @@
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
+
+                // Press A or Z. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow2 = true; this.press = "A or Z"; parent.opacity_0 = "100%"; parent.opacity_11 = "100%"; }, 6000);
+                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_11 = "0%"; }, 6500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_11 = "100%"; }, 7000);
             },
             animateA() {
                 let parent = this 
+
+                // Kill key reminder 
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_11 = "0%"; }, 0);
 
                 // Text swap
                 setTimeout(() => {parent.opacity_35 = "0%"}, 0);
@@ -302,6 +316,10 @@
             },
             animateZ() {
                 let parent = this 
+
+                // Kill key reminder 
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_11 = "0%"; }, 0);
 
                 // Text swap
                 setTimeout(() => {parent.opacity_35 = "0%"}, 0);

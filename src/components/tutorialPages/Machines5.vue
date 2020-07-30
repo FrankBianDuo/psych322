@@ -77,7 +77,7 @@
             </div>
               
             <div>
-                <b-button :variant="sbc" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_0, transition: 'opacity 0.5s'}" >Press space bar.</b-button>
+                <b-button :variant="sbc" size='lg' v-bind:style="{ height: 'auto', marginTop: '52.75%', left: '50%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_0, transition: 'opacity 0.5s'}" >Press {{press}}.</b-button>
             </div>
               
       </b-container>
@@ -95,11 +95,13 @@
         data() {
             return {
                 page_num: "13",
+                skey: false,
                 block_listeners: true,
                 keyflow1: false,
                 keyflow2: false,
                 nbc: "outline-primary",
                 sbc: "outline-secondary",
+                press: "space bar",
                 opacity_1: '100%',
                 opacity_2: '100%',
                 opacity_3: '100%',
@@ -168,6 +170,12 @@
                 } else if (parent.keyflow2 == true && event.keyCode == 75) {
                     // Keep Control
                     parent.animateK()
+                } else if (event.keyCode == 192) {
+                    // Enable Secret Key
+                    parent.skey = true
+                } else if (parent.skey == true && event.keyCode == 49) {
+                    // Secret Key
+                    parent.finish = false
                 } 
             } 
             });
@@ -253,8 +261,10 @@
                 this.opacity_43 = "0%"
                 this.nbc = "outline-primary"
                 this.sbc = "outline-secondary"
+                this.press = "space bar"
                 this.keyflow1 = false
                 this.keyflow2 = false
+                this.skey = false
                 this.mutex = false
                 this.finish = false
                 this.hold = true
@@ -264,9 +274,9 @@
 
                 // Press Space Bar. 
                 setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow1 = true; parent.opacity_0 = "100%"; }, 2000);
-                setTimeout(() => {parent.opacity_0 = "0%"; }, 2500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 3000);
+                setTimeout(() => {this.keyflow1 = true; parent.opacity_0 = "100%"; }, 4000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 4500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 5000);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },
@@ -285,14 +295,23 @@
 
                 setTimeout(() => {parent.opacity_12 = "100%";}, 3000);
 
-                setTimeout(() => {this.keyflow2 = true}, 2900);
+                // Press J or K. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow2 = true; this.press = "J or K"; parent.opacity_0 = "100%"; }, 3000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 3500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 4000);
             },
             animateJ() {
                 let parent = this 
+
+                // Kill key reminder 
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_12 = "0%"; }, 0);
+
                 setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_40 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_24 = "0%"; parent.opacity_43 = "0%";}, 0);
                 setTimeout(() => {parent.opacity_12 = "0%";}, 0);
-                setTimeout(() => {parent.opacity_37 = "0%";}, 0);
+                setTimeout(() => {parent.opacity_36 = "0%";}, 0);
                 setTimeout(() => {parent.opacity_15 = "100%";}, 0); 
                 setTimeout(() => {parent.opacity_16 = "0%";}, 0);
                 setTimeout(() => {parent.opacity_21 = "0%"}, 0);
@@ -314,6 +333,11 @@
 
             animateK() {
                 let parent = this 
+
+                // Kill key reminder 
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_12 = "0%"; }, 0);
+
                 setTimeout(() => {parent.opacity_23 = "0%"; parent.opacity_40 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_24 = "0%"; parent.opacity_42 = "0%";}, 0);
                 setTimeout(() => {parent.opacity_12 = "0%";}, 0);
@@ -322,7 +346,7 @@
                 setTimeout(() => {parent.opacity_15 = "0%";}, 0);
                 setTimeout(() => {parent.opacity_21 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_21 = "100%"}, 500);
-                setTimeout(() => {parent.opacity_37 = "100%";}, 1500);
+                setTimeout(() => {parent.opacity_36 = "100%";}, 1500);
 
                 setTimeout(() => {parent.opacity_43 = "100%";}, 1800);
 
