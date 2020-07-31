@@ -62,7 +62,7 @@
                <img :src="require('../../assets/Instructions/Machines/Bodies/machine07b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.8s' }"/>
 
                <!-- Extra text -->
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext06f.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_35, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext06f.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '-2%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_35, transition: 'opacity 0.4s' }"/>
                <!-- <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext06g.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_36, transition: 'opacity 0.4s' }"/> -->
 
                <!-- Counter -->

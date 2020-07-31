@@ -43,6 +43,8 @@
                <img :src="require('../../assets/Instructions/FlowKnow/yougot3.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_33, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/yougot4.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_34, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/yougot5.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_35, transition: 'opacity 0.2s' }"/>
+
+               <img :src="require('../../assets/Instructions/FlowKnow/GFbarr1.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_21, transition: 'opacity 0.5s' }"/>
                
                
             </div>
@@ -90,6 +92,9 @@
                 opacity_17: '0%',
                 opacity_18: '0%',
                 opacity_19: '0%',
+
+                opacity_21: '0%',
+
                 opacity_31: '0%',
                 opacity_32: '0%',
                 opacity_33: '0%',
@@ -206,6 +211,7 @@
                 this.opacity_17 = "0%"
                 this.opacity_18 = "0%"
                 this.opacity_19 = "0%"
+                this.opacity_21 = "0%"
                 this.opacity_31 = "0%"
                 this.opacity_32 = "0%"
                 this.opacity_33 = "0%"
@@ -239,12 +245,14 @@
                 let parent = this 
 
                 // Text swap
-                setTimeout(() => {parent.opacity_13 = "0%"; parent.opacity_14 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_13 = "0%"; parent.opacity_14 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_14 = "100%"}, 3000);
 
                 // Meeting 2 appears.
                 setTimeout(() => {parent.opacity_11 = "100%"}, 500);
                 setTimeout(() => {parent.opacity_2 = "100%"}, 1200);
                 setTimeout(() => {parent.opacity_3 = "100%"}, 1200);
+                setTimeout(() => {parent.opacity_21 = "100%"}, 1200);
                 
                 // Flashes AZ to grap attention 
                 setTimeout(() => {parent.opacity_5 = "100%"}, 1600);
@@ -268,7 +276,7 @@
                 // Prediction Feedback Up 
                 setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_8 = "0%"; parent.opacity_0 = "0%"; parent.opacity_7 = "100%"; parent.opacity_14 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_6 = "100%"; parent.opacity_17 = "100%"}, 1000);
-                setTimeout(() => {parent.opacity_15 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_15 = "100%"}, 2000);
 
                 // Flashing safe dots
                 setTimeout(() => {parent.opacity_18 = "100%"}, 1200);
@@ -281,9 +289,9 @@
 
                 // Press J or K. 
                 setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow3 = true; this.press = "J or K"; parent.opacity_6 = "100%"; parent.opacity_0 = "100%"; }, 4000);
-                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_6 = "0%"}, 4500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_6 = "100%"}, 5000);
+                setTimeout(() => {this.keyflow3 = true; this.press = "J or K"; parent.opacity_6 = "100%"; parent.opacity_0 = "100%"; }, 6000);
+                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_6 = "0%"}, 6500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_6 = "100%"}, 7000);
             },
             animateZ() {
 
@@ -294,7 +302,7 @@
                 // Prediction Feedback Down 
                 setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_7 = "0%"; parent.opacity_0 = "0%"; parent.opacity_8 = "100%"; parent.opacity_14 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_6 = "100%"; parent.opacity_17 = "100%"}, 1000);
-                setTimeout(() => {parent.opacity_15 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_15 = "100%"}, 2000);
 
                 // Flashing safe dots
                 setTimeout(() => {parent.opacity_18 = "100%"}, 1200);
@@ -307,9 +315,9 @@
 
                 // Press J or K. 
                 setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow3 = true; this.press = "J or K"; parent.opacity_6 = "100%"; parent.opacity_0 = "100%"; }, 4000);
-                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_6 = "0%"}, 4500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_6 = "100%"}, 5000);
+                setTimeout(() => {this.keyflow3 = true; this.press = "J or K"; parent.opacity_6 = "100%"; parent.opacity_0 = "100%"; }, 6000);
+                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_6 = "0%"}, 6500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_6 = "100%"}, 7000);
             },
             animateJ() {
                 let parent = this 
@@ -319,19 +327,21 @@
 
                 // Control Feedback Give
                 setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_19 = "0%"; parent.opacity_9 = "100%"}, 0);
-                setTimeout(() => {parent.opacity_19 = "100%"}, 1000);
+                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_7 = "0%"; parent.opacity_8 = "0%"; parent.opacity_9 = "0%"; parent.opacity_10 = "0%"; parent.opacity_17 = "0%"}, 2000);
+                setTimeout(() => {parent.opacity_21 = "0%"}, 3500);
+                setTimeout(() => {parent.opacity_19 = "100%"}, 5000);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // This changes the button to green!
-                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 3000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 3500);
-                setTimeout(() => {parent.nbc = "success";}, 4000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 8500);
-                setTimeout(() => {parent.nbc = "success";}, 9000);
+                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 7000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 7500);
+                setTimeout(() => {parent.nbc = "success";}, 8000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 11500);
+                setTimeout(() => {parent.nbc = "success";}, 12000);
 
                 // You Got x dots
-                setTimeout(() => {parent.opacity_35 = "100%"}, 1500);
+                setTimeout(() => {parent.opacity_35 = "100%"}, 5500);
                 setTimeout(() => {parent.opacity_31 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_32 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_33 = "0%"}, 0);
@@ -347,19 +357,21 @@
 
                 // Control Feedback Give
                 setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_19 = "0%"; parent.opacity_10 = "100%"}, 0);
-                setTimeout(() => {parent.opacity_19 = "100%"}, 1000);
+                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_7 = "0%"; parent.opacity_8 = "0%"; parent.opacity_9 = "0%"; parent.opacity_10 = "0%"; parent.opacity_17 = "0%"}, 2000);
+                setTimeout(() => {parent.opacity_21 = "0%"}, 3500);
+                setTimeout(() => {parent.opacity_19 = "100%"}, 5000);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // This changes the button to green!
-                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 3000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 3500);
-                setTimeout(() => {parent.nbc = "success";}, 4000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 8500);
-                setTimeout(() => {parent.nbc = "success";}, 9000);
+                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 7000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 7500);
+                setTimeout(() => {parent.nbc = "success";}, 8000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 11500);
+                setTimeout(() => {parent.nbc = "success";}, 12000);
 
                 // You Got x dots
-                setTimeout(() => {parent.opacity_32 = "100%"}, 1500);
+                setTimeout(() => {parent.opacity_32 = "100%"}, 800);
                 setTimeout(() => {parent.opacity_31 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_32 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_33 = "0%"}, 0);

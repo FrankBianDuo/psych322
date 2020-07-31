@@ -59,8 +59,8 @@
                <img :src="require('../../assets/Instructions/Machines/Bodies/machine12b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.8s' }"/>
 
                <img :src="require('../../assets/Instructions/Machines/Machine Text/point2.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_39, transition: 'opacity 0.4s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/point4.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_40, transition: 'opacity 0.4s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/point3.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_41, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/point3.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_40, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/point4.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_41, transition: 'opacity 0.4s' }"/>
             </div>
               
             <div>
@@ -316,7 +316,7 @@
                 setTimeout(() => {parent.opacity_21 = "100%"; }, 1100);
                 setTimeout(() => {parent.opacity_39 = "0%"; parent.opacity_40 = "0%"; parent.opacity_41 = "0%"; parent.opacity_42 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_39 = "100%"; }, 1300);
-                setTimeout(() => {parent.opacity_41 = "100%"; }, 200);
+                setTimeout(() => {parent.opacity_40 = "100%"; }, 200);
 
                 // This provides feedback about that prediction.
                 setTimeout(() => {parent.opacity_27 = "0%"; parent.opacity_30 = "0%"}, 0);

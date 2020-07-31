@@ -63,7 +63,11 @@
 
                <!-- Extra text -->
                <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext06d.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_35, transition: 'opacity 1.0s' }"/>
-               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext06e.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_36, transition: 'opacity 1.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext06e.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '-2%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_36, transition: 'opacity 1.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext06g.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_41, transition: 'opacity 1.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext06a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_42, transition: 'opacity 1.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext06b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_43, transition: 'opacity 1.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext06c.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_44, transition: 'opacity 1.0s' }"/>
 
                <!-- Counter -->
                <img :src="require('../../assets/Instructions/Machines/Machine Text/count03.01.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_34, transition: 'opacity 0.2s' }"/>
@@ -95,6 +99,8 @@
                 press: "space bar",
                 keyflow1: false,
                 keyflow2: false,
+                keyflow3: false,
+                keyflow4: false,
                 opacity_1: '100%',
                 opacity_2: '100%',
                 opacity_3: '100%',
@@ -131,6 +137,10 @@
                 opacity_34: '0%',
                 opacity_35: '0%',
                 opacity_36: '0%',
+                opacity_41: '100%',
+                opacity_42: '0%',
+                opacity_43: '0%',
+                opacity_44: '0%',
 
                 mutex: false,
                 finish: true,
@@ -146,17 +156,26 @@
                 if (parent.block_listeners == true) {
                     return;
                 } 
-                if (parent.keyflow1 == true && parent.keyflow2 == false && event.keyCode == 32) {
+                if (parent.keyflow1 == true && parent.keyflow2 == false && parent.keyflow3 == false && parent.keyflow4 == false && event.keyCode == 32) {
                     // Spacebar 1
                     parent.keyflow1 = false
-                    // parent.keyflow2 = true
                     parent.animate1()
-                } else if (parent.keyflow1 == false && parent.keyflow2 == true && event.keyCode == 65) {
+                } else if (parent.keyflow1 == false && parent.keyflow2 == true && parent.keyflow3 == false && parent.keyflow4 == false && event.keyCode == 65) {
                     // Predict A
+                    parent.keyflow2 = false
                     parent.animateA()
-                } else if (parent.keyflow1 == false && parent.keyflow2 == true && event.keyCode == 90) {
+                } else if (parent.keyflow1 == false && parent.keyflow2 == true && parent.keyflow3 == false && parent.keyflow4 == false && event.keyCode == 90) {
                     // Predict Z
+                    parent.keyflow2 = false
                     parent.animateZ()
+                } else if (parent.keyflow1 == false && parent.keyflow2 == false && parent.keyflow3 == true && parent.keyflow4 == false && event.keyCode == 32) {
+                    // Spacebar 2
+                    parent.keyflow3 = false
+                    parent.animate2()
+                } else if (parent.keyflow1 == false && parent.keyflow2 == false && parent.keyflow3 == false && parent.keyflow4 == true && event.keyCode == 32) {
+                    // Spacebar 3
+                    parent.keyflow4 = false
+                    parent.animate3()
                 } else if (event.keyCode == 192) {
                     // Enable Secret Key
                     parent.skey = true
@@ -239,11 +258,17 @@
                 this.opacity_34 = "0%"
                 this.opacity_35 = "0%"
                 this.opacity_36 = "0%"
+                this.opacity_41 = "100%"
+                this.opacity_42 = "0%"
+                this.opacity_43 = "0%"
+                this.opacity_44 = "0%"
                 this.nbc = "outline-primary"
                 this.sbc = "outline-secondary"
                 this.press = "space bar"
                 this.keyflow1 = false
                 this.keyflow2 = false
+                this.keyflow3 = false
+                this.keyflow4 = false
                 this.skey = false
                 this.mutex = false
                 this.finish = false
@@ -253,7 +278,7 @@
                 let parent = this 
                 // Press Space Bar. 
                 setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow1 = true; parent.opacity_0 = "100%"; }, 500);
+                setTimeout(() => {this.keyflow1 = true; this.press = "Space Bar"; parent.opacity_0 = "100%"; }, 500);
                 setTimeout(() => {parent.opacity_0 = "0%"; }, 1000);
                 setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 1500);
 
@@ -276,16 +301,18 @@
 
                 setTimeout(() => {parent.opacity_34 = "100%"}, 1000);
 
-                setTimeout(() => {parent.opacity_35 = "100%"}, 1200);
+                // Text swap
+                setTimeout(() => {parent.opacity_41 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_42 = "100%"}, 1200);
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // Press A or Z. 
                 setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow2 = true; this.press = "A or Z"; parent.opacity_0 = "100%"; parent.opacity_11 = "100%"; }, 6000);
-                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_11 = "0%"; }, 6500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_11 = "100%"; }, 7000);
+                setTimeout(() => {this.keyflow2 = true; this.press = "A or Z"; parent.opacity_0 = "100%"; parent.opacity_11 = "100%"; }, 3000);
+                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_11 = "0%"; }, 3500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_11 = "100%"; }, 4000);
             },
             animateA() {
                 let parent = this 
@@ -295,8 +322,8 @@
                 setTimeout(() => {parent.opacity_11 = "0%"; }, 0);
 
                 // Text swap
-                setTimeout(() => {parent.opacity_35 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_36 = "100%"}, 800);
+                setTimeout(() => {parent.opacity_41 = "0%"; parent.opacity_42 = "0%"; parent.opacity_44 = "0%";}, 0);
+                setTimeout(() => {parent.opacity_43 = "100%"}, 800);
 
                 // Prediction Feedback Up 
                 setTimeout(() => {parent.opacity_21 = "0%"; }, 0);
@@ -304,12 +331,11 @@
                 setTimeout(() => {parent.opacity_14 = "0%"; parent.opacity_13 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_21 = "100%"; }, 1100);
 
-                // This changes the button to green!
-                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 3000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 3500);
-                setTimeout(() => {parent.nbc = "success";}, 4000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 8500);
-                setTimeout(() => {parent.nbc = "success";}, 9000);
+                // Press Space Bar. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow3 = true; this.press = "Space Bar"; parent.opacity_0 = "100%"; }, 2500);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 3000);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 3500);
 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
@@ -322,8 +348,8 @@
                 setTimeout(() => {parent.opacity_11 = "0%"; }, 0);
 
                 // Text swap
-                setTimeout(() => {parent.opacity_35 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_36 = "100%"}, 800);
+                setTimeout(() => {parent.opacity_41 = "0%"; parent.opacity_42 = "0%"; parent.opacity_43 = "0%";}, 0);
+                setTimeout(() => {parent.opacity_44 = "100%"}, 800);
 
                 // Prediction Feedback Down 
                 setTimeout(() => {parent.opacity_21 = "0%"; }, 0);
@@ -331,13 +357,42 @@
                 setTimeout(() => {parent.opacity_13 = "0%"; parent.opacity_14 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_21 = "100%"; }, 1100);
 
+                // Press Space Bar. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow3 = true; this.press = "Space Bar"; parent.opacity_0 = "100%"; }, 2500);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 3000);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 3500);
+
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
+            },
+            animate2() {
+                let parent = this 
+                // Press Space Bar. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow4 = true; this.press = "Space Bar"; parent.opacity_0 = "100%"; }, 4500);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 5000);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 5500);
+
+                // Text swap
+                setTimeout(() => {parent.opacity_41 = "0%"; parent.opacity_42 = "0%"; parent.opacity_43 = "0%"; parent.opacity_44 = "0%"; parent.opacity_36 = "0%";}, 0);
+                setTimeout(() => {parent.opacity_35 = "100%"}, 800);
+
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
+            },
+            animate3() {
+                let parent = this 
+                // Text swap
+                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_41 = "0%"; parent.opacity_42 = "0%"; parent.opacity_43 = "0%"; parent.opacity_44 = "0%"; parent.opacity_35 = "0%";}, 0);
+                setTimeout(() => {parent.opacity_36 = "100%"}, 800);
+
                 // This changes the button to green!
                 setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 3000);
                 setTimeout(() => {parent.nbc = "outline-primary";}, 3500);
                 setTimeout(() => {parent.nbc = "success";}, 4000);
                 setTimeout(() => {parent.nbc = "outline-primary";}, 8500);
                 setTimeout(() => {parent.nbc = "success";}, 9000);
-
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
             },

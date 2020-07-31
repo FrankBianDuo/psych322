@@ -29,10 +29,11 @@
                <!-- opacity 11-15 -->
                <img :src="require('../../assets/Instructions/FlowKnow/FKchoice1.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.2s' }"/>
                <img :src="require('../../assets/Instructions/FlowKnow/GF01c.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/fk text 03a.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/fk text 04a.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/fk text 05a.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_15, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/FlowKnow/fk text 06a.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_26, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/fk text 04a.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/fk text 05a.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/fk text 06a.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_15, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/fk text 07a.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_26, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/FlowKnow/fk text 08a.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '-1%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_27, transition: 'opacity 0.2s' }"/>
                
                <!-- opacity 17-21 -->
                <img :src="require('../../assets/Instructions/FlowKnow/GFd3b.png')" v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_17, transition: 'opacity 0.0s' }"/>
@@ -103,6 +104,7 @@
                 opacity_24: '0%',
                 opacity_25: '0%',
                 opacity_26: '0%',
+                opacity_27: '0%',
                 opacity_31: '0%',
                 opacity_32: '0%',
                 opacity_33: '0%',
@@ -111,6 +113,10 @@
                 keyflow1: false,
                 keyflow2: false,
                 keyflow3: false,
+                keyflow4: false,
+                keyflow5: false,
+                keyflow6: false,
+                keyflow6: false,
 
                 mutex: false,
                 finish: true,
@@ -126,27 +132,43 @@
                 if (parent.block_listeners == true) {
                     return;
                 } 
-                if (parent.keyflow1 == true && parent.keyflow2 == false && parent.keyflow3 == false && event.keyCode == 32) {
+                if (parent.keyflow1 == true && event.keyCode == 32) {
                     // Spacebar 1
                     parent.animate1()
                     parent.keyflow1 = false
-                } else if (parent.keyflow1 == false && parent.keyflow2 == true && parent.keyflow3 == false && event.keyCode == 65) {
+                } else if (parent.keyflow2 == true && event.keyCode == 65) {
                     // Predict A
                     parent.animateA()
                     parent.keyflow2 = false
-                } else if (parent.keyflow1 == false && parent.keyflow2 == true && parent.keyflow3 == false && event.keyCode == 90) {
+                } else if (parent.keyflow2 == true && event.keyCode == 90) {
                     // Predict Z
                     parent.animateZ()
                     parent.keyflow2 = false
-                } else if (parent.keyflow1 == false && parent.keyflow2 == false && parent.keyflow3 == true && event.keyCode == 74) {
+                } else if (parent.keyflow3 == true && event.keyCode == 74) {
                     // Give Control
                     parent.animateJ()
                     parent.keyflow3 = false
-                } else if (parent.keyflow1 == false && parent.keyflow2 == false && parent.keyflow3 == true && event.keyCode == 75) {
+                } else if (parent.keyflow3 == true && event.keyCode == 75) {
                     // Keep Control
                     parent.animateK()
                     parent.keyflow3 = false
                     // parent.keyflow1 = true
+                } else if (parent.keyflow4 == true && event.keyCode == 32) {
+                    // Space Bar 2
+                    parent.animate2()
+                    parent.keyflow4 = false
+                } else if (parent.keyflow5 == true && event.keyCode == 32) {
+                    // Space Bar 3
+                    parent.animate3()
+                    parent.keyflow5 = false
+                } else if (parent.keyflow6 == true && event.keyCode == 32) {
+                    // Space Bar 4
+                    parent.animate4()
+                    parent.keyflow6 = false
+                } else if (parent.keyflow7 == true && event.keyCode == 32) {
+                    // Space Bar 5
+                    parent.animate5()
+                    parent.keyflow7 = false
                 } else if (event.keyCode == 192) {
                     // Enable Secret Key
                     parent.skey = true
@@ -220,6 +242,7 @@
                 this.opacity_24 = "0%"
                 this.opacity_25 = "0%"
                 this.opacity_26 = "0%"
+                this.opacity_27 = "0%"
                 this.opacity_31 = "0%"
                 this.opacity_32 = "0%"
                 this.opacity_33 = "0%"
@@ -232,6 +255,10 @@
                 this.keyflow1 = false
                 this.keyflow2 = false
                 this.keyflow3 = false
+                this.keyflow4 = false
+                this.keyflow5 = false
+                this.keyflow6 = false
+                this.keyflow7 = false
                 this.skey = false
                 this.locked = true
                 this.mutex = false
@@ -239,6 +266,11 @@
 
                 // Experimental hold variable to prevent rapid page hopping
                 this.hold = true
+            },
+            animatefantastic() {
+                let parent = this 
+ 
+                setTimeout(() => {parent.opacity_21 = "100%"}, 0);
             },
             animate0() {
                 let parent = this 
@@ -253,7 +285,7 @@
                 let parent = this 
 
                 // Text swap
-                setTimeout(() => {parent.opacity_13 = "0%"; parent.opacity_14 = "100%"}, 5000);
+                setTimeout(() => {parent.opacity_13 = "0%";}, 0);
 
                 // Meeting 2 appears.
                 setTimeout(() => {parent.opacity_11 = "100%"}, 0);
@@ -276,20 +308,20 @@
                 setTimeout(() => {parent.opacity_5 = "100%"}, 2400);
 
                 // Barrier Flashes 
-                setTimeout(() => {parent.opacity_21 = "100%"}, 3400);
-                setTimeout(() => {parent.opacity_21 = "0%"}, 3500);
-                setTimeout(() => {parent.opacity_21 = "100%"}, 3600);
-                setTimeout(() => {parent.opacity_21 = "0%"}, 3700);
-                setTimeout(() => {parent.opacity_21 = "100%"}, 3800);
-                setTimeout(() => {parent.opacity_21 = "0%"}, 3900);
-                setTimeout(() => {parent.opacity_21 = "100%"}, 4000);
-                setTimeout(() => {parent.opacity_21 = "0%"}, 4100);
+                // setTimeout(() => {parent.opacity_21 = "100%"}, 3400);
+                // setTimeout(() => {parent.opacity_21 = "0%"}, 3500);
+                // setTimeout(() => {parent.opacity_21 = "100%"}, 3600);
+                // setTimeout(() => {parent.opacity_21 = "0%"}, 3700);
+                // setTimeout(() => {parent.opacity_21 = "100%"}, 3800);
+                // setTimeout(() => {parent.opacity_21 = "0%"}, 3900);
+                // setTimeout(() => {parent.opacity_21 = "100%"}, 4000);
+                // setTimeout(() => {parent.opacity_21 = "0%"}, 4100);
 
                 // Press A or Z. 
                 setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow2 = true; this.press = "A or Z"; parent.opacity_0 = "100%"; parent.opacity_5 = "100%"; }, 6000);
-                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_5 = "0%"; }, 6500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_5 = "100%"; }, 7000);
+                setTimeout(() => {this.keyflow2 = true; this.press = "A or Z"; parent.opacity_0 = "100%"; parent.opacity_5 = "100%"; }, 2500);
+                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_5 = "0%"; }, 3000);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_5 = "100%"; }, 3500);
             },
             animateA() {
                 let parent = this 
@@ -302,20 +334,14 @@
                 setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_8 = "0%"; parent.opacity_0 = "0%"; parent.opacity_7 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_6 = "100%"; parent.opacity_17 = "100%"}, 1000);
 
-                // Swap text
-                setTimeout(() => {parent.opacity_13 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_14 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_15 = "100%"}, 4000);
-                setTimeout(() => {parent.opacity_26 = "0%"}, 0);
-
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // Press J or K. 
                 setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow3 = true; this.press = "J or K"; parent.opacity_6 = "100%"; parent.opacity_0 = "100%"; }, 4000);
-                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_6 = "0%"}, 4500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_6 = "100%"}, 5000);
+                setTimeout(() => {this.keyflow3 = true; this.press = "J or K"; parent.opacity_6 = "100%"; parent.opacity_0 = "100%"; }, 1000);
+                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_6 = "0%"}, 1500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_6 = "100%"}, 2000);
             },
             animateZ() {
                 let parent = this 
@@ -327,20 +353,14 @@
                 setTimeout(() => {parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; parent.opacity_7 = "0%"; parent.opacity_0 = "0%"; parent.opacity_8 = "100%"}, 0);
                 setTimeout(() => {parent.opacity_6 = "100%"; parent.opacity_17 = "100%"}, 1000);
 
-                // Swap text
-                setTimeout(() => {parent.opacity_13 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_14 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_15 = "100%"}, 4000);
-                setTimeout(() => {parent.opacity_26 = "0%"}, 0);
-
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // Press J or K. 
                 setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow3 = true; this.press = "J or K"; parent.opacity_6 = "100%"; parent.opacity_0 = "100%"; }, 4000);
-                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_6 = "0%"}, 4500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_6 = "100%"}, 5000);
+                setTimeout(() => {this.keyflow3 = true; this.press = "J or K"; parent.opacity_6 = "100%"; parent.opacity_0 = "100%"; }, 1000);
+                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_6 = "0%"}, 1500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_6 = "100%"}, 2000);
             },
             animateJ() {
                 let parent = this 
@@ -349,7 +369,10 @@
                 setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; }, 0);
 
                 // Control Feedback Give
-                setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_13 = "0%"; parent.opacity_14 = "0%"; parent.opacity_19 = "0%"; parent.opacity_9 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_19 = "0%"; parent.opacity_9 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_7 = "0%"; parent.opacity_8 = "0%"; parent.opacity_9 = "0%"; parent.opacity_10 = "0%"; parent.opacity_17 = "0%"}, 2000);
+                setTimeout(() => {parent.opacity_21 = "0%"}, 3500);
+                setTimeout(() => {parent.opacity_19 = "100%"}, 5000);
            
                 // Control stuff dissapears and then barrier.
                 setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_6 = "0%"; parent.opacity_17 = "0%"; parent.opacity_24 = "0%"}, 1000);
@@ -363,7 +386,8 @@
                 setTimeout(() => {parent.opacity_13 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_14 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_15 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_26 = "100%"}, 7000);
+                setTimeout(() => {parent.opacity_26 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_27 = "0%"}, 0);
 
                 // Kill JK if participant presses keys out of order
                 setTimeout(() => {parent.opacity_6 = "0%"}, 4000);
@@ -371,22 +395,20 @@
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
-                // This changes the button to green!
-                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 10000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 10500);
-                setTimeout(() => {parent.nbc = "success";}, 11000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 14500);
-                setTimeout(() => {parent.nbc = "success";}, 15000);
-
                 // You Got x dots
-                setTimeout(() => {parent.opacity_35 = "100%"}, 4500);
+                setTimeout(() => {parent.opacity_35 = "100%"}, 5500);
                 setTimeout(() => {parent.opacity_31 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_32 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_33 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_34 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_35 = "0%"}, 0);
-            },
 
+                // Press Space Bar. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow4 = true; this.press = "Space Bar"; parent.opacity_0 = "100%"; }, 5000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 5500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 6000);
+            },
             animateK() {
                 let parent = this 
 
@@ -394,7 +416,10 @@
                 setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_5 = "0%"; parent.opacity_6 = "0%"; }, 0);
 
                 // Control Feedback Give
-                setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_13 = "0%"; parent.opacity_14 = "0%"; parent.opacity_19 = "0%"; parent.opacity_10 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_19 = "0%"; parent.opacity_10 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_7 = "0%"; parent.opacity_8 = "0%"; parent.opacity_10 = "0%"; parent.opacity_10 = "0%"; parent.opacity_17 = "0%"}, 2000);
+                setTimeout(() => {parent.opacity_21 = "0%"}, 3500);
+                setTimeout(() => {parent.opacity_19 = "100%"}, 5000);
 
                 // Control stuff dissapears and then barrier.
                 setTimeout(() => {parent.opacity_3 = "0%"; parent.opacity_6 = "0%"; parent.opacity_17 = "0%"; parent.opacity_24 = "0%"}, 1000);
@@ -408,7 +433,8 @@
                 setTimeout(() => {parent.opacity_13 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_14 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_15 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_26 = "100%"}, 7000);
+                setTimeout(() => {parent.opacity_26 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_27 = "0%"}, 0);
 
                 // Kill JK if participant presses keys out of order
                 setTimeout(() => {parent.opacity_6 = "0%"}, 4000);
@@ -416,20 +442,80 @@
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
 
-                // This changes the button to green!
-                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 10000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 10500);
-                setTimeout(() => {parent.nbc = "success";}, 11000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 14500);
-                setTimeout(() => {parent.nbc = "success";}, 15000);
-
                 // You Got x dots
-                setTimeout(() => {parent.opacity_33 = "100%"}, 4500);
+                setTimeout(() => {parent.opacity_33 = "100%"}, 800);
                 setTimeout(() => {parent.opacity_31 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_32 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_33 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_34 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_35 = "0%"}, 0);
+
+                // Press Space Bar. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow4 = true; this.press = "Space Bar"; parent.opacity_0 = "100%"; }, 5000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 5500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 6000);
+            },
+            animate2() {
+                let parent = this 
+                // Swap text
+                setTimeout(() => {parent.opacity_13 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_14 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_15 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_26 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_27 = "0%"}, 0);
+
+                // Press Space Bar. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow5 = true; this.press = "Space Bar"; parent.opacity_0 = "100%"; }, 3000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 3500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 4000);
+            },
+            animate3() {
+                let parent = this 
+                // Swap text
+                setTimeout(() => {parent.opacity_13 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_14 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_15 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_26 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_27 = "0%"}, 0);
+
+                // Press Space Bar. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow6 = true; this.press = "Space Bar"; parent.opacity_0 = "100%"; }, 3000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 3500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 4000);
+            },
+            animate4() {
+                let parent = this 
+                // Swap text
+                setTimeout(() => {parent.opacity_13 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_14 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_15 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_26 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_27 = "0%"}, 0);
+
+                // Press Space Bar. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow7 = true; this.press = "Space Bar"; parent.opacity_0 = "100%"; }, 3000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 3500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 4000);
+            },
+            animate5() {
+                let parent = this 
+                // Swap text
+                setTimeout(() => {parent.opacity_13 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_14 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_15 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_26 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_27 = "100%"}, 0);
+
+                // This changes the button to green!
+                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 3000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 3500);
+                setTimeout(() => {parent.nbc = "success";}, 4000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 10500);
+                setTimeout(() => {parent.nbc = "success";}, 11000);
             },
         },
     }

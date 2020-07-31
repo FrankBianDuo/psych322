@@ -95,9 +95,9 @@
                 setTimeout(() => {parent.opacity_1 = "100%"}, 3500); 
 
                 // This changes the button to green!
-                setTimeout(() => {parent.ButtonColor = "success";}, 6000);
-                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 6500);
-                setTimeout(() => {parent.ButtonColor = "success";}, 7000);
+                setTimeout(() => {parent.ButtonColor = "success";}, 8000);
+                setTimeout(() => {parent.ButtonColor = "outline-primary";}, 8500);
+                setTimeout(() => {parent.ButtonColor = "success";}, 9000);
                 setTimeout(() => {parent.ButtonColor = "outline-primary";}, 11500);
                 setTimeout(() => {parent.ButtonColor = "success";}, 12000);
 
