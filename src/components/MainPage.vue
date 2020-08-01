@@ -782,7 +782,6 @@ export default {
   created: function () {
     let parent = this
     window.addEventListener('keydown', function(event) {
-      let parent = this
       // Prevent the spacebar jerk
       if (event.keyCode == 32) {
         // eslint-disable-next-line no-console
