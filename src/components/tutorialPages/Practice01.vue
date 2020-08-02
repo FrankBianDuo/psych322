@@ -358,9 +358,9 @@
 
                 // Press J or K. 
                 setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow3 = true; this.press = "J or K"; parent.opacity_12 = "100%"; parent.opacity_0 = "100%"; }, 3000);
-                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_12 = "0%"}, 3500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_12 = "100%"}, 4000);
+                setTimeout(() => {this.keyflow3 = true; this.press = "J or K"; parent.opacity_12 = "100%"; parent.opacity_0 = "100%"; }, 1000);
+                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_12 = "0%"}, 1500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_12 = "100%"}, 2000);
             },
             animateZ() {
                 let parent = this 
@@ -376,9 +376,9 @@
 
                 // Press J or K. 
                 setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow3 = true; this.press = "J or K"; parent.opacity_12 = "100%"; parent.opacity_0 = "100%"; }, 3000);
-                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_12 = "0%"}, 3500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_12 = "100%"}, 4000);
+                setTimeout(() => {this.keyflow3 = true; this.press = "J or K"; parent.opacity_12 = "100%"; parent.opacity_0 = "100%"; }, 1000);
+                setTimeout(() => {parent.opacity_0 = "0%"; parent.opacity_12 = "0%"}, 1500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; parent.opacity_12 = "100%"}, 2000);
             },
             animateJ() {
                 let parent = this 

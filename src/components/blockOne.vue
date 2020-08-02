@@ -234,6 +234,7 @@ export default {
       // }
       if (parent.show) {
         // Space
+        // if (event.keyCode == 32 || event.keyCode == 80 && parent.free_space) {
         if (event.keyCode == 32 && parent.free_space) {
           // eslint-disable-next-line no-console
           console.log('Space Listener Event Fired')

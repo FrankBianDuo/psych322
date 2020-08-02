@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-Machines6" 
       size="xl"
-      centered title="Instruction page 7 of 18"
+      centered title="Instruction page 8 of 18"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
       :header-text-variant="headerTextVariant"

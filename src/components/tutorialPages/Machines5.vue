@@ -71,6 +71,7 @@
                <!-- <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext08c.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_41, transition: 'opacity 0.4s' }"/> -->
                <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext09b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_42, transition: 'opacity 0.4s' }"/>
                <img :src="require('../../assets/Instructions/Machines/Machine Text/mtext09c.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_43, transition: 'opacity 0.4s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/Machine Text/keepop.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_44, transition: 'opacity 0.5s' }"/>
 
                <!-- This redundancy places the machine bodies in front of the flashing arms -->
                <img :src="require('../../assets/Instructions/Machines/Bodies/machine03a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 0.0s' }"/>
@@ -146,6 +147,7 @@
                 opacity_41: '0%',
                 opacity_42: '0%',
                 opacity_43: '0%',
+                opacity_44: '0%',
 
                 mutex: false,
                 finish: true,
@@ -260,6 +262,7 @@
                 this.opacity_41 = "0%"
                 this.opacity_42 = "0%"
                 this.opacity_43 = "0%"
+                this.opacity_44 = "0%"
                 this.nbc = "outline-primary"
                 this.sbc = "outline-secondary"
                 this.press = "space bar"
@@ -280,11 +283,15 @@
                 setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 5000);
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
+
+                // Text swap
+                setTimeout(() => {parent.opacity_44 = "100%"}, 2800);
             },
             animate1() {
                 let parent = this 
 
                 setTimeout(() => {parent.opacity_0 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_44 = "0%"}, 0);
 
                 // This kills prior texts if you cycle back to the beginning. 
                 setTimeout(() => {parent.opacity_40 = "0%"; parent.opacity_41 = "0%"; parent.opacity_42 = "0%"; 
