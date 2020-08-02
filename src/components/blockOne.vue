@@ -702,11 +702,12 @@ export default {
         "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;";
       setTimeout(function() {
         parent.current_avatar += 1;
-      }, 500);
-      setTimeout(function() {
-        parent.fading = false;
         parent.global_size_ectr_1 =
           "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%; transition: opacity 0.5s;";
+      }, 400);
+      setTimeout(function() {
+        parent.fading = false;
+
         parent.free_space = true;
         // parent.current_arrow = 'Dot Boxes.png'
 
