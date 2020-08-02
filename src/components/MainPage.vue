@@ -957,8 +957,16 @@ export default {
       this.instrucStart = value;
     },
     instructionEnd(value) {
+      // In case the flow is violated, stop all emits after the first emit
+      if (this.instrucTime != 0) {
+        return;
+      }
       this.instrucEnd = value;
-      this.instrucTime = this.instrucEnd - this.instrucStart;
+      this.instrucTime = (this.instrucEnd - this.instrucStart) * 0.001;
+      // eslint-disable-next-line no-console
+      console.log("this.instrucTime");
+      // eslint-disable-next-line no-console
+      console.log(this.instrucTime);
     },
     onAnsChild20(value) {
       this.ans_tutorial[20] = value;
@@ -1211,6 +1219,7 @@ export default {
           Rat_Act: "",
           Rat_Deg: "",
           Red_Flag: "",
+          InstructionTimeSpent: this.instrucTime,
           Date: this.end_survey_form.date,
           Age: this.end_survey_form.age,
           Gender: this.end_survey_form.gender,

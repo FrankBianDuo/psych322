@@ -370,7 +370,11 @@ export default {
       if (modalId != "modal-center") {
         return;
       }
+      // Close the tutorial modal (page_73), stop the instruction time period timer
       this.hide_tutorial();
+      var d = new Date();
+      var n = d.getTime();
+      this.$emit("timesync", n);
     });
   },
   // Event listener for all keyboard events
