@@ -835,6 +835,7 @@ export default {
       ],
       // A true means the participant got that question right, and vice verse
       ans_tutorial: {},
+      parsed_answers: [],
       aws_bucket_name: "experimentdata2020",
       aws_object_name: "testinit2.txt",
       // serverlessrepo-s3-presigned-url-s3presignedurl-EF2SRE90YXDY?BucketName="experimentdata2020"&ObjectName="test10.txt"&ExpiredIn=3600
@@ -963,8 +964,15 @@ export default {
       }
       this.instrucEnd = value;
       this.instrucTime = (this.instrucEnd - this.instrucStart) * 0.001;
+      var answers = [];
+      for (let [key, value] of Object.entries(this.ans_tutorial)) {
+        answers.append((key, value));
+      }
+      this.parsed_answers = answers;
       // eslint-disable-next-line no-console
-      console.log("this.instrucTime");
+      console.log("this.ans_tutorial");
+      // eslint-disable-next-line no-console
+      console.log(answers);
       // eslint-disable-next-line no-console
       console.log(this.instrucTime);
     },
@@ -1220,6 +1228,7 @@ export default {
           Rat_Deg: "",
           Red_Flag: "",
           InstructionTimeSpent: this.instrucTime,
+          InstructionAnswers: this.parsed_answers,
           Date: this.end_survey_form.date,
           Age: this.end_survey_form.age,
           Gender: this.end_survey_form.gender,
