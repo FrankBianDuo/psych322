@@ -1,13 +1,12 @@
-
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
     <!-- Here is the vue Page for the index interface on our program -->
     <p>
-      (1) View the Instructions <br>
-      (2) Progress to Experiment 1. <br>
-      (3) Please fill out the survey. <br>
-      (4) Ignore Experiments 2 and 3. <br>
+      (1) View the Instructions <br />
+      (2) Progress to Experiment 1. <br />
+      (3) Please fill out the survey. <br />
+      (4) Ignore Experiments 2 and 3. <br />
       (5) Never refresh the page.
     </p>
     <div class="bv-example-row bv-example-row-flex-cols">
@@ -18,24 +17,44 @@
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
-        <b-button :disabled="!this.b_show_1" v-b-modal.modal-center>Experiment 1</b-button>
-          <!-- These download buttons become visible after some progress has been made -->
-            <!-- <b-button class="btn btn-default" @click="this.fetchPresignedUrl"> Download data for Block #1 </b-button> -->
+        <b-button :disabled="!this.b_show_1" v-b-modal.modal-center
+          >Experiment 1</b-button
+        >
+        <!-- These download buttons become visible after some progress has been made -->
+        <!-- <b-button class="btn btn-default" @click="this.fetchPresignedUrl"> Download data for Block #1 </b-button> -->
       </b-row>
-      <download-csv class="btn btn-default" :data="this.blockOneResults" :name="this.blockOneFileName()">
-          <!-- These download buttons become visible after some progress has been made -->
-            <b-button> Download Data </b-button>
-        </download-csv>
+      <download-csv
+        class="btn btn-default"
+        :data="this.blockOneResults"
+        :name="this.blockOneFileName()"
+      >
+        <!-- These download buttons become visible after some progress has been made -->
+        <b-button> Download Data </b-button>
+      </download-csv>
       <b-row class="my-4 justify-content-center">
-        <b-button :disabled="!this.b_show_2" v-b-modal.modal-center-2>Experiment 2</b-button>
-        <download-csv v-if="this.finished_2" class="btn btn-default" :data="this.blockTwoResults" :name="this.blockTwoFileName()">
-            <b-button> Download data for Experiment #2 </b-button>
+        <b-button :disabled="!this.b_show_2" v-b-modal.modal-center-2
+          >Experiment 2</b-button
+        >
+        <download-csv
+          v-if="this.finished_2"
+          class="btn btn-default"
+          :data="this.blockTwoResults"
+          :name="this.blockTwoFileName()"
+        >
+          <b-button> Download data for Experiment #2 </b-button>
         </download-csv>
       </b-row>
       <b-row class="my-4 justify-content-center">
-        <b-button :disabled="!this.b_show_3" v-b-modal.modal-center-3>Experiment 3</b-button>
-        <download-csv v-if="this.finished_3" class="btn btn-default" :data="this.blockThreeResults" :name="this.blockThreeFileName()">
-            <b-button> Download data for Experiment #3 </b-button>
+        <b-button :disabled="!this.b_show_3" v-b-modal.modal-center-3
+          >Experiment 3</b-button
+        >
+        <download-csv
+          v-if="this.finished_3"
+          class="btn btn-default"
+          :data="this.blockThreeResults"
+          :name="this.blockThreeFileName()"
+        >
+          <b-button> Download data for Experiment #3 </b-button>
         </download-csv>
       </b-row>
       <b-row class="my-4 justify-content-center">
@@ -45,278 +64,313 @@
         <b-button v-b-modal.modal-center-survey1>Experiment Survey</b-button>
       </b-row>
       <b-row class="my-4 justify-content-center">
-        Participant ID: {{this.form.name}}
+        Participant ID: {{ this.form.name }}
       </b-row>
-      <b-row class="my-4 justify-content-center">
-      </b-row>
+      <b-row class="my-4 justify-content-center"> </b-row>
     </div>
 
-      <!-- <b-container class="align-bottom" :style="this.windowsize"  >
+    <!-- <b-container class="align-bottom" :style="this.windowsize"  >
           <img :src="require('../../assets/Instructions/Contol Trees/Control Tree 1.png')" style="width: 90%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"/>
       </b-container> -->
 
-    <b-modal
-      id="modal-prevent-closing"
-      ref="modal"
-      title="Experiment Survey"
-    >
-
-    <!-- Here's the HTML code for the survey form -->
+    <b-modal id="modal-prevent-closing" ref="modal" title="Experiment Survey">
+      <!-- Here's the HTML code for the survey form -->
       <b-form>
+        <b-form-group
+          id="input-group-2"
+          label="Participant ID:"
+          label-for="input-2"
+        >
+          <b-form-input id="input-2" v-model="form.id" required></b-form-input>
+        </b-form-group>
 
-      <b-form-group id="input-group-2" label="Participant ID:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="form.id"
-          required
-        ></b-form-input>
-      </b-form-group>
+        <b-form-group id="input-group-2" label="Date:" label-for="input-2">
+          <b-form-input
+            id="input-2"
+            v-model="form.date"
+            required
+          ></b-form-input>
+        </b-form-group>
+        <b-form-group id="input-group-2" label="Gender:" label-for="input-2">
+          <b-form-select
+            v-model="form.gender"
+            :options="gender_options"
+          ></b-form-select>
+        </b-form-group>
 
-      <b-form-group id="input-group-2" label="Date:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="form.date"
-          required
-        ></b-form-input>
-      </b-form-group>
-      <b-form-group id="input-group-2" label="Gender:" label-for="input-2">
-        <b-form-select v-model="form.gender" :options="gender_options"></b-form-select>
-      </b-form-group>
+        <b-form-group
+          id="input-group-2"
+          label="RA Present:"
+          label-for="input-2"
+        >
+          <b-form-select
+            v-model="form.ra"
+            :options="ra_options"
+          ></b-form-select>
+        </b-form-group>
 
-      <b-form-group id="input-group-2" label="RA Present:" label-for="input-2">
-        <b-form-select v-model="form.ra" :options="ra_options"></b-form-select>
-      </b-form-group>
+        <b-form-group id="input-group-2" label="Age:" label-for="input-2">
+          <b-form-input id="input-2" v-model="form.age" required></b-form-input>
+        </b-form-group>
 
-      <b-form-group id="input-group-2" label="Age:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="form.age"
-          required
-        ></b-form-input>
-      </b-form-group>
+        <b-form-group
+          id="input-group-2"
+          label="Number of Older Brother(s):"
+          label-for="input-2"
+        >
+          <b-form-input
+            id="input-2"
+            v-model="form.olderBro"
+            required
+          ></b-form-input>
+        </b-form-group>
 
-      <b-form-group id="input-group-2" label="Number of Older Brother(s):" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="form.olderBro"
-          required
-        ></b-form-input>
-      </b-form-group>
+        <b-form-group
+          id="input-group-2"
+          label="Number of Older Sister(s):"
+          label-for="input-2"
+        >
+          <b-form-input
+            id="input-2"
+            v-model="form.olderSis"
+            required
+          ></b-form-input>
+        </b-form-group>
 
-      <b-form-group id="input-group-2" label="Number of Older Sister(s):" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="form.olderSis"
-          required
-        ></b-form-input>
-      </b-form-group>
+        <b-form-group
+          id="input-group-2"
+          label="Number of Younger Brother(s):"
+          label-for="input-2"
+        >
+          <b-form-input
+            id="input-2"
+            v-model="form.youngerBro"
+            required
+          ></b-form-input>
+        </b-form-group>
 
-      <b-form-group id="input-group-2" label="Number of Younger Brother(s):" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="form.youngerBro"
-          required
-        ></b-form-input>
-      </b-form-group>
+        <b-form-group
+          id="input-group-2"
+          label="Number of Younger Sister(s):"
+          label-for="input-2"
+        >
+          <b-form-input
+            id="input-2"
+            v-model="form.youngerSis"
+            required
+          ></b-form-input>
+        </b-form-group>
 
-      <b-form-group id="input-group-2" label="Number of Younger Sister(s):" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="form.youngerSis"
-          required
-        ></b-form-input>
-      </b-form-group>
-
-      <b-button variant="primary" @click="this.surveyFinish">Submit</b-button>
-    </b-form>
+        <b-button variant="primary" @click="this.surveyFinish">Submit</b-button>
+      </b-form>
     </b-modal>
-    <BotStopper @timesync="instructionStart" :windowsize ="this.window_size" />
-    <Consent :pID="this.participant_generated_id" :windowsize ="this.window_size" />
-    <ExperInfo :windowsize ="this.window_size" />
-    <ExperTutor :windowsize ="this.window_size" />
-    <MeetPeople :windowsize ="this.window_size" />
-    <WantMoreDots :windowsize ="this.window_size" />
-    <CommKnow :windowsize ="this.window_size" />
-    <ConstantValue :windowsize ="this.window_size" />
-    <Reference :windowsize ="this.window_size" /> 
-    <RefDepComp :windowsize ="this.window_size" /> 
-    <RefDepEqual :windowsize ="this.window_size" /> 
-    <HowHappy1 :windowsize ="this.window_size" />
-    <HowHappy2 :windowsize ="this.window_size" />
-    <HowHappy3 :windowsize ="this.window_size" />
-    <HowHappy4 :windowsize ="this.window_size" />
-    <HowChoice0 :windowsize ="this.window_size" />
-    <HowKnow2 :windowsize ="this.window_size" />
-    <HowKnow3 :windowsize ="this.window_size" />
-    <HowKnow4 :windowsize ="this.window_size" />
-    <HowKnow5 :windowsize ="this.window_size" />
-    <HowKnow6 :windowsize ="this.window_size" />
-    <HowKnow7 :windowsize ="this.window_size" />
-    <HowKnow8 :windowsize ="this.window_size" />
-    <HowChoice1 :windowsize ="this.window_size" /> 
-    <HowChoice2 :windowsize ="this.window_size" /> 
-    <HowChoice3 :windowsize ="this.window_size" /> 
-    <HowChoice4 :windowsize ="this.window_size" /> 
-    <HowChoice5 :windowsize ="this.window_size" /> 
-    <HowChoice6 :windowsize ="this.window_size" /> 
-    <HowChoice7 :windowsize ="this.window_size" /> 
-    <HowChoice8 :windowsize ="this.window_size" /> 
-    <HowChoice9 :windowsize ="this.window_size" />
-    <Cursor1 :windowsize ="this.window_size" /> 
-    <PredPract1 :windowsize ="this.window_size" />
-    <PredPract2 :windowsize ="this.window_size" />
-    <MoralChoice1 :windowsize ="this.window_size" />
-    <MoralChoice2 :windowsize ="this.window_size" />
-    <TwoOptions :windowsize ="this.window_size" />
-    <NoSharing :windowsize ="this.window_size" />
-    <EvapDots :windowsize ="this.window_size" />
-    <ActPass :windowsize ="this.window_size" />
-    <NoTalking :windowsize ="this.window_size" />
-    <TF110 :windowsize ="this.window_size" />
-    <EndTF1 :windowsize ="this.window_size" />
-    <Cursor2 :windowsize ="this.window_size" />
-    <TF1118 :windowsize ="this.window_size" />
-    <EndTF2 :windowsize ="this.window_size" />
-    <ProgBar :windowsize ="this.window_size" />
-    <KeyHands :windowsize ="this.window_size" />
-    <EndInstr :windowsize ="this.window_size" />
-    <GameFlow1 :windowsize ="this.window_size" />
-    <GameFlow2 :windowsize ="this.window_size" />
-    <GameFlow3 :windowsize ="this.window_size" />
-    <GameFlow4 :windowsize ="this.window_size" />
-    <GameFlow5 :windowsize ="this.window_size" />
-    <Control1 :windowsize ="this.window_size" />
-    <Control2 :windowsize ="this.window_size" />
-    <Control3 :windowsize ="this.window_size" />
-    <Control3 :windowsize ="this.window_size" />
-    <Control4 :windowsize ="this.window_size" />
-    <Control5 :windowsize ="this.window_size" />
-    <Feedback :windowsize ="this.window_size" />    
-    <Knowledge1 :windowsize ="this.window_size" />
-    <Knowledge2 :windowsize ="this.window_size" />
-    <Knowledge3 :windowsize ="this.window_size" />
-    <Knowledge4 :windowsize ="this.window_size" />
-    <Knowledge5 :windowsize ="this.window_size" />
-    <Knowledge6 :windowsize ="this.window_size" />
-    <Machines1 :windowsize ="this.window_size" />
-    <Machines2 :windowsize ="this.window_size" />
-    <Machines3 :windowsize ="this.window_size" />
-    <Machines4 :windowsize ="this.window_size" />
-    <Machines5 :windowsize ="this.window_size" />
-    <Machines6 :windowsize ="this.window_size" />
-    <Machines7 :windowsize ="this.window_size" />
-    <MachinesP :windowsize ="this.window_size" />
-    <Practice01 :windowsize ="this.window_size" />
-    <Practice02 :windowsize ="this.window_size" />
-    <Practice03 :windowsize ="this.window_size" />
-    <FlowKnow1 :windowsize ="this.window_size" />
-    <FlowKnow2 :windowsize ="this.window_size" />
-    <Tutorial1 :windowsize ="this.window_size" />
-    <Tutorial1b :windowsize ="this.window_size" />
-    <Tutorial2 :windowsize ="this.window_size" />
-    <Tutorial3 :windowsize ="this.window_size" />
-    <Tutorial4 :windowsize ="this.window_size" />
-    <Tutorial5 :windowsize ="this.window_size" />
-    <Tutorial6 :windowsize ="this.window_size" />
-    <Tutorial7 :windowsize ="this.window_size" />
-    <Tutorial8 :windowsize ="this.window_size" />
-    <Tutorial9 :windowsize ="this.window_size" />
-    <Tutorial10 :windowsize ="this.window_size" />
-    <Tutorial11 :windowsize ="this.window_size" />
-    <Tutorial12 :windowsize ="this.window_size" />
-    <Tutorial13 :windowsize ="this.window_size" />
-    <Tutorial14 :windowsize ="this.window_size" />
-    <Tutorial15 :windowsize ="this.window_size" />
-    <Tutorial16 :windowsize ="this.window_size" />
-    <Tutorial17 :windowsize ="this.window_size" />
-    <Tutorial18 :windowsize ="this.window_size" />
-    <Tutorial19 :windowsize ="this.window_size" />
-    <Tutorial20 @answered="onAnsChild20"  :windowsize ="this.window_size" />
-    <Tutorial21 @answered="onAnsChild21" :windowsize ="this.window_size" />
-    <Tutorial22 @answered="onAnsChild22" :windowsize ="this.window_size" />
-    <Tutorial23 @answered="onAnsChild23" :windowsize ="this.window_size" />
-    <Tutorial24 @answered="onAnsChild24" :windowsize ="this.window_size" />
-    <Tutorial25 @answered="onAnsChild25" :windowsize ="this.window_size" />
-    <Tutorial26 @answered="onAnsChild26" :windowsize ="this.window_size" />
-    <Tutorial27 @answered="onAnsChild27" :windowsize ="this.window_size" />
-    <Tutorial28 @answered="onAnsChild28" :windowsize ="this.window_size" />
-    <Tutorial29 @answered="onAnsChild29" :windowsize ="this.window_size" />
-    <Tutorial30 :windowsize ="this.window_size" />
-    <Tutorial31 :windowsize ="this.window_size" />
-    <Tutorial32 :windowsize ="this.window_size" />
-    <Tutorial33 :windowsize ="this.window_size" />
-    <Tutorial34 :windowsize ="this.window_size" />
-    <Tutorial35 :windowsize ="this.window_size" />
-    <Tutorial36 :windowsize ="this.window_size" />
-    <Tutorial37 :windowsize ="this.window_size" />
-    <Tutorial38 :windowsize ="this.window_size" />
-    <Tutorial39 :windowsize ="this.window_size" />
-    <Tutorial40 :windowsize ="this.window_size" />
-    <Tutorial41 :windowsize ="this.window_size" />
-    <Tutorial42 :windowsize ="this.window_size" />
-    <Tutorial43 :windowsize ="this.window_size" />
-    <Tutorial44 :windowsize ="this.window_size" />
-    <Tutorial45 :windowsize ="this.window_size" />
-    <Tutorial46 :windowsize ="this.window_size" />
-    <Tutorial47 :windowsize ="this.window_size" />
-    <Tutorial48 :windowsize ="this.window_size" />
-    <Tutorial49 :windowsize ="this.window_size" />
-    <Tutorial50 :windowsize ="this.window_size" />
-    <Tutorial51 :windowsize ="this.window_size" />
-    <Tutorial52 :windowsize ="this.window_size" />
-    <Tutorial53 :windowsize ="this.window_size" />
-    <Tutorial54 :windowsize ="this.window_size" />
-    <Tutorial55 :windowsize ="this.window_size" />
-    <Tutorial56 :windowsize ="this.window_size" />
-    <Tutorial57 :windowsize ="this.window_size" />
-    <Tutorial58 :windowsize ="this.window_size" />
-    <Tutorial59 :windowsize ="this.window_size" />
-    <Tutorial60 :windowsize ="this.window_size" />
-    <Tutorial61 @answered="onAnsChild61" :windowsize ="this.window_size" />
-    <Tutorial62 @answered="onAnsChild62" :windowsize ="this.window_size" />
-    <Tutorial63 @answered="onAnsChild63" :windowsize ="this.window_size" />
-    <Tutorial64 @answered="onAnsChild64" :windowsize ="this.window_size" />
-    <Tutorial65 @answered="onAnsChild65" :windowsize ="this.window_size" />
-    <Tutorial66 @answered="onAnsChild66" :windowsize ="this.window_size" />
-    <Tutorial67 @answered="onAnsChild67" :windowsize ="this.window_size" />
-    <Tutorial68 @answered="onAnsChild68" :windowsize ="this.window_size" />
-    <Tutorial69 :windowsize ="this.window_size" />
-    <Tutorial70 :windowsize ="this.window_size" />
-    <Tutorial71 :windowsize ="this.window_size" />
-    <Tutorial72 :previous_ans="this.ans_tutorial" :windowsize ="this.window_size" />
-    <Tutorial73 :previous_ans="this.ans_tutorial" :windowsize ="this.window_size" />
-    <FRpage1 @FR1Done="FR1Finished" :windowsize ="this.window_size" />
-    <FRpage2 @FR2Done="FR2Finished" :windowsize ="this.window_size" />
-    <FRpage3 @FR3Done="FR3Finished" :windowsize ="this.window_size" />
-    <FRpage4 @FR4Done="FR4Finished" :windowsize ="this.window_size" />
-    <FRpage5 @FR5Done="FR5Finished" :windowsize ="this.window_size" />
-    <FRpage6 @FR6Done="FR6Finished" :windowsize ="this.window_size" />
-    <FRpage7 @FR7Done="FR7Finished" :windowsize ="this.window_size" />
-    <FRpage8 @FR8Done="FR8Finished" :windowsize ="this.window_size" />
-    <FRpage9 @FR9Done="FR9Finished" :windowsize ="this.window_size" />
-    <FRpage10 @FR10Done="FR10Finished" :windowsize ="this.window_size" />
-    <FRpage11 @FR11Done="FR11Finished" :windowsize ="this.window_size" />
-    <FRpage12 @FR12Done="FR12Finished" :windowsize ="this.window_size" />
-    <FRpage13 @FR13Done="FR13Finished" :windowsize ="this.window_size" />
-    <Survey1 @Survey1Done="Survey1Finished" :windowsize ="this.window_size" />
-    <Survey2 @Survey2Done="Survey2Finished" :windowsize ="this.window_size" />
-    <Survey3 @Survey3Done="Survey3Finished" :windowsize ="this.window_size" />
-    <Survey4 @Survey4Done="Survey4Finished" :windowsize ="this.window_size" />
-    <Survey5 @Survey5Done="Survey5Finished" :windowsize ="this.window_size" />
-    <Trystuffout :windowsize ="this.window_size" />
-    <Absurdity :windowsize ="this.window_size" />
-    <Silly :windowsize ="this.window_size" />
-    <Foolish :windowsize ="this.window_size" />
-    <Trymore1 :windowsize ="this.window_size" />
-    <Trymore2 :windowsize ="this.window_size" />
+    <BotStopper @timesync="instructionStart" :windowsize="this.window_size" />
+    <Consent
+      :pID="this.participant_generated_id"
+      :windowsize="this.window_size"
+    />
+    <ExperInfo :windowsize="this.window_size" />
+    <ExperTutor :windowsize="this.window_size" />
+    <MeetPeople :windowsize="this.window_size" />
+    <WantMoreDots :windowsize="this.window_size" />
+    <CommKnow :windowsize="this.window_size" />
+    <ConstantValue :windowsize="this.window_size" />
+    <Reference :windowsize="this.window_size" />
+    <RefDepComp :windowsize="this.window_size" />
+    <RefDepEqual :windowsize="this.window_size" />
+    <HowHappy1 :windowsize="this.window_size" />
+    <HowHappy2 :windowsize="this.window_size" />
+    <HowHappy3 :windowsize="this.window_size" />
+    <HowHappy4 :windowsize="this.window_size" />
+    <HowChoice0 :windowsize="this.window_size" />
+    <HowKnow2 :windowsize="this.window_size" />
+    <HowKnow3 :windowsize="this.window_size" />
+    <HowKnow4 :windowsize="this.window_size" />
+    <HowKnow5 :windowsize="this.window_size" />
+    <HowKnow6 :windowsize="this.window_size" />
+    <HowKnow7 :windowsize="this.window_size" />
+    <HowKnow8 :windowsize="this.window_size" />
+    <HowChoice1 :windowsize="this.window_size" />
+    <HowChoice2 :windowsize="this.window_size" />
+    <HowChoice3 :windowsize="this.window_size" />
+    <HowChoice4 :windowsize="this.window_size" />
+    <HowChoice5 :windowsize="this.window_size" />
+    <HowChoice6 :windowsize="this.window_size" />
+    <HowChoice7 :windowsize="this.window_size" />
+    <HowChoice8 :windowsize="this.window_size" />
+    <HowChoice9 :windowsize="this.window_size" />
+    <Cursor1 :windowsize="this.window_size" />
+    <PredPract1 :windowsize="this.window_size" />
+    <PredPract2 :windowsize="this.window_size" />
+    <MoralChoice1 :windowsize="this.window_size" />
+    <MoralChoice2 :windowsize="this.window_size" />
+    <TwoOptions :windowsize="this.window_size" />
+    <NoSharing :windowsize="this.window_size" />
+    <EvapDots :windowsize="this.window_size" />
+    <ActPass :windowsize="this.window_size" />
+    <NoTalking :windowsize="this.window_size" />
+    <TF110 :windowsize="this.window_size" />
+    <EndTF1 :windowsize="this.window_size" />
+    <Cursor2 :windowsize="this.window_size" />
+    <TF1118 :windowsize="this.window_size" />
+    <EndTF2 :windowsize="this.window_size" />
+    <ProgBar :windowsize="this.window_size" />
+    <KeyHands :windowsize="this.window_size" />
+    <EndInstr :windowsize="this.window_size" />
+    <GameFlow1 :windowsize="this.window_size" />
+    <GameFlow2 :windowsize="this.window_size" />
+    <GameFlow3 :windowsize="this.window_size" />
+    <GameFlow4 :windowsize="this.window_size" />
+    <GameFlow5 :windowsize="this.window_size" />
+    <Control1 :windowsize="this.window_size" />
+    <Control2 :windowsize="this.window_size" />
+    <Control3 :windowsize="this.window_size" />
+    <Control3 :windowsize="this.window_size" />
+    <Control4 :windowsize="this.window_size" />
+    <Control5 :windowsize="this.window_size" />
+    <Feedback :windowsize="this.window_size" />
+    <Knowledge1 :windowsize="this.window_size" />
+    <Knowledge2 :windowsize="this.window_size" />
+    <Knowledge3 :windowsize="this.window_size" />
+    <Knowledge4 :windowsize="this.window_size" />
+    <Knowledge5 :windowsize="this.window_size" />
+    <Knowledge6 :windowsize="this.window_size" />
+    <Machines1 :windowsize="this.window_size" />
+    <Machines2 :windowsize="this.window_size" />
+    <Machines3 :windowsize="this.window_size" />
+    <Machines4 :windowsize="this.window_size" />
+    <Machines5 :windowsize="this.window_size" />
+    <Machines6 :windowsize="this.window_size" />
+    <Machines7 :windowsize="this.window_size" />
+    <MachinesP :windowsize="this.window_size" />
+    <Practice01 :windowsize="this.window_size" />
+    <Practice02 :windowsize="this.window_size" />
+    <Practice03 :windowsize="this.window_size" />
+    <FlowKnow1 :windowsize="this.window_size" />
+    <FlowKnow2 :windowsize="this.window_size" />
+    <Tutorial1 :windowsize="this.window_size" />
+    <Tutorial1b :windowsize="this.window_size" />
+    <Tutorial2 :windowsize="this.window_size" />
+    <Tutorial3 :windowsize="this.window_size" />
+    <Tutorial4 :windowsize="this.window_size" />
+    <Tutorial5 :windowsize="this.window_size" />
+    <Tutorial6 :windowsize="this.window_size" />
+    <Tutorial7 :windowsize="this.window_size" />
+    <Tutorial8 :windowsize="this.window_size" />
+    <Tutorial9 :windowsize="this.window_size" />
+    <Tutorial10 :windowsize="this.window_size" />
+    <Tutorial11 :windowsize="this.window_size" />
+    <Tutorial12 :windowsize="this.window_size" />
+    <Tutorial13 :windowsize="this.window_size" />
+    <Tutorial14 :windowsize="this.window_size" />
+    <Tutorial15 :windowsize="this.window_size" />
+    <Tutorial16 :windowsize="this.window_size" />
+    <Tutorial17 :windowsize="this.window_size" />
+    <Tutorial18 :windowsize="this.window_size" />
+    <Tutorial19 :windowsize="this.window_size" />
+    <Tutorial20 @answered="onAnsChild20" :windowsize="this.window_size" />
+    <Tutorial21 @answered="onAnsChild21" :windowsize="this.window_size" />
+    <Tutorial22 @answered="onAnsChild22" :windowsize="this.window_size" />
+    <Tutorial23 @answered="onAnsChild23" :windowsize="this.window_size" />
+    <Tutorial24 @answered="onAnsChild24" :windowsize="this.window_size" />
+    <Tutorial25 @answered="onAnsChild25" :windowsize="this.window_size" />
+    <Tutorial26 @answered="onAnsChild26" :windowsize="this.window_size" />
+    <Tutorial27 @answered="onAnsChild27" :windowsize="this.window_size" />
+    <Tutorial28 @answered="onAnsChild28" :windowsize="this.window_size" />
+    <Tutorial29 @answered="onAnsChild29" :windowsize="this.window_size" />
+    <Tutorial30 :windowsize="this.window_size" />
+    <Tutorial31 :windowsize="this.window_size" />
+    <Tutorial32 :windowsize="this.window_size" />
+    <Tutorial33 :windowsize="this.window_size" />
+    <Tutorial34 :windowsize="this.window_size" />
+    <Tutorial35 :windowsize="this.window_size" />
+    <Tutorial36 :windowsize="this.window_size" />
+    <Tutorial37 :windowsize="this.window_size" />
+    <Tutorial38 :windowsize="this.window_size" />
+    <Tutorial39 :windowsize="this.window_size" />
+    <Tutorial40 :windowsize="this.window_size" />
+    <Tutorial41 :windowsize="this.window_size" />
+    <Tutorial42 :windowsize="this.window_size" />
+    <Tutorial43 :windowsize="this.window_size" />
+    <Tutorial44 :windowsize="this.window_size" />
+    <Tutorial45 :windowsize="this.window_size" />
+    <Tutorial46 :windowsize="this.window_size" />
+    <Tutorial47 :windowsize="this.window_size" />
+    <Tutorial48 :windowsize="this.window_size" />
+    <Tutorial49 :windowsize="this.window_size" />
+    <Tutorial50 :windowsize="this.window_size" />
+    <Tutorial51 :windowsize="this.window_size" />
+    <Tutorial52 :windowsize="this.window_size" />
+    <Tutorial53 :windowsize="this.window_size" />
+    <Tutorial54 :windowsize="this.window_size" />
+    <Tutorial55 :windowsize="this.window_size" />
+    <Tutorial56 :windowsize="this.window_size" />
+    <Tutorial57 :windowsize="this.window_size" />
+    <Tutorial58 :windowsize="this.window_size" />
+    <Tutorial59 :windowsize="this.window_size" />
+    <Tutorial60 :windowsize="this.window_size" />
+    <Tutorial61 @answered="onAnsChild61" :windowsize="this.window_size" />
+    <Tutorial62 @answered="onAnsChild62" :windowsize="this.window_size" />
+    <Tutorial63 @answered="onAnsChild63" :windowsize="this.window_size" />
+    <Tutorial64 @answered="onAnsChild64" :windowsize="this.window_size" />
+    <Tutorial65 @answered="onAnsChild65" :windowsize="this.window_size" />
+    <Tutorial66 @answered="onAnsChild66" :windowsize="this.window_size" />
+    <Tutorial67 @answered="onAnsChild67" :windowsize="this.window_size" />
+    <Tutorial68 @answered="onAnsChild68" :windowsize="this.window_size" />
+    <Tutorial69 :windowsize="this.window_size" />
+    <Tutorial70 :windowsize="this.window_size" />
+    <Tutorial71 :windowsize="this.window_size" />
+    <Tutorial72
+      :previous_ans="this.ans_tutorial"
+      :windowsize="this.window_size"
+    />
+    <Tutorial73
+      :previous_ans="this.ans_tutorial"
+      :windowsize="this.window_size"
+    />
+    <FRpage1 @FR1Done="FR1Finished" :windowsize="this.window_size" />
+    <FRpage2 @FR2Done="FR2Finished" :windowsize="this.window_size" />
+    <FRpage3 @FR3Done="FR3Finished" :windowsize="this.window_size" />
+    <FRpage4 @FR4Done="FR4Finished" :windowsize="this.window_size" />
+    <FRpage5 @FR5Done="FR5Finished" :windowsize="this.window_size" />
+    <FRpage6 @FR6Done="FR6Finished" :windowsize="this.window_size" />
+    <FRpage7 @FR7Done="FR7Finished" :windowsize="this.window_size" />
+    <FRpage8 @FR8Done="FR8Finished" :windowsize="this.window_size" />
+    <FRpage9 @FR9Done="FR9Finished" :windowsize="this.window_size" />
+    <FRpage10 @FR10Done="FR10Finished" :windowsize="this.window_size" />
+    <FRpage11 @FR11Done="FR11Finished" :windowsize="this.window_size" />
+    <FRpage12 @FR12Done="FR12Finished" :windowsize="this.window_size" />
+    <FRpage13 @FR13Done="FR13Finished" :windowsize="this.window_size" />
+    <Survey1 @Survey1Done="Survey1Finished" :windowsize="this.window_size" />
+    <Survey2 @Survey2Done="Survey2Finished" :windowsize="this.window_size" />
+    <Survey3 @Survey3Done="Survey3Finished" :windowsize="this.window_size" />
+    <Survey4 @Survey4Done="Survey4Finished" :windowsize="this.window_size" />
+    <Survey5 @Survey5Done="Survey5Finished" :windowsize="this.window_size" />
+    <Trystuffout :windowsize="this.window_size" />
+    <Absurdity :windowsize="this.window_size" />
+    <Silly :windowsize="this.window_size" />
+    <Foolish :windowsize="this.window_size" />
+    <Trymore1 :windowsize="this.window_size" />
+    <Trymore2 :windowsize="this.window_size" />
 
-    <BlockOne @timesync="instructionEnd" @blockOneDone="blockOneFinished" :participant_name="this.form.name"/>
-    <BlockTwo @blockTwoDone="blockTwoFinished" :participant_name="this.form.name"/>
-    <BlockThree @blockThreeDone="blockThreeFinished" :participant_name="this.form.name"/>
-    <b-modal 
-      id="modal-center-end" 
+    <BlockOne
+      style="background-color: black;"
+      @timesync="instructionEnd"
+      @blockOneDone="blockOneFinished"
+      :participant_name="this.form.name"
+    />
+    <BlockTwo
+      @blockTwoDone="blockTwoFinished"
+      :participant_name="this.form.name"
+    />
+    <BlockThree
+      @blockThreeDone="blockThreeFinished"
+      :participant_name="this.form.name"
+    />
+    <b-modal
+      id="modal-center-end"
       size="xl"
-      centered 
+      centered
       title="Loading your end of experiment URL"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
@@ -329,205 +383,208 @@
       :no-close-on-esc="true"
       :hide-header-close="true"
     >
-       <div v-if="!data_sent_to_s3" class="d-flex justify-content-center mb-3">
+      <div v-if="!data_sent_to_s3" class="d-flex justify-content-center mb-3">
         <b-spinner variant="primary" label="Loading..."></b-spinner>
       </div>
-      <b-container v-if="data_sent_to_s3" class="align-bottom" :style="this.windowsize"  >
+      <b-container
+        v-if="data_sent_to_s3"
+        class="align-bottom"
+        :style="this.windowsize"
+      >
         URL here
       </b-container>
     </b-modal>
   </div>
-  
 </template>
 
 <script>
-import moment from 'moment'
-import BlockOne from './blockOne.vue'
-import BlockTwo from './blockTwo.vue'
-import BlockThree from './blockThree.vue'
-import BotStopper from './tutorialPages/BotStopper.vue'
-import Consent from './tutorialPages/Consent.vue'
-import ExperInfo from './tutorialPages/ExperInfo.vue'
-import ExperTutor from './tutorialPages/ExperTutor.vue'
-import MeetPeople from './tutorialPages/MeetPeople.vue'
-import WantMoreDots from './tutorialPages/WantMoreDots.vue'
-import CommKnow from './tutorialPages/CommKnow.vue'
-import ConstantValue from './tutorialPages/ConstantValue.vue'
-import Reference from './tutorialPages/Reference.vue'
-import RefDepComp from './tutorialPages/RefDepComp.vue'
-import RefDepEqual from './tutorialPages/RefDepEqual.vue'
-import HowHappy1 from './tutorialPages/HowHappy1.vue'
-import HowHappy2 from './tutorialPages/HowHappy2.vue'
-import HowHappy3 from './tutorialPages/HowHappy3.vue'
-import HowHappy4 from './tutorialPages/HowHappy4.vue'
-import HowChoice0 from './tutorialPages/HowChoice0.vue'
-import HowKnow2 from './tutorialPages/HowKnow2.vue'
-import HowKnow3 from './tutorialPages/HowKnow3.vue'
-import HowKnow4 from './tutorialPages/HowKnow4.vue'
-import HowKnow5 from './tutorialPages/HowKnow5.vue'
-import HowKnow6 from './tutorialPages/HowKnow6.vue'
-import HowKnow7 from './tutorialPages/HowKnow7.vue'
-import HowKnow8 from './tutorialPages/HowKnow8.vue'
-import HowChoice1 from './tutorialPages/HowChoice1.vue'
-import HowChoice2 from './tutorialPages/HowChoice2.vue'
-import HowChoice3 from './tutorialPages/HowChoice3.vue'
-import HowChoice4 from './tutorialPages/HowChoice4.vue'
-import HowChoice5 from './tutorialPages/HowChoice5.vue'
-import HowChoice6 from './tutorialPages/HowChoice6.vue'
-import HowChoice7 from './tutorialPages/HowChoice7.vue'
-import HowChoice8 from './tutorialPages/HowChoice8.vue'
-import HowChoice9 from './tutorialPages/HowChoice9.vue'
-import Cursor1 from './tutorialPages/Cursor1.vue'
-import PredPract1 from './tutorialPages/PredPract1.vue'
-import PredPract2 from './tutorialPages/PredPract2.vue'
-import MoralChoice1 from './tutorialPages/MoralChoice1.vue'
-import MoralChoice2 from './tutorialPages/MoralChoice2.vue'
-import TwoOptions from './tutorialPages/TwoOptions.vue'
-import NoSharing from './tutorialPages/NoSharing.vue'
-import EvapDots from './tutorialPages/EvapDots.vue'
-import ActPass from './tutorialPages/ActPass.vue'
-import NoTalking from './tutorialPages/NoTalking.vue'
-import TF110 from './tutorialPages/TF110.vue'
-import EndTF1 from './tutorialPages/EndTF1.vue'
-import Cursor2 from './tutorialPages/Cursor2.vue'
-import TF1118 from './tutorialPages/TF1118.vue'
-import EndTF2 from './tutorialPages/EndTF2.vue'
-import ProgBar from './tutorialPages/ProgBar.vue'
-import KeyHands from './tutorialPages/KeyHands.vue'
-import EndInstr from './tutorialPages/EndInstr.vue'
-import GameFlow1 from './tutorialPages/GameFlow1.vue'
-import GameFlow2 from './tutorialPages/GameFlow2.vue'
-import GameFlow3 from './tutorialPages/GameFlow3.vue'
-import GameFlow4 from './tutorialPages/GameFlow4.vue'
-import GameFlow5 from './tutorialPages/GameFlow5.vue'
-import Control1 from './tutorialPages/Control1.vue'
-import Control2 from './tutorialPages/Control2.vue'
-import Control3 from './tutorialPages/Control3.vue'
-import Control4 from './tutorialPages/Control4.vue'
-import Control5 from './tutorialPages/Control5.vue'
-import Feedback from './tutorialPages/Feedback.vue'
-import Knowledge1 from './tutorialPages/Knowledge1.vue'
-import Knowledge2 from './tutorialPages/Knowledge2.vue'
-import Knowledge3 from './tutorialPages/Knowledge3.vue'
-import Knowledge4 from './tutorialPages/Knowledge4.vue'
-import Knowledge5 from './tutorialPages/Knowledge5.vue'
-import Knowledge6 from './tutorialPages/Knowledge6.vue'
-import Machines1 from './tutorialPages/Machines1.vue'
-import Machines2 from './tutorialPages/Machines2.vue'
-import Machines3 from './tutorialPages/Machines3.vue'
-import Machines4 from './tutorialPages/Machines4.vue'
-import Machines5 from './tutorialPages/Machines5.vue'
-import Machines6 from './tutorialPages/Machines6.vue'
-import Machines7 from './tutorialPages/Machines7.vue'
-import MachinesP from './tutorialPages/MachinesP.vue'
-import Practice01 from './tutorialPages/Practice01.vue'
-import Practice02 from './tutorialPages/Practice02.vue'
-import Practice03 from './tutorialPages/Practice03.vue'
-import FlowKnow1 from './tutorialPages/FlowKnow1.vue'
-import FlowKnow2 from './tutorialPages/FlowKnow2.vue'
-import Trystuffout from './tutorialPages/Trystuffout.vue'
-import Absurdity from './tutorialPages/Absurdity.vue'
-import Silly from './tutorialPages/Silly.vue'
-import Foolish from './tutorialPages/Foolish.vue'
-import Trymore1 from './tutorialPages/Trymore1.vue'
-import Trymore2 from './tutorialPages/Trymore2.vue'
-import Tutorial1 from './tutorialPages/page_1.vue'
-import Tutorial1b from './tutorialPages/page_1b.vue'
-import Tutorial2 from './tutorialPages/page_2.vue'
-import Tutorial3 from './tutorialPages/page_3.vue'
-import Tutorial4 from './tutorialPages/page_4.vue'
-import Tutorial5 from './tutorialPages/page_5.vue'
-import Tutorial6 from './tutorialPages/page_6.vue'
-import Tutorial7 from './tutorialPages/page_7.vue'
-import Tutorial8 from './tutorialPages/page_8.vue'
-import Tutorial9 from './tutorialPages/page_9.vue'
-import Tutorial10 from './tutorialPages/page_10.vue'
-import Tutorial11 from './tutorialPages/page_11.vue'
-import Tutorial12 from './tutorialPages/page_12.vue'
-import Tutorial13 from './tutorialPages/page_13.vue'
-import Tutorial14 from './tutorialPages/page_14.vue'
-import Tutorial15 from './tutorialPages/page_15.vue'
-import Tutorial16 from './tutorialPages/page_16.vue'
-import Tutorial17 from './tutorialPages/page_17.vue'
-import Tutorial18 from './tutorialPages/page_18.vue'
-import Tutorial19 from './tutorialPages/page_19.vue'
-import Tutorial20 from './tutorialPages/page_20.vue'
-import Tutorial21 from './tutorialPages/page_21.vue'
-import Tutorial22 from './tutorialPages/page_22.vue'
-import Tutorial23 from './tutorialPages/page_23.vue'
-import Tutorial24 from './tutorialPages/page_24.vue'
-import Tutorial25 from './tutorialPages/page_25.vue'
-import Tutorial26 from './tutorialPages/page_26.vue'
-import Tutorial27 from './tutorialPages/page_27.vue'
-import Tutorial28 from './tutorialPages/page_28.vue'
-import Tutorial29 from './tutorialPages/page_29.vue'
-import Tutorial30 from './tutorialPages/page_30.vue'
-import Tutorial31 from './tutorialPages/page_31.vue'
-import Tutorial32 from './tutorialPages/page_32.vue'
-import Tutorial33 from './tutorialPages/page_33.vue'
-import Tutorial34 from './tutorialPages/page_34.vue'
-import Tutorial35 from './tutorialPages/page_35.vue'
-import Tutorial36 from './tutorialPages/page_36.vue'
-import Tutorial37 from './tutorialPages/page_37.vue'
-import Tutorial38 from './tutorialPages/page_38.vue'
-import Tutorial39 from './tutorialPages/page_39.vue'
-import Tutorial40 from './tutorialPages/page_40.vue'
-import Tutorial41 from './tutorialPages/page_41.vue'
-import Tutorial42 from './tutorialPages/page_42.vue'
-import Tutorial43 from './tutorialPages/page_43.vue'
-import Tutorial44 from './tutorialPages/page_44.vue'
-import Tutorial45 from './tutorialPages/page_45.vue'
-import Tutorial46 from './tutorialPages/page_46.vue'
-import Tutorial47 from './tutorialPages/page_47.vue'
-import Tutorial48 from './tutorialPages/page_48.vue'
-import Tutorial49 from './tutorialPages/page_49.vue'
-import Tutorial50 from './tutorialPages/page_50.vue'
-import Tutorial51 from './tutorialPages/page_51.vue'
-import Tutorial52 from './tutorialPages/page_52.vue'
-import Tutorial53 from './tutorialPages/page_53.vue'
-import Tutorial54 from './tutorialPages/page_54.vue'
-import Tutorial55 from './tutorialPages/page_55.vue'
-import Tutorial56 from './tutorialPages/page_56.vue'
-import Tutorial57 from './tutorialPages/page_57.vue'
-import Tutorial58 from './tutorialPages/page_58.vue'
-import Tutorial59 from './tutorialPages/page_59.vue'
-import Tutorial60 from './tutorialPages/page_60.vue'
-import Tutorial61 from './tutorialPages/page_61.vue'
-import Tutorial62 from './tutorialPages/page_62.vue'
-import Tutorial63 from './tutorialPages/page_63.vue'
-import Tutorial64 from './tutorialPages/page_64.vue'
-import Tutorial65 from './tutorialPages/page_65.vue'
-import Tutorial66 from './tutorialPages/page_66.vue'
-import Tutorial67 from './tutorialPages/page_67.vue'
-import Tutorial68 from './tutorialPages/page_68.vue'
-import Tutorial69 from './tutorialPages/page_69.vue'
-import Tutorial70 from './tutorialPages/page_70.vue'
-import Tutorial71 from './tutorialPages/page_71.vue'
-import Tutorial72 from './tutorialPages/page_72.vue'
-import Tutorial73 from './tutorialPages/page_73.vue'
-import FRpage1 from './FreeResponsePages/page_1.vue'
-import FRpage2 from './FreeResponsePages/page_2.vue'
-import FRpage3 from './FreeResponsePages/page_3.vue'
-import FRpage4 from './FreeResponsePages/page_4.vue'
-import FRpage5 from './FreeResponsePages/page_5.vue'
-import FRpage6 from './FreeResponsePages/page_6.vue'
-import FRpage7 from './FreeResponsePages/page_7.vue'
-import FRpage8 from './FreeResponsePages/page_8.vue'
-import FRpage9 from './FreeResponsePages/page_9.vue'
-import FRpage10 from './FreeResponsePages/page_10.vue'
-import FRpage11 from './FreeResponsePages/page_11.vue'
-import FRpage12 from './FreeResponsePages/page_12.vue'
-import FRpage13 from './FreeResponsePages/page_13.vue'
-import Survey1 from './SurveyPages/page_1.vue'
-import Survey2 from './SurveyPages/page_2.vue'
-import Survey3 from './SurveyPages/page_3.vue'
-import Survey4 from './SurveyPages/page_4.vue'
-import Survey5 from './SurveyPages/page_5.vue'
-import json from './dataSample.json'
-import Vue from 'vue'
+import moment from "moment";
+import BlockOne from "./blockOne.vue";
+import BlockTwo from "./blockTwo.vue";
+import BlockThree from "./blockThree.vue";
+import BotStopper from "./tutorialPages/BotStopper.vue";
+import Consent from "./tutorialPages/Consent.vue";
+import ExperInfo from "./tutorialPages/ExperInfo.vue";
+import ExperTutor from "./tutorialPages/ExperTutor.vue";
+import MeetPeople from "./tutorialPages/MeetPeople.vue";
+import WantMoreDots from "./tutorialPages/WantMoreDots.vue";
+import CommKnow from "./tutorialPages/CommKnow.vue";
+import ConstantValue from "./tutorialPages/ConstantValue.vue";
+import Reference from "./tutorialPages/Reference.vue";
+import RefDepComp from "./tutorialPages/RefDepComp.vue";
+import RefDepEqual from "./tutorialPages/RefDepEqual.vue";
+import HowHappy1 from "./tutorialPages/HowHappy1.vue";
+import HowHappy2 from "./tutorialPages/HowHappy2.vue";
+import HowHappy3 from "./tutorialPages/HowHappy3.vue";
+import HowHappy4 from "./tutorialPages/HowHappy4.vue";
+import HowChoice0 from "./tutorialPages/HowChoice0.vue";
+import HowKnow2 from "./tutorialPages/HowKnow2.vue";
+import HowKnow3 from "./tutorialPages/HowKnow3.vue";
+import HowKnow4 from "./tutorialPages/HowKnow4.vue";
+import HowKnow5 from "./tutorialPages/HowKnow5.vue";
+import HowKnow6 from "./tutorialPages/HowKnow6.vue";
+import HowKnow7 from "./tutorialPages/HowKnow7.vue";
+import HowKnow8 from "./tutorialPages/HowKnow8.vue";
+import HowChoice1 from "./tutorialPages/HowChoice1.vue";
+import HowChoice2 from "./tutorialPages/HowChoice2.vue";
+import HowChoice3 from "./tutorialPages/HowChoice3.vue";
+import HowChoice4 from "./tutorialPages/HowChoice4.vue";
+import HowChoice5 from "./tutorialPages/HowChoice5.vue";
+import HowChoice6 from "./tutorialPages/HowChoice6.vue";
+import HowChoice7 from "./tutorialPages/HowChoice7.vue";
+import HowChoice8 from "./tutorialPages/HowChoice8.vue";
+import HowChoice9 from "./tutorialPages/HowChoice9.vue";
+import Cursor1 from "./tutorialPages/Cursor1.vue";
+import PredPract1 from "./tutorialPages/PredPract1.vue";
+import PredPract2 from "./tutorialPages/PredPract2.vue";
+import MoralChoice1 from "./tutorialPages/MoralChoice1.vue";
+import MoralChoice2 from "./tutorialPages/MoralChoice2.vue";
+import TwoOptions from "./tutorialPages/TwoOptions.vue";
+import NoSharing from "./tutorialPages/NoSharing.vue";
+import EvapDots from "./tutorialPages/EvapDots.vue";
+import ActPass from "./tutorialPages/ActPass.vue";
+import NoTalking from "./tutorialPages/NoTalking.vue";
+import TF110 from "./tutorialPages/TF110.vue";
+import EndTF1 from "./tutorialPages/EndTF1.vue";
+import Cursor2 from "./tutorialPages/Cursor2.vue";
+import TF1118 from "./tutorialPages/TF1118.vue";
+import EndTF2 from "./tutorialPages/EndTF2.vue";
+import ProgBar from "./tutorialPages/ProgBar.vue";
+import KeyHands from "./tutorialPages/KeyHands.vue";
+import EndInstr from "./tutorialPages/EndInstr.vue";
+import GameFlow1 from "./tutorialPages/GameFlow1.vue";
+import GameFlow2 from "./tutorialPages/GameFlow2.vue";
+import GameFlow3 from "./tutorialPages/GameFlow3.vue";
+import GameFlow4 from "./tutorialPages/GameFlow4.vue";
+import GameFlow5 from "./tutorialPages/GameFlow5.vue";
+import Control1 from "./tutorialPages/Control1.vue";
+import Control2 from "./tutorialPages/Control2.vue";
+import Control3 from "./tutorialPages/Control3.vue";
+import Control4 from "./tutorialPages/Control4.vue";
+import Control5 from "./tutorialPages/Control5.vue";
+import Feedback from "./tutorialPages/Feedback.vue";
+import Knowledge1 from "./tutorialPages/Knowledge1.vue";
+import Knowledge2 from "./tutorialPages/Knowledge2.vue";
+import Knowledge3 from "./tutorialPages/Knowledge3.vue";
+import Knowledge4 from "./tutorialPages/Knowledge4.vue";
+import Knowledge5 from "./tutorialPages/Knowledge5.vue";
+import Knowledge6 from "./tutorialPages/Knowledge6.vue";
+import Machines1 from "./tutorialPages/Machines1.vue";
+import Machines2 from "./tutorialPages/Machines2.vue";
+import Machines3 from "./tutorialPages/Machines3.vue";
+import Machines4 from "./tutorialPages/Machines4.vue";
+import Machines5 from "./tutorialPages/Machines5.vue";
+import Machines6 from "./tutorialPages/Machines6.vue";
+import Machines7 from "./tutorialPages/Machines7.vue";
+import MachinesP from "./tutorialPages/MachinesP.vue";
+import Practice01 from "./tutorialPages/Practice01.vue";
+import Practice02 from "./tutorialPages/Practice02.vue";
+import Practice03 from "./tutorialPages/Practice03.vue";
+import FlowKnow1 from "./tutorialPages/FlowKnow1.vue";
+import FlowKnow2 from "./tutorialPages/FlowKnow2.vue";
+import Trystuffout from "./tutorialPages/Trystuffout.vue";
+import Absurdity from "./tutorialPages/Absurdity.vue";
+import Silly from "./tutorialPages/Silly.vue";
+import Foolish from "./tutorialPages/Foolish.vue";
+import Trymore1 from "./tutorialPages/Trymore1.vue";
+import Trymore2 from "./tutorialPages/Trymore2.vue";
+import Tutorial1 from "./tutorialPages/page_1.vue";
+import Tutorial1b from "./tutorialPages/page_1b.vue";
+import Tutorial2 from "./tutorialPages/page_2.vue";
+import Tutorial3 from "./tutorialPages/page_3.vue";
+import Tutorial4 from "./tutorialPages/page_4.vue";
+import Tutorial5 from "./tutorialPages/page_5.vue";
+import Tutorial6 from "./tutorialPages/page_6.vue";
+import Tutorial7 from "./tutorialPages/page_7.vue";
+import Tutorial8 from "./tutorialPages/page_8.vue";
+import Tutorial9 from "./tutorialPages/page_9.vue";
+import Tutorial10 from "./tutorialPages/page_10.vue";
+import Tutorial11 from "./tutorialPages/page_11.vue";
+import Tutorial12 from "./tutorialPages/page_12.vue";
+import Tutorial13 from "./tutorialPages/page_13.vue";
+import Tutorial14 from "./tutorialPages/page_14.vue";
+import Tutorial15 from "./tutorialPages/page_15.vue";
+import Tutorial16 from "./tutorialPages/page_16.vue";
+import Tutorial17 from "./tutorialPages/page_17.vue";
+import Tutorial18 from "./tutorialPages/page_18.vue";
+import Tutorial19 from "./tutorialPages/page_19.vue";
+import Tutorial20 from "./tutorialPages/page_20.vue";
+import Tutorial21 from "./tutorialPages/page_21.vue";
+import Tutorial22 from "./tutorialPages/page_22.vue";
+import Tutorial23 from "./tutorialPages/page_23.vue";
+import Tutorial24 from "./tutorialPages/page_24.vue";
+import Tutorial25 from "./tutorialPages/page_25.vue";
+import Tutorial26 from "./tutorialPages/page_26.vue";
+import Tutorial27 from "./tutorialPages/page_27.vue";
+import Tutorial28 from "./tutorialPages/page_28.vue";
+import Tutorial29 from "./tutorialPages/page_29.vue";
+import Tutorial30 from "./tutorialPages/page_30.vue";
+import Tutorial31 from "./tutorialPages/page_31.vue";
+import Tutorial32 from "./tutorialPages/page_32.vue";
+import Tutorial33 from "./tutorialPages/page_33.vue";
+import Tutorial34 from "./tutorialPages/page_34.vue";
+import Tutorial35 from "./tutorialPages/page_35.vue";
+import Tutorial36 from "./tutorialPages/page_36.vue";
+import Tutorial37 from "./tutorialPages/page_37.vue";
+import Tutorial38 from "./tutorialPages/page_38.vue";
+import Tutorial39 from "./tutorialPages/page_39.vue";
+import Tutorial40 from "./tutorialPages/page_40.vue";
+import Tutorial41 from "./tutorialPages/page_41.vue";
+import Tutorial42 from "./tutorialPages/page_42.vue";
+import Tutorial43 from "./tutorialPages/page_43.vue";
+import Tutorial44 from "./tutorialPages/page_44.vue";
+import Tutorial45 from "./tutorialPages/page_45.vue";
+import Tutorial46 from "./tutorialPages/page_46.vue";
+import Tutorial47 from "./tutorialPages/page_47.vue";
+import Tutorial48 from "./tutorialPages/page_48.vue";
+import Tutorial49 from "./tutorialPages/page_49.vue";
+import Tutorial50 from "./tutorialPages/page_50.vue";
+import Tutorial51 from "./tutorialPages/page_51.vue";
+import Tutorial52 from "./tutorialPages/page_52.vue";
+import Tutorial53 from "./tutorialPages/page_53.vue";
+import Tutorial54 from "./tutorialPages/page_54.vue";
+import Tutorial55 from "./tutorialPages/page_55.vue";
+import Tutorial56 from "./tutorialPages/page_56.vue";
+import Tutorial57 from "./tutorialPages/page_57.vue";
+import Tutorial58 from "./tutorialPages/page_58.vue";
+import Tutorial59 from "./tutorialPages/page_59.vue";
+import Tutorial60 from "./tutorialPages/page_60.vue";
+import Tutorial61 from "./tutorialPages/page_61.vue";
+import Tutorial62 from "./tutorialPages/page_62.vue";
+import Tutorial63 from "./tutorialPages/page_63.vue";
+import Tutorial64 from "./tutorialPages/page_64.vue";
+import Tutorial65 from "./tutorialPages/page_65.vue";
+import Tutorial66 from "./tutorialPages/page_66.vue";
+import Tutorial67 from "./tutorialPages/page_67.vue";
+import Tutorial68 from "./tutorialPages/page_68.vue";
+import Tutorial69 from "./tutorialPages/page_69.vue";
+import Tutorial70 from "./tutorialPages/page_70.vue";
+import Tutorial71 from "./tutorialPages/page_71.vue";
+import Tutorial72 from "./tutorialPages/page_72.vue";
+import Tutorial73 from "./tutorialPages/page_73.vue";
+import FRpage1 from "./FreeResponsePages/page_1.vue";
+import FRpage2 from "./FreeResponsePages/page_2.vue";
+import FRpage3 from "./FreeResponsePages/page_3.vue";
+import FRpage4 from "./FreeResponsePages/page_4.vue";
+import FRpage5 from "./FreeResponsePages/page_5.vue";
+import FRpage6 from "./FreeResponsePages/page_6.vue";
+import FRpage7 from "./FreeResponsePages/page_7.vue";
+import FRpage8 from "./FreeResponsePages/page_8.vue";
+import FRpage9 from "./FreeResponsePages/page_9.vue";
+import FRpage10 from "./FreeResponsePages/page_10.vue";
+import FRpage11 from "./FreeResponsePages/page_11.vue";
+import FRpage12 from "./FreeResponsePages/page_12.vue";
+import FRpage13 from "./FreeResponsePages/page_13.vue";
+import Survey1 from "./SurveyPages/page_1.vue";
+import Survey2 from "./SurveyPages/page_2.vue";
+import Survey3 from "./SurveyPages/page_3.vue";
+import Survey4 from "./SurveyPages/page_4.vue";
+import Survey5 from "./SurveyPages/page_5.vue";
+import json from "./dataSample.json";
+import Vue from "vue";
 
 export default {
-  name: 'MainPage',
+  name: "MainPage",
   components: {
     Survey1,
     Survey2,
@@ -712,7 +769,7 @@ export default {
     Tutorial73,
   },
   props: {
-    msg: String
+    msg: String,
   },
   // Survey data and final output file data
   data() {
@@ -722,10 +779,11 @@ export default {
       bot_shown: false,
       data_sent_to_s3: false,
       participant_generated_id: this.generateParticipantId(),
-      form: '',
-      S1Results: '',
-      API_KEY: 'AIzaSyAxlUCye8_1_QFtX1S7ychFF8KpmpylaRk',
-      CLIENT_ID: '292287515987-0ujosbnm7d5v37l9dkp3fk5pfkoi4b27.apps.googleusercontent.com',
+      form: "",
+      S1Results: "",
+      API_KEY: "AIzaSyAxlUCye8_1_QFtX1S7ychFF8KpmpylaRk",
+      CLIENT_ID:
+        "292287515987-0ujosbnm7d5v37l9dkp3fk5pfkoi4b27.apps.googleusercontent.com",
       dataJson: json,
       finished_1: false,
       finished_2: false,
@@ -737,37 +795,47 @@ export default {
       b_show_3: true,
       window_size: "height: 600px;",
       // ----------------------------------------------These are data for styling
-      variants: ['primary', 'secondary', 'success', 'warning', 'danger', 'info', 'light', 'dark'],
-      headerBgVariant: 'dark',
-      headerTextVariant: 'light',
-      bodyBgVariant: 'light',
-      bodyTextVariant: 'dark',
-      footerBgVariant: 'warning',
-      footerTextVariant: 'dark',
-      colors:['red', 'yellow', 'brown', 'orange', 'black'],
+      variants: [
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger",
+        "info",
+        "light",
+        "dark",
+      ],
+      headerBgVariant: "dark",
+      headerTextVariant: "light",
+      bodyBgVariant: "light",
+      bodyTextVariant: "dark",
+      footerBgVariant: "warning",
+      footerTextVariant: "dark",
+      colors: ["red", "yellow", "brown", "orange", "black"],
       scenarioColor: `height: 280px; backgroundColor: red;`,
       index: 0,
       // ---------------------------------------------
       end_survey_form: new Object(),
-      FRResults: ['','','','','','','','','','','','','','', ''],
+      FRResults: ["", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
       blockOneRawResults: null,
       blockOneResults: null,
       blockTwoResults: null,
       blockThreeResults: null,
       gender_options: [
-        { value: 'Female', text: 'Female' },
-        { value: 'Male', text: 'Male' },
-        { value: 'Other', text: 'Other' },
+        { value: "Female", text: "Female" },
+        { value: "Male", text: "Male" },
+        { value: "Other", text: "Other" },
       ],
       ra_options: [
-        { value: 'Rashi Watwani', text: 'Rashi Watwani' },
-        { value: 'Justin Baadarani', text: 'Justin Baadarani' },
-        { value: 'Derek Chan', text: 'Derek Chan' },
-        { value: 'Monwarul Islam', text: 'Monwarul Islam' },
-        { value: 'Al-Taimee Hassan', text: 'Al-Taimee Hassan' },
+        { value: "Rashi Watwani", text: "Rashi Watwani" },
+        { value: "Justin Baadarani", text: "Justin Baadarani" },
+        { value: "Derek Chan", text: "Derek Chan" },
+        { value: "Monwarul Islam", text: "Monwarul Islam" },
+        { value: "Al-Taimee Hassan", text: "Al-Taimee Hassan" },
       ],
       // A true means the participant got that question right, and vice verse
       ans_tutorial: {},
+      parsed_answers: [],
       aws_bucket_name: "experimentdata2020",
       aws_object_name: "testinit2.txt",
       // serverlessrepo-s3-presigned-url-s3presignedurl-EF2SRE90YXDY?BucketName="experimentdata2020"&ObjectName="test10.txt"&ExpiredIn=3600
@@ -777,399 +845,436 @@ export default {
       instrucStart: 0,
       instrucEnd: 0,
       instrucTime: 0,
-    }
+    };
   },
-  created: function () {
-    let parent = this
-    window.addEventListener('keydown', function(event) {
-      let parent = this
+  created: function() {
+    let parent = this;
+    window.addEventListener("keydown", function(event) {
       // Prevent the spacebar jerk
       if (event.keyCode == 32) {
         // eslint-disable-next-line no-console
-        console.log("event space detected")
+        console.log("event space detected");
         if (parent.ep1_shown) {
           // eslint-disable-next-line no-console
-          console.log("no scroll")
+          console.log("no scroll");
           event.preventDefault();
         }
       }
       // Prevent enter from booting people out of captcha page
       if (event.keyCode == 13) {
         // eslint-disable-next-line no-console
-          console.log("enter event")
+        console.log("enter event");
         if (parent.bot_shown) {
           // eslint-disable-next-line no-console
-          console.log("no boot")
+          console.log("no boot");
           event.preventDefault();
         }
       }
     });
   },
-  computed: {
-  },
+  computed: {},
   mounted() {
-    this.$root.$on('bv::modal::show', (bvEvent, modalId) => {
-      let parent = this
-      if (modalId == 'modal-center') {
+    this.$root.$on("bv::modal::show", (bvEvent, modalId) => {
+      let parent = this;
+      if (modalId == "modal-center") {
         // eslint-disable-next-line no-console
         // console.log('Modal is about to be shown', bvEvent, modalId)
-        parent.ep1_shown = true
+        parent.ep1_shown = true;
         // eslint-disable-next-line no-console
-        console.log(parent.ep1_shown)
-      }
-      else if (modalId == 'modal-center-BotStopper') {
+        console.log(parent.ep1_shown);
+      } else if (modalId == "modal-center-BotStopper") {
         // eslint-disable-next-line no-console
         // console.log('Modal is about to be shown', bvEvent, modalId)
-        parent.bot_shown = true
+        parent.bot_shown = true;
       }
-    })
-    this.$root.$on('bv::modal::hide', (bvEvent, modalId) => {
-      let parent = this
-      if (modalId == 'modal-center') {
+    });
+    this.$root.$on("bv::modal::hide", (bvEvent, modalId) => {
+      let parent = this;
+      if (modalId == "modal-center") {
         // eslint-disable-next-line no-console
         // console.log('Modal is about to be hidden', bvEvent, modalId)
-        parent.ep1_shown = false
+        parent.ep1_shown = false;
         // eslint-disable-next-line no-console
-        console.log(parent.ep1_shown)
-      }
-      else if (modalId == 'modal-center-BotStopper') {
+        console.log(parent.ep1_shown);
+      } else if (modalId == "modal-center-BotStopper") {
         // eslint-disable-next-line no-console
         // console.log('Modal is about to be shown', bvEvent, modalId)
-        parent.bot_shown = false
+        parent.bot_shown = false;
       }
-    })
+    });
   },
   methods: {
     generateParticipantId() {
-      var text = ""
-      let chars = "abcdefghijklmnopqrstuvwxyz"
-      for( let i=0; i < 3; i++ ) {
-				text += chars.charAt(Math.floor(Math.random() * chars.length))
+      var text = "";
+      let chars = "abcdefghijklmnopqrstuvwxyz";
+      for (let i = 0; i < 3; i++) {
+        text += chars.charAt(Math.floor(Math.random() * chars.length));
       }
-      return String(moment(String(new Date())).format('YYYYMMDDhhmmss')) + text
+      return String(moment(String(new Date())).format("YYYYMMDDhhmmss")) + text;
     },
     fetchPresignedUrl() {
-      let sending_url = this.aws_presigned_lambda + this.aws_bucket_name + "&ObjectName=" + this.aws_object_name
-      Vue.axios.get(sending_url).then(response => {
-      // JSON responses are automatically parsed.
-      // eslint-disable-next-line no-console
-      console.log((response.data))
-      var raw_data = response.data.replace(/'/g, '"');
-      let parsed_data = JSON.parse(raw_data)
-      // eslint-disable-next-line no-console
-      console.log(parsed_data)
-      let post_request_body = parsed_data['fields']
-      post_request_body['file'] = this.$papa.unparse(this.blockOneResults)
-      // eslint-disable-next-line no-console
-      console.log(post_request_body)
-      var form_data = new FormData();
+      let sending_url =
+        this.aws_presigned_lambda +
+        this.aws_bucket_name +
+        "&ObjectName=" +
+        this.aws_object_name;
+      Vue.axios.get(sending_url).then((response) => {
+        // JSON responses are automatically parsed.
+        // eslint-disable-next-line no-console
+        console.log(response.data);
+        var raw_data = response.data.replace(/'/g, '"');
+        let parsed_data = JSON.parse(raw_data);
+        // eslint-disable-next-line no-console
+        console.log(parsed_data);
+        let post_request_body = parsed_data["fields"];
+        post_request_body["file"] = this.$papa.unparse(this.blockOneResults);
+        // eslint-disable-next-line no-console
+        console.log(post_request_body);
+        var form_data = new FormData();
 
-      for ( var key in post_request_body ) {
+        for (var key in post_request_body) {
           form_data.append(key, post_request_body[key]);
-      }
-      Vue.axios.post(this.aws_s3_post_url, 
-      form_data, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            'x-requested-with': 'xxxx',
-          }
-      }
-      ).then(response => {
-        // 204 No Content
-        // eslint-disable-next-line no-console
-        console.log(response.data)
-        parent.data_sent_to_s3 = true
-      }).catch(e => {
-        // eslint-disable-next-line no-console
-        console.log(e)
-      })
-    })
+        }
+        Vue.axios
+          .post(this.aws_s3_post_url, form_data, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              "x-requested-with": "xxxx",
+            },
+          })
+          .then((response) => {
+            // 204 No Content
+            // eslint-disable-next-line no-console
+            console.log(response.data);
+            parent.data_sent_to_s3 = true;
+          })
+          .catch((e) => {
+            // eslint-disable-next-line no-console
+            console.log(e);
+          });
+      });
     },
     instructionStart(value) {
-      this.instrucStart = value
+      this.instrucStart = value;
     },
     instructionEnd(value) {
-      this.instrucEnd = value
-      this.instrucTime = this.instrucEnd - this.instrucStart
+      // In case the flow is violated, stop all emits after the first emit
+      if (this.instrucTime != 0) {
+        return;
+      }
+      this.instrucEnd = value;
+      this.instrucTime = (this.instrucEnd - this.instrucStart) * 0.001;
+      var answers = [];
+      for (let [key, value] of Object.entries(this.ans_tutorial)) {
+        answers.append((key, value));
+      }
+      this.parsed_answers = answers;
+      // eslint-disable-next-line no-console
+      console.log("this.ans_tutorial");
+      // eslint-disable-next-line no-console
+      console.log(answers);
+      // eslint-disable-next-line no-console
+      console.log(this.instrucTime);
     },
     onAnsChild20(value) {
-      this.ans_tutorial[20] = value
+      this.ans_tutorial[20] = value;
       // eslint-disable-next-line no-console
-      console.log(this.ans_tutorial)
+      console.log(this.ans_tutorial);
     },
     onAnsChild21(value) {
       // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[21] = value
+      console.log(value);
+      this.ans_tutorial[21] = value;
     },
     onAnsChild22(value) {
       // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[22] = value
+      console.log(value);
+      this.ans_tutorial[22] = value;
     },
     onAnsChild23(value) {
       // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[23] = value
+      console.log(value);
+      this.ans_tutorial[23] = value;
     },
     onAnsChild24(value) {
       // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[24] = value
+      console.log(value);
+      this.ans_tutorial[24] = value;
     },
     onAnsChild25(value) {
       // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[25] = value
+      console.log(value);
+      this.ans_tutorial[25] = value;
     },
     onAnsChild26(value) {
       // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[26] = value
+      console.log(value);
+      this.ans_tutorial[26] = value;
     },
     onAnsChild27(value) {
       // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[27] = value
+      console.log(value);
+      this.ans_tutorial[27] = value;
     },
     onAnsChild28(value) {
       // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[28] = value
+      console.log(value);
+      this.ans_tutorial[28] = value;
     },
     onAnsChild29(value) {
       // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[29] = value
+      console.log(value);
+      this.ans_tutorial[29] = value;
     },
     onAnsChild61(value) {
       // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[61] = value
+      console.log(value);
+      this.ans_tutorial[61] = value;
     },
     onAnsChild62(value) {
       // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[62] = value
+      console.log(value);
+      this.ans_tutorial[62] = value;
     },
     onAnsChild63(value) {
       // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[63] = value
+      console.log(value);
+      this.ans_tutorial[63] = value;
     },
     onAnsChild64(value) {
       // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[64] = value
+      console.log(value);
+      this.ans_tutorial[64] = value;
     },
     onAnsChild65(value) {
       // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[65] = value
+      console.log(value);
+      this.ans_tutorial[65] = value;
     },
     onAnsChild66(value) {
       // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[66] = value
+      console.log(value);
+      this.ans_tutorial[66] = value;
     },
     onAnsChild67(value) {
       // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[67] = value
+      console.log(value);
+      this.ans_tutorial[67] = value;
     },
     onAnsChild68(value) {
       // eslint-disable-next-line no-console
-      console.log(value)
-      this.ans_tutorial[68] = value
+      console.log(value);
+      this.ans_tutorial[68] = value;
     },
     FR1Finished(results) {
-      this.FRResults[1] = results
+      this.FRResults[1] = results;
     },
     FR2Finished(results) {
-      this.FRResults[2] = results
+      this.FRResults[2] = results;
     },
     FR3Finished(results) {
-      this.FRResults[3] = results
+      this.FRResults[3] = results;
     },
     FR4Finished(results) {
-      this.FRResults[4] = results
+      this.FRResults[4] = results;
     },
     FR5Finished(results) {
-      this.FRResults[5] = results
+      this.FRResults[5] = results;
     },
     FR6Finished(results) {
-      this.FRResults[6] = results
+      this.FRResults[6] = results;
     },
     FR7Finished(results) {
-      this.FRResults[7] = results
+      this.FRResults[7] = results;
     },
     FR8Finished(results) {
-      this.FRResults[8] = results
+      this.FRResults[8] = results;
     },
     FR9Finished(results) {
-      this.FRResults[9] = results
+      this.FRResults[9] = results;
     },
     FR10Finished(results) {
-      this.FRResults[10] = results
+      this.FRResults[10] = results;
     },
     FR11Finished(results) {
-      this.FRResults[11] = results
+      this.FRResults[11] = results;
     },
     FR12Finished(results) {
-      this.FRResults[12] = results
+      this.FRResults[12] = results;
     },
     FR13Finished(results) {
-      this.FRResults[13] = results
+      this.FRResults[13] = results;
     },
     Survey1Finished(results) {
       // eslint-disable-next-line no-console
-      console.log(results)
-      this.end_survey_form.school = results.school
-      this.end_survey_form.happy = results.avatars
-      this.end_survey_form.love = results.loves
-      this.end_survey_form.age = results.yob
-      this.end_survey_form.gender = results.genders
+      console.log(results);
+      this.end_survey_form.school = results.school;
+      this.end_survey_form.happy = results.avatars;
+      this.end_survey_form.love = results.loves;
+      this.end_survey_form.age = results.yob;
+      this.end_survey_form.gender = results.genders;
     },
     Survey2Finished(results) {
       // eslint-disable-next-line no-console
-      console.log(results)
-      this.end_survey_form.olderBro = results.older_bro
-      this.end_survey_form.olderSis = results.older_sis
-      this.end_survey_form.youngerBro = results.younger_bro
-      this.end_survey_form.youngerSis = results.younger_sis
-      this.end_survey_form.english = results.english
-      this.end_survey_form.country = results.countries
+      console.log(results);
+      this.end_survey_form.olderBro = results.older_bro;
+      this.end_survey_form.olderSis = results.older_sis;
+      this.end_survey_form.youngerBro = results.younger_bro;
+      this.end_survey_form.youngerSis = results.younger_sis;
+      this.end_survey_form.english = results.english;
+      this.end_survey_form.country = results.countries;
     },
     Survey3Finished(results) {
       // eslint-disable-next-line no-console
-      console.log(results)
+      console.log(results);
       // Generate form data at the end of our survey
-      this.end_survey_form.money = results.money
-      this.end_survey_form.gods = results.divine
-      this.end_survey_form.political = results.political
-      this.end_survey_form.attractive = results.view
-      this.end_survey_form.power = results.interact
-      this.end_survey_form.agree = results.agree
+      this.end_survey_form.money = results.money;
+      this.end_survey_form.gods = results.divine;
+      this.end_survey_form.political = results.political;
+      this.end_survey_form.attractive = results.view;
+      this.end_survey_form.power = results.interact;
+      this.end_survey_form.agree = results.agree;
     },
     Survey4Finished(results) {
       // eslint-disable-next-line no-console
-      console.log(results)
+      console.log(results);
       // Generate form data at the end of our survey
-      this.end_survey_form.bigfive01 = results.bigfive01
-      this.end_survey_form.bigfive02 = results.bigfive02
-      this.end_survey_form.bigfive03 = results.bigfive03
-      this.end_survey_form.bigfive04 = results.bigfive04
-      this.end_survey_form.bigfive05 = results.bigfive05
+      this.end_survey_form.bigfive01 = results.bigfive01;
+      this.end_survey_form.bigfive02 = results.bigfive02;
+      this.end_survey_form.bigfive03 = results.bigfive03;
+      this.end_survey_form.bigfive04 = results.bigfive04;
+      this.end_survey_form.bigfive05 = results.bigfive05;
     },
     Survey5Finished(results) {
       // eslint-disable-next-line no-console
-      console.log(results)
+      console.log(results);
       // Generate form data at the end of our survey
-      this.end_survey_form.bigfive06 = results.bigfive06
-      this.end_survey_form.bigfive07 = results.bigfive07
-      this.end_survey_form.bigfive08 = results.bigfive08
-      this.end_survey_form.bigfive09 = results.bigfive09
-      this.end_survey_form.bigfive10 = results.bigfive10
+      this.end_survey_form.bigfive06 = results.bigfive06;
+      this.end_survey_form.bigfive07 = results.bigfive07;
+      this.end_survey_form.bigfive08 = results.bigfive08;
+      this.end_survey_form.bigfive09 = results.bigfive09;
+      this.end_survey_form.bigfive10 = results.bigfive10;
     },
     blockOneFinished(results) {
       // this.b_show_1 = false
       // this.b_show_2 = true
       this.blockOneRawResults = results;
-      this.blockOneResults = this.processOneResults(results)
-      this.finished_1 = true
+      this.blockOneResults = this.processOneResults(results);
+      this.finished_1 = true;
     },
     blockThreeFinished(results) {
       // this.b_show_3 = false
-      this.finished_3 = true
-      this.blockThreeResults = this.processThreeResults(results)
+      this.finished_3 = true;
+      this.blockThreeResults = this.processThreeResults(results);
     },
-    // processOneResults serves the functionality that converts raw recorded data to our target format 
+    // processOneResults serves the functionality that converts raw recorded data to our target format
     processOneResults(raw) {
       var i;
       var output = [];
       // eslint-disable-next-line no-console
-      console.log(this.participant_generated_id)
+      console.log(this.participant_generated_id);
       for (i = 0; i < raw.length; i++) {
         var current = {
-          'Participant_ID': this.participant_generated_id,
-          'Trial_Number': raw[i].trial_id,
-          'Encnt1_cond' : raw[i].game_condition,
-          'Encnt2_cond': raw[i].trust_condition,
-          'Label': raw[i].a_c == '2' ? this.labelGen(raw[i].pr_p.p_first, raw[i].pr_p.a_first, raw[i].pr_p.p_second, raw[i].pr_p.a_second) + this.ectr2Gen(raw[i].a_p.a_first, raw[i].pl_p) : this.labelGen(raw[i].pr_p.p_second, raw[i].pr_p.a_second, raw[i].pr_p.p_first, raw[i].pr_p.a_first) + this.ectr2Gen(raw[i].a_p.a_first, raw[i].pl_p),
-          'Vert_Posit_L': raw[i].vert_pos,
-          'Vert_Posit_N': this.vertPositMatch(raw[i].vert_pos),
-          'Key_Press': raw[i].keypress,
-          'Trial_order': raw[i].trial_order,
-          'Avatar': raw[i].avatar_id,
-          'Block_order': '123',
-          'Prediction': raw[i].prediction,
-          'Pred_RT': raw[i].reaction_time_prediction,
-          'Control_Choice': raw[i].trust,
-          'Control_RT': raw[i].reaction_time_trust,
-          'E1&2_Act_Type': this.dataJson[Number(raw[i].trial_id) - 1]['E1&2_Act_Type'],
-          'E1&2_Act_Deg': this.dataJson[Number(raw[i].trial_id) - 1]['E1&2_Act_Deg'],
-          'Equality': this.dataJson[Number(raw[i].trial_id) - 1]['Equality'],
-          'Sure_Thing': this.dataJson[Number(raw[i].trial_id) - 1]['Sure_Thing'],
-          'Compatib': this.dataJson[Number(raw[i].trial_id) - 1]['Compatib'],
-          'Triplets': this.dataJson[Number(raw[i].trial_id) - 1]['Triplets'],
-          'Equal_by_Act': this.dataJson[Number(raw[i].trial_id) - 1]['Equal_by_Act'],
+          Participant_ID: this.participant_generated_id,
+          Trial_Number: raw[i].trial_id,
+          Encnt1_cond: raw[i].game_condition,
+          Encnt2_cond: raw[i].trust_condition,
+          Label:
+            raw[i].a_c == "2"
+              ? this.labelGen(
+                  raw[i].pr_p.p_first,
+                  raw[i].pr_p.a_first,
+                  raw[i].pr_p.p_second,
+                  raw[i].pr_p.a_second
+                ) + this.ectr2Gen(raw[i].a_p.a_first, raw[i].pl_p)
+              : this.labelGen(
+                  raw[i].pr_p.p_second,
+                  raw[i].pr_p.a_second,
+                  raw[i].pr_p.p_first,
+                  raw[i].pr_p.a_first
+                ) + this.ectr2Gen(raw[i].a_p.a_first, raw[i].pl_p),
+          Vert_Posit_L: raw[i].vert_pos,
+          Vert_Posit_N: this.vertPositMatch(raw[i].vert_pos),
+          Key_Press: raw[i].keypress,
+          Trial_order: raw[i].trial_order,
+          Avatar: raw[i].avatar_id,
+          Block_order: "123",
+          Prediction: raw[i].prediction,
+          Pred_RT: raw[i].reaction_time_prediction,
+          Control_Choice: raw[i].trust,
+          Control_RT: raw[i].reaction_time_trust,
+          "E1&2_Act_Type": this.dataJson[Number(raw[i].trial_id) - 1][
+            "E1&2_Act_Type"
+          ],
+          "E1&2_Act_Deg": this.dataJson[Number(raw[i].trial_id) - 1][
+            "E1&2_Act_Deg"
+          ],
+          Equality: this.dataJson[Number(raw[i].trial_id) - 1]["Equality"],
+          Sure_Thing: this.dataJson[Number(raw[i].trial_id) - 1]["Sure_Thing"],
+          Compatib: this.dataJson[Number(raw[i].trial_id) - 1]["Compatib"],
+          Triplets: this.dataJson[Number(raw[i].trial_id) - 1]["Triplets"],
+          Equal_by_Act: this.dataJson[Number(raw[i].trial_id) - 1][
+            "Equal_by_Act"
+          ],
           // 'Inst_Rat': this.instRat(raw[i].prediction, raw[i].trust),
           // 'Rat_Sure': this.ratSure(),
           // 'Rat_Act': this.ratAct(),
           // 'Rat_Deg': this.ratDeg(),
           // 'Red_Flag': this.redFlag(raw),
           // The generating functions here are still bugged... using None values for now
-          'Inst_Rat': '',
-          'Rat_Sure': '',
-          'Rat_Act': '',
-          'Rat_Deg': '',
-          'Red_Flag': '',
-          'Date': this.end_survey_form.date,
-          'Age': this.end_survey_form.age,
-          'Gender': this.end_survey_form.gender,
-          'Old_bro': this.end_survey_form.olderBro,
-          'Old_sis': this.end_survey_form.olderSis,
-          'Yng_bro': this.end_survey_form.youngerBro,
-          'Yng_sis': this.end_survey_form.youngerSis,
-          'Happy': this.end_survey_form.happy,
-          'Love': this.end_survey_form.love,
-          'English': this.end_survey_form.english,
-          'School': this.end_survey_form.school,
-          'Money': this.end_survey_form.money,
-          'Gods': this.end_survey_form.gods,
-          'Political': this.end_survey_form.political,
-          'Attractive': this.end_survey_form.attractive,
-          'Power': this.end_survey_form.power,
-          'Country': this.end_survey_form.country,
-          'Agreement': this.end_survey_form.agree,
-          'bigfive01': this.end_survey_form.bigfive01,
-          'bigfive02': this.end_survey_form.bigfive02,
-          'bigfive03': this.end_survey_form.bigfive03,
-          'bigfive04': this.end_survey_form.bigfive04,
-          'bigfive05': this.end_survey_form.bigfive05,
-          'bigfive06': this.end_survey_form.bigfive06,
-          'bigfive07': this.end_survey_form.bigfive07,
-          'bigfive08': this.end_survey_form.bigfive08,
-          'bigfive09': this.end_survey_form.bigfive09,
-          'bigfive10': this.end_survey_form.bigfive10,
-          'WRQ01': this.FRResults[1],
-          'WRQ02': this.FRResults[2],
-          'WRQ03': this.FRResults[3],
-          'WRQ04': this.FRResults[4],
-          'WRQ05': this.FRResults[5],
-          'WRQ06': this.FRResults[6],
-          'WRQ07': this.FRResults[7],
-          'WRQ08': this.FRResults[8],
-          'WRQ09': this.FRResults[9],
-          'WRQ10': this.FRResults[10],
-          'WRQ11': this.FRResults[11],
-          'WRQ12': this.FRResults[12],
-          'WRQ13': this.FRResults[13],
-        }
-        output.push(current)
+          Inst_Rat: "",
+          Rat_Sure: "",
+          Rat_Act: "",
+          Rat_Deg: "",
+          Red_Flag: "",
+          InstructionTimeSpent: this.instrucTime,
+          InstructionAnswers: this.parsed_answers,
+          Date: this.end_survey_form.date,
+          Age: this.end_survey_form.age,
+          Gender: this.end_survey_form.gender,
+          Old_bro: this.end_survey_form.olderBro,
+          Old_sis: this.end_survey_form.olderSis,
+          Yng_bro: this.end_survey_form.youngerBro,
+          Yng_sis: this.end_survey_form.youngerSis,
+          Happy: this.end_survey_form.happy,
+          Love: this.end_survey_form.love,
+          English: this.end_survey_form.english,
+          School: this.end_survey_form.school,
+          Money: this.end_survey_form.money,
+          Gods: this.end_survey_form.gods,
+          Political: this.end_survey_form.political,
+          Attractive: this.end_survey_form.attractive,
+          Power: this.end_survey_form.power,
+          Country: this.end_survey_form.country,
+          Agreement: this.end_survey_form.agree,
+          bigfive01: this.end_survey_form.bigfive01,
+          bigfive02: this.end_survey_form.bigfive02,
+          bigfive03: this.end_survey_form.bigfive03,
+          bigfive04: this.end_survey_form.bigfive04,
+          bigfive05: this.end_survey_form.bigfive05,
+          bigfive06: this.end_survey_form.bigfive06,
+          bigfive07: this.end_survey_form.bigfive07,
+          bigfive08: this.end_survey_form.bigfive08,
+          bigfive09: this.end_survey_form.bigfive09,
+          bigfive10: this.end_survey_form.bigfive10,
+          WRQ01: this.FRResults[1],
+          WRQ02: this.FRResults[2],
+          WRQ03: this.FRResults[3],
+          WRQ04: this.FRResults[4],
+          WRQ05: this.FRResults[5],
+          WRQ06: this.FRResults[6],
+          WRQ07: this.FRResults[7],
+          WRQ08: this.FRResults[8],
+          WRQ09: this.FRResults[9],
+          WRQ10: this.FRResults[10],
+          WRQ11: this.FRResults[11],
+          WRQ12: this.FRResults[12],
+          WRQ13: this.FRResults[13],
+        };
+        output.push(current);
       }
-      output.sort( this.blockOneSort )
-      return output
+      output.sort(this.blockOneSort);
+      return output;
     },
     // instRat(p, t) {
     //   return ''
@@ -1177,47 +1282,47 @@ export default {
 
     //   // }
     //   // if (p == 0 && t == 0) {
-        
+
     //   // }
     //   // if (p == 1 && t == 0) {
-        
+
     //   // }
     //   // if (p == 0 && t == 1) {
-        
+
     //   // }
     // },
     processTwoResults(raw) {
-      var output = []
+      var output = [];
       for (var i = 0; i < raw.length; i++) {
         var current = {
-          'participant_name': this.form.name,
-          'Pay Off Structure': raw[i].game_condition,
-          'Avatar Present': raw[i].avatar,
-          'Template Selected': raw[i].choice,
-          'Date': this.form.date,
-          'Gender': this.form.gender,
-          'RA Present': this.form.ra,
-          'Block Order': '123',
-          'Age': this.form.age,
-          'Younger Brother(s)': this.form.youngerBro,
-          'Younger Sister(s)': this.form.youngerSis,
-          'Older Brother(s)': this.form.olderBro,
-          'Older Sister(s)': this.form.olderSis,
-        }
-        output.push(current)
+          participant_name: this.form.name,
+          "Pay Off Structure": raw[i].game_condition,
+          "Avatar Present": raw[i].avatar,
+          "Template Selected": raw[i].choice,
+          Date: this.form.date,
+          Gender: this.form.gender,
+          "RA Present": this.form.ra,
+          "Block Order": "123",
+          Age: this.form.age,
+          "Younger Brother(s)": this.form.youngerBro,
+          "Younger Sister(s)": this.form.youngerSis,
+          "Older Brother(s)": this.form.olderBro,
+          "Older Sister(s)": this.form.olderSis,
+        };
+        output.push(current);
       }
-      return output
+      return output;
     },
     // To be removed
     tuneNum(input) {
-      if (input == '1') {
-        return '1'
+      if (input == "1") {
+        return "1";
       }
-      if (input == '2') {
-        return '3'
+      if (input == "2") {
+        return "3";
       }
-      if (input == '3') {
-        return '5'
+      if (input == "3") {
+        return "5";
       }
     },
     // Generates the label column for processOneResults
@@ -1228,151 +1333,145 @@ export default {
       a_second = this.tuneNum(a_second);
       var p_receive = Number(p_first) - Number(p_second);
       var a_receive = Number(a_first) - Number(a_second);
-      var header = this.typeIden(p_receive, a_receive)
+      var header = this.typeIden(p_receive, a_receive);
       if (p_receive > 0) {
-        p_receive = '+' + p_receive
+        p_receive = "+" + p_receive;
       }
       if (a_receive > 0) {
-        a_receive = '+' + a_receive
+        a_receive = "+" + a_receive;
       }
-      var result = header + '(' + p_receive + ',' + a_receive +
-       ') = (' + p_first + ',' + a_first + ') > (' + p_second + ',' + a_second + ')'
-      return result
+      var result =
+        header +
+        "(" +
+        p_receive +
+        "," +
+        a_receive +
+        ") = (" +
+        p_first +
+        "," +
+        a_first +
+        ") > (" +
+        p_second +
+        "," +
+        a_second +
+        ")";
+      return result;
     },
     // ectr2Gen is a helper function that works with labelGen
     ectr2Gen(a_first, player) {
-      var symbol = ''
-      if (a_first == '1.5') {
-        symbol = 'X'
+      var symbol = "";
+      if (a_first == "1.5") {
+        symbol = "X";
       } else {
-        symbol = '||'
+        symbol = "||";
       }
-      if (player == '1.5') {
-        return symbol + '(3, +' + '2' + ')'
-      } else if (player == '2') {
-        return symbol + '(3, +' + '3' + ')'
-      } else { // player == 2.5
-        return symbol + '(3, +' + '4' + ')'
+      if (player == "1.5") {
+        return symbol + "(3, +" + "2" + ")";
+      } else if (player == "2") {
+        return symbol + "(3, +" + "3" + ")";
+      } else {
+        // player == 2.5
+        return symbol + "(3, +" + "4" + ")";
       }
     },
     typeIden(p_rec, a_rec) {
-      if (p_rec < 0 && a_rec < 0) 
-        return 'P'
-      if (p_rec < 0 && a_rec > 0) 
-        return 'H'
-      if (p_rec > 0 && a_rec < 0) 
-        return 'S'
-      if (p_rec > 0 && a_rec > 0) 
-        return 'M'
+      if (p_rec < 0 && a_rec < 0) return "P";
+      if (p_rec < 0 && a_rec > 0) return "H";
+      if (p_rec > 0 && a_rec < 0) return "S";
+      if (p_rec > 0 && a_rec > 0) return "M";
     },
     processThreeResults(raw) {
       var i;
       var output = [];
       for (i = 0; i < raw.length; i++) {
         var current = {
-          'participant_name': this.form.name,
-          'Game Condition' : raw[i].game_condition,
-          'Belief Condition': raw[i].belief,
-          'Label': raw[i].a_c == '2' ? 
-          `Truth = ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} ) <- ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} ), Belief = ( ${raw[i].t_pr_p.p_first} , ${raw[i].t_pr_p.a_first} ) <- ( ${raw[i].t_pr_p.p_second} , ${raw[i].t_pr_p.a_second} )` 
-          : 
-          `Truth = ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} ) <- ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} ), Belief = ( ${raw[i].t_pr_p.p_second} , ${raw[i].t_pr_p.a_second} ) <- ( ${raw[i].t_pr_p.p_first} , ${raw[i].t_pr_p.a_first} )`,
-          'Trust Condition': raw[i].trust_condition,
-          'Trust/Distrust': raw[i].trust,
-          'Reaction Time': raw[i].reaction_time,
-          'Trial Order': raw[i].trial_order,
+          participant_name: this.form.name,
+          "Game Condition": raw[i].game_condition,
+          "Belief Condition": raw[i].belief,
+          Label:
+            raw[i].a_c == "2"
+              ? `Truth = ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} ) <- ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} ), Belief = ( ${raw[i].t_pr_p.p_first} , ${raw[i].t_pr_p.a_first} ) <- ( ${raw[i].t_pr_p.p_second} , ${raw[i].t_pr_p.a_second} )`
+              : `Truth = ( ${raw[i].pr_p.p_second} , ${raw[i].pr_p.a_second} ) <- ( ${raw[i].pr_p.p_first} , ${raw[i].pr_p.a_first} ), Belief = ( ${raw[i].t_pr_p.p_second} , ${raw[i].t_pr_p.a_second} ) <- ( ${raw[i].t_pr_p.p_first} , ${raw[i].t_pr_p.a_first} )`,
+          "Trust Condition": raw[i].trust_condition,
+          "Trust/Distrust": raw[i].trust,
+          "Reaction Time": raw[i].reaction_time,
+          "Trial Order": raw[i].trial_order,
           // to be FIXED
-          'Avatar': 'N/A',
-          'Date': this.form.date,
-          'Gender': this.form.gender,
-          'RA Present': this.form.ra,
+          Avatar: "N/A",
+          Date: this.form.date,
+          Gender: this.form.gender,
+          "RA Present": this.form.ra,
           // to be FIXED
-          'Block Order': '123',
-          'Age': this.form.age,
-          'Younger Brother(s)': this.form.youngerBro,
-          'Younger Sister(s)': this.form.youngerSis,
-          'Older Brother(s)': this.form.olderBro,
-          'Older Sister(s)': this.form.olderSis,
-        }
-        output.push(current)
+          "Block Order": "123",
+          Age: this.form.age,
+          "Younger Brother(s)": this.form.youngerBro,
+          "Younger Sister(s)": this.form.youngerSis,
+          "Older Brother(s)": this.form.olderBro,
+          "Older Sister(s)": this.form.olderSis,
+        };
+        output.push(current);
       }
-      output.sort( this.blockThreeSort )
-      return output
+      output.sort(this.blockThreeSort);
+      return output;
     },
     blockOneFileName() {
-      return `${this.form.id}_block_1.csv`
+      return `${this.form.id}_block_1.csv`;
     },
     blockTwoFileName() {
-      return `${this.form.id}_block_2.csv`
+      return `${this.form.id}_block_2.csv`;
     },
     blockThreeFileName() {
-      return `${this.form.id}_block_3.csv`
+      return `${this.form.id}_block_3.csv`;
     },
     blockTwoFinished(results) {
       // this.b_show_2 = false
       // this.b_show_3 = true
-      this.finished_2 = true
-      this.blockTwoResults = this.processTwoResults(results)
+      this.finished_2 = true;
+      this.blockTwoResults = this.processTwoResults(results);
     },
     // Functions that sort the results from BlockOne and BlockThree
     blockOneSort(a, b) {
-      if (Number(a['Trial_Number']) < Number(b['Trial_Number'])) {
+      if (Number(a["Trial_Number"]) < Number(b["Trial_Number"])) {
         return -1;
       } else {
         return 1;
       }
     },
     vertPositMatch(str) {
-      if (str == 'HSHS') 
-        return 1;
-      if (str == 'HSSH') 
-        return 2;
-      if (str == 'HSMP') 
-        return 3;
-      if (str == 'HSPM') 
-        return 4;
-      if (str == 'SHHS') 
-        return 5;
-      if (str == 'SHSH') 
-        return 6;
-      if (str == 'SHMP') 
-        return 7;
-      if (str == 'SHPM') 
-        return 8;
-      if (str == 'MPHS') 
-        return 9;
-      if (str == 'MPSH') 
-        return 10;
-      if (str == 'MPMP') 
-        return 11;
-      if (str == 'MPPM') 
-        return 12;
-      if (str == 'PMHS') 
-        return 13;
-      if (str == 'PMSH') 
-        return 14;
-      if (str == 'PMMP') 
-        return 15;
-      if (str == 'PMPM') 
-        return 16;
-      // Should not reach here, returning -1 
+      if (str == "HSHS") return 1;
+      if (str == "HSSH") return 2;
+      if (str == "HSMP") return 3;
+      if (str == "HSPM") return 4;
+      if (str == "SHHS") return 5;
+      if (str == "SHSH") return 6;
+      if (str == "SHMP") return 7;
+      if (str == "SHPM") return 8;
+      if (str == "MPHS") return 9;
+      if (str == "MPSH") return 10;
+      if (str == "MPMP") return 11;
+      if (str == "MPPM") return 12;
+      if (str == "PMHS") return 13;
+      if (str == "PMSH") return 14;
+      if (str == "PMMP") return 15;
+      if (str == "PMPM") return 16;
+      // Should not reach here, returning -1
       return -1;
     },
     blockThreeSort(a, b) {
-      if (a['Game Condition'] < b['Game Condition']) {
+      if (a["Game Condition"] < b["Game Condition"]) {
         return -1;
-      } else if (a['Game Condition'] > b['Game Condition']) {
+      } else if (a["Game Condition"] > b["Game Condition"]) {
         return 1;
       } else {
-        if (a['Belief Condition'] < b['Belief Condition']) {
+        if (a["Belief Condition"] < b["Belief Condition"]) {
           return -1;
-        } else if (a['Belief Condition'] > b['Belief Condition']) {
+        } else if (a["Belief Condition"] > b["Belief Condition"]) {
           return 1;
         } else {
           // Same game condition and belief condition, sort by trust condition
-          if (a['Trust Condition'] < b['Trust Condition']) {
+          if (a["Trust Condition"] < b["Trust Condition"]) {
             return -1;
-          } else if (a['Trust Condition'] > b['Trust Condition']) {
+          } else if (a["Trust Condition"] > b["Trust Condition"]) {
             return 1;
           }
         }
@@ -1380,10 +1479,10 @@ export default {
       // Should never reach here
       return 0;
     },
-  }
-}
+  },
+};
 
-// Provisional Sequence of Instruction Pages: 
+// Provisional Sequence of Instruction Pages:
 // BotStopper
 // Consent
 // ExperInfo
@@ -1424,7 +1523,6 @@ export default {
 // KeyHands
 // EndInstr
 // instruction 73
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -1445,6 +1543,6 @@ a {
 }
 
 .b-col {
-  transition: background-color .3s;
+  transition: background-color 0.3s;
 }
 </style>
