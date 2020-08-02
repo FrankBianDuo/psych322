@@ -698,6 +698,9 @@ export default {
       parent.global_size_give_glow =
         "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;";
       setTimeout(function() {
+        parent.current_avatar += 1;
+      }, 500);
+      setTimeout(function() {
         parent.fading = false;
         parent.encounter_1_payoff_show = false;
         parent.free_space = true;
@@ -705,7 +708,7 @@ export default {
 
         parent.prediction = null;
         parent.show_cur_num = false;
-        parent.current_avatar += 1;
+        // parent.current_avatar += 1;
         parent.$emit("blockOneDone", parent.combinations);
         if (parent.current_avatar == parent.max_avatar) {
           parent.show = false;
