@@ -44,8 +44,7 @@
 
         <!-- These following imgs are the dots that appear in encounter #1 -->
         <img
-          :style="this.global_size"
-          v-if="this.encounter_1_payoff_show"
+          :style="this.global_size_ectr_1"
           :src="
             require(`../assets/Dots/E1 UB${this.dots_identifier(
               this.combinations[this.current_avatar].pr_p.a_first
@@ -53,8 +52,7 @@
           "
         />
         <img
-          :style="this.global_size"
-          v-if="this.encounter_1_payoff_show"
+          :style="this.global_size_ectr_1"
           :src="
             require(`../assets/Dots/E1 UP${this.dots_identifier(
               this.combinations[this.current_avatar].pr_p.p_first
@@ -62,8 +60,7 @@
           "
         />
         <img
-          :style="this.global_size"
-          v-if="this.encounter_1_payoff_show"
+          :style="this.global_size_ectr_1"
           :src="
             require(`../assets/Dots/E1 DB${this.dots_identifier(
               this.combinations[this.current_avatar].pr_p.a_second
@@ -71,8 +68,7 @@
           "
         />
         <img
-          :style="this.global_size"
-          v-if="this.encounter_1_payoff_show"
+          :style="this.global_size_ectr_1"
           :src="
             require(`../assets/Dots/E1 DP${this.dots_identifier(
               this.combinations[this.current_avatar].pr_p.p_second
@@ -259,6 +255,8 @@ export default {
     return {
       windowsize: "height: 600px;",
       global_size: "position: absolute; width: 70%; height: auto; top: 50px;",
+      global_size_ectr_1:
+        "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;",
       global_size_keep_glow:
         "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;",
       global_size_give_glow:
@@ -292,7 +290,6 @@ export default {
       show: false,
       b_show_1: true,
       free_space: true,
-      encounter_1_payoff_show: false,
       fading: false,
       block_listeners: false,
       you_avatar_type: "1",
@@ -512,6 +509,8 @@ export default {
     },
     priorAvatar() {
       this.encounter_1_payoff_show = true;
+      this.global_size_ectr_1 =
+        "position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%; transition: opacity 0.5s;";
       let parent = this;
       setTimeout(function() {
         parent.arrow_num = parent.combinations[parent.current_avatar].a_c;
@@ -702,7 +701,8 @@ export default {
       }, 500);
       setTimeout(function() {
         parent.fading = false;
-        parent.encounter_1_payoff_show = false;
+        parent.global_size_ectr_1 =
+          "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%; transition: opacity 0.5s;";
         parent.free_space = true;
         // parent.current_arrow = 'Dot Boxes.png'
 
