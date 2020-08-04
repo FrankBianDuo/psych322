@@ -12,41 +12,33 @@
       <b-container class="align-bottom" :style="this.windowsize"  >
           <div style="text-align: center;">
               <!-- First page -->
-              <!-- <img :src="require('../../assets/Instructions/HowChoice/hc 09a.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 1.0s' }"/> -->
-              <img :src="require('../../assets/Instructions/HowChoice/hcc1.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 1.0s' }"/>
+              
+               <img :src="require('../../assets/Instructions/HowChoice/hc 09.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 1.0s' }"/>
                <img :src="require('../../assets/Instructions/HowChoice/hc avatar 2.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_2, transition: 'opacity 2.0s' }"/>
                <img :src="require('../../assets/Instructions/HowChoice/hc avatar 3.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_3, transition: 'opacity 0.0s' }"/>
                <img :src="require('../../assets/Instructions/HowChoice/hc color dots1.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_4, transition: 'opacity 0.0s' }"/>
-               <img :src="require('../../assets/Instructions/HowChoice/hc color dots2.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 0.0s' }"/>
                <img :src="require('../../assets/Instructions/HowChoice/hc big choice.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_5, transition: 'opacity 0.0s' }"/>
                <img :src="require('../../assets/Instructions/HowChoice/hc unknown.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_6, transition: 'opacity 2.0s' }"/>
 
                <!-- Second page -->
-               <!-- <img :src="require('../../assets/Instructions/HowChoice/hc 10.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 1.0s' }"/> -->
-               <img :src="require('../../assets/Instructions/HowChoice/hcc2.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 1.0s' }"/>
+               <img :src="require('../../assets/Instructions/HowChoice/hc 10.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 1.0s' }"/>
                <img :src="require('../../assets/Instructions/HowChoice/hc glowdots upgr.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.3s' }"/>
                <img :src="require('../../assets/Instructions/HowChoice/hc glowdots uppi.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_9, transition: 'opacity 0.3s' }"/>
                <img :src="require('../../assets/Instructions/HowChoice/hc glowdots dngr.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_10, transition: 'opacity 0.3s' }"/>
                <img :src="require('../../assets/Instructions/HowChoice/hc glowdots dnpi.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.3s' }"/>
 
                <!-- Third page -->
-               <!-- <img :src="require('../../assets/Instructions/HowChoice/hc 11.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 1.0s' }"/> -->
-               <img :src="require('../../assets/Instructions/HowChoice/hcc3.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 1.0s' }"/>
-
-               <!-- Fourth page -->
-               <!-- <img :src="require('../../assets/Instructions/HowChoice/hc 12.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_23, transition: 'opacity 1.0s' }"/> -->
-               <img :src="require('../../assets/Instructions/HowChoice/hcc4.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_23, transition: 'opacity 1.0s' }"/>
-               <img :src="require('../../assets/Instructions/HowChoice/hcc5.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_24, transition: 'opacity 1.0s' }"/>
-
+               <img :src="require('../../assets/Instructions/HowChoice/hc 11.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 1.0s' }"/>
                <img :src="require('../../assets/Instructions/HowChoice/hc you.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 2.0s' }"/> 
                <img :src="require('../../assets/Instructions/HowChoice/hc big choice.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.0s' }"/>
                <img :src="require('../../assets/Instructions/HowChoice/hc dots p1.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_15, transition: 'opacity 2.0s' }"/>
                <img :src="require('../../assets/Instructions/HowChoice/hc dots p3.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_16, transition: 'opacity 2.0s' }"/>
                <img :src="require('../../assets/Instructions/HowChoice/hc dots b5.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_17, transition: 'opacity 2.0s' }"/>
                <img :src="require('../../assets/Instructions/HowChoice/hc dots b3.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_18, transition: 'opacity 2.0s' }"/>
-               <img :src="require('../../assets/Instructions/HowChoice/hc color dots1.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_19, transition: 'opacity 2.0s' }"/>
+               <img :src="require('../../assets/Instructions/HowChoice/hc color dots1.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_19, transition: 'opacity 3.0s' }"/>
                <img :src="require('../../assets/Instructions/HowChoice/hc their dots.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_20, transition: 'opacity 1.0s' }"/>
                <img :src="require('../../assets/Instructions/HowChoice/hc your dots.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_21, transition: 'opacity 1.0s' }"/> 
+               <img :src="require('../../assets/Instructions/HowChoice/hc dots rep.png')" v-bind:style="{ maxWidth: '90%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 3.0s' }"/>
             </div>
 
             <div>
@@ -74,13 +66,11 @@
                 sbc: "outline-secondary",
                 keyflow1: false,
                 keyflow2: false,
-                keyflow3: false,
-                keyflow4: false,
                 opacity_0: '0%',
                 opacity_1: '100%',
                 opacity_2: '100%',
                 opacity_3: '100%',
-                opacity_4: '100%',
+                opacity_4: '0%',
                 opacity_5: '100%',
                 opacity_6: '0%',
                 opacity_7: '0%',
@@ -95,7 +85,7 @@
                 opacity_16: '0%',
                 opacity_17: '0%',
                 opacity_18: '0%',
-                opacity_19: '0%',
+                opacity_19: '100%',
                 opacity_20: '0%',
                 opacity_21: '0%',
                 opacity_22: '0%',
@@ -116,22 +106,14 @@
                 if (parent.block_listeners == true) {
                     return;
                 } 
-                if (parent.keyflow1 == true && parent.keyflow2 == false && parent.keyflow3 == false && parent.keyflow4 == false && event.keyCode == 32) {
+                if (parent.keyflow1 == true && event.keyCode == 32) {
                     // Spacebar 1
                     parent.keyflow1 = false
                     parent.animate1()
-                } else if (parent.keyflow1 == false && parent.keyflow2 == true && parent.keyflow3 == false && parent.keyflow4 == false && event.keyCode == 32) {
+                } else if (parent.keyflow2 == true && event.keyCode == 32) {
                     // Spacebar 2
                     parent.keyflow2 = false
                     parent.animate2()
-                } else if (parent.keyflow1 == false && parent.keyflow2 == false && parent.keyflow3 == true && parent.keyflow4 == false && event.keyCode == 32) {
-                    // Spacebar 2
-                    parent.keyflow3 = false
-                    parent.animate3()
-                } else if (parent.keyflow1 == false && parent.keyflow2 == false && parent.keyflow3 == false && parent.keyflow4 == true && event.keyCode == 32) {
-                    // Spacebar 2
-                    parent.keyflow4 = false
-                    parent.animate4()
                 } else if (event.keyCode == 192) {
                     // Enable Secret Key
                     parent.skey = true
@@ -160,7 +142,6 @@
             if (this.mutex == true) {
                 return
             } 
-            
             this.mutex = true;
             this.block_listeners = false;
             setTimeout(() => this.animate0(), 0); 
@@ -178,13 +159,12 @@
                 this.resetAnimation()
                 this.$bvModal.show("modal-center-FlowKnow1")
             },
-
             resetAnimation() {
                 this.$bvModal.hide('modal-center-HowChoice6')
                 this.opacity_1 = "100%"
                 this.opacity_2 = "100%"
                 this.opacity_3 = "100%"
-                this.opacity_4 = "100%"
+                this.opacity_4 = "0%"
                 this.opacity_5 = "100%"
                 this.opacity_6 = "0%"
                 this.opacity_7 = "0%"
@@ -199,7 +179,7 @@
                 this.opacity_16 = "0%"
                 this.opacity_17 = "0%"
                 this.opacity_18 = "0%"
-                this.opacity_19 = "0%"
+                this.opacity_19 = "100%"
                 this.opacity_20 = "0%"
                 this.opacity_21 = "0%"
                 this.opacity_22 = "0%"
@@ -209,8 +189,6 @@
                 this.sbc = "outline-secondary"
                 this.keyflow1 = false
                 this.keyflow2 = false
-                this.keyflow3 = false
-                this.keyflow4 = false
                 this.skey = false
                 this.mutex = false
                 this.finish = false
@@ -218,7 +196,56 @@
             },
             animate0() {
                 let parent = this
-                setTimeout(() => {parent.opacity_6 = "100%"}, 5800); 
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
+                // Enter Question Marks ??
+                setTimeout(() => {parent.opacity_6 = "100%"}, 1000); 
+                setTimeout(() => {parent.opacity_6 = "0%"}, 3000); 
+                setTimeout(() => {parent.opacity_6 = "100%"}, 5000); 
+
+                // Press Space Bar. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow1 = true; parent.opacity_0 = "100%"; }, 7000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 7500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 8000); 
+            },
+            animate1() {
+                let parent = this
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
+
+                // Text exchange 
+                setTimeout(() => {parent.opacity_1 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_7 = "100%"; }, 800);
+
+                // Press Space Bar. 
+                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {this.keyflow2 = true; parent.opacity_0 = "100%"; }, 7000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 7500);
+                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 8000);
+            },
+            animate2() {
+                let parent = this
+                setTimeout(() => parent.mutex = false, 3600); 
+                setTimeout(() => parent.locked = false, 3600); 
+
+                // Text exchange 
+                setTimeout(() => {parent.opacity_7 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_12 = "100%"; }, 800);
+
+                // Replace Pink person with You
+                setTimeout(() => {parent.opacity_19 = "0%"; }, 1000);
+                setTimeout(() => {parent.opacity_22 = "100%"; }, 0);
+                setTimeout(() => {parent.opacity_20 = "100%"; parent.opacity_21 = "100%"}, 2000);
+
+                // This changes the button to green!
+                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 4000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 4500);
+                setTimeout(() => {parent.nbc = "success";}, 5000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 8500);
+                setTimeout(() => {parent.nbc = "success";}, 9000);
+
+                // This archives prior animations that highlight between and within option comparisons.
 
                 // Self dots comparison
                 // setTimeout(() => {parent.opacity_8 = "100%"; parent.opacity_10 = "0%"; }, 300);
@@ -240,128 +267,25 @@
                 // setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_11 = "0%"; }, 4800);
                 // setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_11 = "0%"; }, 5100);
 
-                // Press Space Bar. 
-                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow1 = true; parent.opacity_0 = "100%"; }, 7000);
-                setTimeout(() => {parent.opacity_0 = "0%"; }, 7500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 8000);
-
-                setTimeout(() => parent.mutex = false, 3600); 
-                setTimeout(() => parent.locked = false, 3600); 
-                
-            },
-            animate1() {
-                let parent = this
-                setTimeout(() => {parent.opacity_6 = "100%"}, 5800); 
-
-                // Text exchange 
-                setTimeout(() => {parent.opacity_1 = "0%"; }, 0);
-                setTimeout(() => {parent.opacity_7 = "100%"; }, 800);
-
-                // Self dots comparison
-                setTimeout(() => {parent.opacity_8 = "100%"; parent.opacity_10 = "0%"; }, 300);
-                setTimeout(() => {parent.opacity_8 = "0%"; parent.opacity_10 = "100%"; }, 600);
-                setTimeout(() => {parent.opacity_8 = "100%"; parent.opacity_10 = "0%"; }, 900);
-                setTimeout(() => {parent.opacity_8 = "0%"; parent.opacity_10 = "100%"; }, 1200);
-                setTimeout(() => {parent.opacity_8 = "100%"; parent.opacity_10 = "0%"; }, 1500);
-                setTimeout(() => {parent.opacity_8 = "0%"; parent.opacity_10 = "100%"; }, 1800);
-                setTimeout(() => {parent.opacity_8 = "0%"; parent.opacity_10 = "0%"; }, 2100);
-                setTimeout(() => {parent.opacity_8 = "0%"; parent.opacity_10 = "0%"; }, 2400);
-
-                // Other dots comparison
-                setTimeout(() => {parent.opacity_9 = "100%"; parent.opacity_11 = "0%"; }, 3000);
-                setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_11 = "100%"; }, 3300);
-                setTimeout(() => {parent.opacity_9 = "100%"; parent.opacity_11 = "0%"; }, 3600);
-                setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_11 = "100%"; }, 3900);
-                setTimeout(() => {parent.opacity_9 = "100%"; parent.opacity_11 = "0%"; }, 4200);
-                setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_11 = "100%"; }, 4500);
-                setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_11 = "0%"; }, 4800);
-                setTimeout(() => {parent.opacity_9 = "0%"; parent.opacity_11 = "0%"; }, 5100);
-
-                // Press Space Bar. 
-                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow2 = true; parent.opacity_0 = "100%"; }, 7000);
-                setTimeout(() => {parent.opacity_0 = "0%"; }, 7500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 8000);
-
-                setTimeout(() => parent.mutex = false, 3600); 
-                setTimeout(() => parent.locked = false, 3600); 
-            },
-            animate2() {
-                let parent = this
-
-                // Press Space Bar. 
-                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow3 = true; parent.opacity_0 = "100%"; }, 7000);
-                setTimeout(() => {parent.opacity_0 = "0%"; }, 7500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 8000);
-
-                // Text exchange 
-                setTimeout(() => {parent.opacity_7 = "0%"; }, 0);
-                setTimeout(() => {parent.opacity_12 = "100%"; }, 800);
-
                 // Within upper option comparison
-                setTimeout(() => {parent.opacity_8 = "100%"; parent.opacity_9 = "0%"; }, 300);
-                setTimeout(() => {parent.opacity_8 = "0%"; parent.opacity_9 = "100%"; }, 600);
-                setTimeout(() => {parent.opacity_8 = "100%"; parent.opacity_9 = "0%"; }, 900);
-                setTimeout(() => {parent.opacity_8 = "0%"; parent.opacity_9 = "100%"; }, 1200);
-                setTimeout(() => {parent.opacity_8 = "100%"; parent.opacity_9 = "0%"; }, 1500);
-                setTimeout(() => {parent.opacity_8 = "0%"; parent.opacity_9 = "100%"; }, 1800);
-                setTimeout(() => {parent.opacity_8 = "0%"; parent.opacity_9 = "0%"; }, 2100);
-                setTimeout(() => {parent.opacity_8 = "0%"; parent.opacity_9 = "0%"; }, 2400);
+                // setTimeout(() => {parent.opacity_8 = "100%"; parent.opacity_9 = "0%"; }, 300);
+                // setTimeout(() => {parent.opacity_8 = "0%"; parent.opacity_9 = "100%"; }, 600);
+                // setTimeout(() => {parent.opacity_8 = "100%"; parent.opacity_9 = "0%"; }, 900);
+                // setTimeout(() => {parent.opacity_8 = "0%"; parent.opacity_9 = "100%"; }, 1200);
+                // setTimeout(() => {parent.opacity_8 = "100%"; parent.opacity_9 = "0%"; }, 1500);
+                // setTimeout(() => {parent.opacity_8 = "0%"; parent.opacity_9 = "100%"; }, 1800);
+                // setTimeout(() => {parent.opacity_8 = "0%"; parent.opacity_9 = "0%"; }, 2100);
+                // setTimeout(() => {parent.opacity_8 = "0%"; parent.opacity_9 = "0%"; }, 2400);
 
                 // Within llower option comparison
-                setTimeout(() => {parent.opacity_10 = "100%"; parent.opacity_11 = "0%"; }, 3000);
-                setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_11 = "100%"; }, 3300);
-                setTimeout(() => {parent.opacity_10 = "100%"; parent.opacity_11 = "0%"; }, 3600);
-                setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_11 = "100%"; }, 3900);
-                setTimeout(() => {parent.opacity_10 = "100%"; parent.opacity_11 = "0%"; }, 4200);
-                setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_11 = "100%"; }, 4500);
-                setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_11 = "0%"; }, 4800);
-                setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_11 = "0%"; }, 5100);
-
-                setTimeout(() => parent.mutex = false, 3600); 
-                setTimeout(() => parent.locked = false, 3600); 
-                
-            },
-            animate3() {
-                let parent = this
-
-                // Press Space Bar. 
-                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow4 = true; parent.opacity_0 = "100%"; }, 3000);
-                setTimeout(() => {parent.opacity_0 = "0%"; }, 3500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 4000);
-
-                // Text exchange
-                setTimeout(() => {parent.opacity_12 = "0%"; }, 0);
-                setTimeout(() => {parent.opacity_23 = "100%"; }, 800);
-
-                // New combination of dots
-                setTimeout(() => {parent.opacity_4 = "0%"; parent.opacity_22 = "100%"}, 0);
-
-                setTimeout(() => parent.mutex = false, 3600); 
-                setTimeout(() => parent.locked = false, 3600); 
-            },
-            animate4() {
-                let parent = this
-
-                // Press Space Bar. 
-                setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
-
-                // Text exchange
-                setTimeout(() => {parent.opacity_23 = "0%"; }, 0);
-                setTimeout(() => {parent.opacity_24 = "100%"; }, 800);
-
-                setTimeout(() => parent.mutex = false, 3600); 
-                setTimeout(() => parent.locked = false, 3600); 
-
-                // This changes the button to green!
-                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 4000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 4500);
-                setTimeout(() => {parent.nbc = "success";}, 5000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 8500);
-                setTimeout(() => {parent.nbc = "success";}, 9000);
+                // setTimeout(() => {parent.opacity_10 = "100%"; parent.opacity_11 = "0%"; }, 3000);
+                // setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_11 = "100%"; }, 3300);
+                // setTimeout(() => {parent.opacity_10 = "100%"; parent.opacity_11 = "0%"; }, 3600);
+                // setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_11 = "100%"; }, 3900);
+                // setTimeout(() => {parent.opacity_10 = "100%"; parent.opacity_11 = "0%"; }, 4200);
+                // setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_11 = "100%"; }, 4500);
+                // setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_11 = "0%"; }, 4800);
+                // setTimeout(() => {parent.opacity_10 = "0%"; parent.opacity_11 = "0%"; }, 5100);
             },
         },
     }
