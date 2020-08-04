@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-HowChoice6" 
       size="xl"
-      centered title="Instruction Page 16 of 18"
+      centered title="Instruction Page 12 of 14"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"

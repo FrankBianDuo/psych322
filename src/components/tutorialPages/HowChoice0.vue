@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-HowChoice0" 
       size="xl"
-      centered title="Instruction Page 14 of 18"
+      centered title="Instruction Page 10 of 14"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -30,10 +30,9 @@
 
                <!-- Text opacity 11-15 -->
                <img :src="require('../../assets/Instructions/Ref Dependence/reftext04a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/reftext05a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/reftext06a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/reftext06b.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/reftext06c.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_15, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/reftext06a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/reftext06b.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/reftext06c.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.2s' }"/>
 
                <!-- Text opacity 16-21 -->
                <img :src="require('../../assets/Instructions/Ref Dependence/barr1a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_16, transition: 'opacity 0.0s' }"/>
@@ -118,26 +117,18 @@
                 if (parent.block_listeners == true) {
                     return;
                 } 
-                if (parent.keyflow1 == true && parent.keyflow2 == false && parent.keyflow3 == false
-                && parent.keyflow4 == false && event.keyCode == 32) {
+                if (parent.keyflow1 == true && event.keyCode == 32) {
                     // Spacebar 1
                     parent.keyflow1 = false
                     parent.animate1()
-                } else if (parent.keyflow1 == false && parent.keyflow2 == true && parent.keyflow3 == false 
-                && parent.keyflow4 == false && event.keyCode == 32) {
+                } else if (parent.keyflow2 == true && event.keyCode == 32) {
                     // Spacebar 2
                     parent.keyflow2 = false
-                    parent.animate2()
-                } else if (parent.keyflow1 == false && parent.keyflow2 == false && parent.keyflow3 == true 
-                && parent.keyflow4 == false && event.keyCode == 32) {
+                    parent.animate2();
+                } else if (parent.keyflow3 == true && event.keyCode == 32) {
                     // Spacebar 3
                     parent.keyflow3 = false
                     parent.animate3();
-                } else if (parent.keyflow1 == false && parent.keyflow2 == false && parent.keyflow3 == false 
-                && parent.keyflow4 == true && event.keyCode == 32) {
-                    // Spacebar 3
-                    parent.keyflow4 = false
-                    parent.animate4();
                 } else if (event.keyCode == 192) {
                     // Enable Secret Key
                     parent.skey = true
@@ -264,33 +255,13 @@
 
                 // Text exchange 
                 setTimeout(() => {parent.opacity_11 = "0%"; parent.opacity_12 = "100%"}, 0);
-                //setTimeout(() => {this.keyflow2 = true}, 1000);
 
-                this.opacity_0 = "0%"
-                this.opacity_1 = "100%"
-                this.opacity_2 = "100%"
-                this.opacity_3 = "0%"
-                this.opacity_4 = "0%"
-                this.opacity_5 = "0%"
-                this.opacity_6 = "0%"
-                this.opacity_7 = "0%"
-                this.opacity_8 = "0%"
-                this.opacity_9 = "0%"
-                this.opacity_10 = "0%"
-
-                this.opacity_13 = "0%"
-                this.opacity_14 = "0%"
-                this.opacity_15 = "0%"
-                this.opacity_16 = "0%"
-                this.opacity_17 = "0%"
-                this.opacity_18 = "0%"
-                this.opacity_19 = "0%"
-                this.opacity_20 = "100%"
-                this.opacity_21 = "0%"
+                // Choice and Smile
+                setTimeout(() => {parent.opacity_3 = "100%"; }, 1000);
+                setTimeout(() => {parent.opacity_4 = "100%"; }, 1500);
             },
             animate2() {
                 let parent = this 
-
                 // Press Space Bar. 
                 setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
                 setTimeout(() => {this.keyflow3 = true; parent.opacity_0 = "100%"; }, 3000);
@@ -299,24 +270,6 @@
 
                 // Text exchange 
                 setTimeout(() => {parent.opacity_12 = "0%"; parent.opacity_13 = "100%"}, 0);
-
-                // Choice and Smile
-                setTimeout(() => {parent.opacity_3 = "100%"; }, 1000);
-                setTimeout(() => {parent.opacity_4 = "100%"; }, 1500);
-
-                // setTimeout(() => {this.keyflow3 = true}, 1600);
-                
-            },
-            animate3() {
-                let parent = this 
-                // Press Space Bar. 
-                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow4 = true; parent.opacity_0 = "100%"; }, 3000);
-                setTimeout(() => {parent.opacity_0 = "0%"; }, 3500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 4000);
-
-                // Text exchange 
-                setTimeout(() => {parent.opacity_13 = "0%"; parent.opacity_14 = "100%"}, 0);
 
                 // Kill barrier, avatar, choice and smile
                 setTimeout(() => {parent.opacity_20 = "0%"; parent.opacity_2 = "0%"; parent.opacity_3 = "0%"; parent.opacity_4 = "0%"}, 0);
@@ -327,13 +280,13 @@
                 setTimeout(() => {parent.opacity_9 = "100%"; }, 1000);
                 setTimeout(() => {parent.opacity_7 = "100%"; }, 1500);
             },
-            animate4() {
+            animate3() {
                 let parent = this 
                 // Press Space Bar. 
                 setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
 
                 // Text exchange 
-                setTimeout(() => {parent.opacity_14 = "0%"; parent.opacity_15 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_13 = "0%"; parent.opacity_14 = "100%"}, 0);
 
                 // Kill barrier, avatar, choice and smile
                 setTimeout(() => {parent.opacity_18 = "0%"; parent.opacity_5 = "0%"; parent.opacity_9 = "0%"; parent.opacity_7 = "0%"}, 0);

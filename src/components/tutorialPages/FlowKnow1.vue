@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-FlowKnow1" 
       size="xl"
-      centered title="Instruction Page 17 of 18"
+      centered title="Instruction Page 13 of 14"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"

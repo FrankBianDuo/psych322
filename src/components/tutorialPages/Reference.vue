@@ -2,7 +2,7 @@
     <b-modal 
       id="modal-center-Reference" 
       size="xl"
-      centered title="Instruction Page 13 of 18"
+      centered title="Instruction Page 9 of 14"
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -13,32 +13,32 @@
           <div style="text-align: center;">
               
                <!-- Background + choices opacity 1-7 -->
-               <img :src="require('../../assets/Instructions/Ref Dependence/backgr1.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/ch1.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_2, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/ch2.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_3, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/ch3.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_4, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/ch4.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_5, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/ch5.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_6, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/ch6.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/backgr1.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/ch1.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_2, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/ch2.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_3, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/ch3.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_4, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/ch4.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_5, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/ch5.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_6, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/ch6.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_7, transition: 'opacity 0.2s' }"/>
 
                <!-- Smiles opacity 8-19 -->
-               <img :src="require('../../assets/Instructions/Ref Dependence/smile01a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/smile01b.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_9, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/smile01c.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_10, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/smile01d.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/smile02a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/smile02b.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/smile02c.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/smile02d.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_15, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/smile03d.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_16, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/smile03b.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_17, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/smile03c.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_18, transition: 'opacity 0.2s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/smile03a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_19, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/smile01a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/smile01b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_9, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/smile01c.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_10, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/smile01d.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/smile02a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/smile02b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/smile02c.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/smile02d.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_15, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/smile03d.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_16, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/smile03b.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_17, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/smile03c.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_18, transition: 'opacity 0.2s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/smile03a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_19, transition: 'opacity 0.2s' }"/>
                
                <!-- Text opacity 20-22 -->
-               <img :src="require('../../assets/Instructions/Ref Dependence/reftext01a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_20, transition: 'opacity 1.0s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/reftext02a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_21, transition: 'opacity 1.0s' }"/>
-               <img :src="require('../../assets/Instructions/Ref Dependence/reftext03a.png')" v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 1.0s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/reftext01a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_20, transition: 'opacity 1.0s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/reftext02a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_21, transition: 'opacity 1.0s' }"/>
+               <img :src="require('../../assets/Instructions/Ref Dependence/reftext03a.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_22, transition: 'opacity 1.0s' }"/>
             </div>
               
             <div>
@@ -86,8 +86,8 @@
                 opacity_17: '0%',
                 opacity_18: '0%',
                 opacity_19: '0%',
-                opacity_20: '100%',
-                opacity_21: '0%',
+                opacity_20: '0%',
+                opacity_21: '100%',
                 opacity_22: '0%',
                 opacity_23: '0%',
 
@@ -105,15 +105,11 @@
                 if (parent.block_listeners == true) {
                     return;
                 } 
-                if (parent.keyflow1 == true && parent.keyflow2 == false && event.keyCode == 32) {
+                if (parent.keyflow1 == true && event.keyCode == 32) {
                     // Spacebar 1
                     parent.keyflow1 = false
                     //parent.keyflow3 = true
                     parent.animate1()
-                } else if (parent.keyflow1 == false && parent.keyflow2 == true && event.keyCode == 32) {
-                    // Spacebar 2
-                    parent.keyflow2 = false
-                    parent.animate2()
                 } else if (event.keyCode == 192) {
                     // Enable Secret Key
                     parent.skey = true
@@ -181,8 +177,8 @@
                 this.opacity_17 = "0%"
                 this.opacity_18 = "0%"
                 this.opacity_19 = "0%"
-                this.opacity_20 = "100%"
-                this.opacity_21 = "0%"
+                this.opacity_20 = "0%"
+                this.opacity_21 = "100%"
                 this.opacity_22 = "0%"
                 this.opacity_23 = "0%"
                 this.nbc = "outline-primary"
@@ -203,19 +199,12 @@
                 setTimeout(() => {this.keyflow1 = true; parent.opacity_0 = "100%"; }, 5500);
                 setTimeout(() => {parent.opacity_0 = "0%"; }, 6000);
                 setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 6500);
-
-                // Text exchange 
-                setTimeout(() => {parent.opacity_21 = "0%"; parent.opacity_22 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_20 = "100%"; }, 0);
             },
             animate1() {
                 let parent = this 
-
-                // Press Space Bar. 
-                setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_0 = "0%"; }, 0);
-                setTimeout(() => {this.keyflow2 = true; parent.opacity_0 = "100%"; }, 14000);
-                setTimeout(() => {parent.opacity_0 = "0%"; }, 14500);
-                setTimeout(() => {this.sbc = "primary"; parent.opacity_0 = "100%"; }, 15000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 1500);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 3000);
 
                 // Choice to smile set 1:
                 setTimeout(() => {parent.opacity_2 = "100%"; parent.opacity_3 = "0%"}, 500);
@@ -234,31 +223,13 @@
                 setTimeout(() => {parent.opacity_16 = "100%"; parent.opacity_19 = "0%"}, 6500);
                 setTimeout(() => {parent.opacity_7 = "100%"; parent.opacity_6 = "0%"}, 7000);
                 setTimeout(() => {parent.opacity_19 = "100%"; parent.opacity_16 = "0%"}, 7500);
-
-                // Text exchange 
-                setTimeout(() => {parent.opacity_20 = "0%"; }, 8000);
-                setTimeout(() => {parent.opacity_21 = "100%"; }, 8800);
                 
-            },
-            animate2() {
-                let parent = this 
-
-                // Press Space Bar. 
-                setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
-
-                // Text exchange 
-                setTimeout(() => {parent.opacity_20 = "0%"; parent.opacity_21 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_22 = "100%"; }, 800);
-                
-                setTimeout(() => parent.mutex = false, 3600); 
-                setTimeout(() => parent.locked = false, 3600); 
-
                 // This changes the button to green!
-                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 7000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 7500);
-                setTimeout(() => {parent.nbc = "success";}, 8000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 11500);
-                setTimeout(() => {parent.nbc = "success";}, 12000);
+                setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 9000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 9500);
+                setTimeout(() => {parent.nbc = "success";}, 10000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 12500);
+                setTimeout(() => {parent.nbc = "success";}, 13000);
             },
         },
     }

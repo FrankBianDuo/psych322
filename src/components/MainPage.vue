@@ -178,6 +178,11 @@
     <Reference :windowsize="this.window_size" />
     <RefDepComp :windowsize="this.window_size" />
     <RefDepEqual :windowsize="this.window_size" />
+    <Basics01 :windowsize="this.window_size" />
+    <Basics02 :windowsize="this.window_size" />
+    <Basics03 :windowsize="this.window_size" />
+    <Basics04 :windowsize="this.window_size" />
+    <Basics05 :windowsize="this.window_size" />
     <HowHappy1 :windowsize="this.window_size" />
     <HowHappy2 :windowsize="this.window_size" />
     <HowHappy3 :windowsize="this.window_size" />
@@ -413,6 +418,11 @@ import ConstantValue from "./tutorialPages/ConstantValue.vue";
 import Reference from "./tutorialPages/Reference.vue";
 import RefDepComp from "./tutorialPages/RefDepComp.vue";
 import RefDepEqual from "./tutorialPages/RefDepEqual.vue";
+import Basics01 from "./tutorialPages/Basics01.vue";
+import Basics02 from "./tutorialPages/Basics02.vue";
+import Basics03 from "./tutorialPages/Basics03.vue";
+import Basics04 from "./tutorialPages/Basics04.vue";
+import Basics05 from "./tutorialPages/Basics05.vue";
 import HowHappy1 from "./tutorialPages/HowHappy1.vue";
 import HowHappy2 from "./tutorialPages/HowHappy2.vue";
 import HowHappy3 from "./tutorialPages/HowHappy3.vue";
@@ -618,6 +628,11 @@ export default {
     Reference,
     RefDepComp,
     RefDepEqual,
+    Basics01,
+    Basics02,
+    Basics03,
+    Basics04,
+    Basics05,
     HowHappy1,
     HowHappy2,
     HowHappy3,
@@ -1487,15 +1502,11 @@ export default {
 // Consent
 // ExperInfo
 // ExperTutor
-// Machines1
-// Machines2
-// Machines3
-// MachinesP
-// Machines4
-// Machines5
-// Machines7
-// Machines6
-// Practice01
+// Basics01
+// Basics02
+// Basics03
+// Basics04
+// Basics05
 // MeetPeople
 // WantMoreDots
 // CommKnow

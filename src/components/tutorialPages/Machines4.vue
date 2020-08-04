@@ -25,7 +25,7 @@
                <img :src="require('../../assets/Instructions/Machines/you2.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_10, transition: 'opacity 0.8s' }"/>
 
                <!-- opacity 11-17 -->
-               <img :src="require('../../assets/Instructions/Machines/az.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.0s' }"/>
+               <img :src="require('../../assets/Instructions/Machines/az.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_AZ, transition: 'opacity 0.0s' }"/>
                <img :src="require('../../assets/Instructions/Machines/jk.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 0.0s' }"/>
                <img :src="require('../../assets/Instructions/Machines/pred1.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.0s' }"/>
                <img :src="require('../../assets/Instructions/Machines/pred2.png')" v-bind:style="{ maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.0s' }"/>
@@ -105,7 +105,7 @@
                 opacity_8: '100%',
                 opacity_9: '100%',
                 opacity_10: '100%',
-                opacity_11: '0%',
+                opacity_AZ: '0%',
                 opacity_12: '0%',
                 opacity_13: '0%',
                 opacity_14: '0%',
@@ -215,7 +215,7 @@
                 this.opacity_8 = "100%"
                 this.opacity_9 = "100%"
                 this.opacity_10 = "100%"
-                this.opacity_11 = "0%"
+                this.opacity_AZ = "0%"
                 this.opacity_12 = "0%"
                 this.opacity_13 = "0%"
                 this.opacity_14 = "0%"
@@ -271,7 +271,7 @@
             animate1() {
                 let parent = this 
                 // Options + space text vanish and program text appears
-                setTimeout(() => {parent.opacity_11 = "0%"; parent.opacity_14 = "0%"; }, 0); 
+                setTimeout(() => {parent.opacity_AZ = "100%"; parent.opacity_14 = "0%"; }, 0); 
 
                 // Kill Text
                 setTimeout(() => {parent.opacity_35 = "0%"; }, 0);
