@@ -440,6 +440,8 @@
                 let parent = this 
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
+                setTimeout(() => {parent.opacity_presskey = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_presskey = "0%"; }, 2000);
 
                 // Machine Rotation 
                 setTimeout(() => {parent.opacity_ThreeMeet1a = "0%"; parent.opacity_ThreeMeet1b = "0%"; parent.opacity_ThreeMeet1c = "0%"}, 0);

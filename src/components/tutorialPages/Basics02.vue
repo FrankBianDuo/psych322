@@ -543,9 +543,9 @@
                 setTimeout(() => {parent.opacity_yougot5 = "100%"}, 1700);
 
                 // This changes the button to green!
-                setTimeout(() => {parent.finish = false; parent.nbc = "success"}, 7000);
-                setTimeout(() => {parent.nbc = "outline-primary";}, 7500);
-                setTimeout(() => {parent.nbc = "success";}, 8000);
+                setTimeout(() => {parent.finish = false; parent.nbc = "success"}, 3000);
+                setTimeout(() => {parent.nbc = "outline-primary";}, 3500);
+                setTimeout(() => {parent.nbc = "success";}, 4000);
                 setTimeout(() => {parent.nbc = "outline-primary";}, 10500);
                 setTimeout(() => {parent.nbc = "success";}, 11000);
             },

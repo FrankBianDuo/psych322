@@ -237,6 +237,8 @@
                 setTimeout(() => {parent.opacity_19 = "0%"; }, 1000);
                 setTimeout(() => {parent.opacity_22 = "100%"; }, 0);
                 setTimeout(() => {parent.opacity_20 = "100%"; parent.opacity_21 = "100%"}, 2000);
+                setTimeout(() => {parent.opacity_2 = "0%"}, 1500);
+                setTimeout(() => {parent.opacity_13 = "100%"}, 500);
 
                 // This changes the button to green!
                 setTimeout(() => {parent.finish = false; parent.nbc = "success";}, 4000);
