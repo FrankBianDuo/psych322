@@ -16,7 +16,7 @@
       :hide-header-close="true"
     >
       <b-container class="align-bottom" :style="this.windowsize"  >
-          <h3>In general, how did you feel about this experiment? Please state any
+          <h3>In general, how did you feel about this experiment? Was there a part of the instructions that you found confusing?  Did you experience any technical difficulties?  Please state any
 comments, suggestion, or general reactions.</h3>
           <b-form-textarea
             style="transform: translate(0%, 20%);"

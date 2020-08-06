@@ -2,7 +2,7 @@
     <b-modal 
       :id="this.page_id" 
       size="xl"
-      centered title="You must redo these missed questions.  Answers will show for 6 seconds."
+      centered title="You must correctly answer this question."
       v-model="show"
       :hide-footer="true"
       :no-close-on-backdrop="false"
@@ -126,8 +126,7 @@
                     parent.ans_disable = false
                     this.opacity_a = "100%"
                     this.opacity_b = "0%"
-                // 6000 seems a bit too high for this?
-                }, 6000); 
+                }, 4000); 
             },
             gen_question_src(q_id) {
                 var srcmap = {

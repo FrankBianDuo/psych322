@@ -515,7 +515,7 @@
                 // Enter Dots and Selection
                 setTimeout(() => {parent.opacity_dotsup1 = "0%"; parent.opacity_dotsdn1 = "0%"; parent.opacity_dotsup3 = "0%"; parent.opacity_dotsdn3 = "0%"; parent.opacity_dotsup5 = "0%"; parent.opacity_dotsdn5 = "0%"; }, 0);
                 setTimeout(() => {parent.opacity_yougot1 = "0%"; parent.opacity_yougot3 = "0%"; parent.opacity_yougot5 = "0%"; }, 0);
-                setTimeout(() => {parent.opacity_dotsup1 = "100%"; parent.opacity_dotsdn3 = "100%"}, 300);
+                setTimeout(() => {parent.opacity_dotsup5 = "100%"; parent.opacity_dotsdn3 = "100%"}, 300);
                 setTimeout(() => {parent.opacity_mchoice3 = "0%"; parent.opacity_mchoice4 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_mchoice4 = "100%"}, 1500);
                 setTimeout(() => {parent.opacity_yougot3 = "100%"}, 1700);

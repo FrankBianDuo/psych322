@@ -58,7 +58,7 @@
         </download-csv>
       </b-row>
       <b-row class="my-4 justify-content-center">
-        <b-button v-b-modal.modal-center-FR1>Experiment Free Response</b-button>
+        <b-button v-b-modal.modal-center-FR1>Written Response Questions</b-button>
       </b-row>
       <b-row class="my-4 justify-content-center">
         <b-button v-b-modal.modal-center-survey1>Experiment Survey</b-button>
@@ -396,7 +396,7 @@
         class="align-bottom"
         :style="this.windowsize"
       >
-        URL here
+        Please message the experimenter with your participant ID and the quote "I like avatars" to demonstrate that you finished this experiment.
       </b-container>
     </b-modal>
   </div>

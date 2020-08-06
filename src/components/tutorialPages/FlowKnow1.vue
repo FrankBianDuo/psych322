@@ -400,7 +400,10 @@
                 setTimeout(() => {parent.opacity_presskey = "0%"; }, 4000);
 
                 // Text Swap
-                setTimeout(() => {parent.opacity_13 = "0%"; parent.opacity_14 = "100%"}, 0);
+                setTimeout(() => {parent.opacity_13 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_14 = "100%"}, 800);
+                setTimeout(() => {parent.opacity_15 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_16 = "0%"}, 0);
 
                 // Press Space Bar. 
                 setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_presskey = "0%"; }, 0);
@@ -417,8 +420,10 @@
                 setTimeout(() => {parent.opacity_presskey = "0%"; }, 4000);
 
                 // Text Swap
+                setTimeout(() => {parent.opacity_13 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_14 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_15 = "100%"}, 800);
+                setTimeout(() => {parent.opacity_16 = "0%"}, 0);
 
                 // Press Space Bar. 
                 setTimeout(() => {this.sbc = "outline-secondary"; parent.opacity_presskey = "0%"; }, 0);
@@ -435,6 +440,8 @@
                 setTimeout(() => {parent.opacity_presskey = "0%"; }, 4000);
 
                 // Text Swap
+                setTimeout(() => {parent.opacity_13 = "0%"}, 0);
+                setTimeout(() => {parent.opacity_14 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_15 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_16 = "100%"}, 800);
 

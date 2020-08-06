@@ -85,7 +85,7 @@
                 yob: '',
                 school: '',
                 },
-                avatars: [{ text: 'Select One', value: null }, 'Very sad people', 'Sad people', 'Medium people', 'happy people', 'Very happy people'],
+                avatars: [{ text: 'Select One', value: null }, 'Very sad person', 'Sad person', 'Medium person', 'Happy person', 'Very happy person'],
                 loves: [{ text: 'Select One', value: null }, 'Strongly agree', 'Agree', 'Neutral', 'Disagree', 'Strongly disagree'],
                 genders: [{ text: 'Select One', value: null }, 'Male', 'Female', 'Other'],
                     

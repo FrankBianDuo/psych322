@@ -62,7 +62,7 @@ divine?" label-for="input-3">
             </b-form-group>
             <b-form-group id="input-group-7" label="Scientific research is very important and good psychological research
             depends on high quality data from honest and attentive participants.
-            Should we use your data? Your answer will not affect your payment." label-for="input-7">
+            Should we use your data? Your answer will not affect your credit." label-for="input-7">
                 <b-form-select
                 id="input-7"
                 v-model="form.agree"

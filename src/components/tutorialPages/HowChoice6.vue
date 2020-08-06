@@ -228,6 +228,9 @@
                 let parent = this
                 setTimeout(() => parent.mutex = false, 3600); 
                 setTimeout(() => parent.locked = false, 3600); 
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 0);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 2000);
+                setTimeout(() => {parent.opacity_0 = "0%"; }, 4000);
 
                 // Text exchange 
                 setTimeout(() => {parent.opacity_7 = "0%"; }, 0);

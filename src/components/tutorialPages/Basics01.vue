@@ -54,8 +54,6 @@
                <img :src="require('../../assets/Instructions/Machines/Dots/dotspsafe4.png')" v-bind:style="{ opacity: this.opacity_dotssafe4, transition: 'opacity 0.2s', maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', }"/>
 
                <!-- Background -->
-               <img :src="require('../../assets/Instructions/Machines/Bodies/machine01a.png')" v-bind:style="{ opacity: this.opacity_machine01a, transition: 'opacity 0.5s', maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', }"/>
-               <img :src="require('../../assets/Instructions/Machines/Bodies/machine01b.png')" v-bind:style="{ opacity: this.opacity_machine01b, transition: 'opacity 0.5s', maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', }"/>
                <img :src="require('../../assets/Instructions/Machines/box1.png')" v-bind:style="{ opacity: this.opacity_box1, transition: 'opacity 0.5s', maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', }"/>
                <img :src="require('../../assets/Instructions/Machines/box2.png')" v-bind:style="{ opacity: this.opacity_box2, transition: 'opacity 0.5s', maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', }"/>
                <img :src="require('../../assets/Instructions/Machines/you1.png')" v-bind:style="{ opacity: this.opacity_you1, transition: 'opacity 0.5s', maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', }"/>
@@ -74,6 +72,8 @@
                <img :src="require('../../assets/Instructions/Machines/mchoice2.png')" v-bind:style="{ opacity: this.opacity_mchoice2, transition: 'opacity 0.0s', maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', }"/>
                <img :src="require('../../assets/Instructions/Machines/mchoice3.png')" v-bind:style="{ opacity: this.opacity_mchoice3, transition: 'opacity 0.0s', maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', }"/>
                <img :src="require('../../assets/Instructions/Machines/mchoice4.png')" v-bind:style="{ opacity: this.opacity_mchoice4, transition: 'opacity 0.0s', maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', }"/>
+               <img :src="require('../../assets/Instructions/Machines/Bodies/machine01a.png')" v-bind:style="{ opacity: this.opacity_machine01a, transition: 'opacity 0.5s', maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', }"/>
+               <img :src="require('../../assets/Instructions/Machines/Bodies/machine01b.png')" v-bind:style="{ opacity: this.opacity_machine01b, transition: 'opacity 0.5s', maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', }"/>
             </div>
 
             <div>

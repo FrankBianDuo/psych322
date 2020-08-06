@@ -355,7 +355,7 @@
 
                 // Swap text
                 setTimeout(() => {parent.opacity_13 = "0%"}, 0);
-                setTimeout(() => {parent.opacity_14 = "100%"}, 5000);
+                setTimeout(() => {parent.opacity_14 = "100%"}, 5500);
                 setTimeout(() => {parent.opacity_15 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_26 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_27 = "0%"}, 0);
@@ -367,7 +367,7 @@
                 setTimeout(() => parent.locked = false, 3600); 
 
                 // You Got x dots
-                setTimeout(() => {parent.opacity_35 = "100%"}, 5500);
+                setTimeout(() => {parent.opacity_35 = "100%"}, 5000);
                 setTimeout(() => {parent.opacity_31 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_32 = "0%"}, 0);
                 setTimeout(() => {parent.opacity_33 = "0%"}, 0);
