@@ -2,6 +2,7 @@
     <b-modal 
       id="modal-center-BotStopper" 
       size="xl"
+      v-model="show"
       centered title="CAPTCHA"
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
@@ -10,7 +11,7 @@
       :body-text-variant="bodyTextVariant"
       :footer-bg-variant="footerBgVariant"
       :footer-text-variant="footerTextVariant"
-      :no-close-on-backdrop="false"
+      :no-close-on-backdrop="true"
       :no-close-on-esc="true"
       :hide-header-close="true"
     >
@@ -46,7 +47,7 @@
         },
         data() {
             return {
-                show: false,
+                show: true,
                 captcha: "",
                 list: ['1','2','3','4'],
                 RandNum: '',

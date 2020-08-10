@@ -5,7 +5,7 @@
       centered title="Instruction Page 9 of 23"
       v-model="show"
       :hide-footer="true"
-      :no-close-on-backdrop="false"
+      :no-close-on-backdrop="true"
       :no-close-on-esc="true"
       :hide-header-close="true"
     >

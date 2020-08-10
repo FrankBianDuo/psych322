@@ -383,7 +383,7 @@
       :body-text-variant="bodyTextVariant"
       :footer-bg-variant="footerBgVariant"
       :footer-text-variant="footerTextVariant"
-      :no-close-on-backdrop="false"
+      :no-close-on-backdrop="true"
       :no-close-on-esc="true"
       :hide-header-close="true"
     >
