@@ -25,9 +25,11 @@
         :data="this.blockOneResults"
         :name="this.blockOneFileName()"
       >
-        <!-- These download buttons become visible after some progress has been made -->
         <b-button>Download Data</b-button>
       </download-csv>
+      <b-row class="my-4 justify-content-center">
+        <b-button class="btn btn-default" @click="this.fetchPresignedUrl">Send Data to S3</b-button>
+      </b-row>
       <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_2" v-b-modal.modal-center-2>Experiment 2</b-button>
         <download-csv
@@ -776,7 +778,7 @@ export default {
       ans_tutorial: {},
       parsed_answers: [],
       aws_bucket_name: "experimentdata2020",
-      aws_object_name: "testinit2.txt",
+      aws_object_name: this.blockOneFileName(),
       // serverlessrepo-s3-presigned-url-s3presignedurl-EF2SRE90YXDY?BucketName="experimentdata2020"&ObjectName="test10.txt"&ExpiredIn=3600
       aws_presigned_lambda: `https://cors-anywhere.herokuapp.com/https://5wmf85807b.execute-api.us-east-2.amazonaws.com/default/serverlessrepo-s3-presigned-url-s3presignedurl-EF2SRE90YXDY?BucketName=`,
       aws_s3_post_url: `https://cors-anywhere.herokuapp.com/https://experimentdata2020.s3.amazonaws.com`,
