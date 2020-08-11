@@ -152,14 +152,14 @@ export default {
     go_to_next() {
       this.$bvModal.hide("modal-center-survey" + this.page_num);
       this.$bvModal.show("modal-center-end");
-      this.$emit("Survey4Done", this.form);
+      this.$emit("Survey5Done", this.form);
     },
     go_to_back() {
       this.$bvModal.hide("modal-center-survey" + this.page_num);
       this.$bvModal.show(
         "modal-center-survey" + (Number(this.page_num) - 1).toString()
       );
-      this.$emit("Survey4Done", this.form);
+      this.$emit("Survey5Done", this.form);
     },
   },
 };
