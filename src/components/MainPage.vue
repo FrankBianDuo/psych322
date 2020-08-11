@@ -20,16 +20,9 @@
         <!-- These download buttons become visible after some progress has been made -->
         <!-- <b-button class="btn btn-default" @click="this.fetchPresignedUrl"> Download data for Block #1 </b-button> -->
       </b-row>
-      <download-csv
-        class="btn btn-default"
-        :data="this.blockOneResults"
-        :name="this.blockOneFileName()"
-      >
-        <b-button>Download Data</b-button>
-      </download-csv>
-      <b-row class="my-4 justify-content-center">
+      <!-- <b-row class="my-4 justify-content-center">
         <b-button class="btn btn-default" @click="this.fetchPresignedUrl">Send Data to S3</b-button>
-      </b-row>
+      </b-row>-->
       <b-row class="my-4 justify-content-center">
         <b-button :disabled="!this.b_show_2" v-b-modal.modal-center-2>Experiment 2</b-button>
         <download-csv
@@ -58,6 +51,13 @@
       <b-row class="my-4 justify-content-center">
         <b-button v-b-modal.modal-center-survey1>Experiment Survey</b-button>
       </b-row>
+      <download-csv
+        class="btn btn-default"
+        :data="this.blockOneResults"
+        :name="this.blockOneFileName()"
+      >
+        <b-button>Download Data</b-button>
+      </download-csv>
       <b-row class="my-4 justify-content-center">Participant ID: {{ this.form.name }}</b-row>
       <b-row class="my-4 justify-content-center"></b-row>
     </div>
@@ -854,12 +854,14 @@ export default {
       return String(moment(String(new Date())).format("YYYYMMDDhhmmss")) + text;
     },
     fetchPresignedUrl() {
+      let parent = this;
       let sending_url =
         this.aws_presigned_lambda +
         this.aws_bucket_name +
         "&ObjectName=" +
-        this.aws_object_name;
+        this.blockOneFileName();
       Vue.axios.get(sending_url).then((response) => {
+        let parent_second = parent;
         // JSON responses are automatically parsed.
         // eslint-disable-next-line no-console
         console.log(response.data);
@@ -887,7 +889,7 @@ export default {
             // 204 No Content
             // eslint-disable-next-line no-console
             console.log(response.data);
-            parent.data_sent_to_s3 = true;
+            parent_second.data_sent_to_s3 = true;
           })
           .catch((e) => {
             // eslint-disable-next-line no-console
@@ -1113,6 +1115,9 @@ export default {
       this.end_survey_form.bigfive09 = results.bigfive09;
       this.end_survey_form.bigfive10 = results.bigfive10;
       this.updateDataSheet();
+      // eslint-disable-next-line no-console
+      console.log("survey 5 finished!");
+      this.fetchPresignedUrl();
     },
     updateDataSheet() {
       this.blockOneResults = this.processOneResults(this.blockOneRawResults);
