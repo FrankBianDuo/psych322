@@ -8,11 +8,11 @@
     :hide-footer="true"
     :header-bg-variant="headerBgVariant"
     :header-text-variant="headerTextVariant"
-    :body-bg-variant="bodyBgVariant"
+    :body-bg-variant="bodyBgVariant"  
     :body-text-variant="bodyTextVariant"
     :footer-bg-variant="footerBgVariant"
     :footer-text-variant="footerTextVariant"
-    :no-close-on-backdrop="true"
+    :no-close-on-backdrop="false"
     :no-close-on-esc="true"
     :hide-header-close="true"
     modal-class="b1style"
@@ -75,12 +75,8 @@
             )}.png`)
           "
         />
+        <img :src="require('../assets/Centered Atoms/E1 Box.png')" :style="this.global_size" />
         <img
-          :src="require('../assets/Centered Atoms/E1 Box.png')"
-          :style="this.global_size"
-        />
-        <img
-          v-on:keyup.space="priorAvatar"
           :src="
             require(`../assets/Avatars/Blind Avatars/avb${this.pad(
               this.avatar_list[this.current_avatar],
@@ -89,11 +85,7 @@
           "
           :style="this.avatar_1"
         />
-        <img
-          v-on:keyup.space="priorAvatar"
-          :src="require(`../assets/Avatars/Avatar Eyes/Eyes 90.png`)"
-          :style="this.avatar_1"
-        />
+        <img :src="require(`../assets/Avatars/Avatar Eyes/Eyes 90.png`)" :style="this.avatar_1" />
         <!-- Here are three alternatives of the arrow in encounter #1 {neutral, up, down} -->
         <!-- They will fade in or/and out depending on the current scenario -->
         <img
@@ -109,10 +101,7 @@
           :style="this.arrow_style_three"
         />
         <!-- ^^^^^^^^^^^^^^ -->
-        <img
-          :src="require('../assets/Centered Atoms/E1 You.png')"
-          :style="this.global_size"
-        />
+        <img :src="require('../assets/Centered Atoms/E1 You.png')" :style="this.global_size" />
       </b-row>
 
       <!-- Encounter #2 HTML code -->
@@ -160,14 +149,8 @@
             )}.png`)
           "
         />
-        <img
-          :src="require('../assets/Centered Atoms/E2 Box.png')"
-          :style="this.global_size"
-        />
-        <img
-          :src="require(`../assets/Feedback Trust.png`)"
-          :style="this.trust_effect_style"
-        />
+        <img :src="require('../assets/Centered Atoms/E2 Box.png')" :style="this.global_size" />
+        <img :src="require(`../assets/Feedback Trust.png`)" :style="this.trust_effect_style" />
 
         <!-- HTML Element that presents a random avatar -->
         <img
@@ -179,41 +162,25 @@
           "
           :style="this.avatar_2"
         />
-        <img
-          v-on:keyup.space="priorAvatar"
-          :src="require(`../assets/Avatars/Avatar Eyes/Eyes 90.png`)"
-          :style="this.avatar_2"
-        />
+        <img :src="require(`../assets/Avatars/Avatar Eyes/Eyes 90.png`)" :style="this.avatar_2" />
         <img
           :src="require(`../assets/Centered Atoms/E2 ${current_arrow}`)"
           :style="this.global_size"
         />
-        <img
-          :src="require(`../assets/Centered Atoms/Faded Arrows.png`)"
-          :style="this.global_size"
-        />
+        <img :src="require(`../assets/Centered Atoms/Faded Arrows.png`)" :style="this.global_size" />
         <img
           :src="require(`../assets/Centered Atoms/Keep Control Box Black.png`)"
           :style="this.global_size_control_priors"
         />
 
         <!--  Background You Avatar -->
-        <img
-          :src="require(`../assets/Centered Atoms/E2 You.png`)"
-          :style="this.global_size"
-        />
+        <img :src="require(`../assets/Centered Atoms/E2 You.png`)" :style="this.global_size" />
         <img
           :src="require(`../assets/Centered Atoms/You Arrows.png`)"
           :style="this.global_size_control_priors"
         />
-        <img
-          :src="require(`../assets/Centered Atoms/AZ.png`)"
-          :style="this.global_size_AZ"
-        />
-        <img
-          :src="require(`../assets/Centered Atoms/JK.png`)"
-          :style="this.global_size_JK"
-        />
+        <img :src="require(`../assets/Centered Atoms/AZ.png`)" :style="this.global_size_AZ" />
+        <img :src="require(`../assets/Centered Atoms/JK.png`)" :style="this.global_size_JK" />
         <img
           :src="require(`../assets/Centered Atoms/Barrier.png`)"
           :style="this.global_size_barrier"
@@ -231,16 +198,12 @@
         <!-- <img 
           :style="this.global_size_control_priors"
           v-if="this.encounter_1_payoff_show" :src="require(`../assets/Dots/E2 CB3.png`)" /> 
-         -->
+        -->
       </b-row>
     </b-container>
     <b-modal ref="my-modal" hide-footer title="Rest Break">
-      <h3 align="center">
-        0{{ this.rb_min }}:{{ this.rb_seczero }}{{ this.rb_sec }}
-      </h3>
-      <b-button class="mt-3" variant="outline-danger" block @click="hideModal"
-        >Back to Experiment</b-button
-      >
+      <h3 align="center">0{{ this.rb_min }}:{{ this.rb_seczero }}{{ this.rb_sec }}</h3>
+      <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Back to Experiment</b-button>
     </b-modal>
   </b-modal>
 </template>
@@ -329,6 +292,7 @@ export default {
         "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%; transition: opacity 0.5s;",
       arrow_num: "1",
       avatar_num: "1",
+      // This generates an array from 0 to 323
       avatar_list: this.shuffle(
         Array(324)
           .fill()
@@ -378,9 +342,9 @@ export default {
     });
   },
   // Event listener for all keyboard events
-  created: function() {
+  created: function () {
     let parent = this;
-    window.addEventListener("keydown", function(event) {
+    window.addEventListener("keydown", function (event) {
       // Prevent the spacebar jerk
       // if (event.keyCode == 32) {
       //   event.preventDefault();
@@ -517,7 +481,7 @@ export default {
       this.global_size_ectr_1 =
         "position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%; transition: opacity 0.5s;";
       let parent = this;
-      setTimeout(function() {
+      setTimeout(function () {
         parent.arrow_num = parent.combinations[parent.current_avatar].a_c;
         parent.arrow_style_one =
           "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%; transition: opacity 0.5s;";
@@ -533,10 +497,10 @@ export default {
           console.log("arrow 3");
         }
       }, 1000);
-      setTimeout(function() {
+      setTimeout(function () {
         parent.show_current = 1;
       }, 2000);
-      setTimeout(function() {
+      setTimeout(function () {
         parent.block_listeners = false;
       }, 2250);
     },
@@ -554,7 +518,7 @@ export default {
       this.prediction = 1;
       this.combinations[this.current_avatar].keypress = "A";
       let parent = this;
-      setTimeout(function() {
+      setTimeout(function () {
         parent.predictionHelper();
       }, 250);
     },
@@ -572,7 +536,7 @@ export default {
       this.prediction = 0;
       this.combinations[this.current_avatar].keypress = "Z";
       let parent = this;
-      setTimeout(function() {
+      setTimeout(function () {
         parent.predictionHelper();
       }, 250);
     },
@@ -604,7 +568,7 @@ export default {
       this.global_size_pred_dn =
         "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;";
       let parent = this;
-      setTimeout(function() {
+      setTimeout(function () {
         parent.global_size_barrier =
           "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;";
       }, 500);
@@ -620,10 +584,10 @@ export default {
       this.global_size_give_glow =
         "position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;";
       this.combinations[this.current_avatar].keypress += "J";
-      setTimeout(function() {
+      setTimeout(function () {
         parent.hide_choice_visuals();
       }, 500);
-      setTimeout(function() {
+      setTimeout(function () {
         parent.ChoiceHelper(1);
         // This controls where meeting 2 fades out.
       }, 1500);
@@ -638,10 +602,10 @@ export default {
       this.global_size_keep_glow =
         "position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;";
       this.combinations[this.current_avatar].keypress += "K";
-      setTimeout(function() {
+      setTimeout(function () {
         parent.hide_choice_visuals();
       }, 500);
-      setTimeout(function() {
+      setTimeout(function () {
         parent.ChoiceHelper(0);
         // This controls where meeting 2 fades out.
       }, 1500);
@@ -655,7 +619,7 @@ export default {
         parent.rb_seczero = "";
         return;
       }
-      setTimeout(function() {
+      setTimeout(function () {
         parent.rb_sec -= 1;
         if (parent.rb_sec < 10) {
           parent.rb_seczero = "0";
@@ -701,12 +665,12 @@ export default {
         "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;";
       parent.global_size_give_glow =
         "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%;";
-      setTimeout(function() {
+      setTimeout(function () {
         parent.current_avatar += 1;
         parent.global_size_ectr_1 =
           "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%; transition: opacity 0.5s;";
       }, 400);
-      setTimeout(function() {
+      setTimeout(function () {
         parent.fading = false;
 
         parent.free_space = true;
@@ -720,7 +684,8 @@ export default {
           parent.show = false;
           alert("Block #1 finished");
           // FIXME: connect this to the survey pages
-          parent.b_show_1 = false;
+          // parent.b_show_1 = false;
+          this.$bvModal.show("modal-center-FR1");
         }
         if (
           parent.current_avatar == 12 ||
@@ -871,6 +836,10 @@ export default {
     pad(n, width, z) {
       z = z || "0";
       n = n + "";
+      // eslint-disable-next-line no-console
+      console.log(
+        n.length >= width ? n : new Array(width - n.length + 1).join(z) + n
+      );
       return n.length >= width
         ? n
         : new Array(width - n.length + 1).join(z) + n;

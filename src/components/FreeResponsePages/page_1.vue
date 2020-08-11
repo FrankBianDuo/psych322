@@ -1,80 +1,89 @@
 <template>
-    <b-modal 
-      :id="this.page_id" 
-      size="xl"
-      centered 
-      :title="this.center_title"
-      :hide-footer="true"
-      :header-bg-variant="headerBgVariant"
-      :header-text-variant="headerTextVariant"
-      :body-bg-variant="bodyBgVariant"
-      :body-text-variant="bodyTextVariant"
-      :footer-bg-variant="footerBgVariant"
-      :footer-text-variant="footerTextVariant"
-      :no-close-on-backdrop="true"
-      :no-close-on-esc="true"
-      :hide-header-close="true"
-    >
-      <b-container class="align-bottom" :style="this.windowsize"  >
-          <img :src="require('../../assets/Free Response/Free Response 01.png')" style="width: 60%; height: auto; transform: translate(-50%, -20%); margin-left: 50%;"/>
-          <b-form-textarea
-            style="transform: translate(0%, -60%);"
-            id="textarea"
-            v-model="text"
-            placeholder="Please write 1 - 3 full sentences here."
-            rows="5"
-            max-rows="5"
-            ></b-form-textarea>
-      </b-container>
-        <b-button variant="outline-primary" size="lg">Back</b-button>
-        <b-button style="float: right;" @click="this.go_to_next" variant="outline-primary" size="lg">Next</b-button>
-    </b-modal>
+  <b-modal
+    :id="this.page_id"
+    size="xl"
+    centered
+    :title="this.center_title"
+    :hide-footer="true"
+    :header-bg-variant="headerBgVariant"
+    :header-text-variant="headerTextVariant"
+    :body-bg-variant="bodyBgVariant"
+    :body-text-variant="bodyTextVariant"
+    :footer-bg-variant="footerBgVariant"
+    :footer-text-variant="footerTextVariant"
+    :no-close-on-backdrop="false"
+    :no-close-on-esc="true"
+    :hide-header-close="true"
+  >
+    <b-container class="align-bottom" :style="this.windowsize">
+      <img
+        :src="require('../../assets/Free Response/Free Response 01.png')"
+        style="width: 60%; height: auto; transform: translate(-50%, -20%); margin-left: 50%;"
+      />
+      <b-form-textarea
+        style="transform: translate(0%, -60%);"
+        id="textarea"
+        v-model="text"
+        placeholder="Please write 1 - 3 full sentences here."
+        rows="5"
+        max-rows="5"
+      ></b-form-textarea>
+    </b-container>
+    <b-button variant="outline-primary" size="lg">Back</b-button>
+    <b-button
+      style="float: right;"
+      @click="this.go_to_next"
+      variant="outline-primary"
+      size="lg"
+    >Next</b-button>
+  </b-modal>
 </template>
 
 <script>
-    export default {
-        name: 'FR1',
-        props: ['windowsize'],
-        components: {
-        },
-        data() {
-            return {
-                page_num: "1",
-                text: ''
-            }
-        },
-        created: function () {
-            let parent = this
-            window.addEventListener('keydown', function(event) {
-            // eslint-disable-next-line no-console
-            if (parent.show) {
-                // eslint-disable-next-line no-console
-                console.log("called")
-                // Space
-                if (event.keyCode == 32 && parent.free_space) {
-                // eslint-disable-next-line no-console
-                console.log('Space Listener Event Fired')
-                // event.preventDefault();
-                }
-            }
-            });
-        },
-        computed: {
-            page_id() {
-                return "modal-center-FR" + this.page_num
-            },
-            center_title() {
-                return "Free Response page " + this.page_num + " of 13"
-            },
-        },
-        methods: {
-            go_to_next() {
-                this.$bvModal.hide("modal-center-FR" + this.page_num)
-                this.$bvModal.show("modal-center-FR" + ((Number(this.page_num) + 1).toString()))
-                this.$emit('FR1Done', this.text)
-            }
-        },
-    }
+export default {
+  name: "FR1",
+  props: ["windowsize"],
+  components: {},
+  data() {
+    return {
+      page_num: "1",
+      text: "",
+    };
+  },
+  created: function () {
+    let parent = this;
+    window.addEventListener("keydown", function (event) {
+      // eslint-disable-next-line no-console
+      if (parent.show) {
+        // eslint-disable-next-line no-console
+        console.log("called");
+        // Space
+        if (event.keyCode == 32 && parent.free_space) {
+          // eslint-disable-next-line no-console
+          console.log("Space Listener Event Fired");
+          // event.preventDefault();
+        }
+      }
+    });
+  },
+  computed: {
+    page_id() {
+      return "modal-center-FR" + this.page_num;
+    },
+    center_title() {
+      return "Free Response page " + this.page_num + " of 13";
+    },
+  },
+  methods: {
+    go_to_next() {
+      this.$bvModal.hide("modal-center-FR" + this.page_num);
+      this.$bvModal.show(
+        "modal-center-FR" + (Number(this.page_num) + 1).toString()
+      );
+      this.$emit("FR1Done", this.text);
+    },
+  },
+};
 </script>
 
 

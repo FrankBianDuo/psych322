@@ -3,11 +3,11 @@
     <h1>{{ msg }}</h1>
     <!-- Here is the vue Page for the index interface on our program -->
     <p>
-      (1) View the Instructions <br />
-      (2) Progress to Experiment 1. <br />
-      (3) Please fill out the survey. <br />
-      (4) Ignore Experiments 2 and 3. <br />
-      (5) Never refresh the page.
+      (1) View the Instructions
+      <br />(2) Progress to Experiment 1.
+      <br />(3) Please fill out the survey.
+      <br />(4) Ignore Experiments 2 and 3.
+      <br />(5) Never refresh the page.
     </p>
     <div class="bv-example-row bv-example-row-flex-cols">
       <!-- Button for firing the instruction modal -->
@@ -17,9 +17,7 @@
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
-        <b-button :disabled="!this.b_show_1" v-b-modal.modal-center
-          >Experiment 1</b-button
-        >
+        <b-button :disabled="!this.b_show_1" v-b-modal.modal-center>Experiment 1</b-button>
         <!-- These download buttons become visible after some progress has been made -->
         <!-- <b-button class="btn btn-default" @click="this.fetchPresignedUrl"> Download data for Block #1 </b-button> -->
       </b-row>
@@ -29,32 +27,28 @@
         :name="this.blockOneFileName()"
       >
         <!-- These download buttons become visible after some progress has been made -->
-        <b-button> Download Data </b-button>
+        <b-button>Download Data</b-button>
       </download-csv>
       <b-row class="my-4 justify-content-center">
-        <b-button :disabled="!this.b_show_2" v-b-modal.modal-center-2
-          >Experiment 2</b-button
-        >
+        <b-button :disabled="!this.b_show_2" v-b-modal.modal-center-2>Experiment 2</b-button>
         <download-csv
           v-if="this.finished_2"
           class="btn btn-default"
           :data="this.blockTwoResults"
           :name="this.blockTwoFileName()"
         >
-          <b-button> Download data for Experiment #2 </b-button>
+          <b-button>Download data for Experiment #2</b-button>
         </download-csv>
       </b-row>
       <b-row class="my-4 justify-content-center">
-        <b-button :disabled="!this.b_show_3" v-b-modal.modal-center-3
-          >Experiment 3</b-button
-        >
+        <b-button :disabled="!this.b_show_3" v-b-modal.modal-center-3>Experiment 3</b-button>
         <download-csv
           v-if="this.finished_3"
           class="btn btn-default"
           :data="this.blockThreeResults"
           :name="this.blockThreeFileName()"
         >
-          <b-button> Download data for Experiment #3 </b-button>
+          <b-button>Download data for Experiment #3</b-button>
         </download-csv>
       </b-row>
       <b-row class="my-4 justify-content-center">
@@ -63,112 +57,57 @@
       <b-row class="my-4 justify-content-center">
         <b-button v-b-modal.modal-center-survey1>Experiment Survey</b-button>
       </b-row>
-      <b-row class="my-4 justify-content-center">
-        Participant ID: {{ this.form.name }}
-      </b-row>
-      <b-row class="my-4 justify-content-center"> </b-row>
+      <b-row class="my-4 justify-content-center">Participant ID: {{ this.form.name }}</b-row>
+      <b-row class="my-4 justify-content-center"></b-row>
     </div>
 
     <!-- <b-container class="align-bottom" :style="this.windowsize"  >
           <img :src="require('../../assets/Instructions/Contol Trees/Control Tree 1.png')" style="width: 90%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"/>
-      </b-container> -->
+    </b-container>-->
 
     <b-modal id="modal-prevent-closing" ref="modal" title="Experiment Survey">
       <!-- Here's the HTML code for the survey form -->
       <b-form>
-        <b-form-group
-          id="input-group-2"
-          label="Participant ID:"
-          label-for="input-2"
-        >
+        <b-form-group id="input-group-2" label="Participant ID:" label-for="input-2">
           <b-form-input id="input-2" v-model="form.id" required></b-form-input>
         </b-form-group>
 
         <b-form-group id="input-group-2" label="Date:" label-for="input-2">
-          <b-form-input
-            id="input-2"
-            v-model="form.date"
-            required
-          ></b-form-input>
+          <b-form-input id="input-2" v-model="form.date" required></b-form-input>
         </b-form-group>
         <b-form-group id="input-group-2" label="Gender:" label-for="input-2">
-          <b-form-select
-            v-model="form.gender"
-            :options="gender_options"
-          ></b-form-select>
+          <b-form-select v-model="form.gender" :options="gender_options"></b-form-select>
         </b-form-group>
 
-        <b-form-group
-          id="input-group-2"
-          label="RA Present:"
-          label-for="input-2"
-        >
-          <b-form-select
-            v-model="form.ra"
-            :options="ra_options"
-          ></b-form-select>
+        <b-form-group id="input-group-2" label="RA Present:" label-for="input-2">
+          <b-form-select v-model="form.ra" :options="ra_options"></b-form-select>
         </b-form-group>
 
         <b-form-group id="input-group-2" label="Age:" label-for="input-2">
           <b-form-input id="input-2" v-model="form.age" required></b-form-input>
         </b-form-group>
 
-        <b-form-group
-          id="input-group-2"
-          label="Number of Older Brother(s):"
-          label-for="input-2"
-        >
-          <b-form-input
-            id="input-2"
-            v-model="form.olderBro"
-            required
-          ></b-form-input>
+        <b-form-group id="input-group-2" label="Number of Older Brother(s):" label-for="input-2">
+          <b-form-input id="input-2" v-model="form.olderBro" required></b-form-input>
         </b-form-group>
 
-        <b-form-group
-          id="input-group-2"
-          label="Number of Older Sister(s):"
-          label-for="input-2"
-        >
-          <b-form-input
-            id="input-2"
-            v-model="form.olderSis"
-            required
-          ></b-form-input>
+        <b-form-group id="input-group-2" label="Number of Older Sister(s):" label-for="input-2">
+          <b-form-input id="input-2" v-model="form.olderSis" required></b-form-input>
         </b-form-group>
 
-        <b-form-group
-          id="input-group-2"
-          label="Number of Younger Brother(s):"
-          label-for="input-2"
-        >
-          <b-form-input
-            id="input-2"
-            v-model="form.youngerBro"
-            required
-          ></b-form-input>
+        <b-form-group id="input-group-2" label="Number of Younger Brother(s):" label-for="input-2">
+          <b-form-input id="input-2" v-model="form.youngerBro" required></b-form-input>
         </b-form-group>
 
-        <b-form-group
-          id="input-group-2"
-          label="Number of Younger Sister(s):"
-          label-for="input-2"
-        >
-          <b-form-input
-            id="input-2"
-            v-model="form.youngerSis"
-            required
-          ></b-form-input>
+        <b-form-group id="input-group-2" label="Number of Younger Sister(s):" label-for="input-2">
+          <b-form-input id="input-2" v-model="form.youngerSis" required></b-form-input>
         </b-form-group>
 
-        <b-button variant="primary" @click="this.surveyFinish">Submit</b-button>
+        <b-button variant="primary">Submit</b-button>
       </b-form>
     </b-modal>
     <BotStopper @timesync="instructionStart" :windowsize="this.window_size" />
-    <Consent
-      :pID="this.participant_generated_id"
-      :windowsize="this.window_size"
-    />
+    <Consent :pID="this.participant_generated_id" :windowsize="this.window_size" />
     <ExperInfo :windowsize="this.window_size" />
     <ExperTutor :windowsize="this.window_size" />
     <MeetPeople :windowsize="this.window_size" />
@@ -325,14 +264,8 @@
     <Tutorial69 :windowsize="this.window_size" />
     <Tutorial70 :windowsize="this.window_size" />
     <Tutorial71 :windowsize="this.window_size" />
-    <Tutorial72
-      :previous_ans="this.ans_tutorial"
-      :windowsize="this.window_size"
-    />
-    <Tutorial73
-      :previous_ans="this.ans_tutorial"
-      :windowsize="this.window_size"
-    />
+    <Tutorial72 :previous_ans="this.ans_tutorial" :windowsize="this.window_size" />
+    <Tutorial73 :previous_ans="this.ans_tutorial" :windowsize="this.window_size" />
     <FRpage1 @FR1Done="FR1Finished" :windowsize="this.window_size" />
     <FRpage2 @FR2Done="FR2Finished" :windowsize="this.window_size" />
     <FRpage3 @FR3Done="FR3Finished" :windowsize="this.window_size" />
@@ -364,14 +297,8 @@
       @blockOneDone="blockOneFinished"
       :participant_name="this.form.name"
     />
-    <BlockTwo
-      @blockTwoDone="blockTwoFinished"
-      :participant_name="this.form.name"
-    />
-    <BlockThree
-      @blockThreeDone="blockThreeFinished"
-      :participant_name="this.form.name"
-    />
+    <BlockTwo @blockTwoDone="blockTwoFinished" :participant_name="this.form.name" />
+    <BlockThree @blockThreeDone="blockThreeFinished" :participant_name="this.form.name" />
     <b-modal
       id="modal-center-end"
       size="xl"
@@ -384,7 +311,7 @@
       :body-text-variant="bodyTextVariant"
       :footer-bg-variant="footerBgVariant"
       :footer-text-variant="footerTextVariant"
-      :no-close-on-backdrop="true"
+      :no-close-on-backdrop="false"
       :no-close-on-esc="true"
       :hide-header-close="true"
     >
@@ -395,9 +322,7 @@
         v-if="data_sent_to_s3"
         class="align-bottom"
         :style="this.windowsize"
-      >
-        Please message the experimenter with your participant ID and the quote "I like avatars" to demonstrate that you finished this experiment.
-      </b-container>
+      >Please message the experimenter with your participant ID and the quote "I like avatars" to demonstrate that you finished this experiment.</b-container>
     </b-modal>
   </div>
 </template>
@@ -862,9 +787,9 @@ export default {
       instrucTime: 0,
     };
   },
-  created: function() {
+  created: function () {
     let parent = this;
-    window.addEventListener("keydown", function(event) {
+    window.addEventListener("keydown", function (event) {
       // Prevent the spacebar jerk
       if (event.keyCode == 32) {
         // eslint-disable-next-line no-console
@@ -1083,42 +1008,55 @@ export default {
     },
     FR1Finished(results) {
       this.FRResults[1] = results;
+      this.updateDataSheet();
     },
     FR2Finished(results) {
       this.FRResults[2] = results;
+      this.updateDataSheet();
     },
     FR3Finished(results) {
       this.FRResults[3] = results;
+      this.updateDataSheet();
     },
     FR4Finished(results) {
       this.FRResults[4] = results;
+      this.updateDataSheet();
     },
     FR5Finished(results) {
       this.FRResults[5] = results;
+      this.updateDataSheet();
     },
     FR6Finished(results) {
       this.FRResults[6] = results;
+      this.updateDataSheet();
     },
     FR7Finished(results) {
       this.FRResults[7] = results;
+      this.updateDataSheet();
     },
     FR8Finished(results) {
       this.FRResults[8] = results;
+      this.updateDataSheet();
     },
     FR9Finished(results) {
       this.FRResults[9] = results;
+      this.updateDataSheet();
     },
     FR10Finished(results) {
       this.FRResults[10] = results;
+      this.updateDataSheet();
     },
     FR11Finished(results) {
       this.FRResults[11] = results;
+      this.updateDataSheet();
     },
     FR12Finished(results) {
       this.FRResults[12] = results;
+      this.updateDataSheet();
     },
     FR13Finished(results) {
       this.FRResults[13] = results;
+      this.updateDataSheet();
     },
     Survey1Finished(results) {
       // eslint-disable-next-line no-console
@@ -1128,6 +1066,7 @@ export default {
       this.end_survey_form.love = results.loves;
       this.end_survey_form.age = results.yob;
       this.end_survey_form.gender = results.genders;
+      this.updateDataSheet();
     },
     Survey2Finished(results) {
       // eslint-disable-next-line no-console
@@ -1138,6 +1077,7 @@ export default {
       this.end_survey_form.youngerSis = results.younger_sis;
       this.end_survey_form.english = results.english;
       this.end_survey_form.country = results.countries;
+      this.updateDataSheet();
     },
     Survey3Finished(results) {
       // eslint-disable-next-line no-console
@@ -1149,6 +1089,7 @@ export default {
       this.end_survey_form.attractive = results.view;
       this.end_survey_form.power = results.interact;
       this.end_survey_form.agree = results.agree;
+      this.updateDataSheet();
     },
     Survey4Finished(results) {
       // eslint-disable-next-line no-console
@@ -1159,6 +1100,7 @@ export default {
       this.end_survey_form.bigfive03 = results.bigfive03;
       this.end_survey_form.bigfive04 = results.bigfive04;
       this.end_survey_form.bigfive05 = results.bigfive05;
+      this.updateDataSheet();
     },
     Survey5Finished(results) {
       // eslint-disable-next-line no-console
@@ -1169,12 +1111,16 @@ export default {
       this.end_survey_form.bigfive08 = results.bigfive08;
       this.end_survey_form.bigfive09 = results.bigfive09;
       this.end_survey_form.bigfive10 = results.bigfive10;
+      this.updateDataSheet();
+    },
+    updateDataSheet() {
+      this.blockOneResults = this.processOneResults(this.blockOneRawResults);
     },
     blockOneFinished(results) {
       // this.b_show_1 = false
       // this.b_show_2 = true
       this.blockOneRawResults = results;
-      this.blockOneResults = this.processOneResults(results);
+      this.updateDataSheet();
       this.finished_1 = true;
     },
     blockThreeFinished(results) {
@@ -1243,7 +1189,7 @@ export default {
           Rat_Deg: "",
           Red_Flag: "",
           InstructionTimeSpent: this.instrucTime,
-          InstructionAnswers: this.parsed_answers,
+          InstructionAnswers: "",
           Date: this.end_survey_form.date,
           Age: this.end_survey_form.age,
           Gender: this.end_survey_form.gender,
@@ -1430,7 +1376,7 @@ export default {
       return output;
     },
     blockOneFileName() {
-      return `${this.form.id}_block_1.csv`;
+      return `${this.participant_generated_id}_block_1.csv`;
     },
     blockTwoFileName() {
       return `${this.form.id}_block_2.csv`;
