@@ -3,11 +3,10 @@
     <h1>{{ msg }}</h1>
     <!-- Here is the vue Page for the index interface on our program -->
     <p>
-      (1) View the Instructions
-      <br />(2) Progress to Experiment 1.
-      <br />(3) Please fill out the survey.
-      <br />(4) Ignore Experiments 2 and 3.
-      <br />(5) Never refresh the page.
+      (1) Complete the instructions, (2) experiment 1, (3) the written response section, (4) the survey, and
+      <br />(5) send a message to the experimenter with your participant ID and the completion URL at the end.
+      <br />Please Ignore Experiments 2 and 3 and never refresh the page.
+      <br />You are free to download your data file at the end.
     </p>
     <div class="bv-example-row bv-example-row-flex-cols">
       <!-- Button for firing the instruction modal -->
