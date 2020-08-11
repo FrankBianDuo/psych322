@@ -8,7 +8,7 @@
     :hide-footer="true"
     :header-bg-variant="headerBgVariant"
     :header-text-variant="headerTextVariant"
-    :body-bg-variant="bodyBgVariant"  
+    :body-bg-variant="bodyBgVariant"
     :body-text-variant="bodyTextVariant"
     :footer-bg-variant="footerBgVariant"
     :footer-text-variant="footerTextVariant"
@@ -514,8 +514,9 @@ export default {
         "position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%;";
       if (this.combinations[this.current_avatar].enctr_2_reverse == 1) {
         this.prediction = 0;
+      } else {
+        this.prediction = 1;
       }
-      this.prediction = 1;
       this.combinations[this.current_avatar].keypress = "A";
       let parent = this;
       setTimeout(function () {
@@ -532,8 +533,9 @@ export default {
       // this.current_arrow = 'Pred Dn.png'
       if (this.combinations[this.current_avatar].enctr_2_reverse == 1) {
         this.prediction = 1;
+      } else {
+        this.prediction = 0;
       }
-      this.prediction = 0;
       this.combinations[this.current_avatar].keypress = "Z";
       let parent = this;
       setTimeout(function () {
@@ -811,8 +813,10 @@ export default {
               );
               if (new_comb.enctr_1_reverse == 1) {
                 new_comb.pr_p = this.flipPayOff(new_comb.pr_p);
+                // temp here flipped the enctr type by munipulating the string
                 let temp = new_comb.enctr_1_type[1] + new_comb.enctr_1_type[0];
                 new_comb.enctr_1_type = temp;
+                // Flipping the avatar's choice in ectr1 to reflect the flipped pay off structure
                 if (new_comb.a_c == "2") {
                   new_comb.a_c = "3";
                 } else {
