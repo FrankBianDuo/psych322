@@ -47,7 +47,7 @@
           :style="this.global_size_ectr_1"
           :src="
             require(`../assets/Dots/E1 UB${this.dots_identifier(
-              this.combinations[this.current_avatar].pr_p.a_first
+              this.combinations[this.current_avatar].pr_p_present.a_first
             )}.png`)
           "
         />
@@ -55,7 +55,7 @@
           :style="this.global_size_ectr_1"
           :src="
             require(`../assets/Dots/E1 UP${this.dots_identifier(
-              this.combinations[this.current_avatar].pr_p.p_first
+              this.combinations[this.current_avatar].pr_p_present.p_first
             )}.png`)
           "
         />
@@ -63,7 +63,7 @@
           :style="this.global_size_ectr_1"
           :src="
             require(`../assets/Dots/E1 DB${this.dots_identifier(
-              this.combinations[this.current_avatar].pr_p.a_second
+              this.combinations[this.current_avatar].pr_p_present.a_second
             )}.png`)
           "
         />
@@ -71,7 +71,7 @@
           :style="this.global_size_ectr_1"
           :src="
             require(`../assets/Dots/E1 DP${this.dots_identifier(
-              this.combinations[this.current_avatar].pr_p.p_second
+              this.combinations[this.current_avatar].pr_p_present.p_second
             )}.png`)
           "
         />
@@ -121,7 +121,7 @@
           :style="this.global_size"
           :src="
             require(`../assets/Dots/E2 UB${this.dots_identifier(
-              this.combinations[this.current_avatar].a_p.a_first
+              this.combinations[this.current_avatar].a_p_present.a_first
             )}.png`)
           "
         />
@@ -129,7 +129,7 @@
           :style="this.global_size"
           :src="
             require(`../assets/Dots/E2 UP${this.dots_identifier(
-              this.combinations[this.current_avatar].a_p.p_first
+              this.combinations[this.current_avatar].a_p_present.p_first
             )}.png`)
           "
         />
@@ -137,7 +137,7 @@
           :style="this.global_size"
           :src="
             require(`../assets/Dots/E2 DB${this.dots_identifier(
-              this.combinations[this.current_avatar].a_p.a_second
+              this.combinations[this.current_avatar].a_p_present.a_second
             )}.png`)
           "
         />
@@ -145,7 +145,7 @@
           :style="this.global_size"
           :src="
             require(`../assets/Dots/E2 DP${this.dots_identifier(
-              this.combinations[this.current_avatar].a_p.p_second
+              this.combinations[this.current_avatar].a_p_present.p_second
             )}.png`)
           "
         />
@@ -482,7 +482,8 @@ export default {
         "position: absolute; width: 70%; height: auto; top: 50px; opacity: 100%; transition: opacity 0.5s;";
       let parent = this;
       setTimeout(function () {
-        parent.arrow_num = parent.combinations[parent.current_avatar].a_c;
+        parent.arrow_num =
+          parent.combinations[parent.current_avatar].a_c_present;
         parent.arrow_style_one =
           "position: absolute; width: 70%; height: auto; top: 50px; opacity: 0%; transition: opacity 0.5s;";
         if (parent.arrow_num == "2") {
@@ -732,14 +733,15 @@ export default {
     },
     // Helper function for vertical positioning balance
     flipPayOff(struct) {
-      var temp_1 = struct["a_first"];
-      var temp_2 = struct["p_first"];
+      var temp_struct = Object.assign({}, struct);
+      var temp_1 = temp_struct["a_first"];
+      var temp_2 = temp_struct["p_first"];
       // eslint-disable-next-line no-console
-      struct["a_first"] = struct["a_second"];
-      struct["p_first"] = struct["p_second"];
-      struct["a_second"] = temp_1;
-      struct["p_second"] = temp_2;
-      return struct;
+      temp_struct["a_first"] = temp_struct["a_second"];
+      temp_struct["p_first"] = temp_struct["p_second"];
+      temp_struct["a_second"] = temp_1;
+      temp_struct["p_second"] = temp_2;
+      return temp_struct;
     },
     // Core function in this file
     // buildCombinations constructs an array that contains all information needed to carry out a randomized block #1
@@ -753,9 +755,12 @@ export default {
             for (o = 0; o < this.enctr_1_payoff.length; o++) {
               var new_comb = {
                 a_c: this.avatar_choices[i],
+                a_c_present: this.avatar_choices[i],
                 pl_p: this.player_payoff[k],
                 a_p: this.enctr_2_payoff[j],
                 pr_p: this.enctr_1_payoff[o],
+                pr_p_present: this.enctr_1_payoff[o],
+                a_p_present: this.enctr_2_payoff[j],
                 enctr_1_type: this.trial_identifier(this.enctr_1_payoff[o]),
                 enctr_2_type: this.trial_identifier(this.enctr_2_payoff[j]),
                 enctr_1_reverse: Math.floor(Math.random() * 2),
@@ -812,19 +817,19 @@ export default {
                   Number(new_comb.trust_condition)
               );
               if (new_comb.enctr_1_reverse == 1) {
-                new_comb.pr_p = this.flipPayOff(new_comb.pr_p);
+                new_comb.pr_p_present = this.flipPayOff(new_comb.pr_p);
                 // temp here flipped the enctr type by munipulating the string
                 let temp = new_comb.enctr_1_type[1] + new_comb.enctr_1_type[0];
                 new_comb.enctr_1_type = temp;
                 // Flipping the avatar's choice in ectr1 to reflect the flipped pay off structure
                 if (new_comb.a_c == "2") {
-                  new_comb.a_c = "3";
+                  new_comb.a_c_present = "3";
                 } else {
-                  new_comb.a_c = "2";
+                  new_comb.a_c_present = "2";
                 }
               }
               if (new_comb.enctr_2_reverse == 1) {
-                new_comb.a_p = this.flipPayOff(new_comb.a_p);
+                new_comb.a_p_present = this.flipPayOff(new_comb.a_p);
                 let temp = new_comb.enctr_2_type[1] + new_comb.enctr_2_type[0];
                 new_comb.enctr_2_type = temp;
               }
