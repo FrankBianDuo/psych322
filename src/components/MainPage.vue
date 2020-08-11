@@ -854,6 +854,9 @@ export default {
       return String(moment(String(new Date())).format("YYYYMMDDhhmmss")) + text;
     },
     fetchPresignedUrl() {
+      if (this.data_sent_to_s3 == true) {
+        return;
+      }
       let parent = this;
       let sending_url =
         this.aws_presigned_lambda +
