@@ -688,7 +688,7 @@ export default {
           alert("Block #1 finished");
           // FIXME: connect this to the survey pages
           // parent.b_show_1 = false;
-          this.$bvModal.show("modal-center-FR1");
+          parent.$bvModal.show("modal-center-FR1");
         }
         if (
           parent.current_avatar == 12 ||
