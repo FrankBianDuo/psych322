@@ -380,13 +380,13 @@ export default {
       setTimeout(() => {
         parent.finish = false;
         parent.nbc = "success";
-      }, 4000);
+      }, 6000);
       setTimeout(() => {
         parent.nbc = "outline-primary";
-      }, 4500);
+      }, 6500);
       setTimeout(() => {
         parent.nbc = "success";
-      }, 5000);
+      }, 7000);
       setTimeout(() => {
         parent.nbc = "outline-primary";
       }, 8500);

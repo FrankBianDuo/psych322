@@ -3,7 +3,7 @@
     :id="this.page_id"
     size="xl"
     centered
-    :title="this.center_title"
+    title="End of Instructions"
     :hide-footer="true"
     :no-close-on-backdrop="false"
     :no-close-on-esc="true"
