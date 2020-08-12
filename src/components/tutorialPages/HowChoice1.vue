@@ -407,9 +407,12 @@ export default {
         parent.opacity_14 = "0%";
         parent.opacity_15 = "0%";
         parent.opacity_16 = "0%";
-        parent.opacity_17 = "100%";
+        parent.opacity_17 = "0%";
         parent.opacity_18 = "0%";
       }, 0);
+      setTimeout(() => {
+        parent.opacity_17 = "100%";
+      }, 800);
       setTimeout(() => (parent.mutex = false), 3600);
       setTimeout(() => (parent.locked = false), 3600);
     },

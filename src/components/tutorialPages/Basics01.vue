@@ -233,6 +233,20 @@
           :src="require('../../assets/Instructions/Machines/Bodies/machine01b.png')"
           v-bind:style="{ opacity: this.opacity_machine01b, transition: 'opacity 0.5s', maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', }"
         />
+
+        <!-- Placing bodies in front of choices -->
+        <img
+          :src="require('../../assets/Instructions/Machines/MeetMachines/ThreeMeet2a.png')"
+          v-bind:style="{ opacity: this.opacity_ThreeMeet2a, transition: 'opacity 0.2s', maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', }"
+        />
+        <img
+          :src="require('../../assets/Instructions/Machines/MeetMachines/ThreeMeet2b.png')"
+          v-bind:style="{ opacity: this.opacity_ThreeMeet2b, transition: 'opacity 0.2s', maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', }"
+        />
+        <img
+          :src="require('../../assets/Instructions/Machines/MeetMachines/ThreeMeet2c.png')"
+          v-bind:style="{ opacity: this.opacity_ThreeMeet2c, transition: 'opacity 0.2s', maxWidth: '54%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', }"
+        />
       </div>
 
       <div>
@@ -315,6 +329,9 @@ export default {
       opacity_ThreeMeet1a: "100%",
       opacity_ThreeMeet1b: "0%",
       opacity_ThreeMeet1c: "0%",
+      opacity_ThreeMeet2a: "100%",
+      opacity_ThreeMeet2b: "0%",
+      opacity_ThreeMeet2c: "0%",
       opacity_ch1c: "0%",
       opacity_ch2c: "0%",
       opacity_ch3c: "0%",
@@ -462,6 +479,9 @@ export default {
       this.opacity_ThreeMeet1a = "100%";
       this.opacity_ThreeMeet1b = "0%";
       this.opacity_ThreeMeet1c = "0%";
+      this.opacity_ThreeMeet2a = "100%";
+      this.opacity_ThreeMeet2b = "0%";
+      this.opacity_ThreeMeet2c = "0%";
       this.opacity_ch1c = "0%";
       this.opacity_ch2c = "0%";
       this.opacity_ch3c = "0%";
@@ -506,6 +526,29 @@ export default {
       setTimeout(() => (parent.mutex = false), 3600);
       setTimeout(() => (parent.locked = false), 3600);
 
+      // Kill Key Stuff
+      setTimeout(() => {
+        parent.opacity_az = "0%";
+        parent.opacity_jk = "0%";
+        parent.opacity_presskey = "0%";
+        this.press = "space bar";
+      }, 0);
+      setTimeout(() => {
+        parent.opacity_az = "0%";
+        parent.opacity_jk = "0%";
+        this.press = "space bar";
+      }, 2000);
+      setTimeout(() => {
+        parent.opacity_az = "0%";
+        parent.opacity_jk = "0%";
+        this.press = "space bar";
+      }, 4000);
+      setTimeout(() => {
+        parent.opacity_az = "0%";
+        parent.opacity_jk = "0%";
+        this.press = "space bar";
+      }, 6000);
+
       // Press Space Bar.
       setTimeout(() => {
         this.sbc = "outline-secondary";
@@ -533,6 +576,8 @@ export default {
       setTimeout(() => {
         parent.opacity_ThreeMeet1a = "100%";
         parent.opacity_ThreeMeet1b = "0%";
+        parent.opacity_ThreeMeet2a = "100%";
+        parent.opacity_ThreeMeet2b = "0%";
         parent.opacity_ch3c = "0%";
       }, 0);
       setTimeout(() => {
@@ -613,6 +658,8 @@ export default {
       setTimeout(() => {
         parent.opacity_ThreeMeet1b = "100%";
         parent.opacity_ThreeMeet1a = "0%";
+        parent.opacity_ThreeMeet2b = "100%";
+        parent.opacity_ThreeMeet2a = "0%";
         parent.opacity_ch1c = "0%";
       }, 0);
       setTimeout(() => {
@@ -693,6 +740,8 @@ export default {
       setTimeout(() => {
         parent.opacity_ThreeMeet1c = "100%";
         parent.opacity_ThreeMeet1b = "0%";
+        parent.opacity_ThreeMeet2c = "100%";
+        parent.opacity_ThreeMeet2b = "0%";
         parent.opacity_ch4c = "0%";
       }, 0);
       setTimeout(() => {
@@ -780,6 +829,9 @@ export default {
         parent.opacity_ThreeMeet1a = "0%";
         parent.opacity_ThreeMeet1b = "0%";
         parent.opacity_ThreeMeet1c = "0%";
+        parent.opacity_ThreeMeet2a = "0%";
+        parent.opacity_ThreeMeet2b = "0%";
+        parent.opacity_ThreeMeet2c = "0%";
       }, 0);
       setTimeout(() => {
         parent.opacity_ch1c = "0%";
