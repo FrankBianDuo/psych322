@@ -684,7 +684,7 @@ export default {
         // parent.current_avatar += 1;
         parent.$emit("blockOneDone", parent.combinations);
         if (parent.current_avatar == parent.max_avatar) {
-          parent.show = false;
+          parent.$bvModal.hide("modal-center");
           alert("Block #1 finished");
           // FIXME: connect this to the survey pages
           // parent.b_show_1 = false;
