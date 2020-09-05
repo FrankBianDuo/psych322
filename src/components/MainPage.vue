@@ -5,8 +5,9 @@
     <p>
       (1) Complete the instructions, (2) experiment 1, (3) the written response section, (4) the survey, and
       <br />(5) send a message to the experimenter with your participant ID and the completion URL at the end.
+      <br />If your completion URL fails to load within 20 seconds, please download your data file and attach 
+      <br />it in an email to gregstan@umich.edu.  You are also free to view and keep your data.
       <br />Please Ignore Experiments 2 and 3 and never refresh the page.
-      <br />You are free to download your data file at the end.
     </p>
     <div class="bv-example-row bv-example-row-flex-cols">
       <!-- Button for firing the instruction modal -->
@@ -304,7 +305,7 @@
       id="modal-center-end"
       size="xl"
       centered
-      title="Loading your end of experiment URL"
+      title="Loading your end of experiment URL.  If the URL fails to load within 20 seconds, please email your data as an attachment to gregstan@umich.edu.  To do this, click the grey area of this screen, and click the Download Data button."
       :hide-footer="true"
       :header-bg-variant="headerBgVariant"
       :header-text-variant="headerTextVariant"
