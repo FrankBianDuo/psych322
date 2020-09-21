@@ -3,7 +3,7 @@
     id="modal-center-HowChoice6"
     size="xl"
     centered
-    title="Instruction Page 12 of 14"
+    title="Instruction Page 10 of 12"
     v-model="show"
     :hide-footer="true"
     :no-close-on-backdrop="false"
@@ -189,11 +189,11 @@ export default {
         if (parent.keyflow1 == true && event.keyCode == 32) {
           // Spacebar 1
           parent.keyflow1 = false;
-          parent.animate1();
+          parent.animate2();
         } else if (parent.keyflow2 == true && event.keyCode == 32) {
           // Spacebar 2
           parent.keyflow2 = false;
-          parent.animate2();
+          parent.animate1();
         } else if (event.keyCode == 192) {
           // Enable Secret Key
           parent.skey = true;
@@ -352,10 +352,10 @@ export default {
 
       // Text exchange
       setTimeout(() => {
-        parent.opacity_7 = "0%";
+        parent.opacity_1 = "0%";
       }, 0);
       setTimeout(() => {
-        parent.opacity_12 = "100%";
+        parent.opacity_7 = "100%";
       }, 800);
 
       // Replace Pink person with You

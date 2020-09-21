@@ -3,7 +3,7 @@
     id="modal-center-HowChoice0"
     size="xl"
     centered
-    title="Instruction Page 10 of 14"
+    title="Instruction Page 8 of 12"
     v-model="show"
     :hide-footer="true"
     :no-close-on-backdrop="false"
@@ -19,8 +19,9 @@
         />
 
         <!-- Avatar choice smile opacity 2-10 -->
+        <!-- Rename the avatars 1 and 3 to maintain logical sequence -->
         <img
-          :src="require('../../assets/Instructions/Ref Dependence/refav1.png')"
+          :src="require('../../assets/Instructions/Ref Dependence/refav3.png')"
           v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_2, transition: 'opacity 0.2s' }"
         />
         <img
@@ -46,7 +47,7 @@
         />
 
         <img
-          :src="require('../../assets/Instructions/Ref Dependence/refav3.png')"
+          :src="require('../../assets/Instructions/Ref Dependence/refav1.png')"
           v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_8, transition: 'opacity 0.2s' }"
         />
         <img
@@ -58,22 +59,14 @@
           v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_10, transition: 'opacity 0.2s' }"
         />
 
-        <!-- Text opacity 11-15 -->
+        <!-- Text opacity 11-12 -->
         <img
           :src="require('../../assets/Instructions/Ref Dependence/reftext04a.png')"
           v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_11, transition: 'opacity 0.2s' }"
         />
         <img
-          :src="require('../../assets/Instructions/Ref Dependence/reftext06a.png')"
+          :src="require('../../assets/Instructions/Ref Dependence/reftext1a.png')"
           v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_12, transition: 'opacity 0.2s' }"
-        />
-        <img
-          :src="require('../../assets/Instructions/Ref Dependence/reftext06b.png')"
-          v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.2s' }"
-        />
-        <img
-          :src="require('../../assets/Instructions/Ref Dependence/reftext06c.png')"
-          v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.2s' }"
         />
 
         <!-- Text opacity 16-21 -->
@@ -157,9 +150,6 @@ export default {
       opacity_10: "0%",
       opacity_11: "100%",
       opacity_12: "0%",
-      opacity_13: "0%",
-      opacity_14: "0%",
-      opacity_15: "0%",
       opacity_16: "0%",
       opacity_17: "0%",
       opacity_18: "0%",
@@ -169,13 +159,6 @@ export default {
       // opacity_22: '0%',
       // opacity_23: '0%',
       // opacity_24: '0%',
-      // opacity_25: '0%',
-      // opacity_26: '0%',
-      // opacity_27: '0%',
-      // opacity_28: '0%',
-      // opacity_29: '0%',
-      // opacity_30: '0%',
-
       mutex: false,
       finish: true,
       hold: true,
@@ -241,7 +224,7 @@ export default {
   methods: {
     reset_animation_back() {
       this.resetAnimation();
-      this.$bvModal.show("modal-center-Reference");
+      this.$bvModal.show("modal-center-WantMoreDots");
     },
     reset_animation_next() {
       this.resetAnimation();
@@ -262,9 +245,6 @@ export default {
       this.opacity_10 = "0%";
       this.opacity_11 = "100%";
       this.opacity_12 = "0%";
-      this.opacity_13 = "0%";
-      this.opacity_14 = "0%";
-      this.opacity_15 = "0%";
       this.opacity_16 = "0%";
       this.opacity_17 = "0%";
       this.opacity_18 = "0%";
@@ -274,12 +254,6 @@ export default {
       // this.opacity_22 = "0%"
       // this.opacity_23 = "0%"
       // this.opacity_24 = "0%"
-      // this.opacity_25 = "0%"
-      // this.opacity_26 = "0%"
-      // this.opacity_27 = "0%"
-      // this.opacity_28 = "0%"
-      // this.opacity_29 = "0%"
-      // this.opacity_30 = "0%"
       this.nbc = "outline-primary";
       this.sbc = "outline-secondary";
       this.keyflow1 = false;
@@ -359,18 +333,7 @@ export default {
         this.sbc = "outline-secondary";
         parent.opacity_0 = "0%";
       }, 0);
-      setTimeout(() => {
-        this.keyflow2 = true;
-        parent.opacity_0 = "100%";
-      }, 3000);
-      setTimeout(() => {
-        parent.opacity_0 = "0%";
-      }, 3500);
-      setTimeout(() => {
-        this.sbc = "primary";
-        parent.opacity_0 = "100%";
-      }, 4000);
-
+      
       // Text exchange
       setTimeout(() => {
         parent.opacity_11 = "0%";
@@ -384,89 +347,6 @@ export default {
       setTimeout(() => {
         parent.opacity_4 = "100%";
       }, 1500);
-    },
-    animate2() {
-      let parent = this;
-      // Press Space Bar.
-      setTimeout(() => {
-        this.sbc = "outline-secondary";
-        parent.opacity_0 = "0%";
-      }, 0);
-      setTimeout(() => {
-        this.keyflow3 = true;
-        parent.opacity_0 = "100%";
-      }, 3000);
-      setTimeout(() => {
-        parent.opacity_0 = "0%";
-      }, 3500);
-      setTimeout(() => {
-        this.sbc = "primary";
-        parent.opacity_0 = "100%";
-      }, 4000);
-
-      // Text exchange
-      setTimeout(() => {
-        parent.opacity_12 = "0%";
-        parent.opacity_13 = "100%";
-      }, 0);
-
-      // Kill barrier, avatar, choice and smile
-      setTimeout(() => {
-        parent.opacity_20 = "0%";
-        parent.opacity_2 = "0%";
-        parent.opacity_3 = "0%";
-        parent.opacity_4 = "0%";
-      }, 0);
-
-      // Barrier, Avatar, Choice, and Smile
-      setTimeout(() => {
-        parent.opacity_18 = "100%";
-      }, 0);
-      setTimeout(() => {
-        parent.opacity_5 = "100%";
-      }, 0);
-      setTimeout(() => {
-        parent.opacity_9 = "100%";
-      }, 1000);
-      setTimeout(() => {
-        parent.opacity_7 = "100%";
-      }, 1500);
-    },
-    animate3() {
-      let parent = this;
-      // Press Space Bar.
-      setTimeout(() => {
-        parent.opacity_0 = "0%";
-      }, 0);
-
-      // Text exchange
-      setTimeout(() => {
-        parent.opacity_13 = "0%";
-        parent.opacity_14 = "100%";
-      }, 0);
-
-      // Kill barrier, avatar, choice and smile
-      setTimeout(() => {
-        parent.opacity_18 = "0%";
-        parent.opacity_5 = "0%";
-        parent.opacity_9 = "0%";
-        parent.opacity_7 = "0%";
-      }, 0);
-
-      // Barrier, Avatar, Choice, and Smile
-      setTimeout(() => {
-        parent.opacity_16 = "100%";
-      }, 0);
-      setTimeout(() => {
-        parent.opacity_8 = "100%";
-      }, 0);
-      setTimeout(() => {
-        parent.opacity_9 = "100%";
-      }, 1000);
-      setTimeout(() => {
-        parent.opacity_10 = "100%";
-      }, 1500);
-
       setTimeout(() => (parent.mutex = false), 3600);
       setTimeout(() => (parent.locked = false), 3600);
 
