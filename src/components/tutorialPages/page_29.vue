@@ -38,7 +38,7 @@
     >Back</b-button>
     <b-button
       @click="$bvModal.hide(`modal-center-instruction29`)"
-      v-b-modal.modal-center-instruction61
+      v-b-modal.modal-center-instructions61
       style="float: right;"
       variant="outline-primary"
       :disabled="allowprogress"

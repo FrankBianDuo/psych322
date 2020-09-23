@@ -17,7 +17,18 @@
           :src="require('../../assets/Instructions/Ref Dependence/backgr2.png')"
           v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_1, transition: 'opacity 0.2s' }"
         />
-
+        <img
+          :src="require('../../assets/Instructions/Ref Dependence/dots3.png')"
+          v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_d3, transition: 'opacity 3.2s' }"
+        />
+        <img
+          :src="require('../../assets/Instructions/Ref Dependence/dots1.png')"
+          v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_d1, transition: 'opacity 3.2s' }"
+        />
+        <img
+          :src="require('../../assets/Instructions/Ref Dependence/dots5.png')"
+          v-bind:style="{ maxWidth: '50%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_d5, transition: 'opacity 3.2s' }"
+        />
         <!-- Avatar choice smile opacity 2-10 -->
         <!-- Rename the avatars 1 and 3 to maintain logical sequence -->
         <img
@@ -156,9 +167,9 @@ export default {
       opacity_19: "0%",
       opacity_20: "100%",
       opacity_21: "0%",
-      // opacity_22: '0%',
-      // opacity_23: '0%',
-      // opacity_24: '0%',
+      opacity_d3: '100%',
+      opacity_d1: '100%',
+      opacity_d5: '100%',
       mutex: false,
       finish: true,
       hold: true,
@@ -251,9 +262,9 @@ export default {
       this.opacity_19 = "0%";
       this.opacity_20 = "100%";
       this.opacity_21 = "0%";
-      // this.opacity_22 = "0%"
-      // this.opacity_23 = "0%"
-      // this.opacity_24 = "0%"
+      this.opacity_d3 = "100%"
+      this.opacity_d1 = "100%"
+      this.opacity_d5 = "100%"
       this.nbc = "outline-primary";
       this.sbc = "outline-secondary";
       this.keyflow1 = false;
@@ -347,6 +358,15 @@ export default {
       setTimeout(() => {
         parent.opacity_4 = "100%";
       }, 1500);
+
+      // Dots Vanish
+      setTimeout(() => {
+        parent.opacity_d1 = "0%";
+      }, 1500);
+      setTimeout(() => {
+        parent.opacity_d5 = "0%";
+      }, 1500);
+
       setTimeout(() => (parent.mutex = false), 3600);
       setTimeout(() => (parent.locked = false), 3600);
 

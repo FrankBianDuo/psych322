@@ -70,7 +70,7 @@
           v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.2s' }"
         />
         <img
-          :src="require('../../assets/Instructions/FlowKnow/fk text 02a.png')"
+          :src="require('../../assets/Instructions/FlowKnow/fk text 04a.png')"
           v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.2s' }"
         />
         <img
@@ -78,7 +78,7 @@
           v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_15, transition: 'opacity 0.2s' }"
         />
         <img
-          :src="require('../../assets/Instructions/FlowKnow/fk text 04a.png')"
+          :src="require('../../assets/Instructions/FlowKnow/fk text 02a.png')"
           v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_16, transition: 'opacity 0.2s' }"
         />
 
