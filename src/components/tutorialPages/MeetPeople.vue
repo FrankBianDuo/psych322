@@ -3,7 +3,7 @@
     id="modal-center-MeetPeople"
     size="xl"
     centered
-    title="Instruction page 6 of 14"
+    title="Instruction page 6 of 12"
     v-model="show"
     :hide-footer="true"
     :no-close-on-backdrop="false"

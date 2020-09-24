@@ -3,7 +3,7 @@
     id="modal-center-HowChoice1"
     size="xl"
     centered
-    title="Instruction Page 11 of 14"
+    title="Instruction Page 9 of 12"
     v-model="show"
     :hide-footer="true"
     :no-close-on-backdrop="false"
@@ -136,9 +136,9 @@ export default {
       skey: false,
       nbc: "outline-primary",
       opacity_0: "0%",
-      opacity_1: "100%",
+      opacity_1: "0%",
       opacity_2: "0%",
-      opacity_3: "0%",
+      opacity_3: "100%",
       opacity_4: "0%",
       opacity_5: "100%",
       opacity_6: "0%",
@@ -263,9 +263,9 @@ export default {
     resetAnimation() {
       this.$bvModal.hide("modal-center-HowChoice1");
       this.opacity_0 = "0%";
-      this.opacity_1 = "100%";
+      this.opacity_1 = "0%";
       this.opacity_2 = "0%";
-      this.opacity_3 = "0%";
+      this.opacity_3 = "100%";
       this.opacity_4 = "0%";
       this.opacity_5 = "100%";
       this.opacity_6 = "0%";
@@ -295,7 +295,7 @@ export default {
       this.hold = true;
       this.nbc = "outline-primary";
     },
-    animate0() {
+    animate8() {
       let parent = this;
       setTimeout(() => {
         parent.opacity_4 = "100%";
@@ -416,7 +416,7 @@ export default {
       setTimeout(() => (parent.mutex = false), 3600);
       setTimeout(() => (parent.locked = false), 3600);
     },
-    animate3() {
+    animate0() {
       let parent = this;
 
       // Press Space Bar.

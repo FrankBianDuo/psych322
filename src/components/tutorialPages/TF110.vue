@@ -3,7 +3,7 @@
     id="modal-center-TF110"
     size="xl"
     centered
-    title="True or False Questions 1 - 12"
+    title="True or False Questions 1 - 9"
     :hide-footer="true"
     :header-bg-variant="headerBgVariant"
     :header-text-variant="headerTextVariant"
@@ -17,7 +17,7 @@
   >
     <b-container class="align-bottom" :style="this.windowsize">
       <img
-        :src="require('../../assets/Instructions/Text Only Pages/True False 1-12.png')"
+        :src="require('../../assets/Instructions/Text Only Pages/True False 1-10.png')"
         style="width: 90%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"
       />
     </b-container>

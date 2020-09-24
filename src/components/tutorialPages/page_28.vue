@@ -22,14 +22,17 @@
         />
       </div>
     </b-container>
+    
     <b-button
-      @click="this.reset_animation_back"
+      @click="$bvModal.hide(`modal-center-instruction28`)"
+      v-b-modal.modal-center-instruction27
       variant="outline-primary"
       :disabled="allowprogress"
       size="lg"
     >Back</b-button>
     <b-button
-      @click="this.reset_animation_next"
+      @click="$bvModal.hide(`modal-center-instruction28`)"
+      v-b-modal.modal-center-EndTF2
       style="float: right;"
       variant="outline-primary"
       :disabled="allowprogress"
@@ -68,7 +71,7 @@ export default {
       ans_disable: false,
       b_1_style: "primary",
       b_2_style: "primary",
-      ans: "f",
+      ans: "t",
       allowprogress: true,
     };
   },

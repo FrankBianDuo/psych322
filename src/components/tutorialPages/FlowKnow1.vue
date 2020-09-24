@@ -3,7 +3,7 @@
     id="modal-center-FlowKnow1"
     size="xl"
     centered
-    title="Instruction Page 13 of 14"
+    title="Instruction Page 11 of 12"
     v-model="show"
     :hide-footer="true"
     :no-close-on-backdrop="false"
@@ -70,7 +70,7 @@
           v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_13, transition: 'opacity 0.2s' }"
         />
         <img
-          :src="require('../../assets/Instructions/FlowKnow/fk text 02a.png')"
+          :src="require('../../assets/Instructions/FlowKnow/fk text 04a.png')"
           v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_14, transition: 'opacity 0.2s' }"
         />
         <img
@@ -78,7 +78,7 @@
           v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_15, transition: 'opacity 0.2s' }"
         />
         <img
-          :src="require('../../assets/Instructions/FlowKnow/fk text 04a.png')"
+          :src="require('../../assets/Instructions/FlowKnow/fk text 02a.png')"
           v-bind:style="{ maxWidth: '64%', height: 'auto', marginTop: '0%', transform: 'translate(-50%, 0)', position: 'absolute', opacity: this.opacity_16, transition: 'opacity 0.2s' }"
         />
 
@@ -503,7 +503,7 @@ export default {
         parent.opacity_17 = "100%";
       }, 1000);
       setTimeout(() => {
-        parent.opacity_15 = "100%";
+        parent.opacity_15 = "0%";
       }, 2000);
 
       // Flashing safe dots
@@ -731,7 +731,7 @@ export default {
         parent.opacity_presskey = "100%";
       }, 7000);
     },
-    animate3() {
+    animate4() {
       let parent = this;
       setTimeout(() => (parent.mutex = false), 3600);
       setTimeout(() => (parent.locked = false), 3600);
@@ -753,11 +753,11 @@ export default {
         parent.opacity_14 = "0%";
       }, 0);
       setTimeout(() => {
-        parent.opacity_15 = "100%";
+        parent.opacity_15 = "0%";
       }, 800);
       setTimeout(() => {
-        parent.opacity_16 = "0%";
-      }, 0);
+        parent.opacity_16 = "100%";
+      }, 800);
 
       // Press Space Bar.
       setTimeout(() => {
@@ -777,7 +777,7 @@ export default {
         parent.opacity_presskey = "100%";
       }, 7000);
     },
-    animate4() {
+    animate3() {
       let parent = this;
       setTimeout(() => (parent.mutex = false), 3600);
       setTimeout(() => (parent.locked = false), 3600);

@@ -3,7 +3,7 @@
     id="modal-center-Basics03"
     size="xl"
     centered
-    title="Instruction Page 3 of 14"
+    title="Instruction Page 3 of 12"
     v-model="show"
     :hide-footer="true"
     :no-close-on-backdrop="false"
@@ -652,7 +652,7 @@ export default {
 
       // Prediction Feedback Up
       setTimeout(() => {
-        parent.opacity_dotssafe3 = "100%";
+        parent.opacity_dotssafe2 = "100%";
         parent.opacity_jk = "100%";
         parent.opacity_az = "0%";
       }, 0);
@@ -736,7 +736,7 @@ export default {
 
       // Prediction Feedback Up
       setTimeout(() => {
-        parent.opacity_dotssafe3 = "100%";
+        parent.opacity_dotssafe2 = "100%";
         parent.opacity_jk = "100%";
         parent.opacity_az = "0%";
       }, 0);
@@ -920,7 +920,7 @@ export default {
         parent.opacity_mchoice4 = "0%";
       }, 500);
       setTimeout(() => {
-        parent.opacity_yougot3 = "100%";
+        parent.opacity_yougot2 = "100%";
       }, 700);
 
       // Text swap

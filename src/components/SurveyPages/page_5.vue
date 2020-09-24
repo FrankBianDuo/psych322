@@ -18,39 +18,48 @@
     <b-container class="align-bottom" :style="this.windowsize">
       <b-form>
         <b-form-group
-          id="input-group-6"
-          label="I see myself as: reserved, quiet."
-          label-for="input-6"
-        >
-          <b-form-select id="input-6" v-model="form.bigfive06" :options="bigfive06" required></b-form-select>
-        </b-form-group>
-        <b-form-group
-          id="input-group-7"
-          label="I see myself as: sympathetic, warm."
-          label-for="input-7"
-        >
-          <b-form-select id="input-7" v-model="form.bigfive07" :options="bigfive07" required></b-form-select>
-        </b-form-group>
-        <b-form-group
           id="input-group-8"
-          label="I see myself as: disorganized, careless."
+          label="I see myself as: reserved, quiet."
           label-for="input-8"
         >
-          <b-form-select id="input-8" v-model="form.bigfive08" :options="bigfive08" required></b-form-select>
+          <b-form-select id="input-8" v-model="form.bigfive06" :options="bigfive06" required></b-form-select>
         </b-form-group>
         <b-form-group
           id="input-group-9"
-          label="I see myself as: calm, emotionally stable."
+          label="I see myself as: sympathetic, warm."
           label-for="input-9"
         >
-          <b-form-select id="input-9" v-model="form.bigfive09" :options="bigfive09" required></b-form-select>
+          <b-form-select id="input-9" v-model="form.bigfive07" :options="bigfive07" required></b-form-select>
         </b-form-group>
         <b-form-group
           id="input-group-10"
-          label="I see myself as: conventional, uncreative."
+          label="I see myself as: disorganized, careless."
           label-for="input-10"
         >
-          <b-form-select id="input-10" v-model="form.bigfive10" :options="bigfive10" required></b-form-select>
+          <b-form-select id="input-10" v-model="form.bigfive08" :options="bigfive08" required></b-form-select>
+        </b-form-group>
+        <b-form-group
+          id="input-group-11"
+          label="I see myself as: calm, emotionally stable."
+          label-for="input-11"
+        >
+          <b-form-select id="input-11" v-model="form.bigfive09" :options="bigfive09" required></b-form-select>
+        </b-form-group>
+        <b-form-group
+          id="input-group-12"
+          label="I see myself as: conventional, uncreative."
+          label-for="input-12"
+        >
+          <b-form-select id="input-12" v-model="form.bigfive10" :options="bigfive10" required></b-form-select>
+        </b-form-group>
+        <b-form-group
+          id="input-group-13"
+          label="Scientific research is very important and good psychological research
+            depends on high quality data from honest and attentive participants.
+            Should we use your data? Your answer will not affect your credit."
+          label-for="input-13"
+        >
+          <b-form-select id="input-13" v-model="form.agree" :options="agree" required></b-form-select>
         </b-form-group>
       </b-form>
     </b-container>
@@ -78,6 +87,7 @@ export default {
         bigfive08: "",
         bigfive09: "",
         bigfive10: "",
+        agree: "",
       },
       bigfive06: [
         { text: "Select One", value: null },
@@ -129,6 +139,11 @@ export default {
         "Agree moderately",
         "Agree strongly",
       ],
+      agree: [
+        { text: "Select One", value: null },
+        "Yes, include my data",
+        "No, exclude my data",
+      ],
     };
   },
   computed: {
@@ -144,7 +159,8 @@ export default {
         this.form.bigfive07 != "" &&
         this.form.bigfive08 != "" &&
         this.form.bigfive09 != "" &&
-        this.form.bigfive10 != ""
+        this.form.bigfive10 != "" &&
+        this.form.agree != ""
       );
     },
   },

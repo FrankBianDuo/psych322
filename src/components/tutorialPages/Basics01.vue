@@ -3,7 +3,7 @@
     id="modal-center-Basics01"
     size="xl"
     centered
-    title="Instruction Page 1 of 14"
+    title="Instruction Page 1 of 12"
     v-model="show"
     :hide-footer="true"
     :no-close-on-backdrop="false"

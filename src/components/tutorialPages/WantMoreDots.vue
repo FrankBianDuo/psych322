@@ -3,7 +3,7 @@
     id="modal-center-WantMoreDots"
     size="xl"
     centered
-    title="Instruction Page 7 of 14"
+    title="Instruction Page 7 of 12"
     v-model="show"
     :hide-footer="true"
     :header-bg-variant="headerBgVariant"
@@ -17,10 +17,13 @@
     :hide-header-close="true"
   >
     <b-container class="bv-example-row" :style="this.windowsize">
+      <!-- We need to move the text upwards so that the window shrinks to normal size. -->
       <b-row class="mt-5">
         <p
           style="font-size: 30px; font-family: Calibri; transform: translate(-50%, 0); margin-left: 50%;"
-        >Everyone wants more dots.</p>
+        >Dots are desirable. 
+        <br />The more the better.
+        <br />Everyone knows this.</p>
         <!-- Container -->
         <img
           :src="require('../../assets/Instructions/Want More Dots/Dot Holder Six Correct Numbers.png')"
@@ -82,7 +85,7 @@
       @click="this.resetAnimation"
       :variant="ButtonColor"
       size="lg"
-      v-b-modal.modal-center-CommKnow
+      v-b-modal.modal-center-HowChoice0
       :disabled="hold"
     >Next</b-button>
   </b-modal>

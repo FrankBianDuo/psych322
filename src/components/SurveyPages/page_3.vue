@@ -67,12 +67,10 @@ divine?"
         </b-form-group>
         <b-form-group
           id="input-group-7"
-          label="Scientific research is very important and good psychological research
-            depends on high quality data from honest and attentive participants.
-            Should we use your data? Your answer will not affect your credit."
+          label="How would you describe your racial, ethnic, or cultural identity?"
           label-for="input-7"
         >
-          <b-form-select id="input-7" v-model="form.agree" :options="agree" required></b-form-select>
+          <b-form-input id="input-7" v-model="form.race" required placeholder="Enter here"></b-form-input>
         </b-form-group>
       </b-form>
     </b-container>
@@ -100,7 +98,7 @@ export default {
         political: "",
         view: "",
         interact: "",
-        agree: "",
+        race: "",
       },
       money: [
         { text: "Select One", value: null },
@@ -141,11 +139,6 @@ export default {
         "Have power over you",
         "You have power over",
       ],
-      agree: [
-        { text: "Select One", value: null },
-        "Yes, include my data",
-        "No, exclude my data",
-      ],
     };
   },
   computed: {
@@ -162,7 +155,7 @@ export default {
         this.form.political != "" &&
         this.form.view != "" &&
         this.form.interact != "" &&
-        this.form.agree != ""
+        this.form.race != ""
       );
     },
   },

@@ -3,7 +3,7 @@
     id="modal-center-EndTF2"
     size="xl"
     centered
-    title="End of True or False Questions 10 - 18"
+    title="End of True or False Questions 1 - 9"
     :hide-footer="true"
     :header-bg-variant="headerBgVariant"
     :header-text-variant="headerTextVariant"

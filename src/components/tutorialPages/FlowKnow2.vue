@@ -3,7 +3,7 @@
     id="modal-center-FlowKnow2"
     size="xl"
     centered
-    title="Instruction Page 14 of 14"
+    title="Instruction Page 12 of 12"
     v-model="show"
     :hide-footer="true"
     :no-close-on-backdrop="false"

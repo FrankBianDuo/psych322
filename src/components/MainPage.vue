@@ -1117,13 +1117,15 @@ export default {
       this.end_survey_form.political = results.political;
       this.end_survey_form.attractive = results.view;
       this.end_survey_form.power = results.interact;
-      this.end_survey_form.agree = results.agree;
+      this.end_survey_form.race = results.race;
       this.updateDataSheet();
     },
     Survey4Finished(results) {
       // eslint-disable-next-line no-console
       console.log(results);
       // Generate form data at the end of our survey
+      this.end_survey_form.sleep01 = results.sleep01;
+      this.end_survey_form.sleep02 = results.sleep02;
       this.end_survey_form.bigfive01 = results.bigfive01;
       this.end_survey_form.bigfive02 = results.bigfive02;
       this.end_survey_form.bigfive03 = results.bigfive03;
@@ -1140,6 +1142,7 @@ export default {
       this.end_survey_form.bigfive08 = results.bigfive08;
       this.end_survey_form.bigfive09 = results.bigfive09;
       this.end_survey_form.bigfive10 = results.bigfive10;
+      this.end_survey_form.agree = results.agree;
       this.updateDataSheet();
       // eslint-disable-next-line no-console
       console.log("survey 5 finished!");
@@ -1241,7 +1244,9 @@ export default {
           Attractive: this.end_survey_form.attractive,
           Power: this.end_survey_form.power,
           Country: this.end_survey_form.country,
-          Agreement: this.end_survey_form.agree,
+          Race: this.end_survey_form.race,
+          sleep01: this.end_survey_form.sleep01,
+          sleep02: this.end_survey_form.sleep02,
           bigfive01: this.end_survey_form.bigfive01,
           bigfive02: this.end_survey_form.bigfive02,
           bigfive03: this.end_survey_form.bigfive03,
@@ -1252,6 +1257,7 @@ export default {
           bigfive08: this.end_survey_form.bigfive08,
           bigfive09: this.end_survey_form.bigfive09,
           bigfive10: this.end_survey_form.bigfive10,
+          Agreement: this.end_survey_form.agree,
           WRQ01: this.FRResults[1],
           WRQ02: this.FRResults[2],
           WRQ03: this.FRResults[3],
@@ -1504,8 +1510,6 @@ export default {
 // Basics05
 // MeetPeople
 // WantMoreDots
-// CommKnow
-// Reference
 // HowChoice0
 // HowChoice1
 // HowChoice6
@@ -1521,9 +1525,6 @@ export default {
 // instruction26
 // instruction27
 // instruction28
-// instruction29
-// instruction61
-// instruction62
 // EndTF2
 // ProgBar
 // KeyHands
