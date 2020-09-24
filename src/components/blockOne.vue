@@ -303,8 +303,8 @@ export default {
       current_arrow: "Dot Boxes.png",
       show_cur_num: false,
       prediction: null,
-      // How many games to run
-      max_avatar: 216,
+      // How many games to run 216 + 8
+      max_avatar: 224,
       trial_started: 0,
       avatar_choices: ["3", "2"],
       player_payoff: ["1.5", "2", "2.5"],
@@ -748,7 +748,7 @@ export default {
     // This array also contains data slots that will be filled as the participants progress
     buildCombinations() {
       var i, k, j, o;
-      var first_segment = [];
+      var segment = [];
       for (i = 0; i < this.avatar_choices.length; i++) {
         for (k = 0; k < this.player_payoff.length; k++) {
           for (j = 0; j < this.enctr_2_payoff.length; j++) {
@@ -833,14 +833,34 @@ export default {
                 let temp = new_comb.enctr_2_type[1] + new_comb.enctr_2_type[0];
                 new_comb.enctr_2_type = temp;
               }
-              new_comb.vert_pos = new_comb.enctr_1_type + new_comb.enctr_2_type;
-              first_segment.push(new_comb);
+              new_comb.vert_pos = new_comb.enctr_1_type + new_comb.enctr_1_type;
+              segment.push(new_comb);
             }
           }
         }
       }
-      first_segment = this.shuffle(first_segment);
-      this.combinations = first_segment;
+      segment = this.shuffle(segment);
+      // Add in the eight dummy trials
+      var dummy_trials = []
+      var b = 0;
+      for (b = 0; b < 8; b++) {
+        dummy_trials.add(JSON.parse(JSON.stringify(segment[b].copy)))
+        dummy_trials[b].trust_condition = 0
+        dummy_trials[b].game_condition = 0
+        dummy_trials[b].enctr_1_type = "0"
+        dummy_trials[b].enctr_2_type = "0"
+        dummy_trials[b].vert_pos = "0"
+        dummy_trials[b].trial_id = "-1"
+      }
+
+      // Modify their ectr#2 payoffs
+
+
+      for (b = 0; b < 8; b++) {
+        segment.add(JSON.parse(JSON.stringify(dummy_trials[b].copy)))
+      }
+      segment = this.shuffle(segment);
+      this.combinations = segment;
     },
     pad(n, width, z) {
       z = z || "0";

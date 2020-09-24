@@ -13,7 +13,7 @@
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
         <!-- <b-button v-b-modal.modal-center-WRITENAMEOFPAGEHERETOSEEITPOPUPFIRST>Instructions</b-button> -->
-        <b-button v-b-modal.modal-center-BotStopper>Instructions</b-button>
+        <b-button v-b-modal.modal-center-instruction20>Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
@@ -777,7 +777,8 @@ export default {
       ],
       // A true means the participant got that question right, and vice verse
       ans_tutorial: {},
-      parsed_answers: [],
+      parsed_answers: "",
+      parsed_wrong_ans: "",
       aws_bucket_name: "experimentdata2020",
       aws_object_name: this.blockOneFileName(),
       // serverlessrepo-s3-presigned-url-s3presignedurl-EF2SRE90YXDY?BucketName="experimentdata2020"&ObjectName="test10.txt"&ExpiredIn=3600
@@ -911,15 +912,32 @@ export default {
       }
       this.instrucEnd = value;
       this.instrucTime = (this.instrucEnd - this.instrucStart) * 0.001;
-      var answers = [];
+      var answers = "";
+      var wrong_answers = "";
+      // var raw_answers = [];
       for (let [key, value] of Object.entries(this.ans_tutorial)) {
-        answers.append((key, value));
+        if (value[0] == false) {
+          if (wrong_answers == "") {
+            wrong_answers += String(key)
+          } else {
+            wrong_answers += ', ' + String(key)
+          }
+        }
+        if (value[1] == 't') {
+          answers += 'T';
+        } else {
+          answers += 'F';
+        }
+    
       }
       this.parsed_answers = answers;
+      this.parsed_wrong_ans = wrong_answers;
       // eslint-disable-next-line no-console
       console.log("this.ans_tutorial");
       // eslint-disable-next-line no-console
       console.log(answers);
+      // eslint-disable-next-line no-console
+      console.log(wrong_answers);
       // eslint-disable-next-line no-console
       console.log(this.instrucTime);
     },
@@ -932,11 +950,15 @@ export default {
       // eslint-disable-next-line no-console
       console.log(value);
       this.ans_tutorial[21] = value;
+      // eslint-disable-next-line no-console
+      console.log(this.ans_tutorial);
     },
     onAnsChild22(value) {
       // eslint-disable-next-line no-console
       console.log(value);
       this.ans_tutorial[22] = value;
+      // eslint-disable-next-line no-console
+      console.log(this.ans_tutorial);
     },
     onAnsChild23(value) {
       // eslint-disable-next-line no-console
@@ -1173,6 +1195,7 @@ export default {
           Prediction: raw[i].prediction,
           Pred_RT: raw[i].reaction_time_prediction,
           Control_Choice: raw[i].trust,
+          Resp_Comb: this.resp_comb(raw[i].prediction, raw[i].trust),
           Control_RT: raw[i].reaction_time_trust,
           "E1&2_Act_Type": this.dataJson[Number(raw[i].trial_id) - 1][
             "E1&2_Act_Type"
@@ -1199,7 +1222,8 @@ export default {
           Rat_Deg: "",
           Red_Flag: "",
           InstructionTimeSpent: this.instrucTime,
-          InstructionAnswers: "",
+          InstructionAnswers: this.parsed_answers,
+          InstructionWrongAns: this.parsed_wrong_ans,
           Date: this.end_survey_form.date,
           Age: this.end_survey_form.age,
           Gender: this.end_survey_form.gender,
@@ -1427,6 +1451,21 @@ export default {
       if (str == "PMPM") return 16;
       // Should not reach here, returning -1
       return -1;
+    },
+    resp_comb(prediction, control_choice) {
+      var prediction_char = ""
+      var control_choice_char = ""
+      if (prediction == 1) {
+        prediction_char = 'O'
+      } else if (prediction == 0) {
+        prediction_char = 'T'
+      }
+      if (control_choice == 1) {
+        control_choice_char = 'A'
+      } else if (control_choice == 0) {
+        control_choice_char = 'E'
+      }
+      return control_choice_char + prediction_char
     },
     blockThreeSort(a, b) {
       if (a["Game Condition"] < b["Game Condition"]) {
