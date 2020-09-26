@@ -839,26 +839,26 @@ export default {
           }
         }
       }
-      segment = this.shuffle(segment);
-      // Add in the eight dummy trials
-      var dummy_trials = []
-      var b = 0;
-      for (b = 0; b < 8; b++) {
-        dummy_trials.add(JSON.parse(JSON.stringify(segment[b].copy)))
-        dummy_trials[b].trust_condition = 0
-        dummy_trials[b].game_condition = 0
-        dummy_trials[b].enctr_1_type = "0"
-        dummy_trials[b].enctr_2_type = "0"
-        dummy_trials[b].vert_pos = "0"
-        dummy_trials[b].trial_id = "-1"
-      }
+      // segment = this.shuffle(segment);
+      // // Add in the eight dummy trials
+      // var dummy_trials = []
+      // var b = 0;
+      // for (b = 0; b < 8; b++) {
+      //   dummy_trials.add(JSON.parse(JSON.stringify(segment[b].copy)))
+      //   dummy_trials[b].trust_condition = 0
+      //   dummy_trials[b].game_condition = 0
+      //   dummy_trials[b].enctr_1_type = "0"
+      //   dummy_trials[b].enctr_2_type = "0"
+      //   dummy_trials[b].vert_pos = "0"
+      //   dummy_trials[b].trial_id = "-1"
+      // }
 
-      // Modify their ectr#2 payoffs
+      // // Modify their ectr#2 payoffs
 
 
-      for (b = 0; b < 8; b++) {
-        segment.add(JSON.parse(JSON.stringify(dummy_trials[b].copy)))
-      }
+      // for (b = 0; b < 8; b++) {
+      //   segment.add(JSON.parse(JSON.stringify(dummy_trials[b].copy)))
+      // }
       segment = this.shuffle(segment);
       this.combinations = segment;
     },
