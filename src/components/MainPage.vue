@@ -1172,23 +1172,10 @@ export default {
       for (i = 0; i < raw.length; i++) {
         var current = {
           Participant_ID: this.participant_generated_id,
-          Trial_Number: raw[i].trial_id,
-          Encnt1_cond: raw[i].game_condition,
-          Encnt2_cond: raw[i].trust_condition,
-          Label:
-            raw[i].a_c == "2"
-              ? this.labelGen(
-                  raw[i].pr_p.p_first,
-                  raw[i].pr_p.a_first,
-                  raw[i].pr_p.p_second,
-                  raw[i].pr_p.a_second
-                ) + this.ectr2Gen(raw[i].a_p.a_first, raw[i].pl_p)
-              : this.labelGen(
-                  raw[i].pr_p.p_second,
-                  raw[i].pr_p.a_second,
-                  raw[i].pr_p.p_first,
-                  raw[i].pr_p.a_first
-                ) + this.ectr2Gen(raw[i].a_p.a_first, raw[i].pl_p),
+          Trial_Number: raw[i].trial_number,
+          Encnt1_cond: raw[i].encnt1_cond,
+          Encnt2_cond: raw[i].encnt2_cond,
+          Label: raw[i].label,
           Vert_Posit_L: raw[i].vert_pos,
           Vert_Posit_N: this.vertPositMatch(raw[i].vert_pos),
           Key_Press: raw[i].keypress,
@@ -1200,30 +1187,16 @@ export default {
           Control_Choice: raw[i].trust,
           Resp_Comb: this.resp_comb(raw[i].prediction, raw[i].trust),
           Control_RT: raw[i].reaction_time_trust,
-          "E1&2_Act_Type": this.dataJson[Number(raw[i].trial_id) - 1][
-            "E1&2_Act_Type"
-          ],
-          "E1&2_Act_Deg": this.dataJson[Number(raw[i].trial_id) - 1][
-            "E1&2_Act_Deg"
-          ],
-          Equality: this.dataJson[Number(raw[i].trial_id) - 1]["Equality"],
-          Sure_Thing: this.dataJson[Number(raw[i].trial_id) - 1]["Sure_Thing"],
-          Compatib: this.dataJson[Number(raw[i].trial_id) - 1]["Compatib"],
-          Triplets: this.dataJson[Number(raw[i].trial_id) - 1]["Triplets"],
-          Equal_by_Act: this.dataJson[Number(raw[i].trial_id) - 1][
-            "Equal_by_Act"
-          ],
+          Choice_Type: raw[i].choice_type,
+          Choice_Deg: raw[i].choice_deg,
+          Sure_Thing: raw[i].sure_thing,
+          Triplets: raw[i].triplets,
           // 'Inst_Rat': this.instRat(raw[i].prediction, raw[i].trust),
           // 'Rat_Sure': this.ratSure(),
           // 'Rat_Act': this.ratAct(),
           // 'Rat_Deg': this.ratDeg(),
           // 'Red_Flag': this.redFlag(raw),
           // The generating functions here are still bugged... using None values for now
-          Inst_Rat: "",
-          Rat_Sure: "",
-          Rat_Act: "",
-          Rat_Deg: "",
-          Red_Flag: "",
           InstructionTimeSpent: this.instrucTime,
           InstructionAnswers: this.parsed_answers,
           InstructionWrongAns: this.parsed_wrong_ans,
@@ -1441,22 +1414,22 @@ export default {
     vertPositMatch(str) {
       if (str == "HSHS") return 1;
       if (str == "HSSH") return 2;
-      if (str == "HSMP") return 3;
-      if (str == "HSPM") return 4;
+      if (str == "HSWP") return 3;
+      if (str == "HSPW") return 4;
       if (str == "SHHS") return 5;
       if (str == "SHSH") return 6;
-      if (str == "SHMP") return 7;
-      if (str == "SHPM") return 8;
-      if (str == "MPHS") return 9;
-      if (str == "MPSH") return 10;
-      if (str == "MPMP") return 11;
-      if (str == "MPPM") return 12;
-      if (str == "PMHS") return 13;
-      if (str == "PMSH") return 14;
-      if (str == "PMMP") return 15;
-      if (str == "PMPM") return 16;
-      // Should not reach here, returning -1
-      return -1;
+      if (str == "SHWP") return 7;
+      if (str == "SHPW") return 8;
+      if (str == "WPHS") return 9;
+      if (str == "WPSH") return 10;
+      if (str == "WPWP") return 11;
+      if (str == "WPPW") return 12;
+      if (str == "PWHS") return 13;
+      if (str == "PWSH") return 14;
+      if (str == "PWWP") return 15;
+      if (str == "PWPW") return 16;
+      // @Frank: Greg, feel free to add more mappings here now that we have new trials
+      return 0;
     },
     resp_comb(prediction, control_choice) {
       var prediction_char = ""

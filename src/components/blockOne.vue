@@ -46,33 +46,33 @@
         <img
           :style="this.global_size_ectr_1"
           :src="
-            require(`../assets/Dots/E1 UB${this.dots_identifier(
-              this.combinations[this.current_avatar].pr_p_present.a_first
-            )}.png`)
+            require(`../assets/Dots/E1 UB${
+              this.combinations[this.current_avatar].M1AvatarPayoffA
+            }.png`)
           "
         />
         <img
           :style="this.global_size_ectr_1"
           :src="
-            require(`../assets/Dots/E1 UP${this.dots_identifier(
-              this.combinations[this.current_avatar].pr_p_present.p_first
-            )}.png`)
+            require(`../assets/Dots/E1 UP${
+              this.combinations[this.current_avatar].M1ParticipantPayoffA
+            }.png`)
           "
         />
         <img
           :style="this.global_size_ectr_1"
           :src="
-            require(`../assets/Dots/E1 DB${this.dots_identifier(
-              this.combinations[this.current_avatar].pr_p_present.a_second
-            )}.png`)
+            require(`../assets/Dots/E1 DB${
+              this.combinations[this.current_avatar].M1AvatarPayoffB
+            }.png`)
           "
         />
         <img
           :style="this.global_size_ectr_1"
           :src="
-            require(`../assets/Dots/E1 DP${this.dots_identifier(
-              this.combinations[this.current_avatar].pr_p_present.p_second
-            )}.png`)
+            require(`../assets/Dots/E1 DP${
+              this.combinations[this.current_avatar].M1ParticipantPayoffB
+            }.png`)
           "
         />
         <img :src="require('../assets/Centered Atoms/E1 Box.png')" :style="this.global_size" />
@@ -120,33 +120,33 @@
         <img
           :style="this.global_size"
           :src="
-            require(`../assets/Dots/E2 UB${this.dots_identifier(
-              this.combinations[this.current_avatar].a_p_present.a_first
-            )}.png`)
+            require(`../assets/Dots/E2 UB${
+              this.combinations[this.current_avatar].M2AvatarPayoffA
+            }.png`)
           "
         />
         <img
           :style="this.global_size"
           :src="
-            require(`../assets/Dots/E2 UP${this.dots_identifier(
-              this.combinations[this.current_avatar].a_p_present.p_first
-            )}.png`)
+            require(`../assets/Dots/E2 UP${
+              this.combinations[this.current_avatar].M2ParticipantPayoffA
+            }.png`)
           "
         />
         <img
           :style="this.global_size"
           :src="
-            require(`../assets/Dots/E2 DB${this.dots_identifier(
-              this.combinations[this.current_avatar].a_p_present.a_second
-            )}.png`)
+            require(`../assets/Dots/E2 DB${
+              this.combinations[this.current_avatar].M2AvatarPayoffB
+            }.png`)
           "
         />
         <img
           :style="this.global_size"
           :src="
-            require(`../assets/Dots/E2 DP${this.dots_identifier(
-              this.combinations[this.current_avatar].a_p_present.p_second
-            )}.png`)
+            require(`../assets/Dots/E2 DP${
+              this.combinations[this.current_avatar].M2ParticipantPayoffB
+            }.png`)
           "
         />
         <img :src="require('../assets/Centered Atoms/E2 Box.png')" :style="this.global_size" />
@@ -189,9 +189,9 @@
         <img
           :style="this.global_size_control_box"
           :src="
-            require(`../assets/Dots/E2 CP${this.dots_identifier(
-              this.combinations[this.current_avatar].pl_p
-            )}.png`)
+            require(`../assets/Dots/E2 CP${
+              this.combinations[this.current_avatar].KeepDots
+            }.png`)
           "
         />
         <!-- I commented out these dots because I changed the instructions.  Now meeting 2 black dots vanish after avatar's choice, making these dots irrelevant. -->
@@ -210,12 +210,16 @@
 
 <script>
 import trialOneTrialData from "./trialData.js";
+import datasheet_sample from "./newSample.json";
+import payoff_structure from "./payoff.json";
 export default {
   name: "BlockOne",
   props: ["participant_name"],
   components: {},
   data() {
     return {
+      datasheet_sample_data: datasheet_sample,
+      payoff_structure_data: payoff_structure,
       windowsize: "height: 600px;",
       global_size: "position: absolute; width: 70%; height: auto; top: 50px;",
       global_size_ectr_1:
@@ -303,8 +307,8 @@ export default {
       current_arrow: "Dot Boxes.png",
       show_cur_num: false,
       prediction: null,
-      // How many games to run 216 + 8
-      max_avatar: 224,
+      // How many games to run 216 + 8 + 6
+      max_avatar: 230,
       trial_started: 0,
       avatar_choices: ["3", "2"],
       player_payoff: ["1.5", "2", "2.5"],
@@ -462,13 +466,14 @@ export default {
       }
     },
     // Helper function to identify the payoff type { M/P H/S }
-    trial_identifier(trial) {
+    trial_identifier(top_left, top_right, bot_left, bot_right) {
+
       if (
-        (Number(trial.a_first) - Number(trial.a_second)) *
-          (Number(trial.p_first) - Number(trial.p_second)) >
+        (Number(top_left) - Number(bot_left)) *
+          (Number(top_right) - Number(bot_right)) >
         0
       ) {
-        return "MP";
+        return "WP";
       } else {
         return "HS";
       }
@@ -747,121 +752,192 @@ export default {
     // buildCombinations constructs an array that contains all information needed to carry out a randomized block #1
     // This array also contains data slots that will be filled as the participants progress
     buildCombinations() {
-      var i, k, j, o;
-      var segment = [];
-      for (i = 0; i < this.avatar_choices.length; i++) {
-        for (k = 0; k < this.player_payoff.length; k++) {
-          for (j = 0; j < this.enctr_2_payoff.length; j++) {
-            for (o = 0; o < this.enctr_1_payoff.length; o++) {
-              var new_comb = {
-                a_c: this.avatar_choices[i],
-                a_c_present: this.avatar_choices[i],
-                pl_p: this.player_payoff[k],
-                a_p: this.enctr_2_payoff[j],
-                pr_p: this.enctr_1_payoff[o],
-                pr_p_present: this.enctr_1_payoff[o],
-                a_p_present: this.enctr_2_payoff[j],
-                enctr_1_type: this.trial_identifier(this.enctr_1_payoff[o]),
-                enctr_2_type: this.trial_identifier(this.enctr_2_payoff[j]),
-                enctr_1_reverse: Math.floor(Math.random() * 2),
-                enctr_2_reverse: Math.floor(Math.random() * 2),
-                vert_pos: null,
-                trust: null,
-                keypress: "",
-                reaction_time_trust: null,
-                reaction_time_prediction: null,
-                trust_condition: null,
-                trial_order: null,
-                trial_id: null,
-                prediction: null,
-                avatar_id: null,
-                game_condition:
-                  this.avatar_choices[i] == "2"
-                    ? this.enctr_1_payoff[o].top
-                    : this.enctr_1_payoff[o].down,
-              };
-              // Recognize the six different structures in encounter #2
-              if (
-                this.player_payoff[k] == "1.5" &&
-                this.enctr_2_payoff[j].a_first == "2.5"
-              ) {
-                new_comb.trust_condition = 1;
-              } else if (
-                this.player_payoff[k] == "2" &&
-                this.enctr_2_payoff[j].a_first == "2.5"
-              ) {
-                new_comb.trust_condition = 2;
-              } else if (
-                this.player_payoff[k] == "2.5" &&
-                this.enctr_2_payoff[j].a_first == "2.5"
-              ) {
-                new_comb.trust_condition = 3;
-              } else if (
-                this.player_payoff[k] == "1.5" &&
-                this.enctr_2_payoff[j].a_first == "1.5"
-              ) {
-                new_comb.trust_condition = 4;
-              } else if (
-                this.player_payoff[k] == "2" &&
-                this.enctr_2_payoff[j].a_first == "1.5"
-              ) {
-                new_comb.trust_condition = 5;
-              } else if (
-                this.player_payoff[k] == "2.5" &&
-                this.enctr_2_payoff[j].a_first == "1.5"
-              ) {
-                new_comb.trust_condition = 6;
-              }
-              new_comb.trial_id = String(
-                6 * (Number(new_comb.game_condition) - 1) +
-                  Number(new_comb.trust_condition)
-              );
-              if (new_comb.enctr_1_reverse == 1) {
-                new_comb.pr_p_present = this.flipPayOff(new_comb.pr_p);
-                // temp here flipped the enctr type by munipulating the string
-                let temp = new_comb.enctr_1_type[1] + new_comb.enctr_1_type[0];
-                new_comb.enctr_1_type = temp;
-                // Flipping the avatar's choice in ectr1 to reflect the flipped pay off structure
-                if (new_comb.a_c == "2") {
-                  new_comb.a_c_present = "3";
-                } else {
-                  new_comb.a_c_present = "2";
-                }
-              }
-              if (new_comb.enctr_2_reverse == 1) {
-                new_comb.a_p_present = this.flipPayOff(new_comb.a_p);
-                let temp = new_comb.enctr_2_type[1] + new_comb.enctr_2_type[0];
-                new_comb.enctr_2_type = temp;
-              }
-              new_comb.vert_pos = new_comb.enctr_1_type + new_comb.enctr_1_type;
-              segment.push(new_comb);
-            }
+      var i = 0
+      var trials = []
+      for (i = 0; i < this.max_avatar; i++) {
+        var new_comb = {
+          label: this.payoff_structure_data[i]["Label"],
+          M1AvatarPayoffA: this.payoff_structure_data[i]["M1AvatarPayoffA"],
+          M1ParticipantPayoffA: this.payoff_structure_data[i]["M1ParticipantPayoffA"],
+          M1AvatarPayoffB: this.payoff_structure_data[i]["M1AvatarPayoffB"],
+          M1ParticipantPayoffB: this.payoff_structure_data[i]["M1ParticipantPayoffB"],
+          M2AvatarPayoffA: this.payoff_structure_data[i]["M2AvatarPayoffA"],
+          M2ParticipantPayoffA: this.payoff_structure_data[i]["M2ParticipantPayoffA"],
+          M2AvatarPayoffB: this.payoff_structure_data[i]["M2AvatarPayoffB"],
+          M2ParticipantPayoffB: this.payoff_structure_data[i]["M2ParticipantPayoffB"],
+          KeepDots: this.payoff_structure_data[i]["KeepDots"],
+          // 2 means up and 3 means down
+          a_c: "2",
+          // following are original dots data
+          PresentM1AvatarPayoffA: this.payoff_structure_data[i]["M1AvatarPayoffA"],
+          PresentM1ParticipantPayoffA: this.payoff_structure_data[i]["M1ParticipantPayoffA"],
+          PresentM1AvatarPayoffB: this.payoff_structure_data[i]["M1AvatarPayoffB"],
+          PresentM1ParticipantPayoffB: this.payoff_structure_data[i]["M1ParticipantPayoffB"],
+          PresentM2AvatarPayoffA: this.payoff_structure_data[i]["M2AvatarPayoffA"],
+          PresentM2ParticipantPayoffA: this.payoff_structure_data[i]["M2ParticipantPayoffA"],
+          PresentM2AvatarPayoffB: this.payoff_structure_data[i]["M2AvatarPayoffB"],
+          PresentM2ParticipantPayoffB: this.payoff_structure_data[i]["M2ParticipantPayoffB"],
+          a_c_present: "2",
+          enctr_1_reverse: Math.floor(Math.random() * 2),
+          enctr_2_reverse: Math.floor(Math.random() * 2),
+          enctr_1_type: this.trial_identifier(this.payoff_structure_data[i]["M1AvatarPayoffA"], this.payoff_structure_data[i]["M1ParticipantPayoffA"], this.payoff_structure_data[i]["M1AvatarPayoffB"], this.payoff_structure_data[i]["M1ParticipantPayoffB"]),
+          enctr_2_type: this.trial_identifier(this.payoff_structure_data[i]["M2AvatarPayoffA"], this.payoff_structure_data[i]["M2ParticipantPayoffA"], this.payoff_structure_data[i]["M2AvatarPayoffB"], this.payoff_structure_data[i]["M2ParticipantPayoffB"]),
+          vert_pos: null,
+          keypress: "",
+          trust: null,
+          prediction: null,
+          reaction_time_trust: null,
+          reaction_time_prediction: null,
+          encnt1_cond: this.datasheet_sample_data[i]["Encnt1_Cond"],
+          encnt2_cond: this.datasheet_sample_data[i]["Encnt2_Cond"],
+          trial_order: null,
+          trial_number: String(i + 1),
+          avatar_id: null,
+          // Some fixed column values
+          choice_type: this.datasheet_sample_data[i]["Choice_Type"],
+          choice_deg: this.datasheet_sample_data[i]["Choice_Deg"],
+          sure_thing: this.datasheet_sample_data[i]["Sure_Thing"],
+          triplets: this.datasheet_sample_data[i]["Triplets"],
+        }
+        if (new_comb.enctr_1_reverse == 1) {
+          var tempLeft, tempRight
+          tempLeft = new_comb.M1AvatarPayoffA
+          tempRight = new_comb.M1ParticipantPayoffA
+          new_comb.M1AvatarPayoffA = new_comb.M1AvatarPayoffB
+          new_comb.M1ParticipantPayoffA = new_comb.M1ParticipantPayoffB
+          new_comb.M1AvatarPayoffB = tempLeft
+          new_comb.M1ParticipantPayoffB = tempRight
+          // temp here flipped the enctr type by munipulating the string
+          let temp = new_comb.enctr_1_type[1] + new_comb.enctr_1_type[0];
+          new_comb.enctr_1_type = temp;
+          // Flipping the avatar's choice in ectr1 to reflect the flipped pay off structure
+          if (new_comb.a_c == "2") {
+            new_comb.a_c_present = "3";
           }
         }
+        if (new_comb.enctr_2_reverse == 1) {
+          var tempLeft, tempRight
+          tempLeft = new_comb.M2AvatarPayoffA
+          tempRight = new_comb.M2ParticipantPayoffA
+          new_comb.M2AvatarPayoffA = new_comb.M2AvatarPayoffB
+          new_comb.M2ParticipantPayoffA = new_comb.M2ParticipantPayoffB
+          new_comb.M2AvatarPayoffB = tempLeft
+          new_comb.M2ParticipantPayoffB = tempRight
+
+          let temp = new_comb.enctr_2_type[1] + new_comb.enctr_2_type[0];
+          new_comb.enctr_2_type = temp;
+        }
+        if (i >= 222) {
+          new_comb.enctr_1_type = "CC"
+        } else if (i >= 216) {
+          new_comb.enctr_1_type = "BB"
+        }
+        new_comb.vert_pos = new_comb.enctr_1_type + new_comb.enctr_2_type;
+        trials.push(new_comb)
       }
-      // segment = this.shuffle(segment);
-      // // Add in the eight dummy trials
-      // var dummy_trials = []
-      // var b = 0;
-      // for (b = 0; b < 8; b++) {
-      //   dummy_trials.add(JSON.parse(JSON.stringify(segment[b].copy)))
-      //   dummy_trials[b].trust_condition = 0
-      //   dummy_trials[b].game_condition = 0
-      //   dummy_trials[b].enctr_1_type = "0"
-      //   dummy_trials[b].enctr_2_type = "0"
-      //   dummy_trials[b].vert_pos = "0"
-      //   dummy_trials[b].trial_id = "-1"
-      // }
-
-      // // Modify their ectr#2 payoffs
-
-
-      // for (b = 0; b < 8; b++) {
-      //   segment.add(JSON.parse(JSON.stringify(dummy_trials[b].copy)))
-      // }
-      segment = this.shuffle(segment);
-      this.combinations = segment;
+      trials = this.shuffle(trials);
+      // eslint-disable-next-line no-console
+      console.log("combinations!")
+      // eslint-disable-next-line no-console
+      console.log(trials)
+      this.combinations = trials;
     },
+    // buildCombinations() {
+    //   var i, k, j, o;
+    //   var segment = [];
+    //   for (i = 0; i < this.avatar_choices.length; i++) {
+    //     for (k = 0; k < this.player_payoff.length; k++) {
+    //       for (j = 0; j < this.enctr_2_payoff.length; j++) {
+    //         for (o = 0; o < this.enctr_1_payoff.length; o++) {
+    //           var new_comb = {
+    //             a_c: this.avatar_choices[i],
+    //             a_c_present: this.avatar_choices[i],
+    //             pl_p: this.player_payoff[k],
+    //             a_p: this.enctr_2_payoff[j],
+    //             pr_p: this.enctr_1_payoff[o],
+    //             pr_p_present: this.enctr_1_payoff[o],
+    //             a_p_present: this.enctr_2_payoff[j],
+    //             enctr_1_type: this.trial_identifier(this.enctr_1_payoff[o]),
+    //             enctr_2_type: this.trial_identifier(this.enctr_2_payoff[j]),
+    //             enctr_1_reverse: Math.floor(Math.random() * 2),
+    //             enctr_2_reverse: Math.floor(Math.random() * 2),
+    //             vert_pos: null,
+    //             trust: null,
+    //             keypress: "",
+    //             reaction_time_trust: null,
+    //             reaction_time_prediction: null,
+    //             trust_condition: null,
+    //             trial_order: null,
+    //             trial_id: null,
+    //             prediction: null,
+    //             avatar_id: null,
+    //             game_condition:
+    //               this.avatar_choices[i] == "2"
+    //                 ? this.enctr_1_payoff[o].top
+    //                 : this.enctr_1_payoff[o].down,
+    //           };
+    //           // Recognize the six different structures in encounter #2
+    //           if (
+    //             this.player_payoff[k] == "1.5" &&
+    //             this.enctr_2_payoff[j].a_first == "2.5"
+    //           ) {
+    //             new_comb.trust_condition = 1;
+    //           } else if (
+    //             this.player_payoff[k] == "2" &&
+    //             this.enctr_2_payoff[j].a_first == "2.5"
+    //           ) {
+    //             new_comb.trust_condition = 2;
+    //           } else if (
+    //             this.player_payoff[k] == "2.5" &&
+    //             this.enctr_2_payoff[j].a_first == "2.5"
+    //           ) {
+    //             new_comb.trust_condition = 3;
+    //           } else if (
+    //             this.player_payoff[k] == "1.5" &&
+    //             this.enctr_2_payoff[j].a_first == "1.5"
+    //           ) {
+    //             new_comb.trust_condition = 4;
+    //           } else if (
+    //             this.player_payoff[k] == "2" &&
+    //             this.enctr_2_payoff[j].a_first == "1.5"
+    //           ) {
+    //             new_comb.trust_condition = 5;
+    //           } else if (
+    //             this.player_payoff[k] == "2.5" &&
+    //             this.enctr_2_payoff[j].a_first == "1.5"
+    //           ) {
+    //             new_comb.trust_condition = 6;
+    //           }
+    //           new_comb.trial_id = String(
+    //             6 * (Number(new_comb.game_condition) - 1) +
+    //               Number(new_comb.trust_condition)
+    //           );
+              // if (new_comb.enctr_1_reverse == 1) {
+              //   new_comb.pr_p_present = this.flipPayOff(new_comb.pr_p);
+              //   // temp here flipped the enctr type by munipulating the string
+              //   let temp = new_comb.enctr_1_type[1] + new_comb.enctr_1_type[0];
+              //   new_comb.enctr_1_type = temp;
+              //   // Flipping the avatar's choice in ectr1 to reflect the flipped pay off structure
+              //   if (new_comb.a_c == "2") {
+              //     new_comb.a_c_present = "3";
+              //   } else {
+              //     new_comb.a_c_present = "2";
+              //   }
+              // }
+              // if (new_comb.enctr_2_reverse == 1) {
+              //   new_comb.a_p_present = this.flipPayOff(new_comb.a_p);
+              //   let temp = new_comb.enctr_2_type[1] + new_comb.enctr_2_type[0];
+              //   new_comb.enctr_2_type = temp;
+              // }
+    //           new_comb.vert_pos = new_comb.enctr_1_type + new_comb.enctr_2_type;
+    //           segment.push(new_comb);
+    //         }
+    //       }
+    //     }
+    //   }
+    //   segment = this.shuffle(segment);
+    //   this.combinations = segment;
+    // },
     pad(n, width, z) {
       z = z || "0";
       n = n + "";
