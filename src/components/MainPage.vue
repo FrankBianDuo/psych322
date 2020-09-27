@@ -1173,9 +1173,9 @@ export default {
       console.log(this.participant_generated_id);
       for (i = 0; i < raw.length; i++) {
         if (raw[i].triplets in triplets_id) {
-          triplets_id[raw[i].triplets] += String(raw[i].trial_order)
+          triplets_id[raw[i].triplets] += "I"
         } else {
-          triplets_id[raw[i].triplets] = String(raw[i].trial_order)
+          triplets_id[raw[i].triplets] = "I"
         }
         var triplet_rank = triplets_id[raw[i].triplets].length
         var current = {
@@ -1188,11 +1188,11 @@ export default {
           Vert_Posit_N: this.vertPositMatch(raw[i].vert_pos),
           Key_Press: raw[i].keypress,
           Trial_order: raw[i].trial_order,
-          Trial_order_segment: String(1 + Math.floor((raw[i].trial_order)) / 23),
+          Trial_order_segment: String(1 + Math.floor(i / 23)),
           Avatar: raw[i].avatar_id,
           // Block_order: "123",
-          Atomic_Choice: this.atomic_choice(raw[i].trial_id, raw[i].trust_condition),
-          RightSideUpDown: this.UpDown(raw[i].trial_id, raw[i].vert_pos, raw[i].keypress, raw[i].prediction),
+          Atomic_Choice: this.atomic_choice(raw[i].trial_number, raw[i].encnt2_cond),
+          RightSideUpDown: this.UpDown(raw[i].keypress, raw[i].enctr_1_reverse),
           Prediction: raw[i].prediction,
           Pred_RT: raw[i].reaction_time_prediction,
           Control_Choice: raw[i].trust,
@@ -1281,25 +1281,31 @@ export default {
       return output;
     },
     pcomb(res_sequence) {
+      if (res_sequence.length != 8) {
+        return "InCompleteTrial"
+      }
       var result = ""
       if (res_sequence[1] == 'O') {
         result += "O"
       } else {
-        result += "T"
+        result += "P"
       }
       if (res_sequence[4] == 'O') {
         result += "O"
       } else {
-        result += "T"
+        result += "P"
       }
       if (res_sequence[7] == 'O') {
         result += "O"
       } else {
-        result += "T"
+        result += "P"
       }
       return result
     },
     ccomb(res_sequence) {
+      if (res_sequence.length != 8) {
+        return "InCompleteTrial"
+      }
       var result = ""
       if (res_sequence[0] == 'A') {
         result += "G"
@@ -1357,7 +1363,7 @@ export default {
         second_symbol = "="
       }
 
-      return first_symbol + second_symbol
+      return "\"" + first_symbol  + second_symbol + "\""
     },
     processTwoResults(raw) {
       var output = [];
@@ -1572,8 +1578,10 @@ export default {
       }
       if (keypress[0] == 'A') {
         second_letter = "U"
-      } else {
+      } else if (keypress[0] == 'Z') {
         second_letter = "D"
+      } else {
+        second_letter = "N"
       }
       return first_letter + second_letter
     },
