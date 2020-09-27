@@ -1167,9 +1167,17 @@ export default {
     processOneResults(raw) {
       var i;
       var output = [];
+      var triplets_id = {}
+      var triplets_response = {}
       // eslint-disable-next-line no-console
       console.log(this.participant_generated_id);
       for (i = 0; i < raw.length; i++) {
+        if (raw[i].triplets in triplets_id) {
+          triplets_id[raw[i].triplets] += String(raw[i].trial_order)
+        } else {
+          triplets_id[raw[i].triplets] = String(raw[i].trial_order)
+        }
+        var triplet_rank = triplets_id[raw[i].triplets].length
         var current = {
           Participant_ID: this.participant_generated_id,
           Trial_Number: raw[i].trial_number,
@@ -1180,19 +1188,27 @@ export default {
           Vert_Posit_N: this.vertPositMatch(raw[i].vert_pos),
           Key_Press: raw[i].keypress,
           Trial_order: raw[i].trial_order,
+          Trial_order_segment: String(1 + Math.floor((raw[i].trial_order)) / 23),
           Avatar: raw[i].avatar_id,
           // Block_order: "123",
           Atomic_Choice: this.atomic_choice(raw[i].trial_id, raw[i].trust_condition),
-          RightSideUpDown: this.RightSideUpDown(raw[i].trial_id, raw[i].vert_pos, raw[i].keypress, raw[i].prediction),
+          RightSideUpDown: this.UpDown(raw[i].trial_id, raw[i].vert_pos, raw[i].keypress, raw[i].prediction),
           Prediction: raw[i].prediction,
           Pred_RT: raw[i].reaction_time_prediction,
           Control_Choice: raw[i].trust,
           Resp_Comb: this.resp_comb(raw[i].prediction, raw[i].trust),
           Control_RT: raw[i].reaction_time_trust,
+          GJE: this.GJE(raw[i].OriginalM1AvatarPayoffA, raw[i].OriginalM1ParticipantPayoffA, raw[i].OriginalM1AvatarPayoffB, raw[i].OriginalM1ParticipantPayoffB),
           Choice_Type: raw[i].choice_type,
           Choice_Deg: raw[i].choice_deg,
           Sure_Thing: raw[i].sure_thing,
           Triplets: raw[i].triplets,
+          Triplet_Order: triplet_rank,
+          P_Comb: null,
+          Res_Comb: null,
+          C_Comb: null,
+          Control_Rat: null,
+          Subject_Prob: null,
           // 'Inst_Rat': this.instRat(raw[i].prediction, raw[i].trust),
           // 'Rat_Sure': this.ratSure(),
           // 'Rat_Act': this.ratAct(),
@@ -1247,26 +1263,102 @@ export default {
           WRQ12: this.FRResults[12],
           WRQ13: this.FRResults[13],
         };
+        if (raw[i].triplets in triplets_response) {
+          triplets_response[raw[i].triplets] += (', ' + current.Resp_Comb)
+        } else {
+          triplets_response[raw[i].triplets] = current.Resp_Comb
+        }
         output.push(current);
+      }
+      for (var k = 0; k < output.length; k++) {
+        output[k].Res_Comb = triplets_response[output[k].Triplets]
+        output[k].P_Comb = this.pcomb(triplets_response[output[k].Triplets])
+        output[k].C_Comb = this.ccomb(triplets_response[output[k].Triplets])
+        output[k].Control_Rat = this.control_rat(output[k].C_Comb)
+        output[k].Subject_Prob = this.subject_prob(output[k].C_Comb)
       }
       output.sort(this.blockOneSort);
       return output;
     },
-    // instRat(p, t) {
-    //   return ''
-    //   // if (p == 1 && t == 1) {
+    pcomb(res_sequence) {
+      var result = ""
+      if (res_sequence[1] == 'O') {
+        result += "O"
+      } else {
+        result += "T"
+      }
+      if (res_sequence[4] == 'O') {
+        result += "O"
+      } else {
+        result += "T"
+      }
+      if (res_sequence[7] == 'O') {
+        result += "O"
+      } else {
+        result += "T"
+      }
+      return result
+    },
+    ccomb(res_sequence) {
+      var result = ""
+      if (res_sequence[0] == 'A') {
+        result += "G"
+      } else {
+        result += "K"
+      }
+      if (res_sequence[3] == 'A') {
+        result += "G"
+      } else {
+        result += "K"
+      }
+      if (res_sequence[6] == 'A') {
+        result += "G"
+      } else {
+        result += "K"
+      }
+      return result
+    },
+    control_rat(choices) {
+      if (choices == "KKK" || choices == "GKK" || choices == "GGK" || choices == "GGG") {
+        return 1
+      }
+      return 0
+    },
+    subject_prob(choices) {
+      if (choices == "KKK") {
+        return -3
+      }
+      if (choices == "GKK") {
+        return -1
+      }
+      if (choices == "GGK") {
+        return 1
+      }
+      if (choices == "GGG") {
+        return 3
+      }
+      return 0
 
-    //   // }
-    //   // if (p == 0 && t == 0) {
+    },
+    GJE(avatar_a, part_a, avatar_b, part_b) {
+      var first_symbol, second_symbol
+      if (avatar_a > part_a) {
+        first_symbol = ">"
+      } else if (avatar_a < part_a) {
+        first_symbol = "<"
+      } else {
+        first_symbol = "="
+      }
+      if (avatar_b > part_b) {
+        second_symbol = ">"
+      } else if (avatar_b < part_b) {
+        second_symbol = "<"
+      } else {
+        second_symbol = "="
+      }
 
-    //   // }
-    //   // if (p == 1 && t == 0) {
-
-    //   // }
-    //   // if (p == 0 && t == 1) {
-
-    //   // }
-    // },
+      return first_symbol + second_symbol
+    },
     processTwoResults(raw) {
       var output = [];
       for (var i = 0; i < raw.length; i++) {
@@ -1471,77 +1563,91 @@ export default {
       }
       return atom_choice
     },
-    RightSideUpDown(trial_id, vert_pos, keypress, prediction) {
-      var m1_atom = ""
-      var top_option = ""
-      var bottom_option = ""
-      var flip1 = ""
-      var flip2 = ""
-      if (trial_id >= 1 && trial_id <= 54) {
-        m1_atom = 'H'
-      } else if (trial_id >= 55 && trial_id <= 108) {
-        m1_atom = 'W'
-      } else if (trial_id >= 109 && trial_id <= 162) {
-        m1_atom = 'S'
-      } else if (trial_id >= 163 && trial_id <= 216) {
-        m1_atom = 'P'
+    UpDown(keypress, enctr_1_reverse) {
+      var first_letter, second_letter
+      if (enctr_1_reverse == 1) {
+        first_letter = "D"
       } else {
-        atom_choice = 'Jupiter'
+        first_letter = "U"
       }
-      if (vert_pos == "HSHS" || vert_pos == "HSSH" || vert_pos == "HSMP" || vert_pos == "HSPM") {
-        top_option = 'H'
-      } else if (vert_pos == "MPHS" || vert_pos == "MPSH" || vert_pos == "MPMP" || vert_pos == "MPPM") {
-        top_option = 'W'
-      } else if (vert_pos == "SHHS" || vert_pos == "SHSH" || vert_pos == "SHMP" || vert_pos == "SHPM") {
-        top_option = 'S'
-      } else if (vert_pos == "PMHS" || vert_pos == "PMSH" || vert_pos == "PMMP" || vert_pos == "PMPM") {
-        top_option = 'P'
+      if (keypress[0] == 'A') {
+        second_letter = "U"
       } else {
-        top_option = 'Saturn'
+        second_letter = "D"
       }
-      if (vert_pos == "HSHS" || vert_pos == "SHHS" || vert_pos == "MPHS" || vert_pos == "PMHS") {
-        bottom_option = 'H'
-      } else if (vert_pos == "HSMP" || vert_pos == "SHMP" || vert_pos == "MPMP" || vert_pos == "PMMP") {
-        bottom_option = 'W'
-      } else if (vert_pos == "HSSH" || vert_pos == "SHSH" || vert_pos == "MPSH" || vert_pos == "PMSH") {
-        bottom_option = 'S'
-      } else if (vert_pos == "HSPM" || vert_pos == "SHPM" || vert_pos == "MPPM" || vert_pos == "PMPM") {
-        bottom_option = 'P'
-      } else {
-        bottom_option = 'Saturn'
-      }
-      if (m1_atom == "H" && top_option == "H") {
-        flip1 = 'U'
-      } else if (m1_atom == "W" && top_option == "W") {
-        flip1 = 'U'
-      } else if (m1_atom == "S" && top_option == "S") {
-        flip1 = 'U'
-      } else if (m1_atom == "P" && top_option == "P") {
-        flip1 = 'U'
-      } else {
-        flip1 = 'D'
-      }
-      if (bottom_option == "H" && prediction == "1") {
-        flip2 = 'U'
-      } else if (bottom_option == "W" && prediction == "1") {
-        flip2 = 'U'
-      } else if (bottom_option == "S" && prediction == "0") {
-        flip2 = 'U'
-      } else if (bottom_option == "P" && prediction == "0") {
-        flip2 = 'U'
-      } else if (bottom_option == "H" && prediction == "0") {
-        flip2 = 'D'
-      } else if (bottom_option == "W" && prediction == "0") {
-        flip2 = 'D'
-      } else if (bottom_option == "S" && prediction == "1") {
-        flip2 = 'D'
-      } else if (bottom_option == "P" && prediction == "1") {
-        flip2 = 'D'
-      } else {
-        flip2 = '?'
-      }
-      return flip1 + flip2
+      return first_letter + second_letter
     },
+    // RightSideUpDown(trial_id, vert_pos, keypress, prediction) {
+    //   var m1_atom = ""
+    //   var top_option = ""
+    //   var bottom_option = ""
+    //   var flip1 = ""
+    //   var flip2 = ""
+    //   if (trial_id >= 1 && trial_id <= 54) {
+    //     m1_atom = 'H'
+    //   } else if (trial_id >= 55 && trial_id <= 108) {
+    //     m1_atom = 'W'
+    //   } else if (trial_id >= 109 && trial_id <= 162) {
+    //     m1_atom = 'S'
+    //   } else if (trial_id >= 163 && trial_id <= 216) {
+    //     m1_atom = 'P'
+    //   } else {
+    //     atom_choice = 'Jupiter'
+    //   }
+    //   if (vert_pos == "HSHS" || vert_pos == "HSSH" || vert_pos == "HSMP" || vert_pos == "HSPM") {
+    //     top_option = 'H'
+    //   } else if (vert_pos == "MPHS" || vert_pos == "MPSH" || vert_pos == "MPMP" || vert_pos == "MPPM") {
+    //     top_option = 'W'
+    //   } else if (vert_pos == "SHHS" || vert_pos == "SHSH" || vert_pos == "SHMP" || vert_pos == "SHPM") {
+    //     top_option = 'S'
+    //   } else if (vert_pos == "PMHS" || vert_pos == "PMSH" || vert_pos == "PMMP" || vert_pos == "PMPM") {
+    //     top_option = 'P'
+    //   } else {
+    //     top_option = 'Saturn'
+    //   }
+    //   if (vert_pos == "HSHS" || vert_pos == "SHHS" || vert_pos == "MPHS" || vert_pos == "PMHS") {
+    //     bottom_option = 'H'
+    //   } else if (vert_pos == "HSMP" || vert_pos == "SHMP" || vert_pos == "MPMP" || vert_pos == "PMMP") {
+    //     bottom_option = 'W'
+    //   } else if (vert_pos == "HSSH" || vert_pos == "SHSH" || vert_pos == "MPSH" || vert_pos == "PMSH") {
+    //     bottom_option = 'S'
+    //   } else if (vert_pos == "HSPM" || vert_pos == "SHPM" || vert_pos == "MPPM" || vert_pos == "PMPM") {
+    //     bottom_option = 'P'
+    //   } else {
+    //     bottom_option = 'Saturn'
+    //   }
+    //   if (m1_atom == "H" && top_option == "H") {
+    //     flip1 = 'U'
+    //   } else if (m1_atom == "W" && top_option == "W") {
+    //     flip1 = 'U'
+    //   } else if (m1_atom == "S" && top_option == "S") {
+    //     flip1 = 'U'
+    //   } else if (m1_atom == "P" && top_option == "P") {
+    //     flip1 = 'U'
+    //   } else {
+    //     flip1 = 'D'
+    //   }
+    //   if (bottom_option == "H" && prediction == "1") {
+    //     flip2 = 'U'
+    //   } else if (bottom_option == "W" && prediction == "1") {
+    //     flip2 = 'U'
+    //   } else if (bottom_option == "S" && prediction == "0") {
+    //     flip2 = 'U'
+    //   } else if (bottom_option == "P" && prediction == "0") {
+    //     flip2 = 'U'
+    //   } else if (bottom_option == "H" && prediction == "0") {
+    //     flip2 = 'D'
+    //   } else if (bottom_option == "W" && prediction == "0") {
+    //     flip2 = 'D'
+    //   } else if (bottom_option == "S" && prediction == "1") {
+    //     flip2 = 'D'
+    //   } else if (bottom_option == "P" && prediction == "1") {
+    //     flip2 = 'D'
+    //   } else {
+    //     flip2 = '?'
+    //   }
+    //   return flip1 + flip2
+    // },
     blockThreeSort(a, b) {
       if (a["Game Condition"] < b["Game Condition"]) {
         return -1;
