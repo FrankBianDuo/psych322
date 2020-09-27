@@ -1181,7 +1181,9 @@ export default {
           Key_Press: raw[i].keypress,
           Trial_order: raw[i].trial_order,
           Avatar: raw[i].avatar_id,
-          Block_order: "123",
+          // Block_order: "123",
+          Atomic_Choice: this.atomic_choice(raw[i].trial_id, raw[i].trust_condition),
+          RightSideUpDown: this.RightSideUpDown(raw[i].trial_id, raw[i].vert_pos, raw[i].keypress, raw[i].prediction),
           Prediction: raw[i].prediction,
           Pred_RT: raw[i].reaction_time_prediction,
           Control_Choice: raw[i].trust,
@@ -1445,6 +1447,100 @@ export default {
         control_choice_char = 'E'
       }
       return control_choice_char + prediction_char
+    },
+    atomic_choice(trial_id, trust_condition) {
+      var atom_choice = ""
+      if (trial_id >= 1 && trial_id <= 54 && trust_condition <= 3) {
+        atom_choice = 'Ha'
+      } else if (trial_id >= 1 && trial_id <= 54 && trust_condition >= 4) {
+        atom_choice = 'Hc'
+      } else if (trial_id >= 55 && trial_id <= 108 && trust_condition <= 3) {
+        atom_choice = 'Wa'
+      } else if (trial_id >= 55 && trial_id <= 108 && trust_condition >= 4) {
+        atom_choice = 'Wc'
+      } else if (trial_id >= 109 && trial_id <= 162 && trust_condition <= 3) {
+        atom_choice = 'Sa'
+      } else if (trial_id >= 109 && trial_id <= 162 && trust_condition >= 4) {
+        atom_choice = 'Sc'
+      } else if (trial_id >= 163 && trial_id <= 216 && trust_condition <= 3) {
+        atom_choice = 'Pa'
+      } else if (trial_id >= 163 && trial_id <= 216 && trust_condition >= 4) {
+        atom_choice = 'Pc'
+      } else {
+        atom_choice = 'Neptune'
+      }
+      return atom_choice
+    },
+    RightSideUpDown(trial_id, vert_pos, keypress, prediction) {
+      var m1_atom = ""
+      var top_option = ""
+      var bottom_option = ""
+      var flip1 = ""
+      var flip2 = ""
+      if (trial_id >= 1 && trial_id <= 54) {
+        m1_atom = 'H'
+      } else if (trial_id >= 55 && trial_id <= 108) {
+        m1_atom = 'W'
+      } else if (trial_id >= 109 && trial_id <= 162) {
+        m1_atom = 'S'
+      } else if (trial_id >= 163 && trial_id <= 216) {
+        m1_atom = 'P'
+      } else {
+        atom_choice = 'Jupiter'
+      }
+      if (vert_pos == "HSHS" || vert_pos == "HSSH" || vert_pos == "HSMP" || vert_pos == "HSPM") {
+        top_option = 'H'
+      } else if (vert_pos == "MPHS" || vert_pos == "MPSH" || vert_pos == "MPMP" || vert_pos == "MPPM") {
+        top_option = 'W'
+      } else if (vert_pos == "SHHS" || vert_pos == "SHSH" || vert_pos == "SHMP" || vert_pos == "SHPM") {
+        top_option = 'S'
+      } else if (vert_pos == "PMHS" || vert_pos == "PMSH" || vert_pos == "PMMP" || vert_pos == "PMPM") {
+        top_option = 'P'
+      } else {
+        top_option = 'Saturn'
+      }
+      if (vert_pos == "HSHS" || vert_pos == "SHHS" || vert_pos == "MPHS" || vert_pos == "PMHS") {
+        bottom_option = 'H'
+      } else if (vert_pos == "HSMP" || vert_pos == "SHMP" || vert_pos == "MPMP" || vert_pos == "PMMP") {
+        bottom_option = 'W'
+      } else if (vert_pos == "HSSH" || vert_pos == "SHSH" || vert_pos == "MPSH" || vert_pos == "PMSH") {
+        bottom_option = 'S'
+      } else if (vert_pos == "HSPM" || vert_pos == "SHPM" || vert_pos == "MPPM" || vert_pos == "PMPM") {
+        bottom_option = 'P'
+      } else {
+        bottom_option = 'Saturn'
+      }
+      if (m1_atom == "H" && top_option == "H") {
+        flip1 = 'U'
+      } else if (m1_atom == "W" && top_option == "W") {
+        flip1 = 'U'
+      } else if (m1_atom == "S" && top_option == "S") {
+        flip1 = 'U'
+      } else if (m1_atom == "P" && top_option == "P") {
+        flip1 = 'U'
+      } else {
+        flip1 = 'D'
+      }
+      if (bottom_option == "H" && prediction == "1") {
+        flip2 = 'U'
+      } else if (bottom_option == "W" && prediction == "1") {
+        flip2 = 'U'
+      } else if (bottom_option == "S" && prediction == "0") {
+        flip2 = 'U'
+      } else if (bottom_option == "P" && prediction == "0") {
+        flip2 = 'U'
+      } else if (bottom_option == "H" && prediction == "0") {
+        flip2 = 'D'
+      } else if (bottom_option == "W" && prediction == "0") {
+        flip2 = 'D'
+      } else if (bottom_option == "S" && prediction == "1") {
+        flip2 = 'D'
+      } else if (bottom_option == "P" && prediction == "1") {
+        flip2 = 'D'
+      } else {
+        flip2 = '?'
+      }
+      return flip1 + flip2
     },
     blockThreeSort(a, b) {
       if (a["Game Condition"] < b["Game Condition"]) {
