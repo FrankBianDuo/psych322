@@ -13,7 +13,7 @@
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
         <!-- <b-button v-b-modal.modal-center-WRITENAMEOFPAGEHERETOSEEITPOPUPFIRST>Instructions</b-button> -->
-        <b-button v-b-modal.modal-center-BotStopper>Instructions</b-button>
+        <b-button v-b-modal.modal-center-WantMoreDots>Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
@@ -777,7 +777,8 @@ export default {
       ],
       // A true means the participant got that question right, and vice verse
       ans_tutorial: {},
-      parsed_answers: [],
+      parsed_answers: "",
+      parsed_wrong_ans: "",
       aws_bucket_name: "experimentdata2020",
       aws_object_name: this.blockOneFileName(),
       // serverlessrepo-s3-presigned-url-s3presignedurl-EF2SRE90YXDY?BucketName="experimentdata2020"&ObjectName="test10.txt"&ExpiredIn=3600
@@ -911,15 +912,32 @@ export default {
       }
       this.instrucEnd = value;
       this.instrucTime = (this.instrucEnd - this.instrucStart) * 0.001;
-      var answers = [];
+      var answers = "";
+      var wrong_answers = "";
+      // var raw_answers = [];
       for (let [key, value] of Object.entries(this.ans_tutorial)) {
-        answers.append((key, value));
+        if (value[0] == false) {
+          if (wrong_answers == "") {
+            wrong_answers += String(key)
+          } else {
+            wrong_answers += ', ' + String(key)
+          }
+        }
+        if (value[1] == 't') {
+          answers += 'T';
+        } else {
+          answers += 'F';
+        }
+    
       }
       this.parsed_answers = answers;
+      this.parsed_wrong_ans = wrong_answers;
       // eslint-disable-next-line no-console
       console.log("this.ans_tutorial");
       // eslint-disable-next-line no-console
       console.log(answers);
+      // eslint-disable-next-line no-console
+      console.log(wrong_answers);
       // eslint-disable-next-line no-console
       console.log(this.instrucTime);
     },
@@ -932,11 +950,15 @@ export default {
       // eslint-disable-next-line no-console
       console.log(value);
       this.ans_tutorial[21] = value;
+      // eslint-disable-next-line no-console
+      console.log(this.ans_tutorial);
     },
     onAnsChild22(value) {
       // eslint-disable-next-line no-console
       console.log(value);
       this.ans_tutorial[22] = value;
+      // eslint-disable-next-line no-console
+      console.log(this.ans_tutorial);
     },
     onAnsChild23(value) {
       // eslint-disable-next-line no-console
@@ -1145,66 +1167,57 @@ export default {
     processOneResults(raw) {
       var i;
       var output = [];
+      var triplets_id = {}
+      var triplets_response = {}
       // eslint-disable-next-line no-console
       console.log(this.participant_generated_id);
       for (i = 0; i < raw.length; i++) {
+        if (raw[i].triplets in triplets_id) {
+          triplets_id[raw[i].triplets] += "I"
+        } else {
+          triplets_id[raw[i].triplets] = "I"
+        }
+        var triplet_rank = triplets_id[raw[i].triplets].length
         var current = {
           Participant_ID: this.participant_generated_id,
-          Trial_Number: raw[i].trial_id,
-          Encnt1_cond: raw[i].game_condition,
-          Encnt2_cond: raw[i].trust_condition,
-          Label:
-            raw[i].a_c == "2"
-              ? this.labelGen(
-                  raw[i].pr_p.p_first,
-                  raw[i].pr_p.a_first,
-                  raw[i].pr_p.p_second,
-                  raw[i].pr_p.a_second
-                ) + this.ectr2Gen(raw[i].a_p.a_first, raw[i].pl_p)
-              : this.labelGen(
-                  raw[i].pr_p.p_second,
-                  raw[i].pr_p.a_second,
-                  raw[i].pr_p.p_first,
-                  raw[i].pr_p.a_first
-                ) + this.ectr2Gen(raw[i].a_p.a_first, raw[i].pl_p),
+          Trial_Number: raw[i].trial_number,
+          Encnt1_cond: raw[i].encnt1_cond,
+          Encnt2_cond: raw[i].encnt2_cond,
+          Label: raw[i].label,
           Vert_Posit_L: raw[i].vert_pos,
           Vert_Posit_N: this.vertPositMatch(raw[i].vert_pos),
           Key_Press: raw[i].keypress,
           Trial_order: raw[i].trial_order,
+          Trial_order_segment: String(1 + Math.floor(i / 23)),
           Avatar: raw[i].avatar_id,
           // Block_order: "123",
-          Atomic_Choice: this.atomic_choice(raw[i].trial_id, raw[i].trust_condition),
-          RightSideUpDown: this.RightSideUpDown(raw[i].trial_id, raw[i].vert_pos, raw[i].keypress, raw[i].prediction),
+          Atomic_Choice: this.atomic_choice(raw[i].trial_number, raw[i].encnt2_cond),
+          RightSideUpDown: this.UpDown(raw[i].keypress, raw[i].enctr_1_reverse),
           Prediction: raw[i].prediction,
           Pred_RT: raw[i].reaction_time_prediction,
           Control_Choice: raw[i].trust,
+          Resp_Comb: this.resp_comb(raw[i].prediction, raw[i].trust),
           Control_RT: raw[i].reaction_time_trust,
-          "E1&2_Act_Type": this.dataJson[Number(raw[i].trial_id) - 1][
-            "E1&2_Act_Type"
-          ],
-          "E1&2_Act_Deg": this.dataJson[Number(raw[i].trial_id) - 1][
-            "E1&2_Act_Deg"
-          ],
-          Equality: this.dataJson[Number(raw[i].trial_id) - 1]["Equality"],
-          Sure_Thing: this.dataJson[Number(raw[i].trial_id) - 1]["Sure_Thing"],
-          Compatib: this.dataJson[Number(raw[i].trial_id) - 1]["Compatib"],
-          Triplets: this.dataJson[Number(raw[i].trial_id) - 1]["Triplets"],
-          Equal_by_Act: this.dataJson[Number(raw[i].trial_id) - 1][
-            "Equal_by_Act"
-          ],
+          GJE: this.GJE(raw[i].OriginalM1AvatarPayoffA, raw[i].OriginalM1ParticipantPayoffA, raw[i].OriginalM1AvatarPayoffB, raw[i].OriginalM1ParticipantPayoffB),
+          Choice_Type: raw[i].choice_type,
+          Choice_Deg: raw[i].choice_deg,
+          Sure_Thing: raw[i].sure_thing,
+          Triplets: raw[i].triplets,
+          Triplet_Order: triplet_rank,
+          P_Comb: null,
+          Res_Comb: null,
+          C_Comb: null,
+          Control_Rat: null,
+          Subject_Prob: null,
           // 'Inst_Rat': this.instRat(raw[i].prediction, raw[i].trust),
           // 'Rat_Sure': this.ratSure(),
           // 'Rat_Act': this.ratAct(),
           // 'Rat_Deg': this.ratDeg(),
           // 'Red_Flag': this.redFlag(raw),
           // The generating functions here are still bugged... using None values for now
-          Inst_Rat: "",
-          Rat_Sure: "",
-          Rat_Act: "",
-          Rat_Deg: "",
-          Red_Flag: "",
           InstructionTimeSpent: this.instrucTime,
-          InstructionAnswers: "",
+          InstructionAnswers: this.parsed_answers,
+          InstructionWrongAns: this.parsed_wrong_ans,
           Date: this.end_survey_form.date,
           Age: this.end_survey_form.age,
           Gender: this.end_survey_form.gender,
@@ -1250,26 +1263,108 @@ export default {
           WRQ12: this.FRResults[12],
           WRQ13: this.FRResults[13],
         };
+        if (raw[i].triplets in triplets_response) {
+          triplets_response[raw[i].triplets] += (', ' + current.Resp_Comb)
+        } else {
+          triplets_response[raw[i].triplets] = current.Resp_Comb
+        }
         output.push(current);
+      }
+      for (var k = 0; k < output.length; k++) {
+        output[k].Res_Comb = triplets_response[output[k].Triplets]
+        output[k].P_Comb = this.pcomb(triplets_response[output[k].Triplets])
+        output[k].C_Comb = this.ccomb(triplets_response[output[k].Triplets])
+        output[k].Control_Rat = this.control_rat(output[k].C_Comb)
+        output[k].Subject_Prob = this.subject_prob(output[k].C_Comb)
       }
       output.sort(this.blockOneSort);
       return output;
     },
-    // instRat(p, t) {
-    //   return ''
-    //   // if (p == 1 && t == 1) {
+    pcomb(res_sequence) {
+      if (res_sequence.length != 8) {
+        return "InCompleteTrial"
+      }
+      var result = ""
+      if (res_sequence[1] == 'O') {
+        result += "O"
+      } else {
+        result += "P"
+      }
+      if (res_sequence[4] == 'O') {
+        result += "O"
+      } else {
+        result += "P"
+      }
+      if (res_sequence[7] == 'O') {
+        result += "O"
+      } else {
+        result += "P"
+      }
+      return result
+    },
+    ccomb(res_sequence) {
+      if (res_sequence.length != 8) {
+        return "InCompleteTrial"
+      }
+      var result = ""
+      if (res_sequence[0] == 'A') {
+        result += "G"
+      } else {
+        result += "K"
+      }
+      if (res_sequence[3] == 'A') {
+        result += "G"
+      } else {
+        result += "K"
+      }
+      if (res_sequence[6] == 'A') {
+        result += "G"
+      } else {
+        result += "K"
+      }
+      return result
+    },
+    control_rat(choices) {
+      if (choices == "KKK" || choices == "GKK" || choices == "GGK" || choices == "GGG") {
+        return 1
+      }
+      return 0
+    },
+    subject_prob(choices) {
+      if (choices == "KKK") {
+        return -3
+      }
+      if (choices == "GKK") {
+        return -1
+      }
+      if (choices == "GGK") {
+        return 1
+      }
+      if (choices == "GGG") {
+        return 3
+      }
+      return 0
 
-    //   // }
-    //   // if (p == 0 && t == 0) {
+    },
+    GJE(avatar_a, part_a, avatar_b, part_b) {
+      var first_symbol, second_symbol
+      if (avatar_a > part_a) {
+        first_symbol = ">"
+      } else if (avatar_a < part_a) {
+        first_symbol = "<"
+      } else {
+        first_symbol = "="
+      }
+      if (avatar_b > part_b) {
+        second_symbol = ">"
+      } else if (avatar_b < part_b) {
+        second_symbol = "<"
+      } else {
+        second_symbol = "="
+      }
 
-    //   // }
-    //   // if (p == 1 && t == 0) {
-
-    //   // }
-    //   // if (p == 0 && t == 1) {
-
-    //   // }
-    // },
+      return "\"" + first_symbol  + second_symbol + "\""
+    },
     processTwoResults(raw) {
       var output = [];
       for (var i = 0; i < raw.length; i++) {
@@ -1419,22 +1514,37 @@ export default {
     vertPositMatch(str) {
       if (str == "HSHS") return 1;
       if (str == "HSSH") return 2;
-      if (str == "HSMP") return 3;
-      if (str == "HSPM") return 4;
+      if (str == "HSWP") return 3;
+      if (str == "HSPW") return 4;
       if (str == "SHHS") return 5;
       if (str == "SHSH") return 6;
-      if (str == "SHMP") return 7;
-      if (str == "SHPM") return 8;
-      if (str == "MPHS") return 9;
-      if (str == "MPSH") return 10;
-      if (str == "MPMP") return 11;
-      if (str == "MPPM") return 12;
-      if (str == "PMHS") return 13;
-      if (str == "PMSH") return 14;
-      if (str == "PMMP") return 15;
-      if (str == "PMPM") return 16;
-      // Should not reach here, returning -1
-      return -1;
+      if (str == "SHWP") return 7;
+      if (str == "SHPW") return 8;
+      if (str == "WPHS") return 9;
+      if (str == "WPSH") return 10;
+      if (str == "WPWP") return 11;
+      if (str == "WPPW") return 12;
+      if (str == "PWHS") return 13;
+      if (str == "PWSH") return 14;
+      if (str == "PWWP") return 15;
+      if (str == "PWPW") return 16;
+      // @Frank: Greg, feel free to add more mappings here now that we have new trials
+      return 0;
+    },
+    resp_comb(prediction, control_choice) {
+      var prediction_char = ""
+      var control_choice_char = ""
+      if (prediction == 1) {
+        prediction_char = 'O'
+      } else if (prediction == 0) {
+        prediction_char = 'T'
+      }
+      if (control_choice == 1) {
+        control_choice_char = 'A'
+      } else if (control_choice == 0) {
+        control_choice_char = 'E'
+      }
+      return control_choice_char + prediction_char
     },
     atomic_choice(trial_id, trust_condition) {
       var atom_choice = ""
@@ -1459,34 +1569,21 @@ export default {
       }
       return atom_choice
     },
-    RightSideUpDown(trial_id, vert_pos, keypress, prediction) {
-      var m1_atom = ""
-      var top_option = ""
-      var bottom_option = ""
-      var flip1 = ""
-      var flip2 = ""
-      if (trial_id >= 1 && trial_id <= 54) {
-        m1_atom = 'H'
-      } else if (trial_id >= 55 && trial_id <= 108) {
-        m1_atom = 'W'
-      } else if (trial_id >= 109 && trial_id <= 162) {
-        m1_atom = 'S'
-      } else if (trial_id >= 163 && trial_id <= 216) {
-        m1_atom = 'P'
+    UpDown(keypress, enctr_1_reverse) {
+      var first_letter, second_letter
+      if (enctr_1_reverse == 1) {
+        first_letter = "D"
       } else {
-        atom_choice = 'Jupiter'
+        first_letter = "U"
       }
-      if (vert_pos == "HSHS" || vert_pos == "HSSH" || vert_pos == "HSMP" || vert_pos == "HSPM") {
-        top_option = 'H'
-      } else if (vert_pos == "MPHS" || vert_pos == "MPSH" || vert_pos == "MPMP" || vert_pos == "MPPM") {
-        top_option = 'W'
-      } else if (vert_pos == "SHHS" || vert_pos == "SHSH" || vert_pos == "SHMP" || vert_pos == "SHPM") {
-        top_option = 'S'
-      } else if (vert_pos == "PMHS" || vert_pos == "PMSH" || vert_pos == "PMMP" || vert_pos == "PMPM") {
-        top_option = 'P'
+      if (keypress[0] == 'A') {
+        second_letter = "U"
+      } else if (keypress[0] == 'Z') {
+        second_letter = "D"
       } else {
-        top_option = 'Saturn'
+        second_letter = "N"
       }
+<<<<<<< HEAD
       if (vert_pos == "HSHS" || vert_pos == "SHHS" || vert_pos == "MPHS" || vert_pos == "PMHS") {
         bottom_option = 'H'
       } else if (vert_pos == "HSMP" || vert_pos == "SHMP" || vert_pos == "MPMP" || vert_pos == "PMMP") {
@@ -1553,7 +1650,81 @@ export default {
         flip2 = '?'
       }
       return flip1 + flip2 
+=======
+      return first_letter + second_letter
+>>>>>>> 61738a359e997ae806136bca346adf6b9d213608
     },
+    // RightSideUpDown(trial_id, vert_pos, keypress, prediction) {
+    //   var m1_atom = ""
+    //   var top_option = ""
+    //   var bottom_option = ""
+    //   var flip1 = ""
+    //   var flip2 = ""
+    //   if (trial_id >= 1 && trial_id <= 54) {
+    //     m1_atom = 'H'
+    //   } else if (trial_id >= 55 && trial_id <= 108) {
+    //     m1_atom = 'W'
+    //   } else if (trial_id >= 109 && trial_id <= 162) {
+    //     m1_atom = 'S'
+    //   } else if (trial_id >= 163 && trial_id <= 216) {
+    //     m1_atom = 'P'
+    //   } else {
+    //     atom_choice = 'Jupiter'
+    //   }
+    //   if (vert_pos == "HSHS" || vert_pos == "HSSH" || vert_pos == "HSMP" || vert_pos == "HSPM") {
+    //     top_option = 'H'
+    //   } else if (vert_pos == "MPHS" || vert_pos == "MPSH" || vert_pos == "MPMP" || vert_pos == "MPPM") {
+    //     top_option = 'W'
+    //   } else if (vert_pos == "SHHS" || vert_pos == "SHSH" || vert_pos == "SHMP" || vert_pos == "SHPM") {
+    //     top_option = 'S'
+    //   } else if (vert_pos == "PMHS" || vert_pos == "PMSH" || vert_pos == "PMMP" || vert_pos == "PMPM") {
+    //     top_option = 'P'
+    //   } else {
+    //     top_option = 'Saturn'
+    //   }
+    //   if (vert_pos == "HSHS" || vert_pos == "SHHS" || vert_pos == "MPHS" || vert_pos == "PMHS") {
+    //     bottom_option = 'H'
+    //   } else if (vert_pos == "HSMP" || vert_pos == "SHMP" || vert_pos == "MPMP" || vert_pos == "PMMP") {
+    //     bottom_option = 'W'
+    //   } else if (vert_pos == "HSSH" || vert_pos == "SHSH" || vert_pos == "MPSH" || vert_pos == "PMSH") {
+    //     bottom_option = 'S'
+    //   } else if (vert_pos == "HSPM" || vert_pos == "SHPM" || vert_pos == "MPPM" || vert_pos == "PMPM") {
+    //     bottom_option = 'P'
+    //   } else {
+    //     bottom_option = 'Saturn'
+    //   }
+    //   if (m1_atom == "H" && top_option == "H") {
+    //     flip1 = 'U'
+    //   } else if (m1_atom == "W" && top_option == "W") {
+    //     flip1 = 'U'
+    //   } else if (m1_atom == "S" && top_option == "S") {
+    //     flip1 = 'U'
+    //   } else if (m1_atom == "P" && top_option == "P") {
+    //     flip1 = 'U'
+    //   } else {
+    //     flip1 = 'D'
+    //   }
+    //   if (bottom_option == "H" && prediction == "1") {
+    //     flip2 = 'U'
+    //   } else if (bottom_option == "W" && prediction == "1") {
+    //     flip2 = 'U'
+    //   } else if (bottom_option == "S" && prediction == "0") {
+    //     flip2 = 'U'
+    //   } else if (bottom_option == "P" && prediction == "0") {
+    //     flip2 = 'U'
+    //   } else if (bottom_option == "H" && prediction == "0") {
+    //     flip2 = 'D'
+    //   } else if (bottom_option == "W" && prediction == "0") {
+    //     flip2 = 'D'
+    //   } else if (bottom_option == "S" && prediction == "1") {
+    //     flip2 = 'D'
+    //   } else if (bottom_option == "P" && prediction == "1") {
+    //     flip2 = 'D'
+    //   } else {
+    //     flip2 = '?'
+    //   }
+    //   return flip1 + flip2
+    // },
     blockThreeSort(a, b) {
       if (a["Game Condition"] < b["Game Condition"]) {
         return -1;

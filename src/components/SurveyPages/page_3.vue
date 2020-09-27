@@ -74,8 +74,9 @@ divine?"
         </b-form-group>
       </b-form>
     </b-container>
-    <b-button variant="outline-primary" @click="this.go_to_back" size="lg">Back</b-button>
+    <b-button :disabled="block" variant="outline-primary" @click="this.go_to_back" size="lg">Back</b-button>
     <b-button
+      :disabled="block"
       style="float: right;"
       @click="this.go_to_next"
       variant="outline-primary"

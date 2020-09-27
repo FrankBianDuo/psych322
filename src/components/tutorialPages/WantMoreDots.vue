@@ -18,12 +18,8 @@
   >
     <b-container class="bv-example-row" :style="this.windowsize">
       <!-- We need to move the text upwards so that the window shrinks to normal size. -->
-      <b-row class="mt-5">
-        <p
-          style="font-size: 30px; font-family: Calibri; transform: translate(-50%, 0); margin-left: 50%;"
-        >Dots are desirable. 
-        <br />The more the better.
-        <br />Everyone knows this.</p>
+      <b-row class="mt-3">
+        <img :src="require('../../assets/tutorials/DotAreGood.png')" style="width: 20%; height: 20%; transform: translate(-50%, 0); margin-left: 50%; padding-bottom: 2%;">
         <!-- Container -->
         <img
           :src="require('../../assets/Instructions/Want More Dots/Dot Holder Six Correct Numbers.png')"
