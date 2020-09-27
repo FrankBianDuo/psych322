@@ -1498,13 +1498,37 @@ export default {
       } else {
         bottom_option = 'Saturn'
       }
-      if (m1_atom == "H" && top_option == "H") {
+      // if (m1_atom == "H" && top_option == "H" || top_option == "W") {
+      //   flip1 = 'U'
+      // } else if (m1_atom == "S" && top_option == "H" || top_option == "W") {
+      //   flip1 = 'D'
+      // } else if (m1_atom == "W" && top_option == "W" || top_option == "H") {
+      //   flip1 = 'U'
+      // } else if (m1_atom == "P" && top_option == "W" || top_option == "H") {
+      //   flip1 = 'D'
+      // } else if (m1_atom == "S" && top_option == "S" || top_option == "P") {
+      //   flip1 = 'U'
+      // } else if (m1_atom == "H" && top_option == "S" || top_option == "P") {
+      //   flip1 = 'D'
+      // } else if (m1_atom == "P" && top_option == "P" || top_option == "S") {
+      //   flip1 = 'U'
+      // } else if (m1_atom == "W" && top_option == "P" || top_option == "S") {
+      //   flip1 = 'D'
+      // } else {
+      //   flip1 = 'Mercury'
+      // }
+      // if (m1_atom === top_option) {
+      //   flip1 = 'U'
+      // } else {
+      //   flip1 = 'D'
+      // }
+      if (trial_id >= 1 && trial_id <= 54 && (vert_pos == "HSHS" || vert_pos == "HSSH" || vert_pos == "HSMP" || vert_pos == "HSPM")) {
         flip1 = 'U'
-      } else if (m1_atom == "W" && top_option == "W") {
+      } else if (trial_id >= 55 && trial_id <= 108 && (vert_pos == "MPHS" || vert_pos == "MPSH" || vert_pos == "MPMP" || vert_pos == "MPPM")) {
         flip1 = 'U'
-      } else if (m1_atom == "S" && top_option == "S") {
+      } else if (trial_id >= 109 && trial_id <= 162 && (vert_pos == "SHHS" || vert_pos == "SHSH" || vert_pos == "SHMP" || vert_pos == "SHPM")) {
         flip1 = 'U'
-      } else if (m1_atom == "P" && top_option == "P") {
+      } else if (trial_id >= 163 && trial_id <= 216 && (vert_pos == "PMHS" || vert_pos == "PMSH" || vert_pos == "PMMP" || vert_pos == "PMPM")) {
         flip1 = 'U'
       } else {
         flip1 = 'D'
@@ -1528,7 +1552,7 @@ export default {
       } else {
         flip2 = '?'
       }
-      return flip1 + flip2
+      return flip1 + flip2 
     },
     blockThreeSort(a, b) {
       if (a["Game Condition"] < b["Game Condition"]) {
