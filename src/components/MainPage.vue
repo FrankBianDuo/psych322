@@ -923,10 +923,14 @@ export default {
             wrong_answers += ', ' + String(key)
           }
         }
-        if (value[1] == 't') {
-          answers += 'T';
+        if (value[1] == 't' && value[0] == true) {
+          answers += 'T'
+        } else if (value[1] == 't' && value[0] == false) {
+          answers += 'F'
+        } else if (value[1] == 'f' && value[0] == true) {
+          answers += 'F'
         } else {
-          answers += 'F';
+          answers += 'T'
         }
     
       }
