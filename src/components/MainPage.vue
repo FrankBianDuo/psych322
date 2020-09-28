@@ -1268,7 +1268,7 @@ export default {
           WRQ13: this.FRResults[13],
         };
         if (raw[i].triplets in triplets_response) {
-          triplets_response[raw[i].triplets] += (', ' + current.Resp_Comb)
+          triplets_response[raw[i].triplets] += (',' + current.Resp_Comb)
         } else {
           triplets_response[raw[i].triplets] = current.Resp_Comb
         }
