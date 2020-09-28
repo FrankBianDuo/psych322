@@ -13,7 +13,7 @@
       <!-- Button for firing the instruction modal -->
       <b-row class="my-4 justify-content-center">
         <!-- <b-button v-b-modal.modal-center-WRITENAMEOFPAGEHERETOSEEITPOPUPFIRST>Instructions</b-button> -->
-        <b-button v-b-modal.modal-center-WantMoreDots>Instructions</b-button>
+        <b-button v-b-modal.modal-center-BotStopper>Instructions</b-button>
       </b-row>
       <!-- Button for firing the Block #1 - #3 modals -->
       <b-row class="my-4 justify-content-center">
@@ -1187,17 +1187,17 @@ export default {
           Vert_Posit_L: raw[i].vert_pos,
           Vert_Posit_N: this.vertPositMatch(raw[i].vert_pos),
           Key_Press: raw[i].keypress,
+          RightSideUpDown: this.UpDown(raw[i].keypress, raw[i].enctr_1_reverse),
           Trial_order: raw[i].trial_order,
           Trial_order_segment: String(1 + Math.floor(i / 23)),
           Avatar: raw[i].avatar_id,
           // Block_order: "123",
-          Atomic_Choice: this.atomic_choice(raw[i].trial_number, raw[i].encnt2_cond),
-          RightSideUpDown: this.UpDown(raw[i].keypress, raw[i].enctr_1_reverse),
+          // Atomic_Choice: this.atomic_choice(raw[i].trial_number, raw[i].encnt2_cond),
           Prediction: raw[i].prediction,
           Pred_RT: raw[i].reaction_time_prediction,
           Control_Choice: raw[i].trust,
-          Resp_Comb: this.resp_comb(raw[i].prediction, raw[i].trust),
           Control_RT: raw[i].reaction_time_trust,
+          Resp_Comb: this.resp_comb(raw[i].prediction, raw[i].trust),
           GJE: this.GJE(raw[i].OriginalM1AvatarPayoffA, raw[i].OriginalM1ParticipantPayoffA, raw[i].OriginalM1AvatarPayoffB, raw[i].OriginalM1ParticipantPayoffB),
           Choice_Type: raw[i].choice_type,
           Choice_Deg: raw[i].choice_deg,
@@ -1205,8 +1205,8 @@ export default {
           Triplets: raw[i].triplets,
           Triplet_Order: triplet_rank,
           P_Comb: null,
-          Res_Comb: null,
           C_Comb: null,
+          Res_Comb: null,
           Control_Rat: null,
           Subject_Prob: null,
           // 'Inst_Rat': this.instRat(raw[i].prediction, raw[i].trust),
@@ -1282,7 +1282,7 @@ export default {
     },
     pcomb(res_sequence) {
       if (res_sequence.length != 8) {
-        return "InCompleteTrial"
+        return "empty"
       }
       var result = ""
       if (res_sequence[1] == 'O') {
@@ -1304,7 +1304,7 @@ export default {
     },
     ccomb(res_sequence) {
       if (res_sequence.length != 8) {
-        return "InCompleteTrial"
+        return "empty"
       }
       var result = ""
       if (res_sequence[0] == 'A') {
@@ -1327,8 +1327,11 @@ export default {
     control_rat(choices) {
       if (choices == "KKK" || choices == "GKK" || choices == "GGK" || choices == "GGG") {
         return 1
+      } else if (choices == "KKG" || choices == "KGK" || choices == "KGG" || choices == "GKG") {
+        return 0
+      } else {
+        return "N"
       }
-      return 0
     },
     subject_prob(choices) {
       if (choices == "KKK") {
@@ -1363,7 +1366,7 @@ export default {
         second_symbol = "="
       }
 
-      return "\"" + first_symbol  + second_symbol + "\""
+      return "\'" + first_symbol  + second_symbol
     },
     processTwoResults(raw) {
       var output = [];
