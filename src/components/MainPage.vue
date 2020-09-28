@@ -918,9 +918,9 @@ export default {
       for (let [key, value] of Object.entries(this.ans_tutorial)) {
         if (value[0] == false) {
           if (wrong_answers == "") {
-            wrong_answers += String(key)
+            wrong_answers += String(key - 19)
           } else {
-            wrong_answers += ', ' + String(key)
+            wrong_answers += ', ' + String(key - 19)
           }
         }
         if (value[1] == 't' && value[0] == true) {
