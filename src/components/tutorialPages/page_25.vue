@@ -68,7 +68,7 @@ export default {
       ans_disable: false,
       b_1_style: "primary",
       b_2_style: "primary",
-      ans: "t",
+      ans: "f",
       allowprogress: true,
     };
   },

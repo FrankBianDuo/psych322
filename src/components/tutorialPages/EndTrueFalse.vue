@@ -23,7 +23,7 @@
     </b-container>
     <b-button
       @click="$bvModal.hide('modal-center-EndTrueFalse')"
-      v-b-modal.modal-center-instruction28
+      v-b-modal.modal-center-instruction27
       variant="outline-primary"
       size="lg"
     >Back</b-button>

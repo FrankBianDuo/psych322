@@ -1038,6 +1038,10 @@ export default {
         parent.opacity_avatar05b = "0%";
         parent.opacity_got1 = "0%";
         parent.opacity_got2 = "0%";
+        parent.opacity_pressAZ = "0%";
+        parent.opacity_pressJK = "0%";
+        parent.opacity_predA = "0%";
+        parent.opacity_predZ = "0%";
         parent.opacity_dotstableDblack1 = "0%";
         parent.opacity_dotstableDblack3 = "0%";
         parent.opacity_dotstableDblack5 = "0%";

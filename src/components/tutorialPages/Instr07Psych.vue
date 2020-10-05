@@ -549,6 +549,12 @@ export default {
       setTimeout(() => (parent.mutex = false), 3600);
       setTimeout(() => (parent.locked = false), 3600);
 
+      //  Kill Graphics
+      setTimeout(() => {
+        parent.opacity_pressAZ = "0%";
+        parent.opacity_pressJK = "0%";
+      }, 0);
+
       // Press Space Bar.
       setTimeout(() => {
         this.sbc = "outline-secondary";

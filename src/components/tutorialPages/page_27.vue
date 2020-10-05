@@ -22,7 +22,7 @@
         />
       </div>
     </b-container>
-    <b-button
+    <!-- <b-button
       @click="this.reset_animation_back"
       variant="outline-primary"
       :disabled="allowprogress"
@@ -30,6 +30,22 @@
     >Back</b-button>
     <b-button
       @click="this.reset_animation_next"
+      style="float: right;"
+      variant="outline-primary"
+      :disabled="allowprogress"
+      size="lg"
+    >Next</b-button> -->
+
+    <b-button
+      @click="$bvModal.hide(`modal-center-instruction27`)"
+      v-b-modal.modal-center-instruction26
+      variant="outline-primary"
+      :disabled="allowprogress"
+      size="lg"
+    >Back</b-button>
+    <b-button
+      @click="$bvModal.hide(`modal-center-instruction27`)"
+      v-b-modal.modal-center-EndTrueFalse
       style="float: right;"
       variant="outline-primary"
       :disabled="allowprogress"

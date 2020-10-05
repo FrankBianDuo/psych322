@@ -758,8 +758,8 @@ export default {
         parent.opacity_wall2 = "0%";
       }, 1500);
       setTimeout(() => {
-        parent.opacity_choiceA = "0%";
-        parent.opacity_choiceZ = "100%";
+        parent.opacity_choiceA = "100%";
+        parent.opacity_choiceZ = "0%";
       }, 2000);
       setTimeout(() => {
         parent.opacity_chosethey1 = "0%";
@@ -839,8 +839,8 @@ export default {
         parent.opacity_wall2 = "0%";
       }, 1500);
       setTimeout(() => {
-        parent.opacity_choiceA = "0%";
-        parent.opacity_choiceZ = "100%";
+        parent.opacity_choiceA = "100%";
+        parent.opacity_choiceZ = "0%";
       }, 2000);
       setTimeout(() => {
         parent.opacity_chosethey1 = "0%";
@@ -901,7 +901,7 @@ export default {
         parent.opacity_choiceA = "0%";
       }, 0);
       setTimeout(() => {
-        parent.opacity_choiceZ = "100%";
+        parent.opacity_choiceZ = "0%";
       }, 0);
 
       // Kill pred choice feedback:
