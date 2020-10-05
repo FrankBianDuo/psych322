@@ -1,9 +1,9 @@
 <template>
   <b-modal
-    id="modal-center-ExperTutor"
+    id="modal-center-EndTrueFalse"
     size="xl"
     centered
-    title="Experiment Tutorial"
+    title="End of True or False Questions 1 - 9"
     :hide-footer="true"
     :header-bg-variant="headerBgVariant"
     :header-text-variant="headerTextVariant"
@@ -17,29 +17,29 @@
   >
     <b-container class="align-bottom" :style="this.windowsize">
       <img
-        :src="require('../../assets/Instructions/Text Only Pages/Experiment Tutorial.png')"
+        :src="require('../../assets/Instructions/Text Only Pages/End TF Questions.png')"
         style="width: 90%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"
       />
     </b-container>
     <b-button
-      @click="$bvModal.hide('modal-center-ExperTutor')"
-      v-b-modal.modal-center-ExperInfo
+      @click="$bvModal.hide('modal-center-EndTrueFalse')"
+      v-b-modal.modal-center-instruction28
       variant="outline-primary"
       size="lg"
     >Back</b-button>
     <b-button
       style="float: right;"
-      @click="$bvModal.hide('modal-center-ExperTutor')"
+      @click="$bvModal.hide('modal-center-EndTrueFalse')"
       variant="success"
       size="lg"
-      v-b-modal.modal-center-Instr01Intro
+      v-b-modal.modal-center-ProgBar
     >Next</b-button>
   </b-modal>
 </template>
 
 <script>
 export default {
-  name: "ExperTutor",
+  name: "EndTrueFalse",
   props: ["windowsize"],
   components: {},
   data() {
@@ -51,7 +51,6 @@ export default {
   methods: {},
 };
 </script>
-
 
 <style scoped>
 </style>

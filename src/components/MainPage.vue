@@ -108,10 +108,23 @@
         <b-button variant="primary">Submit</b-button>
       </b-form>
     </b-modal>
+
     <BotStopper @timesync="instructionStart" :windowsize="this.window_size" />
     <Consent :pID="this.participant_generated_id" :windowsize="this.window_size" />
     <ExperInfo :windowsize="this.window_size" />
     <ExperTutor :windowsize="this.window_size" />
+    <Instr01Intro :windowsize="this.window_size" />
+    <Instr02Desire :windowsize="this.window_size" />
+    <Instr03Rooms :windowsize="this.window_size" />
+    <Instr04Walls :windowsize="this.window_size" />
+    <Instr05Social :windowsize="this.window_size" />
+    <Instr06Betting :windowsize="this.window_size" />
+    <Instr07Psych :windowsize="this.window_size" />
+    <Instr08Prudence :windowsize="this.window_size" />
+    <Instr09Practice :windowsize="this.window_size" />
+    <Instr10Review :windowsize="this.window_size" />
+    <BeginTrueFalse :windowsize="this.window_size" />
+    <EndTrueFalse :windowsize="this.window_size" />
     <MeetPeople :windowsize="this.window_size" />
     <WantMoreDots :windowsize="this.window_size" />
     <CommKnow :windowsize="this.window_size" />
@@ -338,6 +351,18 @@ import BotStopper from "./tutorialPages/BotStopper.vue";
 import Consent from "./tutorialPages/Consent.vue";
 import ExperInfo from "./tutorialPages/ExperInfo.vue";
 import ExperTutor from "./tutorialPages/ExperTutor.vue";
+import Instr01Intro from "./tutorialPages/Instr01Intro.vue";
+import Instr02Desire from "./tutorialPages/Instr02Desire.vue";
+import Instr03Rooms from "./tutorialPages/Instr03Rooms.vue";
+import Instr04Walls from "./tutorialPages/Instr04Walls.vue";
+import Instr05Social from "./tutorialPages/Instr05Social.vue";
+import Instr06Betting from "./tutorialPages/Instr06Betting.vue";
+import Instr07Psych from "./tutorialPages/Instr07Psych.vue";
+import Instr08Prudence from "./tutorialPages/Instr08Prudence.vue";
+import Instr09Practice from "./tutorialPages/Instr09Practice.vue";
+import Instr10Review from "./tutorialPages/Instr10Review.vue";
+import BeginTrueFalse from "./tutorialPages/BeginTrueFalse.vue";
+import EndTrueFalse from "./tutorialPages/EndTrueFalse.vue";
 import MeetPeople from "./tutorialPages/MeetPeople.vue";
 import WantMoreDots from "./tutorialPages/WantMoreDots.vue";
 import CommKnow from "./tutorialPages/CommKnow.vue";
@@ -548,6 +573,18 @@ export default {
     Consent,
     ExperInfo,
     ExperTutor,
+    Instr01Intro,
+    Instr02Desire,
+    Instr03Rooms,
+    Instr04Walls,
+    Instr05Social,
+    Instr06Betting,
+    Instr07Psych,
+    Instr08Prudence,
+    Instr09Practice,
+    Instr10Review,
+    BeginTrueFalse,
+    EndTrueFalse,
     MeetPeople,
     WantMoreDots,
     CommKnow,
@@ -1688,7 +1725,30 @@ export default {
   },
 };
 
-// Provisional Sequence of Instruction Pages:
+// Current Sequence of Instruction Pages:
+// BotStopper
+// Consent
+// ExperInfo
+// ExperTutor
+// Instr01Intro
+// Instr02Desire
+// Instr03Rooms
+// Instr04Walls
+// Instr05Social
+// Instr06Betting
+// Instr07Psych
+// Instr08Prudence
+// Instr09Practice
+// Instr10Review
+// BeginTrueFalse
+// EndTrueFalse
+// ProgBar
+// KeyHands
+// EndInstr
+// instruction 73
+
+
+// Old Sequence of Instruction Pages:
 // BotStopper
 // Consent
 // ExperInfo
