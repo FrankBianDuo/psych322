@@ -897,12 +897,6 @@ export default {
       setTimeout(() => {
         parent.opacity_presskey = "0%";
       }, 3000);
-      setTimeout(() => {
-        parent.opacity_choiceA = "0%";
-      }, 0);
-      setTimeout(() => {
-        parent.opacity_choiceZ = "0%";
-      }, 0);
 
       // Kill pred choice feedback:
       setTimeout(() => {
