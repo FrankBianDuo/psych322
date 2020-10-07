@@ -680,6 +680,12 @@ export default {
         parent.opacity_predA = "100%";
         parent.opacity_predZ = "0%";
       }, 0);
+      setTimeout(() => {
+        parent.opacity_pressAZ = "0%";
+      }, 1000);
+      setTimeout(() => {
+        parent.opacity_pressAZ = "0%";
+      }, 3000);
 
       // Press J or K.
       setTimeout(() => {

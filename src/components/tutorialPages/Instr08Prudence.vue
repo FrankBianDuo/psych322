@@ -328,16 +328,16 @@ export default {
       opacity_avatar17a: "100%",
       opacity_avatar17b: "0%",
       opacity_dotstableDblack1: "0%",
-      opacity_dotstableDblack3: "100%",
-      opacity_dotstableDblack5: "0%",
-      opacity_dotstableDpurp1: "0%",
-      opacity_dotstableDpurp3: "100%",
+      opacity_dotstableDblack3: "0%",
+      opacity_dotstableDblack5: "100%",
+      opacity_dotstableDpurp1: "100%",
+      opacity_dotstableDpurp3: "0%",
       opacity_dotstableDpurp5: "0%",
       opacity_dotstableCblack1: "0%",
-      opacity_dotstableCblack3: "0%",
-      opacity_dotstableCblack5: "100%",
-      opacity_dotstableCpurp1: "100%",
-      opacity_dotstableCpurp3: "0%",
+      opacity_dotstableCblack3: "100%",
+      opacity_dotstableCblack5: "0%",
+      opacity_dotstableCpurp1: "0%",
+      opacity_dotstableCpurp3: "100%",
       opacity_dotstableCpurp5: "0%",
       opacity_dotstableAblack2: "0%",
       opacity_dotstableAblack4: "0%",
@@ -472,16 +472,16 @@ export default {
       this.opacity_avatar17a = "100%";
       this.opacity_avatar17b = "0%";
       this.opacity_dotstableDblack1 = "0%";
-      this.opacity_dotstableDblack3 = "100%";
-      this.opacity_dotstableDblack5 = "0%";
-      this.opacity_dotstableDpurp1 = "0%";
-      this.opacity_dotstableDpurp3 = "100%";
+      this.opacity_dotstableDblack3 = "0%";
+      this.opacity_dotstableDblack5 = "100%";
+      this.opacity_dotstableDpurp1 = "100%";
+      this.opacity_dotstableDpurp3 = "0%";
       this.opacity_dotstableDpurp5 = "0%";
       this.opacity_dotstableCblack1 = "0%";
-      this.opacity_dotstableCblack3 = "0%";
-      this.opacity_dotstableCblack5 = "100%";
-      this.opacity_dotstableCpurp1 = "100%";
-      this.opacity_dotstableCpurp3 = "0%";
+      this.opacity_dotstableCblack3 = "100%";
+      this.opacity_dotstableCblack5 = "0%";
+      this.opacity_dotstableCpurp1 = "0%";
+      this.opacity_dotstableCpurp3 = "100%";
       this.opacity_dotstableCpurp5 = "0%";
       this.opacity_dotstableAblack2 = "0%";
       this.opacity_dotstableAblack4 = "0%";
@@ -549,7 +549,7 @@ export default {
 
       // Room 1 Choice
       setTimeout(() => {
-        parent.opacity_choiceD = "100%";
+        parent.opacity_choiceC = "100%";
       }, 0);
 
       // Present Room 2

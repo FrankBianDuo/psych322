@@ -596,14 +596,14 @@ export default {
         this.keyflow1 = true;
         this.press = "space bar";
         parent.opacity_presskey = "100%";
-      }, 7000);
+      }, 1500);
       setTimeout(() => {
         parent.opacity_presskey = "0%";
-      }, 7500);
+      }, 2000);
       setTimeout(() => {
         this.sbc = "primary";
         parent.opacity_presskey = "100%";
-      }, 8000);
+      }, 2500);
 
       // Fade out other --> Fade in you
       setTimeout(() => {
@@ -682,13 +682,13 @@ export default {
         parent.opacity_dotstableAblack4 = "100%";
       }, 2000);
       setTimeout(() => {
-        parent.opacity_dotstableApurp5 = "100%";
+        parent.opacity_dotstableApurp1 = "100%";
       }, 2000);
       setTimeout(() => {
         parent.opacity_dotstableZblack2 = "100%";
       }, 2000);
       setTimeout(() => {
-        parent.opacity_dotstableZpurp1 = "100%";
+        parent.opacity_dotstableZpurp5 = "100%";
       }, 2000);
 
       // Text swap
@@ -996,7 +996,7 @@ export default {
         parent.opacity_chosethey2 = "0%";
       }, 2200);
       setTimeout(() => {
-        parent.opacity_got5 = "100%";
+        parent.opacity_got1 = "100%";
         parent.opacity_got3 = "0%";
       }, 2400);
 
