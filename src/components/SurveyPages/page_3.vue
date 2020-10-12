@@ -16,7 +16,7 @@
     :hide-header-close="true"
   >
     <b-container class="align-bottom" :style="this.windowsize">
-      <b-form>
+      <b-form @submit.prevent>
         <b-form-group
           id="input-group-2"
           label="In US dollars, how much money do you typically make per day?"
