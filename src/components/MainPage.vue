@@ -819,8 +819,8 @@ export default {
       aws_bucket_name: "experimentdata2020",
       aws_object_name: this.blockOneFileName(),
       // serverlessrepo-s3-presigned-url-s3presignedurl-EF2SRE90YXDY?BucketName="experimentdata2020"&ObjectName="test10.txt"&ExpiredIn=3600
-      aws_presigned_lambda: `https://cors-anywhere.herokuapp.com/https://5wmf85807b.execute-api.us-east-2.amazonaws.com/default/serverlessrepo-s3-presigned-url-s3presignedurl-EF2SRE90YXDY?BucketName=`,
-      aws_s3_post_url: `https://cors-anywhere.herokuapp.com/https://experimentdata2020.s3.amazonaws.com`,
+      aws_presigned_lambda: `https://fathomless-coast-21413.herokuapp.com/https://5wmf85807b.execute-api.us-east-2.amazonaws.com/default/serverlessrepo-s3-presigned-url-s3presignedurl-EF2SRE90YXDY?BucketName=`,
+      aws_s3_post_url: `https://fathomless-coast-21413.herokuapp.com/https://experimentdata2020.s3.amazonaws.com`,
       // Variables for tracking how much time is spent on instructions
       instrucStart: 0,
       instrucEnd: 0,
