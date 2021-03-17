@@ -18,7 +18,7 @@
     <b-container class="align-bottom" :style="this.windowsize">
       <img
         :src="require('../../assets/Instructions/Text Only Pages/Consent SubPool.png')"
-        style="width: 100%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"
+        style="width: 85%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"
       />
 
       <div>

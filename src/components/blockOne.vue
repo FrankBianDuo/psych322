@@ -211,7 +211,8 @@
 <script>
 import trialOneTrialData from "./trialData.js";
 import datasheet_sample from "./newSample.json";
-import payoff_structure from "./payoff.json";
+// The origional payoff structures come from "./payoff.json", so to revert back just delete the '2'.
+import payoff_structure from "./payoff2.json";
 export default {
   name: "BlockOne",
   props: ["participant_name"],
