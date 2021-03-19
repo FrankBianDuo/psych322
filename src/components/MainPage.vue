@@ -1218,6 +1218,14 @@ export default {
         } else {
           triplets_id[raw[i].triplets] = "I"
         }
+        var enctr_1_flipped = raw[i].enctr_1_reverse.toString();
+        // eslint-disable-next-line no-console
+        console.log("enctr_1_flipped: " + enctr_1_flipped);
+        var enctr_2_flipped = raw[i].enctr_2_reverse.toString();
+        // eslint-disable-next-line no-console
+        console.log("enctr_2_flipped: " + enctr_2_flipped);
+        // eslint-disable-next-line no-console
+        console.log(enctr_1_flipped + enctr_2_flipped);
         var triplet_rank = triplets_id[raw[i].triplets].length
         var current = {
           Participant_ID: this.participant_generated_id,
@@ -1225,8 +1233,9 @@ export default {
           Room1: raw[i].encnt1_cond,
           Room2: raw[i].encnt2_cond,
           Label: raw[i].label,
-          Vertical_Position_Lett: raw[i].vert_pos,
-          Vertical_Position_Num: this.vertPositMatch(raw[i].vert_pos),
+          // Vertical_Position_Lett: raw[i].vert_pos,
+          // Vertical_Position_Num: this.vertPositMatch(raw[i].vert_pos),
+          Vertical_Position: "\"" + enctr_1_flipped + enctr_2_flipped + "\"",
           Triplets: raw[i].triplets,
           Triplet_Order: triplet_rank,
           Trial_order: raw[i].trial_order,

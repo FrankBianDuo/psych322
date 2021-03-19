@@ -309,7 +309,7 @@ export default {
       show_cur_num: false,
       prediction: null,
       // How many games to run 216 + 8 + 6
-      max_avatar: 230,
+      max_avatar: 234,
       trial_started: 0,
       avatar_choices: ["3", "2"],
       player_payoff: ["1.5", "2", "2.5"],
@@ -779,6 +779,7 @@ export default {
           OriginalM2AvatarPayoffB: this.payoff_structure_data[i]["M2AvatarPayoffB"],
           OriginalM2ParticipantPayoffB: this.payoff_structure_data[i]["M2ParticipantPayoffB"],
           a_c_present: "2",
+          // 1 means flipped and 0 means not flipped
           enctr_1_reverse: Math.floor(Math.random() * 2),
           enctr_2_reverse: Math.floor(Math.random() * 2),
           enctr_1_type: this.trial_identifier(this.payoff_structure_data[i]["M1AvatarPayoffA"], this.payoff_structure_data[i]["M1ParticipantPayoffA"], this.payoff_structure_data[i]["M1AvatarPayoffB"], this.payoff_structure_data[i]["M1ParticipantPayoffB"]),
@@ -789,16 +790,23 @@ export default {
           prediction: null,
           reaction_time_trust: null,
           reaction_time_prediction: null,
-          encnt1_cond: this.datasheet_sample_data[i]["Encnt1_Cond"],
-          encnt2_cond: this.datasheet_sample_data[i]["Encnt2_Cond"],
+          // encnt1_cond: this.datasheet_sample_data[i]["Encnt1_Cond"],
+          encnt1_cond: "N/A",
+          // encnt2_cond: this.datasheet_sample_data[i]["Encnt2_Cond"],
+          encnt2_cond: "N/A",
           trial_order: null,
           trial_number: String(i + 1),
           avatar_id: null,
           // Some fixed column values
-          choice_type: this.datasheet_sample_data[i]["Choice_Type"],
-          choice_deg: this.datasheet_sample_data[i]["Choice_Deg"],
-          sure_thing: this.datasheet_sample_data[i]["Sure_Thing"],
-          triplets: this.datasheet_sample_data[i]["Triplets"],
+          // choice_type: this.datasheet_sample_data[i]["Choice_Type"],
+          // choice_deg: this.datasheet_sample_data[i]["Choice_Deg"],
+          // sure_thing: this.datasheet_sample_data[i]["Sure_Thing"],
+          // @Frank: uncomment this line to have triplets
+          // triplets: this.datasheet_sample_data[i]["Triplets"],
+          choice_type: "N/A",
+          choice_deg: "N/A",
+          sure_thing: "N/A",
+          triplets: "N/A",
         }
         if (new_comb.enctr_1_reverse == 1) {
           var tempLeft, tempRight
