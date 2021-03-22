@@ -210,7 +210,7 @@
 
 <script>
 import trialOneTrialData from "./trialData.js";
-import datasheet_sample from "./newSample.json";
+import datasheet_sample from "./newSample2.json";
 // The origional payoff structures come from "./payoff.json", so to revert back just delete the '2'.
 import payoff_structure from "./payoff2.json";
 export default {
@@ -790,23 +790,23 @@ export default {
           prediction: null,
           reaction_time_trust: null,
           reaction_time_prediction: null,
-          // encnt1_cond: this.datasheet_sample_data[i]["Encnt1_Cond"],
-          encnt1_cond: "N/A",
-          // encnt2_cond: this.datasheet_sample_data[i]["Encnt2_Cond"],
-          encnt2_cond: "N/A",
+          encnt1_cond: this.datasheet_sample_data[i]["Encnt1_Cond"],
+          // encnt1_cond: "N/A",
+          encnt2_cond: this.datasheet_sample_data[i]["Encnt2_Cond"],
+          // encnt2_cond: "N/A",
           trial_order: null,
           trial_number: String(i + 1),
           avatar_id: null,
           // Some fixed column values
-          // choice_type: this.datasheet_sample_data[i]["Choice_Type"],
-          // choice_deg: this.datasheet_sample_data[i]["Choice_Deg"],
-          // sure_thing: this.datasheet_sample_data[i]["Sure_Thing"],
+          choice_type: this.datasheet_sample_data[i]["Choice_Type"],
+          choice_deg: this.datasheet_sample_data[i]["Choice_Deg"],
+          sure_thing: this.datasheet_sample_data[i]["Sure_Thing"],
           // @Frank: uncomment this line to have triplets
-          // triplets: this.datasheet_sample_data[i]["Triplets"],
-          choice_type: "N/A",
-          choice_deg: "N/A",
-          sure_thing: "N/A",
-          triplets: "N/A",
+          triplets: this.datasheet_sample_data[i]["Triplets"],
+          // choice_type: "N/A",
+          // choice_deg: "N/A",
+          // sure_thing: "N/A",
+          // triplets: "N/A",
         }
         if (new_comb.enctr_1_reverse == 1) {
           var tempLeft, tempRight

@@ -1246,7 +1246,7 @@ export default {
           GJE: this.GJE(raw[i].OriginalM1AvatarPayoffA, raw[i].OriginalM1ParticipantPayoffA, raw[i].OriginalM1AvatarPayoffB, raw[i].OriginalM1ParticipantPayoffB),
           Atomic_Choice: raw[i].choice_type,
           Choice_Deg: raw[i].choice_deg,
-          Sure_Thing: raw[i].sure_thing + 1,
+          Sure_Thing: raw[i].sure_thing,
           
           RightSideUpDown: this.UpDown(raw[i].keypress, raw[i].enctr_1_reverse),
           Key_Press: raw[i].keypress,
