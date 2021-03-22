@@ -18,8 +18,12 @@
     <b-container class="align-bottom" :style="this.windowsize">
       <img
         :src="require('../../assets/Instructions/Text Only Pages/Experiment Information.png')"
-        style="width: 90%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"
+        style="width: 85%; height: auto; transform: translate(-50%, 0); margin-left: 50%;"
       />
+
+      <div>
+        <h1>{{"Participant ID: " + pID}}</h1>
+      </div>
     </b-container>
     <b-button
       @click="$bvModal.hide('modal-center-ExperInfo')"
@@ -40,7 +44,7 @@
 <script>
 export default {
   name: "ExperInfo",
-  props: ["windowsize"],
+  props: ["windowsize", "pID"],
   components: {},
   data() {
     return {

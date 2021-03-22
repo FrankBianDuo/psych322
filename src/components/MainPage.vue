@@ -111,7 +111,7 @@
 
     <BotStopper @timesync="instructionStart" :windowsize="this.window_size" />
     <Consent :pID="this.participant_generated_id" :windowsize="this.window_size" />
-    <ExperInfo :windowsize="this.window_size" />
+    <ExperInfo :pID="this.participant_generated_id" :windowsize="this.window_size" />
     <ExperTutor :windowsize="this.window_size" />
     <Instr01Intro :windowsize="this.window_size" />
     <Instr02Desire :windowsize="this.window_size" />
